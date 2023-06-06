@@ -1,0 +1,3 @@
+[submodule "Empirical"]
+	path = Empirical
+	url = git@github.com:jgh9094/Empirical.git
