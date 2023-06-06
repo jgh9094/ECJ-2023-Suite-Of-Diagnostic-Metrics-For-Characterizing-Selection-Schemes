@@ -47,8 +47,6 @@ class DiagWorld : public emp::World<Org>
     using gmatrix_t = emp::vector<genome_t>;
     // map holding population id groupings by fitness (keys in decending order)
     using fitgp_t = std::map<double, ids_t, std::greater<double>>;
-    // vector of double vectors for K neighborhoods
-    using neigh_t = emp::vector<phenotype_t>;
     // vector of vector size_t for Pareto grouping
     using pareto_t = emp::vector<emp::vector<size_t>>;
 
@@ -62,7 +60,6 @@ class DiagWorld : public emp::World<Org>
     ///< data tracking stuff (ask about)
     using nodef_t = emp::Ptr<emp::DataMonitor<double>>;
     using nodeo_t = emp::Ptr<emp::DataMonitor<size_t>>;
-    using como_t = std::map<size_t, ids_t>;
 
   public:
 
@@ -82,8 +79,6 @@ class DiagWorld : public emp::World<Org>
       diagnostic.Delete();
       pop_fit.Delete();
       pop_opti.Delete();
-      pnt_fit.Delete();
-      pnt_opti.Delete();
       pop_str.Delete();
     }
 
@@ -189,11 +184,6 @@ class DiagWorld : public emp::World<Org>
     // update archive data
     void ArchiveDataUpdate(const size_t & org_id);
 
-    // record the population & parent id
-    void RecordPopulation();
-
-    size_t FindCommon();
-
   private:
     // experiment configurations
     DiaConfig & config;
@@ -223,39 +213,26 @@ class DiagWorld : public emp::World<Org>
 
     // file we are working with
     emp::DataFile data_file;
-    // systematics tracking
-    // emp::Ptr<systematics_t> sys_ptr;
     // node to track population fitnesses
     nodef_t pop_fit;
     // node to track population opitmized count
     nodeo_t pop_opti;
-    // node to track parent fitnesses
-    nodef_t pnt_fit;
-    // node to track parent optimized count
-    nodeo_t pnt_opti;
     // node to track streak counts
     nodeo_t pop_str;
     // csv file to track best performing solutions
     std::ofstream elite_pheno_csv;
     std::ofstream elite_geno_csv;
 
-    // mutation data
-    std::ofstream mutations_txt;
-
     ///< data we are tracking during an evolutionary run
 
     // elite solution position
     size_t elite_pos;
-    // common solution position
-    size_t comm_pos;
     // optimal solution position
     size_t opti_pos;
     // streak solution position
     size_t strk_pos;
     // population activation gene vector
     optimal_t pop_acti_gene;
-    // common solution dictionary
-    como_t common;
 
     // Pareto group count
     size_t pareto_cnt = 0;
@@ -340,8 +317,6 @@ void DiagWorld::SetOnUpdate()
 
     // step 4: reproduce and create new solutions
     ReproductionStep();
-
-    mutations_txt << "\n";
   });
 
   std::cout << "Finished setting the OnUpdate function! \n" << std::endl;
@@ -386,7 +361,6 @@ void DiagWorld::SetMutation()
           genome[i] = genome[i] + mut;
         }
 
-        mutations_txt << mut << ",";
         ++mcnt;
       }
     }
@@ -521,8 +495,6 @@ void DiagWorld::SetDataTracking()
   std::cout << "Initializing nodes..." << std::endl;
   pop_fit.New();
   pop_opti.New();
-  pnt_fit.New();
-  pnt_opti.New();
   pop_str.New();
   std::cout << "Nodes initialized!" << std::endl;
 
@@ -537,18 +509,6 @@ void DiagWorld::SetDataTracking()
   data_file.AddVariance(*pop_opti, "pop_opt_var", "Population variance objective optimization count.");
   data_file.AddMax(*pop_opti, "pop_opt_max", "Population maximum objective optimization count.");
   data_file.AddMin(*pop_opti, "pop_opt_min", "Population minimum objective optimization count.");
-
-  // track parent aggregate phenotype stats: average, variance, min, max
-  data_file.AddMean(*pnt_fit, "pnt_fit_avg", "Parent average aggregate performance.");
-  data_file.AddVariance(*pnt_fit, "pnt_fit_var", "Parent variance aggregate performance.");
-  data_file.AddMax(*pnt_fit, "pnt_fit_max", "Parent maximum aggregate performance.");
-  data_file.AddMin(*pnt_fit, "pnt_fit_min", "Parent minimum aggregate performance.");
-
-  // track parent optimized objective count stats: average, variance, min, max
-  data_file.AddMean(*pnt_opti, "pnt_opt_avg", "Parent average objective optimization count.");
-  data_file.AddVariance(*pnt_opti, "pnt_opt_var", "Parent variance objective optimization count.");
-  data_file.AddMax(*pnt_opti, "pnt_opt_max", "Parent maximum objective optimization count.");
-  data_file.AddMin(*pnt_opti, "pnt_opt_min", "Parent minimum objective optimization count.");
 
   // track parent optimized objective count stats: average, variance, min, max
   data_file.AddMean(*pop_str, "pop_str_avg", "Population average streak count.");
@@ -642,53 +602,6 @@ void DiagWorld::SetDataTracking()
     return org.GetCount();
   }, "str_obj_cnt", "Otpimal solution aggregate performance");
 
-  // loss of diversity
-  data_file.AddFun<double>([this]()
-  {
-    // quick checks
-    emp_assert(parent_vec.size() == config.POP_SIZE());
-
-    std::set<size_t> unique;
-    for(auto & id : parent_vec) {unique.insert(id);}
-
-    // ask Charles
-    const double num = static_cast<double>(unique.size());
-    const double dem = static_cast<double>(config.POP_SIZE());
-
-    return num / dem;
-  }, "los_div", "Loss in diversity generated by the selection scheme!");
-
-  // selection pressure
-  data_file.AddFun<double>([this]()
-  {
-    // quick checks
-    emp_assert(pop_fit->GetCount() == config.POP_SIZE());
-    emp_assert(pnt_fit->GetCount() == config.POP_SIZE());
-
-    const double pop = pop_fit->GetMean();
-    const double pnt = pnt_fit->GetMean();
-    const double var = pop_fit->GetVariance();
-
-    if(var == 0.0) {return 0.0;}
-
-    return (pop - pnt) / var;
-  }, "sel_pre", "Selection pressure applied by selection scheme!");
-
-  // selection variance
-  data_file.AddFun<double>([this]()
-  {
-    // quick checks
-    emp_assert(pop_fit->GetCount() == config.POP_SIZE());
-    emp_assert(pnt_fit->GetCount() == config.POP_SIZE());
-
-    const double pop = pop_fit->GetVariance();
-    const double pnt = pnt_fit->GetVariance();
-
-    if(pnt == 0.0) {return 0.0;}
-
-    return pop / pnt;
-  }, "sel_var", "Selection pressure applied by selection scheme!");
-
   // unique starting positions
   data_file.AddFun<size_t>([this]()
   {
@@ -764,8 +677,6 @@ void DiagWorld::SetDataTracking()
   // create elite csv plus headers
   elite_pheno_csv.open(config.OUTPUT_DIR() + "elite-pheno.csv");
   elite_geno_csv.open(config.OUTPUT_DIR() + "elite-geno.csv");
-  mutations_txt.open(config.OUTPUT_DIR() + "mutations.txt");
-
 
   std::string header_pheno = "Gen";
   std::string header_geno = "Gen";
@@ -816,13 +727,10 @@ void DiagWorld::ResetData()
   // reset all data nodes
   pop_fit->Reset();
   pop_opti->Reset();
-  pnt_fit->Reset();
-  pnt_opti->Reset();
   pop_str->Reset();
 
   // reset all positon ids
   elite_pos = config.POP_SIZE();
-  comm_pos = config.POP_SIZE();
   opti_pos = config.POP_SIZE();
   strk_pos = config.POP_SIZE();
   // unique_starts = config.POP_SIZE();
@@ -832,7 +740,6 @@ void DiagWorld::ResetData()
   fit_vec.clear();
   parent_vec.clear();
   pop_acti_gene.clear();
-  common.clear();
 }
 
 void DiagWorld::EvaluationStep()
@@ -877,19 +784,10 @@ void DiagWorld::RecordData()
     pop_fit->Add(org.GetAggregate());
     pop_opti->Add(org.GetCount());
     pop_str->Add(org.GetStreak());
-
-    const Org & par = *pop[parent_vec[i]];
-    pnt_fit->Add(par.GetAggregate());
-    pnt_opti->Add(par.GetCount());
   }
   emp_assert(pop_fit->GetCount() == config.POP_SIZE());
   emp_assert(pop_opti->GetCount() == config.POP_SIZE());
   emp_assert(pop_str->GetCount() == config.POP_SIZE());
-
-  // get parent data
-  emp_assert(parent_vec.size() == config.POP_SIZE());
-  emp_assert(pnt_fit->GetCount() == config.POP_SIZE());
-  emp_assert(pnt_opti->GetCount() == config.POP_SIZE());
 
   /// get all position ids
 
@@ -1340,15 +1238,12 @@ void DiagWorld::FindEverything()
   emp_assert(fit_vec.size() == config.POP_SIZE());
   emp_assert(pop_acti_gene.size() == 0);
   emp_assert(elite_pos == config.POP_SIZE());
-  emp_assert(comm_pos == config.POP_SIZE());
 
   // bools to make sure got everything
   bool elite_b = false,  opti_b = false, strk_b = false;
 
   // collect number of unique starting positions
   pop_acti_gene = optimal_t(config.DIMENSIONALITY(), false);
-
-  // comm_pos = FindCommon();
 
   // loop and get data
   for(size_t i = 0; i < pop.size(); ++i)
