@@ -400,7 +400,7 @@ Selection::phenotype_t Selection::FitnessSharing(const fmatrix_t & neigh, const 
   emp_assert(neigh.size() == score.size()); emp_assert(0 <= alpha); emp_assert(0 <= sigma);
   emp_assert(0 < neigh.size()); emp_assert(0 < score.size());
 
-  // edge case where K == 0
+  // edge case where SIGMA == 0
   if(sigma == 0.0)
   {
     phenotype_t tscore = score;
