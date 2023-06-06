@@ -1,7 +1,7 @@
 # Project-specific settings
 PROJECT := dia_world
-EMP_DIR := ../Fork-Master-Emp/Empirical/include
-CEREAL_DIR := ../Fork-Master-Emp/Empirical/third-party/cereal/include
+EMP_DIR := ./Empirical/include
+CEREAL_DIR := ./Empirical/third-party/cereal/include
 
 # Flags to use regardless of compiler
 CFLAGS_all := -Wall -Wno-unused-function -std=c++20 -I$(EMP_DIR)/
