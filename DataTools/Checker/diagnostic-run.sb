@@ -2,7 +2,7 @@
 ########## Define Resources Needed with SBATCH Lines ##########
 
 #SBATCH --time=00:10:00               # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --array=1-4                   # number of jobs being created, each with its array id
+#SBATCH --array=1-8                   # number of jobs being created, each with its array id
 #SBATCH --mem=1G                      # memory required per node - amount of memory (in gigs)
 #SBATCH --job-name chk-dia            # you can give your job a name for easier identification (same as -J)
 #SBATCH --account=devolab             # research group account being used
@@ -26,25 +26,49 @@ DIAGNOSTIC_ORDERED_EXPLOITATION=1
 DIAGNOSTIC_CONTRADICTORY_OBJECTIVES=2
 DIAGNOSTIC_MULTIPATH_EXPLORATION=3
 
+##################################
+# Valley vars
+##################################
+
 VALLEY=0
 
 ####################################################################
 
-if [ ${SLURM_ARRAY_TASK_ID} -eq ${DIAGNOSTIC_EXPLOITATION_RATE} ] ; then
+if [ ${SLURM_ARRAY_TASK_ID} -eq 1 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_EXPLOITATION_RATE}
   OFFSET=0
 
-elif [ ${SLURM_ARRAY_TASK_ID} -eq ${DIAGNOSTIC_ORDERED_EXPLOITATION} ] ; then
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 2 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_ORDERED_EXPLOITATION}
   OFFSET=500
 
-elif [ ${SLURM_ARRAY_TASK_ID} -eq ${DIAGNOSTIC_CONTRADICTORY_OBJECTIVES} ] ; then
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 3 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_CONTRADICTORY_OBJECTIVES}
   OFFSET=1000
 
-elif [ ${SLURM_ARRAY_TASK_ID} -eq ${DIAGNOSTIC_MULTIPATH_EXPLORATION} ] ; then
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 4 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_MULTIPATH_EXPLORATION}
   OFFSET=1500
+
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 5 ] ; then
+  DIAGNOSTIC=${DIAGNOSTIC_EXPLOITATION_RATE}
+  OFFSET=2000
+  VALLEY=1
+
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 6 ] ; then
+  DIAGNOSTIC=${DIAGNOSTIC_ORDERED_EXPLOITATION}
+  OFFSET=2500
+  VALLEY=1
+
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 7 ] ; then
+  DIAGNOSTIC=${DIAGNOSTIC_CONTRADICTORY_OBJECTIVES}
+  OFFSET=3000
+  VALLEY=1
+
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 8 ] ; then
+  DIAGNOSTIC=${DIAGNOSTIC_MULTIPATH_EXPLORATION}
+  OFFSET=3500
+  VALLEY=1
 
 else
   echo "${SLURM_ARRAY_TASK_ID} from failed to launch" >> /mnt/ls15/scratch/users/herna383/ps-coh-failtolaunch.txt
