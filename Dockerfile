@@ -119,4 +119,14 @@ RUN \
 #     && \
   ./build_book.sh \
     && \
-  echo "compiled bookdown ebook"
+  echo "compiled bookdown ebook" \
+    && \
+  cd /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/ \
+    && \
+  ls -l \
+      && \
+  ls -Rl DataTools/ \
+      && \
+  ls -Rl Experiments/ \
+      && \
+  ls -Rl Source/
