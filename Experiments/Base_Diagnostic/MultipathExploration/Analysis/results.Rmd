@@ -1,4 +1,0 @@
-# Multi-path exploration results
-
-Here we present the results for **best performances** found by each selection scheme on the multi-path exploration diagnostic.
-50 replicates are conducted for each scheme explored.
