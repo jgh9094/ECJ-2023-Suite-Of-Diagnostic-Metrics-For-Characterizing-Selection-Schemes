@@ -1,0 +1,4 @@
+# Contradictory objectives results
+
+Here we present the results for **activation gene coverage** and **satisfacotory trait coverage** found by each selection scheme on the contradictory objectives diagnostic.
+50 replicates are conducted for each scheme explored.
