@@ -48,9 +48,9 @@ def CheckDir(dir,dia,offs,val):
 
     # check if data dir exists
     if os.path.isdir(dir):
-        print('Data dirctory exists=', dir)
+        print('Data dirctory exists=', dir, flush=True)
     else:
-        print('DOES NOT EXIST=', dir)
+        print('DOES NOT EXIST=', dir, flush=True)
         sys.exit('DATA DIRECTORY DOES NOT EXIST')
 
     # check if diagnostic data folder exists
@@ -58,10 +58,10 @@ def CheckDir(dir,dia,offs,val):
 
 
     if os.path.isdir(DIA_DIR):
-        print('Selection scheme data folder exists', DIA_DIR)
+        print('Selection scheme data folder exists', DIA_DIR, flush=True)
     else:
-        print('SELECTION DIRECTORY DOES NOT EXIST=', DIA_DIR)
-        # sys.exit('SELECTION DATA DIRECTORY DOES NOT EXIST')
+        print('SELECTION DIRECTORY DOES NOT EXIST=', DIA_DIR, flush=True)
+        sys.exit('SELECTION DATA DIRECTORY DOES NOT EXIST')
 
     # create seed data directories and check if exist
     SCHEMES = ['TRUNCATION','TOURNAMENT','FITSHARING_G','FITSHARING_P','LEXICASE','NONDOMINATED','NOVELTY','RANDOM']
@@ -79,8 +79,8 @@ def CheckDir(dir,dia,offs,val):
     SEED.append([x + offs for x in range(301,351)])
     SEED.append([x + offs for x in range(351,401)])
 
-    print('Full data Dir=', DIA_DIR + 'SEED' + '/')
-    print('Now checking data replicates sub directories')
+    print('Full data Dir=', DIA_DIR + 'SEED' + '/', flush=True)
+    print('Now checking data replicates sub directories', flush=True)
 
     for i in range(8):
         scheme = SCHEMES[i]
@@ -93,7 +93,7 @@ def CheckDir(dir,dia,offs,val):
             else:
                 FILE_DIR += DIA_DIR + scheme + '/' + str(seed) + '/'
 
-            print(FILE_DIR)
+            print(FILE_DIR, flush=True)
 
             if os.path.isdir(FILE_DIR) == False:
                 DIR_DNE.append(seed % 1000)
@@ -138,16 +138,16 @@ def main():
     # Parse all the arguments
     args = parser.parse_args()
     data_dir = args.data_directory.strip()
-    print('Data directory=',data_dir)
+    print('Data directory=',data_dir, flush=True)
     diagnostic = args.diagnostic
     print('Diagnostic=', params.SetDiagnostic(diagnostic))
-    offset = int(args.seed_offset)
-    print('Offset=', offset)
+    offset = int(args.seed_offset, flush=True)
+    print('Offset=', offset, flush=True)
     valleys = bool(args.valleys)
-    print('valleys=', valleys)
+    print('valleys=', valleys, flush=True)
 
     # Get to work!
-    print("\nChecking all related data directories now!")
+    print("\nChecking all related data directories now!", flush=True)
     CheckDir(data_dir,diagnostic,offset,valleys)
 
 if __name__ == "__main__":
