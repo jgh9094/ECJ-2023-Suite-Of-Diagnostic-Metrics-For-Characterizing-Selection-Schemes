@@ -2,7 +2,7 @@
  FROM ubuntu:20.04
 
 # Copy everything (minus anything specified in .dockerignore) into the image
-COPY . /opt/Diagnosing-Island-Structures
+COPY . /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes
 
 # To make installs not ask questions about timezones
 ARG DEBIAN_FRONTEND=noninteractive
