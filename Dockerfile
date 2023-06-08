@@ -113,20 +113,18 @@ RUN \
     && \
   chmod +x build_book.sh \
     && \
-  ls -l \
-    && \
-#   ls -l DATA-FINAL/ \
-#     && \
   ./build_book.sh \
     && \
-  echo "compiled bookdown ebook" \
+  echo "compiled bookdown base diagnostic ebook" \
+    && \
+  cd /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/Experiments/MVC_Diagnostics/Bookdown \
+    && \
+  chmod +x build_book.sh \
+    && \
+  ./build_book.sh \
+    && \
+  echo "compiled bookdown mvc diagnostic ebook" \
     && \
   cd /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/ \
     && \
-  ls -l \
-      && \
-  ls -Rl DataTools/ \
-      && \
-  ls -Rl Experiments/ \
-      && \
-  ls -Rl Source/
+  ls -Rl Books/ \
