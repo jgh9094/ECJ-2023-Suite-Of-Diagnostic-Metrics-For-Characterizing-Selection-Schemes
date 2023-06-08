@@ -1,4 +1,5 @@
 book_filename: "base-diagnostics"
+output_dir: ../BaseDiagnostics
 language:
   ui:
     chapter_name: "Chapter "
