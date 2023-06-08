@@ -54,8 +54,11 @@ def CheckDir(dir,dia,offs,val):
         sys.exit('DATA DIRECTORY DOES NOT EXIST')
 
     # check if diagnostic data folder exists
-    DIA_DIR = dir + params.SetDiagnostic(dia) + '/'
-
+    DIA_DIR = ''
+    if val:
+        DIA_DIR +=  dir + 'MVC_' + params.SetDiagnostic(dia) + '/'
+    else:
+        DIA_DIR +=  dir + params.SetDiagnostic(dia) + '/'
 
     if os.path.isdir(DIA_DIR):
         print('Selection scheme data folder exists', DIA_DIR, flush=True)
@@ -86,13 +89,7 @@ def CheckDir(dir,dia,offs,val):
         scheme = SCHEMES[i]
         for seed in SEED[i]:
 
-            FILE_DIR = ''
-
-            if val:
-                FILE_DIR += DIA_DIR + 'MVC_' + scheme + '/' + str(seed) + '/'
-            else:
-                FILE_DIR += DIA_DIR + scheme + '/' + str(seed) + '/'
-
+            FILE_DIR += DIA_DIR + scheme + '/' + str(seed) + '/'
             print(FILE_DIR, flush=True)
 
             if os.path.isdir(FILE_DIR) == False:
