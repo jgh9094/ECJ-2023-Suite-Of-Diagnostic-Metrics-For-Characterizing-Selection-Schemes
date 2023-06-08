@@ -138,7 +138,7 @@ def main():
     print('Data directory=',data_dir, flush=True)
     diagnostic = args.diagnostic
     print('Diagnostic=', params.SetDiagnostic(diagnostic))
-    offset = int(args.seed_offset, flush=True)
+    offset = int(args.seed_offset)
     print('Offset=', offset, flush=True)
     valleys = bool(args.valleys)
     print('valleys=', valleys, flush=True)
