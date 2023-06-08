@@ -89,7 +89,7 @@ def CheckDir(dir,dia,offs,val):
         scheme = SCHEMES[i]
         for seed in SEED[i]:
 
-            FILE_DIR += DIA_DIR + scheme + '/' + str(seed) + '/'
+            FILE_DIR = DIA_DIR + scheme + '/' + str(seed) + '/'
             print(FILE_DIR, flush=True)
 
             if os.path.isdir(FILE_DIR) == False:
