@@ -1,5 +1,5 @@
 book_filename: "base-diagnostics"
-output_dir: /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/BaseDiagnostics
+output_dir: /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/Books/BaseDiagnostics
 language:
   ui:
     chapter_name: "Chapter "
