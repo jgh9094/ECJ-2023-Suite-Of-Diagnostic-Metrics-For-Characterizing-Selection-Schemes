@@ -37,38 +37,46 @@ VALLEY=0
 if [ ${SLURM_ARRAY_TASK_ID} -eq 1 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_EXPLOITATION_RATE}
   OFFSET=0
+  EXPERIMENT=0
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 2 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_ORDERED_EXPLOITATION}
   OFFSET=500
+  EXPERIMENT=0
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 3 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_CONTRADICTORY_OBJECTIVES}
   OFFSET=1000
+  EXPERIMENT=0
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 4 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_MULTIPATH_EXPLORATION}
   OFFSET=1500
+  EXPERIMENT=0
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 5 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_EXPLOITATION_RATE}
   OFFSET=2000
   VALLEY=1
+  EXPERIMENT=1
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 6 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_ORDERED_EXPLOITATION}
   OFFSET=2500
   VALLEY=1
+  EXPERIMENT=1
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 7 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_CONTRADICTORY_OBJECTIVES}
   OFFSET=3000
   VALLEY=1
+  EXPERIMENT=1
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 8 ] ; then
   DIAGNOSTIC=${DIAGNOSTIC_MULTIPATH_EXPLORATION}
   OFFSET=3500
   VALLEY=1
+  EXPERIMENT=1
 
 else
   echo "${SLURM_ARRAY_TASK_ID} from failed to launch" >> /mnt/ls15/scratch/users/herna383/ps-coh-failtolaunch.txt
@@ -76,6 +84,6 @@ fi
 
 ####################################################################
 
-echo "python3 diagnostic-run.py ${DATA_DIR} ${DIAGNOSTIC} ${OFFSET} ${VALLEY} > run.log" > ./cmd-coh.txt
+echo "python3 diagnostic-run.py ${DATA_DIR} ${DIAGNOSTIC} ${OFFSET} ${VALLEY} ${EXPERIMENT} > run.log" > ./cmd-coh.txt
 
-python3 diagnostic-run.py ${DATA_DIR} ${DIAGNOSTIC} ${OFFSET} ${VALLEY}
+python3 diagnostic-run.py ${DATA_DIR} ${DIAGNOSTIC} ${OFFSET} ${VALLEY} ${EXPERIMENT}
