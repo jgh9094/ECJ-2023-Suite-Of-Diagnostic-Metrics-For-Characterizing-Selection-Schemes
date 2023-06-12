@@ -100,6 +100,6 @@ mkdir -p ${DUMP}
 
 ####################################################################
 
-echo "python3 diagnostic-run.py ${DATA_DIR} ${DUMP} ${DIAGNOSTIC} ${OFFSET} ${VALLEY} ${EXPERIMENT} > run.log" > ./cmd-coh.txt
+echo "python3 diagnostic-over-time.py ${DATA_DIR} ${DUMP} ${DIAGNOSTIC} ${OFFSET} ${VALLEY} ${EXPERIMENT} > run.log" > ./cmd-coh.txt
 
-python3 diagnostic-run.py ${DATA_DIR} ${DUMP} ${DIAGNOSTIC} ${OFFSET} ${VALLEY} ${EXPERIMENT}
+python3 diagnostic-over-time.py ${DATA_DIR} ${DUMP} ${DIAGNOSTIC} ${OFFSET} ${VALLEY} ${EXPERIMENT}
