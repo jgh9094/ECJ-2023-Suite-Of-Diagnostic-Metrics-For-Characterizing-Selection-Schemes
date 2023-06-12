@@ -53,11 +53,11 @@ print(version)
 Setting up required variables variables.
 
 ```{r data-setup}
-# includes
-
-library(plyr)
+# libraries we are using
+library(ggplot2)
+library(cowplot)
 library(dplyr)
-library(tidyverse)
+library(PupillometryR)
 
 # data diractory for gh-pages
 DATA_DIR = '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/'
