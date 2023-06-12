@@ -77,7 +77,7 @@ def CheckDir(dir,dia,offs,val,exp):
     print('Full data Dir=', DIA_DIR + 'SEED' + '/', flush=True)
     print('Now checking data replicates sub directories', flush=True)
 
-    for i in range(8):
+    for i in range(len(SCHEMES)):
         scheme = SCHEMES[i]
         for seed in SEED[i]:
 
