@@ -44,7 +44,7 @@ def CountRows(file_name):
     return gens[-1]
 
 # responsible for looking through the data directories for success
-def CheckDir(dir,dia,offs,val):
+def CheckDir(dir,dia,offs,val,exp):
 
     # check if data dir exists
     if os.path.isdir(dir):
@@ -67,20 +67,12 @@ def CheckDir(dir,dia,offs,val):
         sys.exit('SELECTION DATA DIRECTORY DOES NOT EXIST')
 
     # create seed data directories and check if exist
-    SCHEMES = ['TRUNCATION','TOURNAMENT','FITSHARING_G','FITSHARING_P','LEXICASE','NONDOMINATED','NOVELTY','RANDOM']
+    SCHEMES = params.GetSchemeList(exp,offs)
     DIR_DNE = []
     DAT_DNE = []
     DAT_DNF = []
 
-    SEED = []
-    SEED.append([x + offs for x in range(1,51)])
-    SEED.append([x + offs for x in range(51,101)])
-    SEED.append([x + offs for x in range(101,151)])
-    SEED.append([x + offs for x in range(151,201)])
-    SEED.append([x + offs for x in range(201,251)])
-    SEED.append([x + offs for x in range(251,301)])
-    SEED.append([x + offs for x in range(301,351)])
-    SEED.append([x + offs for x in range(351,401)])
+    SEED = params.GetSeedLists(exp)
 
     print('Full data Dir=', DIA_DIR + 'SEED' + '/', flush=True)
     print('Now checking data replicates sub directories', flush=True)
@@ -131,6 +123,7 @@ def main():
     parser.add_argument("diagnostic",     type=int,  help="Diagnostic we are looking for?\n0: Exploitation\n1: Ordered Exploitation\n2: Contradictory Objectives\n3: Multi-path Exploration\n4: Multi-valley Crossing")
     parser.add_argument("seed_offset",    type=int,  help="Experiment seed offset.")
     parser.add_argument("valleys",        type=int,  help="True (1) or False (0) on whether or not valleys are applied")
+    parser.add_argument("experiment",     type=int,  help="What experiment are we running?: (0) Base Diagnostics, (1) MVC Diagnostics, (2) Parameter Sweep")
 
     # Parse all the arguments
     args = parser.parse_args()
@@ -142,10 +135,12 @@ def main():
     print('Offset=', offset, flush=True)
     valleys = bool(args.valleys)
     print('valleys=', valleys, flush=True)
+    experiment = bool(args.experiment)
+    print('experiment=', experiment, flush=True)
 
     # Get to work!
     print("\nChecking all related data directories now!", flush=True)
-    CheckDir(data_dir,diagnostic,offset,valleys)
+    CheckDir(data_dir,diagnostic,offset,valleys,experiment)
 
 if __name__ == "__main__":
     main()
