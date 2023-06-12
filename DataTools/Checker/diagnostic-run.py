@@ -67,12 +67,12 @@ def CheckDir(dir,dia,offs,val,exp):
         sys.exit('SELECTION DATA DIRECTORY DOES NOT EXIST')
 
     # create seed data directories and check if exist
-    SCHEMES = params.GetSchemeList(exp,offs)
+    SCHEMES = params.GetSchemeList(exp)
     DIR_DNE = []
     DAT_DNE = []
     DAT_DNF = []
 
-    SEED = params.GetSeedLists(exp)
+    SEED = params.GetSeedLists(exp,offs)
 
     print('Full data Dir=', DIA_DIR + 'SEED' + '/', flush=True)
     print('Now checking data replicates sub directories', flush=True)
