@@ -56,9 +56,9 @@ def CheckDir(dir,dia,offs,val,exp):
     # check if diagnostic data folder exists
     DIA_DIR = ''
     if val:
-        DIA_DIR +=  dir + 'MVC_' + params.SetDiagnostic(dia) + '/'
+        DIA_DIR +=  dir + 'MVC_' + params.GetDiagnostic(dia) + '/'
     else:
-        DIA_DIR +=  dir + params.SetDiagnostic(dia) + '/'
+        DIA_DIR +=  dir + params.GetDiagnostic(dia) + '/'
 
     if os.path.isdir(DIA_DIR):
         print('Selection scheme data folder exists', DIA_DIR, flush=True)
@@ -130,7 +130,7 @@ def main():
     data_dir = args.data_directory.strip()
     print('Data directory=',data_dir, flush=True)
     diagnostic = args.diagnostic
-    print('Diagnostic=', params.SetDiagnostic(diagnostic))
+    print('Diagnostic=', params.GetDiagnostic(diagnostic))
     offset = int(args.seed_offset)
     print('Offset=', offset, flush=True)
     valleys = bool(args.valleys)
