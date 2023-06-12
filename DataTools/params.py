@@ -54,6 +54,20 @@ def GetDiagnostic(d):
     else:
         sys.exit('UNKNOWN DIAGNOSTIC')
 
+# return appropiate string dir name (based off run.sb file naming system)
+def GetDiagnosticAcro(d):
+    # case by case
+    if d == 0:
+        return 'exp'
+    elif d == 1:
+        return 'ord'
+    elif d == 2:
+        return 'con'
+    elif d == 3:
+        return 'mpe'
+    else:
+        sys.exit('UNKNOWN DIAGNOSTIC')
+
 # return the correct amount of seed ran by experiment treatment
 def GetSeedLists(e,offs):
 
@@ -96,5 +110,63 @@ def GetSchemeList(e):
     # case by case
     if e == 0 or e == 1:
         return ['TRUNCATION','TOURNAMENT','FITSHARING_G','FITSHARING_P','LEXICASE','NONDOMINATED','NOVELTY','RANDOM']
+    else:
+        sys.exit("UNKNOWN VARIABLE LIST")
+
+def GetSchemeAcro(s):
+    # case by case
+    if s == 'TRUNCATION':
+        return 'tru'
+
+    elif s == 'TOURNAMENT':
+        return 'tor'
+
+    elif s == 'FITSHARING_G':
+        return 'fsg'
+
+    elif s == 'FITSHARING_P':
+        return 'fsp'
+
+    elif s == 'LEXICASE':
+        return 'lex'
+
+    elif s == 'NONDOMINATED':
+        return 'nds'
+
+    elif s == 'NOVELTY':
+        return 'nov'
+
+    elif s == 'RANDOM':
+        return 'ran'
+
+    else:
+        sys.exit("UNKNOWN VARIABLE LIST")
+
+def GetSchemeName(s):
+    # case by case
+    if s == 'TRUNCATION':
+        return 'Truncation (tru)'
+
+    elif s == 'TOURNAMENT':
+        return 'Tournament (tor)'
+
+    elif s == 'FITSHARING_G':
+        return 'Genotypic Fitness Sharing (gfs)'
+
+    elif s == 'FITSHARING_P':
+        return 'Phenotypic Fitness Sharing (pfs)'
+
+    elif s == 'LEXICASE':
+        return 'Lexicase (lex)'
+
+    elif s == 'NONDOMINATED':
+        return 'Nondominated Sorting (nds)'
+
+    elif s == 'NOVELTY':
+        return 'Novelty Search (nov)'
+
+    elif s == 'RANDOM':
+        return 'Random (ran)'
+
     else:
         sys.exit("UNKNOWN VARIABLE LIST")
