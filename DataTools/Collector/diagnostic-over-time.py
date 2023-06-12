@@ -85,8 +85,7 @@ def CheckDir(dir,dump,dia,offs,val,exp):
                     params.OVERLAP:       pd.Series(df[params.OVERLAP].tolist()),
                     params.UNI_STR_POS:   pd.Series(df[params.UNI_STR_POS].tolist()),
                     'acro':               pd.Series([params.GetSchemeAcro(scheme)] * len(GEN_LIST)),
-                    'scheme':             pd.Series([params.GetSchemeName(scheme)] * len(GEN_LIST)),
-                    'diagnostic':         pd.Series([params.GetDiagnosticAcro(dia)] * len(GEN_LIST))
+                    'scheme':             pd.Series([params.GetSchemeName(scheme)] * len(GEN_LIST))
                 })
             DF_LIST.append(cdf)
 
