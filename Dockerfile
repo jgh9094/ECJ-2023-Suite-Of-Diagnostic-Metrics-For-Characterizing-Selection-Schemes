@@ -40,8 +40,6 @@ RUN \
     && \
   echo "installed base dependencies"
 
-
-
 ########################################################
 # install r with whatever r packages we need/want
 # - source: https://rtask.thinkr.fr/installation-of-r-4-0-on-ubuntu-20-04-lts-and-tips-for-spatial-packages/
@@ -87,7 +85,6 @@ RUN \
   R -e "install.packages('PupillometryR', dependencies=NA, repos='http://cran.rstudio.com/')" \
     && \
   echo "installed r and configured r environment"
-
 
 ########################################################
 # install osfclient, use to download project data
