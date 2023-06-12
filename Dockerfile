@@ -72,43 +72,47 @@ RUN \
     && \
   R -e "install.packages('bookdown', dependencies=NA, repos='http://cran.rstudio.com/')" \
     && \
-#   R -e "install.packages('tidyverse', dependencies=NA, repos='http://cran.rstudio.com/')" \
-#     && \
-#   R -e "install.packages('cowplot', dependencies=NA, repos='http://cran.rstudio.com/')" \
-#     && \
-#   R -e "install.packages('plyr', dependencies=NA, repos='http://cran.rstudio.com/')" \
-#     && \
-#   R -e "install.packages('Hmisc', dependencies=NA, repos='http://cran.rstudio.com/')" \
-#     && \
-#   R -e "install.packages('ggplot2', dependencies=NA, repos='http://cran.rstudio.com/')" \
-#     && \
-#   R -e "install.packages('dplyr', dependencies=NA, repos='http://cran.rstudio.com/')" \
-#     && \
-#   R -e "install.packages('PupillometryR', dependencies=NA, repos='http://cran.rstudio.com/')" \
-#     && \
+  R -e "install.packages('tidyverse', dependencies=NA, repos='http://cran.rstudio.com/')" \
+    && \
+  R -e "install.packages('cowplot', dependencies=NA, repos='http://cran.rstudio.com/')" \
+    && \
+  R -e "install.packages('plyr', dependencies=NA, repos='http://cran.rstudio.com/')" \
+    && \
+  R -e "install.packages('Hmisc', dependencies=NA, repos='http://cran.rstudio.com/')" \
+    && \
+  R -e "install.packages('ggplot2', dependencies=NA, repos='http://cran.rstudio.com/')" \
+    && \
+  R -e "install.packages('dplyr', dependencies=NA, repos='http://cran.rstudio.com/')" \
+    && \
+  R -e "install.packages('PupillometryR', dependencies=NA, repos='http://cran.rstudio.com/')" \
+    && \
   echo "installed r and configured r environment"
 
 
 ########################################################
 # install osfclient, use to download project data
 ########################################################
-# RUN \
-#   pip3 install osfclient \
-#     && \
-#   export OSF_PROJECT=vbk8d \
-#     && \
-#   export PROJECT_PATH=/opt/Diagnosing-Island-Structures/ \
-#     && \
-#   osf -p ${OSF_PROJECT} fetch 2023-01-20-23.tar.gz ${PROJECT_PATH}2023-01-20-23.tar.gz \
-#     && \
-#   tar -xzf ${PROJECT_PATH}2023-01-20-23.tar.gz -C ${PROJECT_PATH} \
-#     && \
-#   echo "download"
+RUN \
+  pip3 install osfclient \
+    && \
+  export OSF_PROJECT=qz3g7 \
+    && \
+  export PROJECT_PATH=/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/ \
+    && \
+  osf -p ${OSF_PROJECT} fetch base-diagnostics.tar.gz ${PROJECT_PATH}base-diagnostics.tar.gz \
+    && \
+  tar -xzf ${PROJECT_PATH}base-diagnostics.tar.gz -C ${PROJECT_PATH} \
+    && \
+  echo "download"
 
 ########################################################
 # build supplemental material (will also run data analyses)
 ########################################################
 RUN \
+  cd /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/ \
+    && \
+  ls -l \
+    && \
   cd /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/Experiments/Base_Diagnostics/Bookdown \
     && \
   chmod +x build_book.sh \
