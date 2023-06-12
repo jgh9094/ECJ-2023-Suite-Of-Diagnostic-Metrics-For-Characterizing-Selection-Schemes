@@ -11,7 +11,7 @@ import os
 
 # variables we are testing for each replicate range
 TR_LIST = ['1','2','4','8','16','32','64','128','256']
-TS_LIST = ['1','2','4','8','16','32','64','128','256']
+TS_LIST = ['2','4','8','16','32','64','128','256']
 LX_LIST = ['0.0']
 FS_LIST = ['0.0','0.1','0.3','0.6','1.2','2.5','5.0']
 ND_LIST = ['0.0','0.1','0.3','0.6','1.2','2.5','5.0']
@@ -41,92 +41,40 @@ GENERATIONS = 50000
 RESOLUTION = 100
 
 # return appropiate string dir name (based off run.sb file naming system)
-def SetSelection(s,p):
+def GetDiagnostic(d):
     # case by case
-    if s == 0:
-        return 'TRUNCATION'
-    elif s == 1:
-        return 'TOURNAMENT'
-    elif s == 2:
-        if p == '0':
-            return 'FITSHARING_G'
-        elif p == '1':
-            return 'FITSHARING_P'
-        else:
-            sys.exit("UNKNOWN SELECTION")
-    elif s == 3:
-        return 'LEXICASE'
-    elif s == 4:
-        return 'NONDOMINATEDSORTING'
-    elif s == 5:
-        return 'NOVELTY'
-    else:
-        sys.exit("UNKNOWN SELECTION")
-
-# return appropiate string dir name (based off run.sb file naming system)
-def SetDiagnostic(s):
-    # case by case
-    if s == 0:
+    if d == 0:
         return 'EXPLOITATION_RATE'
-    elif s == 1:
+    elif d == 1:
         return 'ORDERED_EXPLOITATION'
-    elif s == 2:
+    elif d == 2:
         return 'CONTRADICTORY_OBJECTIVES'
-    elif s == 3:
+    elif d == 3:
         return 'MULTIPATH_EXPLORATION'
     else:
         sys.exit('UNKNOWN DIAGNOSTIC')
 
-# return appropiate string dir name (based off run.sb file naming system)
-def SetSelectionVar(s):
-    # case by case
-    if s == 0:
-        return 'TR'
-    elif s == 1:
-        return 'T'
-    elif s == 2:
-        return 'SIG'
-    elif s == 3:
-        return 'EPS'
-    elif s == 4:
-        return 'SIG'
-    elif s == 5:
-        return 'NOV'
-    else:
-        sys.exit("UNKNOWN SELECTION VAR")
-
 # return the correct amount of seed ran by experiment treatment
-def SetSeedSets(s):
+def GetSeedLists(e,offs):
 
     # diagnostic/selection treatments
-    if s == 0:
+    if e == 0 or e == 1:
         seed = []
-        seed.append([x for x in range(1,51)])
-        seed.append([x for x in range(51,101)])
-        seed.append([x for x in range(101,151)])
-        seed.append([x for x in range(151,201)])
-        seed.append([x for x in range(201,251)])
-        seed.append([x for x in range(251,301)])
-        seed.append([x for x in range(301,351)])
-        seed.append([x for x in range(351,401)])
-        return seed
-
-    elif s == 1:
-        seed = []
-        seed.append([x for x in range(1,51)])
-        seed.append([x for x in range(51,101)])
-        seed.append([x for x in range(101,151)])
-        seed.append([x for x in range(151,201)])
-        seed.append([x for x in range(201,251)])
-        seed.append([x for x in range(251,301)])
-        seed.append([x for x in range(301,351)])
+        seed.append([x + offs for x in range(1,51)])
+        seed.append([x + offs for x in range(51,101)])
+        seed.append([x + offs for x in range(101,151)])
+        seed.append([x + offs for x in range(151,201)])
+        seed.append([x + offs for x in range(201,251)])
+        seed.append([x + offs for x in range(251,301)])
+        seed.append([x + offs for x in range(301,351)])
+        seed.append([x + offs for x in range(351,401)])
         return seed
 
     else:
         sys.exit('SEED SELECTION UNKNOWN')
 
 # set the appropiate list of variables we are checking for
-def SetVarList(s):
+def GetSchemeVarList(s):
     # case by case
     if s == 0:
         return TR_LIST
@@ -143,19 +91,10 @@ def SetVarList(s):
     else:
         sys.exit("UNKNOWN VARIABLE LIST")
 
-# get data main directory
-def GetDataDirectory(dir,sel,pt):
-    # check if data dir exists
-    if os.path.isdir(dir):
-        print('Data dirctory exists=', dir)
+# selection scheme list to get dependent on experiment running
+def GetSchemeList(e):
+    # case by case
+    if e == 0 or e == 1:
+        return ['TRUNCATION','TOURNAMENT','FITSHARING_G','FITSHARING_P','LEXICASE','NONDOMINATED','NOVELTY','RANDOM']
     else:
-        sys.exit('DATA DIRECTORY DOES NOT EXIST: ' + dir)
-
-    # check that selection data folder exists
-    SEL_DIR = dir + SetSelection(sel,pt) + '/TRT_' + str(DIMENTIONALITY) + '__ACC_' + str(ACCURACY) + '__GEN_' + str(GENERATIONS) + '/'
-    if os.path.isdir(SEL_DIR):
-        print('Selection scheme data folder exists', SEL_DIR)
-    else:
-        sys.exit('SELECTION DATA DIRECTORY DOES NOT EXIST: ' + SEL_DIR)
-
-    return SEL_DIR
+        sys.exit("UNKNOWN VARIABLE LIST")
