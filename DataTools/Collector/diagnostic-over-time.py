@@ -10,7 +10,7 @@
 #    seed_offset: seed offset (if any)
 #   valley_cross: was there valley crossing involved? (0) no & (1) yes
 #
-# Output: list of seeds that need to be reran in terminal display
+# Output: csv with overtime data
 #
 # python3
 #####################################################################################################
