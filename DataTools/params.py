@@ -39,6 +39,7 @@ DATA_LIST = [POP_FIT_MAX,POP_OPT_MAX,POP_UNI_OBJ,POP_STR_MAX,UNI_STR_POS,ARC_ACT
 REPLICATES = 50
 GENERATIONS = 50000
 RESOLUTION = 100
+DIMENTIONALITY = 100
 
 # return appropiate string dir name (based off run.sb file naming system)
 def GetDiagnostic(d):
