@@ -60,6 +60,8 @@ def CheckDir(dir,dump,dia,offs,val,exp):
     GEN = []
     # selection scheme
     SEL = []
+    # scheme acronym
+    ACR = []
 
     for i in range(len(SCHEMES)):
         scheme = SCHEMES[i]
@@ -76,14 +78,15 @@ def CheckDir(dir,dump,dia,offs,val,exp):
             df = df[df[params.POP_OPT_MAX] == params.DIMENTIONALITY]
             gens = df[params.GENERATION].tolist()
 
-            SEL.append(scheme)
+            SEL.append(params.GetSchemeName(scheme))
+            ACR.append(params.GetSchemeAcro(scheme))
 
             if(len(gens) == 0):
                 GEN.append(params.GENERATIONS + 10000)
             else:
                 GEN.append(gens[0])
 
-    fin_df = pd.DataFrame({'gen':pd.Series(GEN),'scheme':pd.Series(SEL)})
+    fin_df = pd.DataFrame({'gen':pd.Series(GEN),'scheme':pd.Series(SEL),'acro':pd.Series(ACR)})
     fin_df.to_csv(path_or_buf= dump + 'sol-fnd.csv', index=False)
 
 # runner
