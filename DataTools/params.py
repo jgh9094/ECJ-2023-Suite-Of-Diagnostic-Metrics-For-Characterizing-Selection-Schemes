@@ -123,10 +123,10 @@ def GetSchemeAcro(s):
         return 'tor'
 
     elif s == 'FITSHARING_G':
-        return 'fsg'
+        return 'gfs'
 
     elif s == 'FITSHARING_P':
-        return 'fsp'
+        return 'pfs'
 
     elif s == 'LEXICASE':
         return 'lex'
