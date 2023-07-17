@@ -96,9 +96,9 @@ RUN \
     && \
   export PROJECT_PATH=/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/ \
     && \
-  osf -p ${OSF_PROJECT} fetch base-diagnostics.tar.gz ${PROJECT_PATH}base-diagnostics.tar.gz \
+  osf -p ${OSF_PROJECT} fetch diagnostics-data.tar.gz ${PROJECT_PATH}diagnostics-data.tar.gz \
     && \
-  tar -xzf ${PROJECT_PATH}base-diagnostics.tar.gz -C ${PROJECT_PATH} \
+  tar -xzvf ${PROJECT_PATH}diagnostics-data.tar.gz -C ${PROJECT_PATH} \
     && \
   echo "download"
 
