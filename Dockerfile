@@ -94,7 +94,9 @@ RUN \
     && \
   export OSF_PROJECT=qz3g7 \
     && \
-  export PROJECT_PATH=/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/ \
+  export PROJECT_PATH=/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/ \
+    &&
+  mkdir PROJECT_PATH \
     && \
   osf -p ${OSF_PROJECT} fetch diagnostics-data.tar.gz ${PROJECT_PATH}diagnostics-data.tar.gz \
     && \
