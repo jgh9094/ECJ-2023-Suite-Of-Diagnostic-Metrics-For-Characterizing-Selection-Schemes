@@ -101,7 +101,7 @@ plot = filter(over_time_df, gen == 50000) %>%
   geom_boxplot(color = 'black', width = .2, outlier.shape = NA, alpha = 0.0) +
   scale_y_continuous(
     name="Coverage",
-    limits=c(-1, 101),
+    limits=c(0, 100),
     breaks=seq(0,100, 20),
     labels=c("0", "20", "40", "60", "80", "100")
   ) +
@@ -216,7 +216,7 @@ plot = filter(best_df, var == 'pop_fit_max') %>%
   geom_boxplot(color = 'black', width = .2, outlier.shape = NA, alpha = 0.0) +
   scale_y_continuous(
     name="Average trait score",
-    limits=c(-1, 101),
+    limits=c(0, 100),
     breaks=seq(0,100, 20),
     labels=c("0", "20", "40", "60", "80", "100")
   ) +

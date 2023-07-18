@@ -1,21 +1,99 @@
 ---
-title: "Diagnosing Island Supplemental Material"
+title: "Supplemental Material: Valley Crossing Diagnostics"
 author: "Jose Guadalupe Hernandez"
 date: "`r Sys.Date()`"
 output: bookdown::gitbook
 documentclass: book
-bibliography: ["book.bib", "packages.bib"]
+# bibliography: ["book.bib", "packages.bib"]
 biblio-style: apalike
 nocite: '@*'
 link-citations: yes
 github-repo:  jgh9094/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes
-description: "Supplemental material for the diagnosing island structures with diagnostics."
+description: "Supplemental material for diagnostics with valleys."
 ---
 
-```{r idx-init, include=FALSE}
+```{r val-idx-init, include=FALSE}
+rm(list = ls())
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Introduction
 
-This is the supplemental material for experiments with basic diagnostics.
+This is the supplemental material for experiments with diagnostics and integrated valleys.
+
+## About our supplemental material
+
+This supplemental material is hosted on [GitHub](https://github.com) using GitHub pages.
+The source code and configuration files used to generate this supplemental material can be found in [this GitHub repository](https://github.com/jgh9094/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes).
+We compiled our data analyses and supplemental documentation into this nifty web-accessible book using [bookdown](https://bookdown.org/).
+
+Our supplemental material includes the following paper figures and statistics:
+
+- Exploitation rate results (Section \@ref(exploitation-rate-results))
+- Ordered exploitation results (Section \@ref(ordered-exploitation-results))
+- Contradictory objectives results (Section \@ref(contradictory-objectives-results))
+- Multi-path exploration results (Section \@ref(multi-path-exploration-results))
+
+## Contributing authors
+
+- [Jose Guadalupe Hernandez](https://jgh9094.github.io/)
+- [Alexander Lalejini](https://lalejini.com)
+- [Charles Ofria](http://ofria.com)
+
+## Computer Setup
+
+These analyses were conducted in the following computing environment:
+
+```{r val-com-ver}
+print(version)
+```
+
+
+## Experimental setup
+
+Setting up required variables variables.
+
+```{r val-data-setup}
+# libraries we are using
+library(ggplot2)
+library(cowplot)
+library(dplyr)
+library(PupillometryR)
+
+# data diractory for gh-pages
+DATA_DIR = '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/MVC_DIAGNOSTICS/'
+
+# data diractory for local testing
+# DATA_DIR = 'C:/Users/jgh9094/Desktop/Research/Projects/SelectionDiagnostics/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/MVC_DIAGNOSTICS/'
+
+# graph variables
+SHAPE = c(5,3,1,2,6,0,4,20,1)
+cb_palette <- c('#332288','#88CCEE','#EE7733','#EE3377','#117733','#882255','#44AA99','#CCBB44', '#000000')
+TSIZE = 26
+p_theme <- theme(
+  text = element_text(size = 28),
+  plot.title = element_text( face = "bold", size = 22, hjust=0.5),
+  panel.border = element_blank(),
+  panel.grid.minor = element_blank(),
+  legend.title=element_text(size=22),
+  legend.text=element_text(size=23),
+  axis.title = element_text(size=23),
+  axis.text = element_text(size=22),
+  legend.position="bottom",
+  panel.background = element_rect(fill = "#f1f2f5",
+                                  colour = "white",
+                                  size = 0.5, linetype = "solid")
+)
+
+# default variables
+REPLICATES = 50
+DIMENSIONALITY = 100
+GENERATIONS = 50000
+
+# selection scheme related stuff
+ACRO = c('tru','tor','lex','gfs','pfs','nds','nov','ran')
+NAMES = c('Truncation (tru)','Tournament (tor)','Lexicase (lex)', 'Genotypic Fitness Sharing (gfs)','Phenotypic Fitness Sharing (pfs)','Nondominated Sorting (nds)','Novelty Search (nov)','Random (ran)')
+
+# valley crossing comparisons
+mvc_col = c('#1A85FF','#D41159')
+```
