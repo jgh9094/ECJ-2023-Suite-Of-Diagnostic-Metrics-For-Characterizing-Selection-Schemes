@@ -94,7 +94,7 @@ legend <- cowplot::get_legend(
 Activation gene coverage found in the final population at 50,000 generations.
 
 
-```{r con-act-end}
+```{r mul-act-end}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = uni_str_pos, color = acro, fill = acro, shape = acro)) +
   geom_flat_violin(position = position_nudge(x = .09, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
@@ -128,7 +128,7 @@ plot_grid(
 
 Summary statistics for the coverage found in the final population.
 
-```{r con-act-sum-end}
+```{r mul-act-sum-end}
 act_coverage = filter(over_time_df, gen == 50000)
 act_coverage$acro = factor(act_coverage$acro, levels = c('nov','lex','nds','tor','tru','gfs','pfs','ran'))
 act_coverage %>%
@@ -146,13 +146,13 @@ act_coverage %>%
 
 Kruskal–Wallis test illustrates evidence of statistical differences.
 
-```{r con-act-kru-end}
+```{r mul-act-kru-end}
 kruskal.test(uni_str_pos ~ acro, data = act_coverage)
 ```
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
-```{r con-act-wil-end}
+```{r mul-act-wil-end}
 pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$acro, p.adjust.method = "bonferroni",
                      paired = FALSE, conf.int = FALSE, alternative = 'l')
 ```
@@ -240,7 +240,7 @@ plot_grid(
 
 Summary statistics for the best performance.
 
-```{r ord-per-sum}
+```{r mul-per-sum}
 performance = filter(best_df, var == 'pop_fit_max')
 performance$acro = factor(performance$acro, levels = c('gfs','pfs','tru','tor','nov','lex','nds','ran'))
 performance %>%
@@ -258,13 +258,13 @@ performance %>%
 
 Kruskal–Wallis test illustrates evidence of statistical differences.
 
-```{r ord-per-kru}
+```{r mul-per-kru}
 kruskal.test(val ~ acro, data = performance)
 ```
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
-```{r ord-per-wil}
+```{r mul-per-wil}
 pairwise.wilcox.test(x = performance$val, g = performance$acro, p.adjust.method = "bonferroni",
                      paired = FALSE, conf.int = FALSE, alternative = 'l')
 ```
