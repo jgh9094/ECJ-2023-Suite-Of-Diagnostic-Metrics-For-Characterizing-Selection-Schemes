@@ -12,7 +12,8 @@ github-repo:  jgh9094/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Se
 description: "Supplemental material for diagnostics with no valleys."
 ---
 
-```{r idx-init, include=FALSE}
+```{r base-idx-init, include=FALSE}
+rm(list = ls())
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -43,7 +44,7 @@ Our supplemental material includes the following paper figures and statistics:
 
 These analyses were conducted in the following computing environment:
 
-```{r com-ver}
+```{r base-com-ver}
 print(version)
 ```
 
@@ -52,7 +53,7 @@ print(version)
 
 Setting up required variables variables.
 
-```{r data-setup}
+```{r base-data-setup}
 # libraries we are using
 library(ggplot2)
 library(cowplot)
