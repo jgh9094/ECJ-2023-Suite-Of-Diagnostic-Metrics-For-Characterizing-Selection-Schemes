@@ -53,10 +53,6 @@ def CheckDir(dir,dump,dia,offs,val,exp):
     SCHEMES = params.GetSchemeList(exp)
     SEED = params.GetSeedLists(exp,offs)
 
-
-    # collect all data
-    DF_LIST = []
-
     print('Full data Dir=', DIA_DIR + 'SEED' + '/', flush=True)
     print('Now checking data replicates sub directories', flush=True)
 
