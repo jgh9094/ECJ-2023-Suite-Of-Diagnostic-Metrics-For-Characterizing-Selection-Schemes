@@ -75,7 +75,7 @@ def CheckDir(dir,dump,dia,offs,val,exp):
             df = pd.read_csv(FILE_DIR)
 
             # create subset of data frame with only winning solutions
-            df = df[df[params.POP_OPT_MAX] == params.DIMENTIONALITY]
+            df = df[df[params.POP_OPT_MAX] == params.DIMENSIONALITY]
             gens = df[params.GENERATION].tolist()
 
             SEL.append(params.GetSchemeName(scheme))
