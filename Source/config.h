@@ -54,7 +54,7 @@ EMP_BUILD_CONFIG(DiaConfig,
   VALUE(LEX_EPS,          double,            0.0,       "Epsillon value for differences between best solution when filtering."),
 
   GROUP(NONDOMINATED, "Parameters for nondominated sorting."),
-  VALUE(NDS_MAX,            double,   9000000000000000.0,       "Starting fitness value for first pareto front group (pre fitness sharing)."),
+  VALUE(NDS_MAX,            double,         1000000000.0,       "Starting fitness value for first pareto front group (pre fitness sharing)."),
   VALUE(NDS_REDUC,          double,                 0.99,       "Fitness reduction from max value in the previous pareto front."),
   VALUE(NDS_ALPHA,          double,                  1.0,       "Alpha value for pareto fitness sharing (within front)."),
   VALUE(NDS_SIGMA,          double,                  0.3,       "Sigma value for pareto fitness sharing (within front)."),
