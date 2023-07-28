@@ -97,7 +97,7 @@ def CheckDir(dir,dia,offs,val,exp):
 
             # make sure that the data.csv file did in fact finish all generations
             if CountRows(FILE_DIR) != int(params.GENERATIONS):
-                DAT_DNF.append(seed % 1000)
+                DAT_DNF.append(seed % 401)
                 continue
 
     # print out the list of incomplete seeds
