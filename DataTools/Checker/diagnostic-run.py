@@ -85,19 +85,19 @@ def CheckDir(dir,dia,offs,val,exp):
             print(FILE_DIR, flush=True)
 
             if os.path.isdir(FILE_DIR) == False:
-                DIR_DNE.append(seed % 1000)
+                DIR_DNE.append(seed)
                 continue
 
             FILE_DIR += '/data.csv'
 
             # now check if the data file exists in full data director
             if os.path.isfile(FILE_DIR) == False:
-                DAT_DNE.append(seed % 1000)
+                DAT_DNE.append(seed)
                 continue
 
             # make sure that the data.csv file did in fact finish all generations
             if CountRows(FILE_DIR) != int(params.GENERATIONS):
-                DAT_DNF.append(seed % 401)
+                DAT_DNF.append(seed)
                 continue
 
     # print out the list of incomplete seeds
@@ -111,7 +111,7 @@ def CheckDir(dir,dia,offs,val,exp):
     fin.sort()
     fins = ''
     for x in fin:
-        fins = fins + str(x) + ','
+        fins = fins % 401 + str(x) + ','
     # print out the sorted list
     print(fins[:len(fins)-1])
 
