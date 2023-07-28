@@ -111,7 +111,7 @@ def CheckDir(dir,dia,offs,val,exp):
     fin.sort()
     fins = ''
     for x in fin:
-        fins = fins % 401 + str(x) + ','
+        fins = fins + str(x % 401) + ','
     # print out the sorted list
     print(fins[:len(fins)-1])
 
