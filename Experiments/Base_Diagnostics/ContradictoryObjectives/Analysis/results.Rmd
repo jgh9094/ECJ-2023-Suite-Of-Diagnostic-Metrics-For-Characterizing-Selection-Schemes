@@ -20,9 +20,6 @@ over_time_df <- read.csv(paste(DIR,'over-time.csv', sep = "", collapse = NULL), 
 over_time_df$uni_str_pos = over_time_df$uni_str_pos + over_time_df$arc_acti_gene - over_time_df$overlap
 over_time_df$scheme <- factor(over_time_df$scheme, levels = NAMES)
 over_time_df$acro <- factor(over_time_df$acro, levels = ACRO)
-
-best_df <- read.csv(paste(DIR,'best.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
-best_df$acro <- factor(best_df$acro, levels = ACRO)
 ```
 
 ## Activation gene coverage over time
@@ -96,9 +93,9 @@ Activation gene coverage found in the final population at 50,000 generations.
 ```{r con-act-end}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = uni_str_pos, color = acro, fill = acro, shape = acro)) +
-  geom_flat_violin(position = position_nudge(x = .2, y = 0), scale = 'width', alpha = 0.2) +
-  geom_point(position = position_jitter(width = .1), size = 1.5, alpha = 1.0) +
-  geom_boxplot(color = 'black', width = .2, outlier.shape = NA, alpha = 0.0) +
+  geom_flat_violin(position = position_nudge(x = .09, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .15, y = 0)) +
+  geom_point(position = position_jitter(width = .02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
     limits=c(0, 100),
@@ -202,74 +199,6 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
 over_time_plot
 ```
 
-## Best satisfactory trait coverage throughout
-
-Best satisfactory trait coverage reached throughout 50,000 generations in a population.
-
-
-```{r con-sat-bst}
-plot = filter(best_df, var == 'pop_uni_obj') %>%
-  ggplot(., aes(x = acro, y = val, color = acro, fill = acro, shape = acro)) +
-  geom_flat_violin(position = position_nudge(x = .2, y = 0), scale = 'width', alpha = 0.2) +
-  geom_point(position = position_jitter(width = .1), size = 1.5, alpha = 1.0) +
-  geom_boxplot(color = 'black', width = .2, outlier.shape = NA, alpha = 0.0) +
-  scale_y_continuous(
-    name="Coverage",
-    limits=c(0, 100),
-    breaks=seq(0,100, 20),
-    labels=c("0", "20", "40", "60", "80", "100")
-  ) +
-  scale_x_discrete(
-    name="Scheme"
-  )+
-  scale_shape_manual(values=SHAPE)+
-  scale_colour_manual(values = cb_palette, ) +
-  scale_fill_manual(values = cb_palette) +
-  ggtitle('Best satisfactory trait coverage')+
-  p_theme + theme(legend.title=element_blank())
-
-plot_grid(
-  plot +
-    theme(legend.position="none"),
-  legend,
-  nrow=2,
-  rel_heights = c(3,1)
-)
-```
-
-### Stats
-
-Summary statistics for the best coverage.
-
-```{r con-sat-bst-sum}
-sat_coverage = filter(best_df, var == 'pop_uni_obj')
-sat_coverage$acro = factor(sat_coverage$acro, levels = c('nds','lex','pfs','gfs','tor','tru','nov','ran'))
-sat_coverage %>%
-  group_by(acro) %>%
-  dplyr::summarise(
-    count = n(),
-    na_cnt = sum(is.na(val)),
-    min = min(val, na.rm = TRUE),
-    median = median(val, na.rm = TRUE),
-    mean = mean(val, na.rm = TRUE),
-    max = max(val, na.rm = TRUE),
-    IQR = IQR(val, na.rm = TRUE)
-  )
-```
-
-Kruskal–Wallis test illustrates evidence of statistical differences.
-
-```{r con-sat-bst-kru}
-kruskal.test(val ~ acro, data = sat_coverage)
-```
-
-Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
-
-```{r con-sat-bst-wil}
-pairwise.wilcox.test(x = sat_coverage$val, g = sat_coverage$acro, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
-```
-
 ## Final satisfactory trait coverage
 
 Satisfactory trait coverage found in the final population at 50,000 generations.
@@ -278,9 +207,9 @@ Satisfactory trait coverage found in the final population at 50,000 generations.
 ```{r con-sat-end}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = pop_uni_obj, color = acro, fill = acro, shape = acro)) +
-  geom_flat_violin(position = position_nudge(x = .2, y = 0), scale = 'width', alpha = 0.2) +
-  geom_point(position = position_jitter(width = .1), size = 1.5, alpha = 1.0) +
-  geom_boxplot(color = 'black', width = .2, outlier.shape = NA, alpha = 0.0) +
+  geom_flat_violin(position = position_nudge(x = .09, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .15, y = 0)) +
+  geom_point(position = position_jitter(width = .02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
     limits=c(0, 100),
