@@ -169,6 +169,8 @@ class DiagWorld : public emp::World<Org>
 
     double MaxPopGene();
 
+    size_t LargestPeakCrossed(const genome_t & g);
+
     ///< helper functions
 
     // create a matrix of popultion phenotype vectors
@@ -259,6 +261,8 @@ class DiagWorld : public emp::World<Org>
                                 63.0, 63.0, 63.0, 63.0, 74.0, 74.0, 74.0, 74.0, 74.0, 74.0,
                                 74.0, 74.0, 74.0, 74.0, 74.0, 74.0, 86.0, 86.0, 86.0, 86.0,
                                 86.0, 86.0, 86.0, 86.0, 86.0, 86.0, 86.0, 86.0, 86.0, 99.0};
+    // unique peaks
+    const phenotype_t peaks_set = {8.0, 9.0, 11.0, 14.0, 18.0, 23.0, 29.0, 36.0, 44.0, 53.0, 63.0, 74.0, 86.0, 99.0};
     // where do the dips start?
     const double dips_start = 8.0;
     // where do dips end?
@@ -554,29 +558,33 @@ void DiagWorld::SetDataTracking()
     return org.GetCount();
   }, "ele_opt_cnt", "Elite solution optimized objective count!");
 
-  // optimized solution aggregate performance
-  data_file.AddFun<double>([this]()
-  {
-    // quick checks
-    emp_assert(opti_pos != config.POP_SIZE());
-    emp_assert(pop.size() == config.POP_SIZE());
-
-    Org & org = *pop[opti_pos];
-
-    return org.GetAggregate();
-  }, "opt_agg_per", "Otpimal solution aggregate performance");
-
-  // optimized solution optimized objectives count
+  // elite solution streak of active genes
   data_file.AddFun<size_t>([this]()
   {
     // quick checks
-    emp_assert(opti_pos != config.POP_SIZE());
+    emp_assert(elite_pos != config.POP_SIZE());
     emp_assert(pop.size() == config.POP_SIZE());
 
-    Org & org = *pop[opti_pos];
+    Org & org = *pop[elite_pos];
 
-    return org.GetCount();
-  }, "opt_obj_cnt", "Otpimal solution aggregate performance");
+    return org.GetStreak();
+  }, "ele_stk_cnt", "Elite solution active gene streak count!");
+
+  if (config.VALLEY_CROSSING())
+  {
+    // elite solution biggest phenotype trait
+    // what is the largest peak found
+    data_file.AddFun<size_t>([this]()
+    {
+      // quick checks
+      emp_assert(elite_pos != config.POP_SIZE());
+      emp_assert(pop.size() == config.POP_SIZE());
+
+      Org & org = *pop[elite_pos];
+
+      return LargestPeakCrossed(org.GetGenome());
+    }, "ele_big_peak", "Elite solution biggest peak crossed!");
+  }
 
   // streak solution aggregate performance
   data_file.AddFun<double>([this]()
@@ -1321,6 +1329,60 @@ double DiagWorld::MaxPopGene()
 
   return max;
 }
+
+size_t DiagWorld::LargestPeakCrossed(const genome_t & g)
+{
+  // quick checks
+  emp_assert(g.size() == config.DIMENSIONALITY())
+
+  // set phenotype & aggregate
+  phenotype_t phenotype;
+
+  switch (config.DIAGNOSTIC())
+  {
+    case 0: // exploitation
+      phenotype = diagnostic->ExploitationRate(g);
+      break;
+
+    case 1: // structured exploitation
+      phenotype = diagnostic->OrderedExploitation(g);
+      break;
+
+    case 2: // contradictory objectives
+      phenotype = diagnostic->ContradictoryObjectives(g);
+      break;
+
+    case 3: // exploration
+      phenotype = diagnostic->MultiPathExploration(g);
+      break;
+
+    default: // error, unknown diganotic
+      std::cout << "ERROR: UNKNOWN DIAGNOSTIC" << std::endl;
+      emp_assert(false);
+      break;
+  }
+
+  // make sure something happened
+  emp_assert(phenotype.size() == config.DIMENSIONALITY());
+
+  // find largest peak found
+  size_t peak = 0;
+  for(const double & trait : phenotype)
+  {
+    size_t cur_peak = 0;
+
+    while(cur_peak < peaks_set.size())
+    {
+      if (peaks_set[cur_peak] <= trait) {cur_peak++;}
+      else { break; }
+    }
+
+    if(peak < cur_peak) {peak = cur_peak;}
+  }
+
+  return peak;
+}
+
 
 ///< helper functions
 
