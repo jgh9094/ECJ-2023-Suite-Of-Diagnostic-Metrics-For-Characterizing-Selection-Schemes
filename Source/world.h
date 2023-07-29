@@ -1333,7 +1333,7 @@ double DiagWorld::MaxPopGene()
 size_t DiagWorld::LargestPeakCrossed(const genome_t & g)
 {
   // quick checks
-  emp_assert(g.size() == config.DIMENSIONALITY())
+  emp_assert(g.size() == config.DIMENSIONALITY());
 
   // set phenotype & aggregate
   phenotype_t phenotype;
