@@ -29,11 +29,7 @@ UNI_STR_POS = 'uni_str_pos'
 # novelty data
 ARC_ACTI_GENE = 'arc_acti_gene'
 OVERLAP = 'overlap'
-POP_MAX_TRT = 'pop_max_trt'
-POP_MAX_GENE = 'pop_max_gene'
-
-# collection of data in list
-DATA_LIST = [POP_FIT_MAX,POP_OPT_MAX,POP_UNI_OBJ,POP_STR_MAX,UNI_STR_POS,ARC_ACTI_GENE,OVERLAP,POP_MAX_TRT,POP_MAX_GENE]
+ELE_BIG_PEAK = 'ele_big_peak'
 
 # seed experiements replicates range
 REPLICATES = 50
@@ -171,3 +167,12 @@ def GetSchemeName(s):
 
     else:
         sys.exit("UNKNOWN VARIABLE LIST")
+
+
+def GetDataList(val):
+
+    if val:
+        return [POP_FIT_MAX,POP_OPT_MAX,POP_UNI_OBJ,POP_STR_MAX,UNI_STR_POS,ARC_ACTI_GENE,OVERLAP,ELE_BIG_PEAK]
+
+    else:
+        return [POP_FIT_MAX,POP_OPT_MAX,POP_UNI_OBJ,POP_STR_MAX,UNI_STR_POS,ARC_ACTI_GENE,OVERLAP]
