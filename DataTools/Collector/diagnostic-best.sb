@@ -28,6 +28,12 @@ DIAGNOSTIC_CONTRADICTORY_OBJECTIVES=2
 DIAGNOSTIC_MULTIPATH_EXPLORATION=3
 
 ##################################
+# Seed offset for replications
+##################################
+
+REPILCATE_OFFSET=10000
+
+##################################
 # Valley vars
 ##################################
 
@@ -98,8 +104,10 @@ fi
 # make DUMP directory
 mkdir -p ${DUMP}
 
+SEED_OFFSET=$((OFFSET + REPILCATE_OFFSET))
+
 ####################################################################
 
-echo "python3 diagnostic-best.py ${DATA_DIR} ${DUMP} ${DIAGNOSTIC} ${OFFSET} ${VALLEY} ${EXPERIMENT} > run.log" > ./cmd-coh.txt
+echo "python3 diagnostic-best.py ${DATA_DIR} ${DUMP} ${DIAGNOSTIC} ${SEED_OFFSET} ${VALLEY} ${EXPERIMENT} > run.log" > ./cmd-coh.txt
 
-python3 diagnostic-best.py ${DATA_DIR} ${DUMP} ${DIAGNOSTIC} ${OFFSET} ${VALLEY} ${EXPERIMENT}
+python3 diagnostic-best.py ${DATA_DIR} ${DUMP} ${DIAGNOSTIC} ${SEED_OFFSET} ${VALLEY} ${EXPERIMENT}
