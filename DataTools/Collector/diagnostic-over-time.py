@@ -75,7 +75,22 @@ def CheckDir(dir,dump,dia,offs,val,exp):
             df = df.iloc[::params.RESOLUTION, :]
 
             # time to export the data
-            cdf = pd.DataFrame(
+            # cdf = pd.DataFrame(
+            #     {   'gen': pd.Series(GEN_LIST),
+            #         params.POP_FIT_MAX:   pd.Series(df[params.POP_FIT_MAX].tolist()),
+            #         params.POP_OPT_MAX:   pd.Series(df[params.POP_OPT_MAX].tolist()),
+            #         params.POP_UNI_OBJ:   pd.Series(df[params.POP_UNI_OBJ].tolist()),
+            #         params.POP_STR_MAX:   pd.Series(df[params.POP_STR_MAX].tolist()),
+            #         params.ARC_ACTI_GENE: pd.Series(df[params.ARC_ACTI_GENE].tolist()),
+            #         params.OVERLAP:       pd.Series(df[params.OVERLAP].tolist()),
+            #         params.UNI_STR_POS:   pd.Series(df[params.UNI_STR_POS].tolist()),
+            #         'acro':               pd.Series([params.GetSchemeAcro(scheme)] * len(GEN_LIST)),
+            #         'scheme':             pd.Series([params.GetSchemeName(scheme)] * len(GEN_LIST))
+            #     })
+            # DF_LIST.append(cdf)
+
+            if val:
+                DF_LIST.append(pd.DataFrame(
                 {   'gen': pd.Series(GEN_LIST),
                     params.POP_FIT_MAX:   pd.Series(df[params.POP_FIT_MAX].tolist()),
                     params.POP_OPT_MAX:   pd.Series(df[params.POP_OPT_MAX].tolist()),
@@ -86,8 +101,22 @@ def CheckDir(dir,dump,dia,offs,val,exp):
                     params.UNI_STR_POS:   pd.Series(df[params.UNI_STR_POS].tolist()),
                     'acro':               pd.Series([params.GetSchemeAcro(scheme)] * len(GEN_LIST)),
                     'scheme':             pd.Series([params.GetSchemeName(scheme)] * len(GEN_LIST))
-                })
-            DF_LIST.append(cdf)
+                }))
+
+            else:
+                DF_LIST.append(pd.DataFrame(
+                {   'gen': pd.Series(GEN_LIST),
+                    params.POP_FIT_MAX:   pd.Series(df[params.POP_FIT_MAX].tolist()),
+                    params.POP_OPT_MAX:   pd.Series(df[params.POP_OPT_MAX].tolist()),
+                    params.POP_UNI_OBJ:   pd.Series(df[params.POP_UNI_OBJ].tolist()),
+                    params.POP_STR_MAX:   pd.Series(df[params.POP_STR_MAX].tolist()),
+                    params.ARC_ACTI_GENE: pd.Series(df[params.ARC_ACTI_GENE].tolist()),
+                    params.OVERLAP:       pd.Series(df[params.OVERLAP].tolist()),
+                    params.UNI_STR_POS:   pd.Series(df[params.UNI_STR_POS].tolist()),
+                    params.ELE_BIG_PEAK:   pd.Series(df[params.ELE_BIG_PEAK].tolist()),
+                    'acro':               pd.Series([params.GetSchemeAcro(scheme)] * len(GEN_LIST)),
+                    'scheme':             pd.Series([params.GetSchemeName(scheme)] * len(GEN_LIST))
+                }))
 
     fin_df = pd.concat(DF_LIST)
 

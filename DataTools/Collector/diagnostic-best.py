@@ -66,6 +66,8 @@ def CheckDir(dir,dump,dia,offs,val,exp):
     SEL = []
     # scheme acronym
     ACR = []
+    # data list
+    DATA_LIST = params.GetDataList(val)
 
     for i in range(len(SCHEMES)):
         scheme = SCHEMES[i]
@@ -78,7 +80,7 @@ def CheckDir(dir,dump,dia,offs,val,exp):
             # get data from file and check if can store it
             df = pd.read_csv(FILE_DIR)
 
-            for key in params.DATA_LIST:
+            for key in DATA_LIST:
                 max_val = df[key].max()
                 max_gen = df[df[key] == max_val][params.GENERATION].values.tolist()[0]
 
