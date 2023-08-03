@@ -1,0 +1,6 @@
+.vscode
+dia_world
+DataTools/__pycache__
+DATA/
+Experiments/Base_Diagnostics/Bookdown/libs
+Experiments/MVC_Diagnostics/Bookdown/libs
