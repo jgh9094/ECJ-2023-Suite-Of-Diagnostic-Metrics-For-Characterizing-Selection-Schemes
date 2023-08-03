@@ -1,6 +1,6 @@
 # Contradictory objectives results
 
-Here we present the results for **activation gene coverage** and **satisfacotory trait coverage** found by each selection scheme on the contradictory objectives diagnostic with valley crossing integrated.
+Here we present the results for **activation gene coverage** and **satisfactory trait coverage** found by each selection scheme on the contradictory objectives diagnostic with valley crossing integrated.
 50 replicates are conducted for each scheme explored.
 
 ## Analysis dependencies
@@ -96,9 +96,9 @@ Activation gene coverage found in the final population at 50,000 generations.
 ```{r con-act-end}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = uni_str_pos, color = acro, fill = acro, shape = acro)) +
-  geom_flat_violin(position = position_nudge(x = .09, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
-  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .15, y = 0)) +
-  geom_point(position = position_jitter(width = 0.01, height = 0.1), size = 2.0, alpha = 1.0) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
     limits=c(0, 100),
@@ -199,72 +199,6 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
 over_time_plot
 ```
 
-## Best satisfactory trait coverage throughout
-
-Best satisfactory trait coverage reached throughout 50,000 generations in a population.
-
-
-```{r con-sat-bst}
-plot = filter(best_df, var == 'pop_uni_obj') %>%
-  ggplot(., aes(x = acro, y = val, color = acro, fill = acro, shape = acro)) +
-  geom_flat_violin(position = position_nudge(x = .09, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
-  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .15, y = 0)) +
-  geom_point(position = position_jitter(width = 0.01, height = 0.1), size = 2.0, alpha = 1.0) +
-  scale_y_continuous(
-    name="Coverage",
-    limits=c(0, 5)
-  ) +
-  scale_x_discrete(
-    name="Scheme"
-  )+
-  scale_shape_manual(values=SHAPE)+
-  scale_colour_manual(values = cb_palette, ) +
-  scale_fill_manual(values = cb_palette) +
-  ggtitle('Best satisfactory trait coverage')+
-  p_theme + theme(legend.title=element_blank())
-
-plot_grid(
-  plot +
-    theme(legend.position="none"),
-  legend,
-  nrow=2,
-  rel_heights = c(3,1)
-)
-```
-
-### Stats
-
-Summary statistics for the best coverage.
-
-```{r con-sat-bst-sum}
-sat_coverage = filter(best_df, var == 'pop_uni_obj')
-sat_coverage$acro = factor(sat_coverage$acro, levels = c('pfs','nds','lex','gfs','tor','tru','nov','ran'))
-sat_coverage %>%
-  group_by(acro) %>%
-  dplyr::summarise(
-    count = n(),
-    na_cnt = sum(is.na(val)),
-    min = min(val, na.rm = TRUE),
-    median = median(val, na.rm = TRUE),
-    mean = mean(val, na.rm = TRUE),
-    max = max(val, na.rm = TRUE),
-    IQR = IQR(val, na.rm = TRUE)
-  )
-```
-
-Kruskal–Wallis test illustrates evidence of statistical differences.
-
-```{r con-sat-bst-kru}
-kruskal.test(val ~ acro, data = sat_coverage)
-```
-
-Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
-
-```{r con-sat-bst-wil}
-pairwise.wilcox.test(x = sat_coverage$val, g = sat_coverage$acro, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
-```
-
 ## Final satisfactory trait coverage
 
 Satisfactory trait coverage found in the final population at 50,000 generations.
@@ -272,9 +206,9 @@ Satisfactory trait coverage found in the final population at 50,000 generations.
 ```{r con-sat-end}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = pop_uni_obj, color = acro, fill = acro, shape = acro)) +
-  geom_flat_violin(position = position_nudge(x = .09, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
-  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .15, y = 0)) +
-  geom_point(position = position_jitter(width = 0.01, height = 0.1), size = 2.0, alpha = 1.0) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
     limits=c(0, 5)
@@ -327,117 +261,5 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r con-sat-wil-end}
 pairwise.wilcox.test(x = act_coverage$pop_uni_obj, g = act_coverage$acro, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
-```
-
-## Best trait value over time
-
-Best trait value in a population over time.
-Data points on the graph is the average trait value across 50 replicates every 2000 generations.
-Shading comes from the best and worse trait value across 50 replicates.
-
-
-```{r con-per-ot, warning=FALSE}
-lines = over_time_df %>%
-  group_by(scheme, gen) %>%
-  dplyr::summarise(
-    min = min(pop_fit_max),
-    mean = mean(pop_fit_max),
-    max = max(pop_fit_max)
-  )
-
-over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme, color = scheme, shape = scheme)) +
-  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
-  geom_line(size = 0.5) +
-  geom_point(data = filter(lines, gen %% 2000 == 0 & gen != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
-  scale_y_continuous(
-    name="Trait value"
-  ) +
-  scale_x_continuous(
-    name="Generations",
-    limits=c(0, 50000),
-    breaks=c(0, 10000, 20000, 30000, 40000, 50000),
-    labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
-
-  ) +
-  scale_shape_manual(values=SHAPE)+
-  scale_colour_manual(values = cb_palette) +
-  scale_fill_manual(values = cb_palette) +
-  ggtitle('Best trait value over time')+
-  p_theme + theme(legend.title=element_blank(),legend.text=element_text(size=12)) +
-  guides(
-    shape=guide_legend(ncol=2, title.position = "bottom"),
-    color=guide_legend(ncol=2, title.position = "bottom"),
-    fill=guide_legend(ncol=2, title.position = "bottom")
-  )
-
-over_time_plot
-```
-
-## Best trait value throughout
-
-Best trait value reached throughout 50,000 generations in a population.
-
-
-```{r con-per-bst}
-plot = filter(best_df, var == 'pop_fit_max') %>%
-  ggplot(., aes(x = acro, y = val, color = acro, fill = acro, shape = acro)) +
-  geom_flat_violin(position = position_nudge(x = .09, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
-  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .15, y = 0)) +
-  geom_point(position = position_jitter(width = .02), size = 2.0, alpha = 1.0) +
-  scale_y_continuous(
-    name="Average trait score",
-    limits=c(0, 100),
-    breaks=seq(0,100, 20),
-    labels=c("0", "20", "40", "60", "80", "100")
-  ) +
-  scale_x_discrete(
-    name="Scheme"
-  )+
-  scale_shape_manual(values=SHAPE)+
-  scale_colour_manual(values = cb_palette, ) +
-  scale_fill_manual(values = cb_palette) +
-  ggtitle('Best trait value throughout')+
-  p_theme + theme(legend.title=element_blank())
-
-plot_grid(
-  plot +
-    theme(legend.position="none"),
-  legend,
-  nrow=2,
-  rel_heights = c(3,1)
-)
-```
-
-### Stats
-
-Summary statistics for the best trait value.
-
-```{r con-per-sum}
-trait_val = filter(best_df, var == 'pop_fit_max')
-trait_val$acro = factor(trait_val$acro, levels = c('pfs','ran','gfs','nov','nds','lex','tru','tor'))
-trait_val %>%
-  group_by(acro) %>%
-  dplyr::summarise(
-    count = n(),
-    na_cnt = sum(is.na(val)),
-    min = min(val, na.rm = TRUE),
-    median = median(val, na.rm = TRUE),
-    mean = mean(val, na.rm = TRUE),
-    max = max(val, na.rm = TRUE),
-    IQR = IQR(val, na.rm = TRUE)
-  )
-```
-
-Kruskal–Wallis test illustrates evidence of statistical differences.
-
-```{r con-per-kru}
-kruskal.test(val ~ acro, data = trait_val)
-```
-
-Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
-
-```{r con-per-wil}
-pairwise.wilcox.test(x = trait_val$val, g = trait_val$acro, p.adjust.method = "bonferroni",
                      paired = FALSE, conf.int = FALSE, alternative = 'l')
 ```
