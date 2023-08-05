@@ -100,6 +100,7 @@ def CheckDir(dir,dump,dia,offs,val,exp):
                     params.OVERLAP:       pd.Series(df[params.OVERLAP].tolist()),
                     params.UNI_STR_POS:   pd.Series(df[params.UNI_STR_POS].tolist()),
                     params.ELE_BIG_PEAK:   pd.Series(df[params.ELE_BIG_PEAK].tolist()),
+                    params.ELE_STK_CNT:   pd.Series(df[params.ELE_STK_CNT].tolist()),
                     'acro':               pd.Series([params.GetSchemeAcro(scheme)] * len(GEN_LIST)),
                     'scheme':             pd.Series([params.GetSchemeName(scheme)] * len(GEN_LIST))
                 }))
@@ -114,6 +115,7 @@ def CheckDir(dir,dump,dia,offs,val,exp):
                     params.ARC_ACTI_GENE: pd.Series(df[params.ARC_ACTI_GENE].tolist()),
                     params.OVERLAP:       pd.Series(df[params.OVERLAP].tolist()),
                     params.UNI_STR_POS:   pd.Series(df[params.UNI_STR_POS].tolist()),
+                    params.ELE_STK_CNT:   pd.Series(df[params.ELE_STK_CNT].tolist()),
                     'acro':               pd.Series([params.GetSchemeAcro(scheme)] * len(GEN_LIST)),
                     'scheme':             pd.Series([params.GetSchemeName(scheme)] * len(GEN_LIST))
                 }))
