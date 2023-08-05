@@ -85,6 +85,10 @@ p_theme <- theme(
                                   size = 0.5, linetype = "solid")
 )
 
+# colors for streak plots
+STK_SHAPE = c(2,6,0,4,20,1)
+stk_cb_palette <- c('#EE3377','#117733','#882255','#44AA99','#CCBB44', '#000000')
+
 # default variables
 REPLICATES = 50
 DIMENSIONALITY = 100
@@ -94,12 +98,3 @@ GENERATIONS = 50000
 ACRO = c('tru','tor','lex','gfs','pfs','nds','nov','ran')
 NAMES = c('Truncation (tru)','Tournament (tor)','Lexicase (lex)', 'Genotypic Fitness Sharing (gfs)','Phenotypic Fitness Sharing (pfs)','Nondominated Sorting (nds)','Novelty Search (nov)','Random (ran)')
 ```
-
-
-
-
-
-
-
-
-
