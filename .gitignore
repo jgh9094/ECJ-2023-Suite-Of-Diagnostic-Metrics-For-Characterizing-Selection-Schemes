@@ -4,5 +4,5 @@ DataTools/__pycache__
 DATA/
 Experiments/Base_Diagnostics/Bookdown/libs
 Experiments/MVC_Diagnostics/Bookdown/libs
-./*/*/*/*.html
-./*/*/*/*/*.html
+/*/*/*/*.html
+/*/*/*/*/*.html
