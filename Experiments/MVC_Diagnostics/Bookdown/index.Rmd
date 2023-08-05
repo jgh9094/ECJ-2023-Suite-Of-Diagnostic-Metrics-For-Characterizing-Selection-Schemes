@@ -61,10 +61,10 @@ library(dplyr)
 library(PupillometryR)
 
 # data diractory for gh-pages
-# DATA_DIR = '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/MVC_DIAGNOSTICS/'
+DATA_DIR = '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/MVC_DIAGNOSTICS/'
 
 # data diractory for local testing
-DATA_DIR = 'C:/Users/jgh9094/Desktop/Research/Projects/SelectionDiagnostics/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/MVC_DIAGNOSTICS/'
+# DATA_DIR = '~/Desktop/Repositories/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/MVC_DIAGNOSTICS/'
 
 # graph variables
 SHAPE = c(5,3,1,2,6,0,4,20,1)

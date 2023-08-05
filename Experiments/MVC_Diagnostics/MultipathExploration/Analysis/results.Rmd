@@ -33,7 +33,7 @@ Data points on the graph is the average activation gene coverage across 50 repli
 Shading comes from the best and worse coverage across 50 replicates.
 
 
-```{r mul-act-ot, warning=FALSE}
+```{r mul-act-ot, warning=FALSE, out.width="100%"}
 lines = over_time_df %>%
   group_by(scheme, gen) %>%
   dplyr::summarise(
@@ -94,7 +94,7 @@ legend <- cowplot::get_legend(
 Activation gene coverage found in the final population at 50,000 generations.
 
 
-```{r mul-act-end}
+```{r mul-act-end, out.width="100%"}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = uni_str_pos, color = acro, fill = acro, shape = acro)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
@@ -165,7 +165,7 @@ Data points on the graph is the average performance across 50 replicates every 2
 Shading comes from the best and worse performance across 50 replicates.
 
 
-```{r mul-per-ot, warning=FALSE}
+```{r mul-per-ot, warning=FALSE, out.width="100%"}
 lines = over_time_df %>%
   group_by(scheme, gen) %>%
   dplyr::summarise(
@@ -209,7 +209,7 @@ over_time_plot
 Best performance reached throughout 50,000 generations in a population.
 
 
-```{r mul-per-bst}
+```{r mul-per-bst, out.width="100%"}
 plot = filter(best_df, var == 'pop_fit_max') %>%
   ggplot(., aes(x = acro, y = val / DIMENSIONALITY, color = acro, fill = acro, shape = acro)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
