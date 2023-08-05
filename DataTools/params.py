@@ -30,6 +30,7 @@ UNI_STR_POS = 'uni_str_pos'
 ARC_ACTI_GENE = 'arc_acti_gene'
 OVERLAP = 'overlap'
 ELE_BIG_PEAK = 'ele_big_peak'
+ELE_STK_CNT = 'ele_stk_cnt'
 
 # seed experiements replicates range
 REPLICATES = 50
@@ -172,7 +173,7 @@ def GetSchemeName(s):
 def GetDataList(val):
 
     if val:
-        return [POP_FIT_MAX,POP_OPT_MAX,POP_UNI_OBJ,POP_STR_MAX,UNI_STR_POS,ARC_ACTI_GENE,OVERLAP,ELE_BIG_PEAK]
+        return [POP_FIT_MAX,POP_OPT_MAX,POP_UNI_OBJ,POP_STR_MAX,UNI_STR_POS,ARC_ACTI_GENE,OVERLAP,ELE_BIG_PEAK,ELE_STK_CNT]
 
     else:
-        return [POP_FIT_MAX,POP_OPT_MAX,POP_UNI_OBJ,POP_STR_MAX,UNI_STR_POS,ARC_ACTI_GENE,OVERLAP]
+        return [POP_FIT_MAX,POP_OPT_MAX,POP_UNI_OBJ,POP_STR_MAX,UNI_STR_POS,ARC_ACTI_GENE,OVERLAP,ELE_STK_CNT]
