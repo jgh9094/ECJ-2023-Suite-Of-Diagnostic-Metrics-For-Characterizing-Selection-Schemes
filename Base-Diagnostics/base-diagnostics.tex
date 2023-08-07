@@ -110,7 +110,7 @@
 
 \title{Supplemental Material: Base Diagnostics}
 \author{Jose Guadalupe Hernandez}
-\date{2023-08-01}
+\date{2023-08-07}
 
 \begin{document}
 \maketitle
@@ -234,7 +234,7 @@ Setting up required variables variables.
 \NormalTok{DATA_DIR =}\StringTok{ '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/BASE_DIAGNOSTICS/'}
 
 \CommentTok{# data diractory for local testing}
-\CommentTok{# DATA_DIR = 'C:/Users/jgh9094/Desktop/Research/Projects/SelectionDiagnostics/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/BASE_DIAGNOSTICS/'}
+\CommentTok{# DATA_DIR = '~/Desktop/Repositories/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/BASE_DIAGNOSTICS/'}
 
 \CommentTok{# graph variables}
 \NormalTok{SHAPE =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{1}\NormalTok{)}
@@ -267,6 +267,10 @@ Setting up required variables variables.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# colors for streak plots}
+\NormalTok{STK_SHAPE =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{stk_cb_palette <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'#EE3377'}\NormalTok{,}\StringTok{'#117733'}\NormalTok{,}\StringTok{'#882255'}\NormalTok{,}\StringTok{'#44AA99'}\NormalTok{,}\StringTok{'#CCBB44'}\NormalTok{, }\StringTok{'#000000'}\NormalTok{)}
+
 \CommentTok{# default variables}
 \NormalTok{REPLICATES =}\StringTok{ }\DecValTok{50}
 \NormalTok{DIMENSIONALITY =}\StringTok{ }\DecValTok{100}
@@ -371,7 +375,7 @@ Shading comes from the best and worse performance across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/exp-per-ot-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/exp-per-ot-1}
 
 \hypertarget{best-performance-throughout}{%
 \section{Best performance throughout}\label{best-performance-throughout}}
@@ -422,7 +426,7 @@ Best performance reached throughout 50,000 generations in a population.
 ## Warning: Removed 51 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
-\includegraphics{base-diagnostics_files/figure-latex/exp-per-bst-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/exp-per-bst-1}
 
 \hypertarget{stats}{%
 \subsection{Stats}\label{stats}}
@@ -453,12 +457,12 @@ Summary statistics for the best performance.
 ##   <fct> <int>  <int> <dbl>  <dbl> <dbl> <dbl>  <dbl>
 ## 1 tru      50      0 100    100   100   100   0     
 ## 2 tor      50      0 100    100   100   100   0     
-## 3 lex      50      0  99.9   99.9  99.9  99.9 0.0137
-## 4 gfs      50      0  58.1   59.3  59.3  60.7 1.01  
-## 5 pfs      50      0  57.2   59.2  59.3  61.3 1.33  
-## 6 nov      50      0  16.6   19.5  19.5  22.7 1.38  
-## 7 nds      50      0  17.9   18.6  18.7  20.1 0.513 
-## 8 ran      50      0  13.8   15.7  15.5  17.4 1.37
+## 3 lex      50      0  99.9   99.9  99.9  99.9 0.0154
+## 4 gfs      50      0  57.3   59.3  59.4  61.1 0.984 
+## 5 pfs      50      0  57.6   59.4  59.5  61.0 1.02  
+## 6 nov      50      0  17.1   19.5  19.5  23.9 1.95  
+## 7 nds      50      0  18.0   18.6  18.7  20.1 0.603 
+## 8 ran      50      0  13.4   15.9  15.8  17.5 1.46
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -474,7 +478,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  val by acro
-## Kruskal-Wallis chi-squared = 385.9, df = 7, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 385.26, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -492,14 +496,14 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## 
 ## data:  performance$val and performance$acro 
 ## 
-##     tru     tor     lex     gfs     pfs     nov     nds    
-## tor 1.00000 -       -       -       -       -       -      
-## lex < 2e-16 < 2e-16 -       -       -       -       -      
-## gfs < 2e-16 < 2e-16 < 2e-16 -       -       -       -      
-## pfs < 2e-16 < 2e-16 < 2e-16 1.00000 -       -       -      
-## nov < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 -       -      
-## nds < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 0.00014 -      
-## ran < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16
+##     tru    tor    lex    gfs    pfs    nov    nds   
+## tor 1.000  -      -      -      -      -      -     
+## lex <2e-16 <2e-16 -      -      -      -      -     
+## gfs <2e-16 <2e-16 <2e-16 -      -      -      -     
+## pfs <2e-16 <2e-16 <2e-16 1.000  -      -      -     
+## nov <2e-16 <2e-16 <2e-16 <2e-16 <2e-16 -      -     
+## nds <2e-16 <2e-16 <2e-16 <2e-16 <2e-16 0.018  -     
+## ran <2e-16 <2e-16 <2e-16 <2e-16 <2e-16 <2e-16 <2e-16
 ## 
 ## P value adjustment method: bonferroni
 \end{verbatim}
@@ -538,7 +542,7 @@ First generation a satisfactory solution is found throughout the 50,000 generati
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/exp-ssf-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/exp-ssf-1}
 
 \hypertarget{stats-1}{%
 \subsection{Stats}\label{stats-1}}
@@ -565,11 +569,11 @@ Summary statistics for the generation a satisfactory solution is found.
 
 \begin{verbatim}
 ## # A tibble: 3 x 8
-##   acro  count na_cnt   min median   mean   max   IQR
-##   <fct> <int>  <int> <int>  <dbl>  <dbl> <int> <dbl>
-## 1 tru      50      0  3384  3416.  3417.  3448   17 
-## 2 tor      50      0  5388  5453   5449.  5497   40 
-## 3 lex      50      0 23451 25436. 25865. 32924 1901.
+##   acro  count na_cnt   min median   mean   max    IQR
+##   <fct> <int>  <int> <int>  <dbl>  <dbl> <int>  <dbl>
+## 1 tru      50      0  3392  3422   3423.  3475   26  
+## 2 tor      50      0  5390  5444.  5447.  5509   43.2
+## 3 lex      50      0 24036 25626. 25883. 31709 1739.
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -703,7 +707,7 @@ Shading comes from the best and worse performance across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/ord-per-ot-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/ord-per-ot-1}
 
 \hypertarget{best-performance-throughout-1}{%
 \section{Best performance throughout}\label{best-performance-throughout-1}}
@@ -742,7 +746,7 @@ Best performance reached throughout 50,000 generations in a population.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/ord-per-bst-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/ord-per-bst-1}
 
 \hypertarget{stats-2}{%
 \subsection{Stats}\label{stats-2}}
@@ -771,14 +775,14 @@ Summary statistics for the best performance.
 ## # A tibble: 8 x 8
 ##   acro  count na_cnt     min  median    mean    max     IQR
 ##   <fct> <int>  <int>   <dbl>   <dbl>   <dbl>  <dbl>   <dbl>
-## 1 tru      50      0 100.    100.    100.    100.   0.00195
-## 2 tor      50      0  99.9    99.9    99.9    99.9  0.00467
-## 3 lex      50      0  99.7    99.8    99.8    99.8  0.0233 
-## 4 nds      50      0  23.8    26.0    25.9    28.0  1.38   
-## 5 gfs      50      0  19.2    21.0    20.9    22.6  0.760  
-## 6 pfs      50      0  12.7    13.7    13.8    14.9  0.937  
-## 7 nov      50      0   2.34    3.85    3.82    5.16 0.753  
-## 8 ran      50      0   0.289   0.538   0.593   1.47 0.269
+## 1 tru      50      0 100.    100.    100.    100.   0.00168
+## 2 tor      50      0  99.9    99.9    99.9    99.9  0.00650
+## 3 lex      50      0  99.7    99.8    99.8    99.9  0.0247 
+## 4 nds      50      0  23.7    25.7    25.7    27.3  0.972  
+## 5 gfs      50      0  19.7    21.0    21.0    22.6  0.754  
+## 6 pfs      50      0  12.2    13.8    13.7    14.9  0.712  
+## 7 nov      50      0   3.00    3.90    4.00    5.83 0.666  
+## 8 ran      50      0   0.318   0.569   0.605   1.31 0.279
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -858,7 +862,7 @@ First generation a satisfactory solution is found throughout the 50,000 generati
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/ord-ssf-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/ord-ssf-1}
 
 \hypertarget{stats-3}{%
 \subsection{Stats}\label{stats-3}}
@@ -887,9 +891,9 @@ Summary statistics for the generation a satisfactory solution is found.
 ## # A tibble: 3 x 8
 ##   acro  count na_cnt   min median   mean   max   IQR
 ##   <fct> <int>  <int> <int>  <dbl>  <dbl> <int> <dbl>
-## 1 tru      50      0 14934 15599  15613. 16315  508.
-## 2 tor      50      0 25512 27026  26961. 28298  904.
-## 3 lex      50      0 33548 38842. 38804. 43613 2970.
+## 1 tru      50      0 14776 15585  15570. 16317  420.
+## 2 tor      50      0 25996 27138  27105. 28495  913.
+## 3 lex      50      0 33877 38288. 38265. 43565 2215.
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -933,7 +937,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{streaks-over-time}{%
 \section{Streaks over time}\label{streaks-over-time}}
 
-Longest streak solution found in a population over time.
+Longest streak of the best solution found in a population over time.
 A maximum streak value of 100 and a minimum streak value of 1 is possible.
 Data points on the graph is the average performance across 50 replicates every 2000 generations.
 Shading comes from the best and worse performance across 50 replicates.
@@ -943,9 +947,9 @@ Shading comes from the best and worse performance across 50 replicates.
 \NormalTok{lines =}\StringTok{ }\KeywordTok{filter}\NormalTok{(over_time_df, acro }\OperatorTok{!=}\StringTok{ 'tor'} \OperatorTok{&}\StringTok{ }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'tru'} \OperatorTok{&}\StringTok{ }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'lex'}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(scheme, gen) }\OperatorTok{%>%}
 \StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_str_max),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_str_max),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_str_max)}
+    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(ele_stk_cnt),}
+    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(ele_stk_cnt),}
+    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(ele_stk_cnt)}
 \NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
@@ -963,9 +967,8 @@ Shading comes from the best and worse performance across 50 replicates.
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =} \KeywordTok{filter}\NormalTok{(lines, gen }\OperatorTok{%%}\StringTok{ }\DecValTok{2000} \OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{&}\StringTok{ }\NormalTok{gen }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{), }\DataTypeTok{size =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{stroke =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Streak"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{),}
-    \DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{50}\NormalTok{, }\DecValTok{10}\NormalTok{),}
-    \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{, }\StringTok{"10"}\NormalTok{, }\StringTok{"20"}\NormalTok{, }\StringTok{"30"}\NormalTok{, }\StringTok{"40"}\NormalTok{, }\StringTok{"50"}\NormalTok{)}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{45}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{45}\NormalTok{, }\DecValTok{15}\NormalTok{)}
 \NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Generations"}\NormalTok{,}
@@ -974,9 +977,9 @@ Shading comes from the best and worse performance across 50 replicates.
     \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"0e+4"}\NormalTok{, }\StringTok{"1e+4"}\NormalTok{, }\StringTok{"2e+4"}\NormalTok{, }\StringTok{"3e+4"}\NormalTok{, }\StringTok{"4e+4"}\NormalTok{, }\StringTok{"5e+4"}\NormalTok{)}
 
 \NormalTok{  ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{STK_SHAPE)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ stk_cb_palette) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ stk_cb_palette) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Longest streak over time'}\NormalTok{)}\OperatorTok{+}
 \StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{(),}\DataTypeTok{legend.text=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{12}\NormalTok{)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{guides}\NormalTok{(}
@@ -989,32 +992,31 @@ Shading comes from the best and worse performance across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/ord-str-ot-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/ord-str-ot-1}
 
 \hypertarget{longest-streak-throughout}{%
 \section{Longest streak throughout}\label{longest-streak-throughout}}
 
-Longest streak reached throughout 50,000 generations in a population.
+Longest streak of the best solution found in the population throughout 50,000 generations.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'pop_str_max'} \OperatorTok{&}\StringTok{  }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'tor'} \OperatorTok{&}\StringTok{ }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'tru'} \OperatorTok{&}\StringTok{ }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'lex'}\NormalTok{) }\OperatorTok{%>%}
+\NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'ele_stk_cnt'} \OperatorTok{&}\StringTok{  }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'tor'} \OperatorTok{&}\StringTok{ }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'tru'} \OperatorTok{&}\StringTok{ }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'lex'}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ acro, }\DataTypeTok{y =}\NormalTok{ val, }\DataTypeTok{color =}\NormalTok{ acro, }\DataTypeTok{fill =}\NormalTok{ acro, }\DataTypeTok{shape =}\NormalTok{ acro)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Streak"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{),}
-    \DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{50}\NormalTok{, }\DecValTok{10}\NormalTok{),}
-    \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{, }\StringTok{"10"}\NormalTok{, }\StringTok{"20"}\NormalTok{, }\StringTok{"30"}\NormalTok{, }\StringTok{"40"}\NormalTok{, }\StringTok{"50"}\NormalTok{)}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{45}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{45}\NormalTok{, }\DecValTok{15}\NormalTok{)}
 \NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Scheme"}
 \NormalTok{  )}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{STK_SHAPE)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ stk_cb_palette) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ stk_cb_palette) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Longest streak throughout'}\NormalTok{)}\OperatorTok{+}
 \StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{())}
 
@@ -1028,7 +1030,7 @@ Longest streak reached throughout 50,000 generations in a population.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/ord-str-bst-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/ord-str-bst-1}
 
 \hypertarget{stats-4}{%
 \subsection{Stats}\label{stats-4}}
@@ -1037,7 +1039,7 @@ Summary statistics for the longest streak
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{streak =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'pop_str_max'} \OperatorTok{&}\StringTok{  }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'tor'} \OperatorTok{&}\StringTok{ }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'tru'} \OperatorTok{&}\StringTok{ }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'lex'}\NormalTok{)}
+\NormalTok{streak =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'ele_stk_cnt'} \OperatorTok{&}\StringTok{  }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'tor'} \OperatorTok{&}\StringTok{ }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'tru'} \OperatorTok{&}\StringTok{ }\NormalTok{acro }\OperatorTok{!=}\StringTok{ 'lex'}\NormalTok{)}
 \NormalTok{streak}\OperatorTok{$}\NormalTok{acro =}\StringTok{ }\KeywordTok{factor}\NormalTok{(streak}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{'nds'}\NormalTok{,}\StringTok{'gfs'}\NormalTok{,}\StringTok{'pfs'}\NormalTok{,}\StringTok{'nov'}\NormalTok{,}\StringTok{'ran'}\NormalTok{))}
 \NormalTok{streak }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(acro) }\OperatorTok{%>%}
@@ -1057,11 +1059,11 @@ Summary statistics for the longest streak
 ## # A tibble: 5 x 8
 ##   acro  count na_cnt   min median  mean   max   IQR
 ##   <fct> <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 nds      50      0    28   37    36.7    42  4   
-## 2 gfs      50      0    25   34.5  33.8    40  3.75
-## 3 pfs      50      0    18   25    25.4    32  4.75
-## 4 nov      50      0    11   16    15.8    20  2.75
-## 5 ran      50      0     5    7     7.4     9  1
+## 1 nds      50      0    28   36   36.2     43  4   
+## 2 gfs      50      0    25   33.5 33.4     40  5.75
+## 3 pfs      50      0    17   25   24.8     32  4   
+## 4 nov      50      0    13   16   16.3     21  3   
+## 5 ran      50      0     6    7    7.18    10  2
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -1077,7 +1079,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  val by acro
-## Kruskal-Wallis chi-squared = 227.37, df = 4, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 226.43, df = 4, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -1096,9 +1098,9 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## data:  streak$val and streak$acro 
 ## 
 ##     nds     gfs     pfs     nov    
-## gfs 0.00026 -       -       -      
-## pfs < 2e-16 9.2e-15 -       -      
-## nov < 2e-16 < 2e-16 < 2e-16 -      
+## gfs 0.0017  -       -       -      
+## pfs < 2e-16 2.7e-15 -       -      
+## nov < 2e-16 < 2e-16 3.1e-16 -      
 ## ran < 2e-16 < 2e-16 < 2e-16 < 2e-16
 ## 
 ## P value adjustment method: bonferroni
@@ -1193,7 +1195,7 @@ Shading comes from the best and worse coverage across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/con-act-ot-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/con-act-ot-1}
 
 \hypertarget{final-activation-gene-coverage}{%
 \section{Final activation gene coverage}\label{final-activation-gene-coverage}}
@@ -1233,10 +1235,10 @@ Activation gene coverage found in the final population at 50,000 generations.
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 13 rows containing missing values (`geom_point()`).
+## Warning: Removed 14 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
-\includegraphics{base-diagnostics_files/figure-latex/con-act-end-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/con-act-end-1}
 
 \hypertarget{stats-5}{%
 \subsection{Stats}\label{stats-5}}
@@ -1265,14 +1267,14 @@ Summary statistics for the coverage found in the final population.
 ## # A tibble: 8 x 8
 ##   acro  count na_cnt   min median  mean   max   IQR
 ##   <fct> <int>  <int> <int>  <dbl> <dbl> <int> <dbl>
-## 1 nov      50      0    98    100 99.5    100  1   
-## 2 nds      50      0    83     86 86.3     91  2.75
-## 3 lex      50      0    36     39 38.8     41  2   
-## 4 pfs      50      0     3      4  4.12     6  1   
-## 5 ran      50      0     1      2  1.78     5  1   
-## 6 gfs      50      0     1      1  1        1  0   
-## 7 tor      50      0     1      1  1        1  0   
-## 8 tru      50      0     1      1  1        1  0
+## 1 nov      50      0    98    100 99.6    100     1
+## 2 nds      50      0    83     86 86.7     92     3
+## 3 lex      50      0    35     38 38.3     42     1
+## 4 pfs      50      0     2      4  4.12     6     2
+## 5 ran      50      0     1      2  2.22     6     2
+## 6 gfs      50      0     1      1  1        1     0
+## 7 tor      50      0     1      1  1        1     0
+## 8 tru      50      0     1      1  1        1     0
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -1288,7 +1290,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  uni_str_pos by acro
-## Kruskal-Wallis chi-squared = 384.61, df = 7, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 381.66, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -1310,10 +1312,10 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## nds < 2e-16 -       -       -       -       -   -  
 ## lex < 2e-16 < 2e-16 -       -       -       -   -  
 ## pfs < 2e-16 < 2e-16 < 2e-16 -       -       -   -  
-## ran < 2e-16 < 2e-16 < 2e-16 4.8e-15 -       -   -  
-## gfs < 2e-16 < 2e-16 < 2e-16 < 2e-16 3.2e-08 -   -  
-## tor < 2e-16 < 2e-16 < 2e-16 < 2e-16 3.2e-08 1   -  
-## tru < 2e-16 < 2e-16 < 2e-16 < 2e-16 3.2e-08 1   1  
+## ran < 2e-16 < 2e-16 < 2e-16 7.1e-09 -       -   -  
+## gfs < 2e-16 < 2e-16 < 2e-16 < 2e-16 6.0e-09 -   -  
+## tor < 2e-16 < 2e-16 < 2e-16 < 2e-16 6.0e-09 1   -  
+## tru < 2e-16 < 2e-16 < 2e-16 < 2e-16 6.0e-09 1   1  
 ## 
 ## P value adjustment method: bonferroni
 \end{verbatim}
@@ -1376,7 +1378,7 @@ Shading comes from the best and worse coverage across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/con-sat-ot-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/con-sat-ot-1}
 
 \hypertarget{final-satisfactory-trait-coverage}{%
 \section{Final satisfactory trait coverage}\label{final-satisfactory-trait-coverage}}
@@ -1416,10 +1418,10 @@ Satisfactory trait coverage found in the final population at 50,000 generations.
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 49 rows containing missing values (`geom_point()`).
+## Warning: Removed 48 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
-\includegraphics{base-diagnostics_files/figure-latex/con-sat-end-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/con-sat-end-1}
 
 \hypertarget{stats-6}{%
 \subsection{Stats}\label{stats-6}}
@@ -1448,14 +1450,14 @@ Summary statistics for the coverage found in the final population.
 ## # A tibble: 8 x 8
 ##   acro  count na_cnt   min median  mean   max   IQR
 ##   <fct> <int>  <int> <int>  <dbl> <dbl> <int> <dbl>
-## 1 nds      50      0    83     86 86.3     91  2.75
-## 2 lex      50      0    36     39 38.8     41  2   
-## 3 pfs      50      0     2      4  3.82     5  1   
-## 4 gfs      50      0     1      1  1        1  0   
-## 5 tor      50      0     1      1  1        1  0   
-## 6 tru      50      0     1      1  1        1  0   
-## 7 nov      50      0     0      0  0        0  0   
-## 8 ran      50      0     0      0  0        0  0
+## 1 nds      50      0    83     86 86.7     92     3
+## 2 lex      50      0    35     38 38.3     42     1
+## 3 pfs      50      0     2      4  3.88     6     2
+## 4 gfs      50      0     1      1  1        1     0
+## 5 tor      50      0     1      1  1        1     0
+## 6 tru      50      0     1      1  1        1     0
+## 7 nov      50      0     0      0  0        0     0
+## 8 ran      50      0     0      0  0        0     0
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -1471,7 +1473,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  pop_uni_obj by acro
-## Kruskal-Wallis chi-squared = 396.72, df = 7, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 396.63, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -1593,7 +1595,7 @@ Shading comes from the best and worse coverage across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/mul-act-ot-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/mul-act-ot-1}
 
 \hypertarget{final-activation-gene-coverage-1}{%
 \section{Final activation gene coverage}\label{final-activation-gene-coverage-1}}
@@ -1632,7 +1634,7 @@ Activation gene coverage found in the final population at 50,000 generations.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/mul-act-end-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/mul-act-end-1}
 
 \hypertarget{stats-7}{%
 \subsection{Stats}\label{stats-7}}
@@ -1661,14 +1663,14 @@ Summary statistics for the coverage found in the final population.
 ## # A tibble: 8 x 8
 ##   acro  count na_cnt   min median  mean   max   IQR
 ##   <fct> <int>  <int> <int>  <dbl> <dbl> <int> <dbl>
-## 1 nov      50      0    75     86 86.2     95     4
-## 2 lex      50      0    26     30 30.7     40     4
-## 3 nds      50      0     5      9  9.68    22     2
-## 4 gfs      50      0     2      3  3.18     5     1
-## 5 pfs      50      0     2      3  2.66     4     1
-## 6 ran      50      0     1      2  2.02     5     2
-## 7 tor      50      0     1      2  1.94     2     0
-## 8 tru      50      0     1      2  1.98     3     0
+## 1 nov      50      0    71   85.5 85.4     96  7.75
+## 2 lex      50      0    25   31   31.1     37  4   
+## 3 nds      50      0     5    9   10.2     20  3   
+## 4 gfs      50      0     2    3    3.48     5  1   
+## 5 pfs      50      0     2    2.5  2.5      3  1   
+## 6 ran      50      0     1    2    2.16     5  2   
+## 7 tor      50      0     1    2    2.04     3  0   
+## 8 tru      50      0     1    2    1.98     2  0
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -1684,7 +1686,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  uni_str_pos by acro
-## Kruskal-Wallis chi-squared = 350.22, df = 7, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 350.25, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -1702,14 +1704,14 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## 
 ## data:  act_coverage$uni_str_pos and act_coverage$acro 
 ## 
-##     nov     lex     nds     gfs     pfs     ran     tor    
-## lex < 2e-16 -       -       -       -       -       -      
-## nds < 2e-16 < 2e-16 -       -       -       -       -      
-## gfs < 2e-16 < 2e-16 < 2e-16 -       -       -       -      
-## pfs < 2e-16 < 2e-16 < 2e-16 0.00097 -       -       -      
-## ran < 2e-16 < 2e-16 < 2e-16 2.2e-07 0.00068 -       -      
-## tor < 2e-16 < 2e-16 < 2e-16 4.9e-16 1.2e-10 1.00000 -      
-## tru < 2e-16 < 2e-16 < 2e-16 1.7e-15 7.1e-10 1.00000 1.00000
+##     nov     lex     nds     gfs     pfs     ran tor
+## lex < 2e-16 -       -       -       -       -   -  
+## nds < 2e-16 < 2e-16 -       -       -       -   -  
+## gfs < 2e-16 < 2e-16 < 2e-16 -       -       -   -  
+## pfs < 2e-16 < 2e-16 < 2e-16 3.6e-10 -       -   -  
+## ran < 2e-16 < 2e-16 < 2e-16 9.4e-08 0.4     -   -  
+## tor < 2e-16 < 2e-16 < 2e-16 < 2e-16 1.2e-05 1.0 -  
+## tru < 2e-16 < 2e-16 < 2e-16 < 2e-16 1.1e-07 1.0 1.0
 ## 
 ## P value adjustment method: bonferroni
 \end{verbatim}
@@ -1772,7 +1774,7 @@ Shading comes from the best and worse performance across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/mul-per-ot-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/mul-per-ot-1}
 
 \hypertarget{best-performance-throughout-2}{%
 \section{Best performance throughout}\label{best-performance-throughout-2}}
@@ -1811,7 +1813,7 @@ Best performance reached throughout 50,000 generations in a population.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{base-diagnostics_files/figure-latex/mul-per-bst-1.pdf}
+\includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/mul-per-bst-1}
 
 \hypertarget{stats-8}{%
 \subsection{Stats}\label{stats-8}}
@@ -1838,16 +1840,16 @@ Summary statistics for the best performance.
 
 \begin{verbatim}
 ## # A tibble: 8 x 8
-##   acro  count na_cnt    min median  mean    max    IQR
-##   <fct> <int>  <int>  <dbl>  <dbl> <dbl>  <dbl>  <dbl>
-## 1 lex      50      0 85.3    93.9  93.3   98.5   4.02 
-## 2 tru      50      0  5      46.0  51.4  100.   40.0  
-## 3 tor      50      0  6      50.0  54.1   96.9  44.2  
-## 4 gfs      50      0  3.00   20.9  19.4   22.4   0.843
-## 5 nds      50      0 15.9    19.8  19.6   21.9   1.05 
-## 6 pfs      50      0  6.78   13.4  12.9   15.4   1.15 
-## 7 nov      50      0  2.51    3.87  3.95   5.30  0.895
-## 8 ran      50      0  0.919   1.17  1.18   1.52  0.209
+##   acro  count na_cnt    min median  mean   max    IQR
+##   <fct> <int>  <int>  <dbl>  <dbl> <dbl> <dbl>  <dbl>
+## 1 lex      50      0 83.4    92.3  91.9  98.1   5.51 
+## 2 tru      50      0 16      66.0  61.1  99.0  47.0  
+## 3 tor      50      0  5      47.0  48.9  97.9  46.2  
+## 4 gfs      50      0  4.99   20.7  19.3  21.7   1.45 
+## 5 nds      50      0 12.0    19.9  19.7  22.8   1.72 
+## 6 pfs      50      0  5.87   13.6  13.2  15.9   1.39 
+## 7 nov      50      0  2.52    3.83  3.87  5.33  0.793
+## 8 ran      50      0  0.865   1.19  1.23  1.72  0.247
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -1863,7 +1865,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  val by acro
-## Kruskal-Wallis chi-squared = 348.24, df = 7, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 356.22, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -1882,12 +1884,12 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## data:  performance$val and performance$acro 
 ## 
 ##     lex     tru     tor     gfs     nds     pfs     nov    
-## tru 5.7e-10 -       -       -       -       -       -      
-## tor 8.7e-13 1.00000 -       -       -       -       -      
-## gfs < 2e-16 8.8e-08 2.5e-11 -       -       -       -      
-## nds < 2e-16 1.7e-07 4.1e-11 0.00099 -       -       -      
-## pfs < 2e-16 1.0e-09 4.5e-14 5.0e-11 < 2e-16 -       -      
-## nov < 2e-16 < 2e-16 < 2e-16 1.5e-15 < 2e-16 < 2e-16 -      
+## tru 4.4e-09 -       -       -       -       -       -      
+## tor 1.1e-12 0.33    -       -       -       -       -      
+## gfs < 2e-16 2.3e-13 4.3e-07 -       -       -       -      
+## nds < 2e-16 1.2e-13 6.8e-07 0.47    -       -       -      
+## pfs < 2e-16 < 2e-16 5.0e-12 2.3e-11 1.3e-15 -       -      
+## nov < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 -      
 ## ran < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16
 ## 
 ## P value adjustment method: bonferroni

@@ -110,7 +110,7 @@
 
 \title{Supplemental Material: Valley Crossing Diagnostics}
 \author{Jose Guadalupe Hernandez}
-\date{2023-08-01}
+\date{2023-08-07}
 
 \begin{document}
 \maketitle
@@ -234,7 +234,7 @@ Setting up required variables variables.
 \NormalTok{DATA_DIR =}\StringTok{ '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/MVC_DIAGNOSTICS/'}
 
 \CommentTok{# data diractory for local testing}
-\CommentTok{# DATA_DIR = 'C:/Users/jgh9094/Desktop/Research/Projects/SelectionDiagnostics/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/MVC_DIAGNOSTICS/'}
+\CommentTok{# DATA_DIR = '~/Desktop/Repositories/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/MVC_DIAGNOSTICS/'}
 
 \CommentTok{# graph variables}
 \NormalTok{SHAPE =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{1}\NormalTok{)}
@@ -345,9 +345,8 @@ Shading comes from the best and worse performance across 50 replicates.
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =} \KeywordTok{filter}\NormalTok{(lines, gen }\OperatorTok{%%}\StringTok{ }\DecValTok{2000} \OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{&}\StringTok{ }\NormalTok{gen }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{), }\DataTypeTok{size =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{stroke =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{),}
-    \DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{50}\NormalTok{, }\DecValTok{10}\NormalTok{),}
-    \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{, }\StringTok{"10"}\NormalTok{, }\StringTok{"20"}\NormalTok{, }\StringTok{"30"}\NormalTok{, }\StringTok{"40"}\NormalTok{, }\StringTok{"50"}\NormalTok{)}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{45}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{45}\NormalTok{, }\DecValTok{15}\NormalTok{)}
 \NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Generations"}\NormalTok{,}
@@ -371,7 +370,7 @@ Shading comes from the best and worse performance across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/exp-per-ot-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/exp-per-ot-1}
 
 \hypertarget{best-performance-throughout}{%
 \section{Best performance throughout}\label{best-performance-throughout}}
@@ -382,14 +381,13 @@ Best performance reached throughout 50,000 generations in a population.
 \begin{Highlighting}[]
 \NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'pop_fit_max'}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ acro, }\DataTypeTok{y =}\NormalTok{ val }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{color =}\NormalTok{ acro, }\DataTypeTok{fill =}\NormalTok{ acro, }\DataTypeTok{shape =}\NormalTok{ acro)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.16}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.03}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{),}
-    \DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{50}\NormalTok{, }\DecValTok{10}\NormalTok{),}
-    \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{, }\StringTok{"10"}\NormalTok{, }\StringTok{"20"}\NormalTok{, }\StringTok{"30"}\NormalTok{, }\StringTok{"40"}\NormalTok{, }\StringTok{"50"}\NormalTok{)}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{45}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{45}\NormalTok{, }\DecValTok{15}\NormalTok{)}
 \NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Scheme"}
@@ -397,7 +395,7 @@ Best performance reached throughout 50,000 generations in a population.
 \StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette, ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best performance throughout'}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best performance'}\NormalTok{)}\OperatorTok{+}
 \StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{())}
 
 \KeywordTok{plot_grid}\NormalTok{(}
@@ -418,7 +416,7 @@ Best performance reached throughout 50,000 generations in a population.
 ## generated.
 \end{verbatim}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/exp-per-bst-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/exp-per-bst-1}
 
 \hypertarget{stats}{%
 \subsection{Stats}\label{stats}}
@@ -428,7 +426,7 @@ Summary statistics for the best performance.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{performance =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'pop_fit_max'}\NormalTok{)}
-\NormalTok{performance}\OperatorTok{$}\NormalTok{acro =}\StringTok{ }\KeywordTok{factor}\NormalTok{(performance}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{'gfs'}\NormalTok{,}\StringTok{'pfs'}\NormalTok{,}\StringTok{'tru'}\NormalTok{,}\StringTok{'tor'}\NormalTok{,}\StringTok{'nov'}\NormalTok{,}\StringTok{'nds'}\NormalTok{,}\StringTok{'ran'}\NormalTok{,}\StringTok{'lex'}\NormalTok{))}
+\NormalTok{performance}\OperatorTok{$}\NormalTok{acro =}\StringTok{ }\KeywordTok{factor}\NormalTok{(performance}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{'gfs'}\NormalTok{,}\StringTok{'pfs'}\NormalTok{,}\StringTok{'nov'}\NormalTok{,}\StringTok{'tru'}\NormalTok{,}\StringTok{'tor'}\NormalTok{,}\StringTok{'nds'}\NormalTok{,}\StringTok{'ran'}\NormalTok{,}\StringTok{'lex'}\NormalTok{))}
 \NormalTok{performance }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(acro) }\OperatorTok{%>%}
 \StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
@@ -445,16 +443,16 @@ Summary statistics for the best performance.
 
 \begin{verbatim}
 ## # A tibble: 8 x 8
-##   acro  count na_cnt   min median  mean   max   IQR
-##   <fct> <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 gfs      50      0  41.0   43.2  43.2  45.2 0.923
-## 2 pfs      50      0  41.2   43.0  42.9  45.6 1.17 
-## 3 tru      50      0  17.8   18.1  18.0  18.3 0.140
-## 4 tor      50      0  17.9   18.1  18.1  18.3 0.150
-## 5 nov      50      0  16.4   18.8  18.7  20.4 1.51 
-## 6 nds      50      0  14.8   15.3  15.4  16.6 0.418
-## 7 ran      50      0  11.0   13.2  13.1  15.2 0.900
-## 8 lex      50      0  12.5   12.7  12.7  13.0 0.154
+##   acro  count na_cnt   min median  mean   max    IQR
+##   <fct> <int>  <int> <dbl>  <dbl> <dbl> <dbl>  <dbl>
+## 1 gfs      50      0  41.2   42.9  42.9  44.9 1.05  
+## 2 pfs      50      0  40.2   43.1  42.9  44.8 1.28  
+## 3 nov      50      0  16.0   18.6  18.6  20.9 1.07  
+## 4 tru      50      0  17.8   18.1  18.1  18.3 0.123 
+## 5 tor      50      0  17.9   18.1  18.1  18.3 0.0974
+## 6 nds      50      0  14.7   15.3  15.4  16.1 0.378 
+## 7 ran      50      0  11.1   13.0  13.1  15.7 1.39  
+## 8 lex      50      0  12.5   12.7  12.7  13.1 0.128
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -470,7 +468,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  val by acro
-## Kruskal-Wallis chi-squared = 367.97, df = 7, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 366.61, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -488,638 +486,197 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## 
 ## data:  performance$val and performance$acro 
 ## 
-##     gfs     pfs     tru     tor     nov     nds     ran   
-## pfs 0.4845  -       -       -       -       -       -     
-## tru < 2e-16 < 2e-16 -       -       -       -       -     
-## tor < 2e-16 < 2e-16 1.0000  -       -       -       -     
-## nov < 2e-16 < 2e-16 1.0000  1.0000  -       -       -     
+##     gfs     pfs     nov     tru     tor     nds     ran   
+## pfs 1.0000  -       -       -       -       -       -     
+## nov < 2e-16 < 2e-16 -       -       -       -       -     
+## tru < 2e-16 < 2e-16 0.0014  -       -       -       -     
+## tor < 2e-16 < 2e-16 0.0026  1.0000  -       -       -     
 ## nds < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 -       -     
-## ran < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 2.9e-16 -     
-## lex < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 0.0035
+## ran < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 1.2e-14 -     
+## lex < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 1.0000
 ## 
 ## P value adjustment method: bonferroni
 \end{verbatim}
 
-\hypertarget{performance-interval-comparison}{%
-\section{Performance interval comparison}\label{performance-interval-comparison}}
+\hypertarget{largest-valley-reached-over-time}{%
+\section{Largest valley reached over time}\label{largest-valley-reached-over-time}}
 
-Here we compare the best performance found in the population at generation 40,000 \& 50,000 for all selection schemes.
+The largest valley reached in a single trait by the best performing solution in the population.
+Data points on the graph is the average performance across 50 replicates every 2000 generations.
+Shading comes from the best and worse data across 50 replicates.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{interval_df =}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{filter}\NormalTok{(over_time_df, (gen }\OperatorTok{==}\StringTok{ }\DecValTok{50000} \OperatorTok{|}\StringTok{ }\NormalTok{gen }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)))}
-\NormalTok{interval_df}\OperatorTok{$}\NormalTok{Generation <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(interval_df}\OperatorTok{$}\NormalTok{gen, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\DecValTok{40000}\NormalTok{,}\DecValTok{50000}\NormalTok{))}
-\NormalTok{interval_df}\OperatorTok{$}\NormalTok{acro <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(interval_df}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{levels =}\NormalTok{ ACRO)}
+\NormalTok{lines =}\StringTok{ }\NormalTok{over_time_df }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(scheme, gen) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
+    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(ele_big_peak),}
+    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(ele_big_peak),}
+    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(ele_big_peak)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
 
-\KeywordTok{ggplot}\NormalTok{(interval_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{acro, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.3}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position=}\KeywordTok{position_dodge}\NormalTok{(}\DataTypeTok{width=}\FloatTok{1.0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-      \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{),}
-      \DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{50}\NormalTok{, }\DecValTok{10}\NormalTok{),}
-      \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{,}\StringTok{"10"}\NormalTok{, }\StringTok{"20"}\NormalTok{, }\StringTok{"30"}\NormalTok{, }\StringTok{"40"}\NormalTok{, }\StringTok{"50"}\NormalTok{)}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Scheme"}
-\NormalTok{    ) }\OperatorTok{+}
+\begin{verbatim}
+## `summarise()` has grouped output by 'scheme'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{over_time_plot =}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(lines, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{gen, }\DataTypeTok{y=}\NormalTok{mean, }\DataTypeTok{group =}\NormalTok{ scheme, }\DataTypeTok{fill =}\NormalTok{ scheme, }\DataTypeTok{color =}\NormalTok{ scheme, }\DataTypeTok{shape =}\NormalTok{ scheme)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_ribbon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin =}\NormalTok{ min, }\DataTypeTok{ymax =}\NormalTok{ max), }\DataTypeTok{alpha =} \FloatTok{0.1}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{size =} \FloatTok{0.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =} \KeywordTok{filter}\NormalTok{(lines, gen }\OperatorTok{%%}\StringTok{ }\DecValTok{2000} \OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{&}\StringTok{ }\NormalTok{gen }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{), }\DataTypeTok{size =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{stroke =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
+    \DataTypeTok{name=}\StringTok{"Valley reached"}\NormalTok{,}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{14.5}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{14}\NormalTok{)}
+\NormalTok{  ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}
+    \DataTypeTok{name=}\StringTok{"Generations"}\NormalTok{,}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50000}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10000}\NormalTok{, }\DecValTok{20000}\NormalTok{, }\DecValTok{30000}\NormalTok{, }\DecValTok{40000}\NormalTok{, }\DecValTok{50000}\NormalTok{),}
+    \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"0e+4"}\NormalTok{, }\StringTok{"1e+4"}\NormalTok{, }\StringTok{"2e+4"}\NormalTok{, }\StringTok{"3e+4"}\NormalTok{, }\StringTok{"4e+4"}\NormalTok{, }\StringTok{"5e+4"}\NormalTok{)}
+
+\NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme}
+\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Valleys crossed over time'}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{(),}\DataTypeTok{legend.text=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{12}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{guides}\NormalTok{(}
+    \DataTypeTok{shape=}\KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{, }\DataTypeTok{title.position =} \StringTok{"bottom"}\NormalTok{),}
+    \DataTypeTok{color=}\KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{, }\DataTypeTok{title.position =} \StringTok{"bottom"}\NormalTok{),}
+    \DataTypeTok{fill=}\KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{, }\DataTypeTok{title.position =} \StringTok{"bottom"}\NormalTok{)}
+\NormalTok{  )}
+
+\NormalTok{over_time_plot}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/exp-per-cmp-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/exp-val-ot-1}
 
-\hypertarget{stats-by-interval-comparisons}{%
-\subsection{Stats by interval comparisons}\label{stats-by-interval-comparisons}}
+\hypertarget{largest-valley-reached-throughout}{%
+\section{Largest valley reached throughout}\label{largest-valley-reached-throughout}}
 
-Here we present statistical analysis between the performances found at different generation intervals.
-
-\hypertarget{truncation}{%
-\subsubsection{Truncation}\label{truncation}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
+Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tru'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
+\NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'ele_big_peak'}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ acro, }\DataTypeTok{y =}\NormalTok{ val, }\DataTypeTok{color =}\NormalTok{ acro, }\DataTypeTok{fill =}\NormalTok{ acro, }\DataTypeTok{shape =}\NormalTok{ acro)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.16}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.03}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
+    \DataTypeTok{name=}\StringTok{"Valley reached"}\NormalTok{,}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\FloatTok{14.5}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{14}\NormalTok{)}
+\NormalTok{  ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}
+    \DataTypeTok{name=}\StringTok{"Scheme"}
+\NormalTok{  )}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette, ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Largest valley reached'}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{())}
+
+\KeywordTok{plot_grid}\NormalTok{(}
+\NormalTok{  plot }\OperatorTok{+}
+\StringTok{    }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{),}
+\NormalTok{  legend,}
+  \DataTypeTok{nrow=}\DecValTok{2}\NormalTok{,}
+  \DataTypeTok{rel_heights =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/exp-per-cmp-plt-tru-1.pdf}
+\begin{verbatim}
+## Warning: Removed 4 rows containing missing values (`geom_point()`).
+\end{verbatim}
 
-Summary statistics for the best performance.
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/exp-val-bst-1}
+
+\hypertarget{stats-1}{%
+\subsection{Stats}\label{stats-1}}
+
+Summary statistics for the largest valley crossed.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tru'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
+\NormalTok{valleys =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'ele_big_peak'}\NormalTok{)}
+\NormalTok{valleys}\OperatorTok{$}\NormalTok{acro =}\StringTok{ }\KeywordTok{factor}\NormalTok{(valleys}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{'gfs'}\NormalTok{,}\StringTok{'pfs'}\NormalTok{,}\StringTok{'nds'}\NormalTok{,}\StringTok{'nov'}\NormalTok{,}\StringTok{'ran'}\NormalTok{,}\StringTok{'lex'}\NormalTok{,}\StringTok{'tru'}\NormalTok{,}\StringTok{'tor'}\NormalTok{))}
+\NormalTok{valleys }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(acro) }\OperatorTok{%>%}
 \StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
     \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(val)),}
+    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
 \NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  17.7   17.9  17.9  18.1 0.145
-## 2 50000         50      0  17.8   18.1  18.0  18.3 0.140
+## # A tibble: 8 x 8
+##   acro  count na_cnt   min median  mean   max   IQR
+##   <fct> <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
+## 1 gfs      50      0    12   13   13.4     14  1   
+## 2 pfs      50      0    12   13.5 13.5     14  1   
+## 3 nds      50      0    10   11   11.2     13  0   
+## 4 nov      50      0    10   10   10.5     11  1   
+## 5 ran      50      0     9   10   10.1     12  0.75
+## 6 lex      50      0     6    7    6.8      8  0   
+## 7 tru      50      0     5    6    5.92     6  0   
+## 8 tor      50      0     5    6    5.94     6  0
 \end{verbatim}
 
-Results for post-hoc Wilcoxon rank-sum test.
+Kruskal--Wallis test illustrates evidence of statistical differences.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tru'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tru'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'g'}\NormalTok{)}
+\KeywordTok{kruskal.test}\NormalTok{(val }\OperatorTok{~}\StringTok{ }\NormalTok{acro, }\DataTypeTok{data =}\NormalTok{ valleys)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## 
-##  Wilcoxon rank sum test with continuity correction
+##  Kruskal-Wallis rank sum test
 ## 
-## data:  filter(interval_df, acro == "tru" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "tru" & Generation == 40000)$pop_fit_max
-## W = 2013.5, p-value = 7.103e-08
-## alternative hypothesis: true location shift is greater than 0
+## data:  val by acro
+## Kruskal-Wallis chi-squared = 377.23, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
-\hypertarget{tournament}{%
-\subsubsection{Tournament}\label{tournament}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tor'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/exp-per-cmp-plt-tor-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tor'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  17.8   17.9  17.9  18.2 0.112
-## 2 50000         50      0  17.9   18.1  18.1  18.3 0.150
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tor'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tor'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'g'}\NormalTok{)}
+\KeywordTok{pairwise.wilcox.test}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ valleys}\OperatorTok{$}\NormalTok{val, }\DataTypeTok{g =}\NormalTok{ valleys}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{p.adjust.method =} \StringTok{"bonferroni"}\NormalTok{,}
+                     \DataTypeTok{paired =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{conf.int =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{alternative =} \StringTok{'l'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## 
-##  Wilcoxon rank sum test with continuity correction
+##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
 ## 
-## data:  filter(interval_df, acro == "tor" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "tor" & Generation == 40000)$pop_fit_max
-## W = 2095.5, p-value = 2.818e-09
-## alternative hypothesis: true location shift is greater than 0
-\end{verbatim}
-
-\hypertarget{lexicase}{%
-\subsubsection{Lexicase}\label{lexicase}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'lex'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/exp-per-cmp-plt-lex-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'lex'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  12.0   12.2  12.2  12.6 0.174
-## 2 50000         50      0  11.9   12.2  12.2  12.6 0.162
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'lex'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'lex'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'t'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
+## data:  valleys$val and valleys$acro 
 ## 
-##  Wilcoxon rank sum test with continuity correction
+##     gfs     pfs     nds     nov     ran     lex     tru  
+## pfs 1.000   -       -       -       -       -       -    
+## nds < 2e-16 < 2e-16 -       -       -       -       -    
+## nov < 2e-16 < 2e-16 3.9e-08 -       -       -       -    
+## ran < 2e-16 < 2e-16 2.1e-10 0.099   -       -       -    
+## lex < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 -       -    
+## tru < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 4.6e-14 -    
+## tor < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 4.3e-14 1.000
 ## 
-## data:  filter(interval_df, acro == "lex" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "lex" & Generation == 40000)$pop_fit_max
-## W = 1155, p-value = 0.5147
-## alternative hypothesis: true location shift is not equal to 0
-\end{verbatim}
-
-\hypertarget{genotypic-fitness-sharing}{%
-\subsubsection{Genotypic fitness sharing}\label{genotypic-fitness-sharing}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'gfs'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/exp-per-cmp-plt-gfs-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'gfs'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  35.2   36.8  36.8  38.5 0.952
-## 2 50000         50      0  40.8   43.0  43.0  45.0 0.996
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'gfs'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'gfs'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'g'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  filter(interval_df, acro == "gfs" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "gfs" & Generation == 40000)$pop_fit_max
-## W = 2500, p-value < 2.2e-16
-## alternative hypothesis: true location shift is greater than 0
-\end{verbatim}
-
-\hypertarget{phenotypic-fitness-sharing}{%
-\subsubsection{Phenotypic fitness sharing}\label{phenotypic-fitness-sharing}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'pfs'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/exp-per-cmp-plt-pfs-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'pfs'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  34.9   36.4  36.4  38.1  1.15
-## 2 50000         50      0  41.0   42.6  42.6  45.5  1.27
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'pfs'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'pfs'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'g'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  filter(interval_df, acro == "pfs" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "pfs" & Generation == 40000)$pop_fit_max
-## W = 2500, p-value < 2.2e-16
-## alternative hypothesis: true location shift is greater than 0
-\end{verbatim}
-
-\hypertarget{nondominated-sorting}{%
-\subsubsection{Nondominated sorting}\label{nondominated-sorting}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nds'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/exp-per-cmp-plt-nds-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nds'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  12.7   13.4  13.5  14.6 0.487
-## 2 50000         50      0  14.3   15.0  15.0  15.9 0.377
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nds'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nds'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'g'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  filter(interval_df, acro == "nds" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "nds" & Generation == 40000)$pop_fit_max
-## W = 2493, p-value < 2.2e-16
-## alternative hypothesis: true location shift is greater than 0
-\end{verbatim}
-
-\hypertarget{novelty-search}{%
-\subsubsection{Novelty search}\label{novelty-search}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nov'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/exp-per-cmp-plt-nov-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nov'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  14.3   16.4  16.4  18.4  1.40
-## 2 50000         50      0  16.1   18.3  18.2  20.2  1.49
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nov'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nov'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'g'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  filter(interval_df, acro == "nov" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "nov" & Generation == 40000)$pop_fit_max
-## W = 2209, p-value = 1.951e-11
-## alternative hypothesis: true location shift is greater than 0
-\end{verbatim}
-
-\hypertarget{random}{%
-\subsubsection{Random}\label{random}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'ran'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/exp-per-cmp-plt-ran-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'ran'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  9.89   11.3  11.3  12.9  1.06
-## 2 50000         50      0 10.3    12.6  12.6  14.9  1.23
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'ran'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'ran'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'g'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  filter(interval_df, acro == "ran" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "ran" & Generation == 40000)$pop_fit_max
-## W = 2185, p-value = 5.885e-11
-## alternative hypothesis: true location shift is greater than 0
+## P value adjustment method: bonferroni
 \end{verbatim}
 
 \hypertarget{ordered-exploitation-results}{%
@@ -1186,7 +743,8 @@ Shading comes from the best and worse performance across 50 replicates.
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =} \KeywordTok{filter}\NormalTok{(lines, gen }\OperatorTok{%%}\StringTok{ }\DecValTok{2000} \OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{&}\StringTok{ }\NormalTok{gen }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{), }\DataTypeTok{size =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{stroke =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{),}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{14.5}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{14}\NormalTok{)}
 \NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Generations"}\NormalTok{,}
@@ -1210,7 +768,7 @@ Shading comes from the best and worse performance across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/ord-per-ot-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/ord-per-ot-1}
 
 \hypertarget{best-performance-throughout-1}{%
 \section{Best performance throughout}\label{best-performance-throughout-1}}
@@ -1221,19 +779,20 @@ Best performance reached throughout 50,000 generations in a population.
 \begin{Highlighting}[]
 \NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'pop_fit_max'}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ acro, }\DataTypeTok{y =}\NormalTok{ val }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{color =}\NormalTok{ acro, }\DataTypeTok{fill =}\NormalTok{ acro, }\DataTypeTok{shape =}\NormalTok{ acro)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.16}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.03}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
-    \DataTypeTok{name=}\StringTok{"Average trait score"}
-\NormalTok{  ) }\OperatorTok{+}
+    \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{14.5}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{14}\NormalTok{)  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Scheme"}
 \NormalTok{  )}\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette, ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best performance throughout'}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best performance'}\NormalTok{)}\OperatorTok{+}
 \StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{())}
 
 \KeywordTok{plot_grid}\NormalTok{(}
@@ -1246,10 +805,10 @@ Best performance reached throughout 50,000 generations in a population.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/ord-per-bst-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/ord-per-bst-1}
 
-\hypertarget{stats-1}{%
-\subsection{Stats}\label{stats-1}}
+\hypertarget{stats-2}{%
+\subsection{Stats}\label{stats-2}}
 
 Summary statistics for the best performance.
 
@@ -1273,16 +832,16 @@ Summary statistics for the best performance.
 
 \begin{verbatim}
 ## # A tibble: 8 x 8
-##   acro  count na_cnt    min median   mean   max   IQR
-##   <fct> <int>  <int>  <dbl>  <dbl>  <dbl> <dbl> <dbl>
-## 1 gfs      50      0 10.2   11.7   11.7   12.8  0.876
-## 2 pfs      50      0 10.2   11.1   11.2   12.2  0.840
-## 3 tru      50      0  6.07   8.35   8.23   8.72 0.166
-## 4 tor      50      0  5.60   8.26   7.79   8.61 1.07 
-## 5 lex      50      0  5.44   6.83   6.72   7.78 0.949
-## 6 nov      50      0  2.84   3.70   3.74   4.89 0.555
-## 7 nds      50      0  1.74   1.84   1.85   2.16 0.114
-## 8 ran      50      0  0.192  0.552  0.570  1.50 0.269
+##   acro  count na_cnt   min median   mean   max   IQR
+##   <fct> <int>  <int> <dbl>  <dbl>  <dbl> <dbl> <dbl>
+## 1 gfs      50      0 9.79  11.9   11.9   13.2  1.03 
+## 2 pfs      50      0 9.69  11.2   11.2   12.1  0.779
+## 3 tru      50      0 5.92   8.36   8.13   8.63 0.203
+## 4 tor      50      0 4.89   8.26   7.73   8.65 1.17 
+## 5 lex      50      0 5.59   6.70   6.76   8.02 0.792
+## 6 nov      50      0 2.82   3.82   3.79   4.74 0.515
+## 7 nds      50      0 1.57   1.83   1.84   2.18 0.116
+## 8 ran      50      0 0.279  0.568  0.587  1.04 0.280
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -1298,7 +857,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  val by acro
-## Kruskal-Wallis chi-squared = 380.24, df = 7, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 379.83, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -1317,10 +876,10 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## data:  performance$val and performance$acro 
 ## 
 ##     gfs     pfs     tru     tor     lex     nov     nds    
-## pfs 0.00041 -       -       -       -       -       -      
+## pfs 5.0e-06 -       -       -       -       -       -      
 ## tru < 2e-16 < 2e-16 -       -       -       -       -      
-## tor < 2e-16 < 2e-16 0.09539 -       -       -       -      
-## lex < 2e-16 < 2e-16 2.1e-14 2.0e-07 -       -       -      
+## tor < 2e-16 < 2e-16 0.33    -       -       -       -      
+## lex < 2e-16 < 2e-16 7.8e-13 2.8e-07 -       -       -      
 ## nov < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 -       -      
 ## nds < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 -      
 ## ran < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16
@@ -1328,629 +887,187 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## P value adjustment method: bonferroni
 \end{verbatim}
 
-\hypertarget{performance-interval-comparison-1}{%
-\section{Performance interval comparison}\label{performance-interval-comparison-1}}
+\hypertarget{largest-valley-reached-over-time-1}{%
+\section{Largest valley reached over time}\label{largest-valley-reached-over-time-1}}
 
-Here we compare the best performance found in the population at generation 40,000 \& 50,000 for all selection schemes.
+The largest valley reached in a single trait by the best performing solution in the population.
+Data points on the graph is the average performance across 50 replicates every 2000 generations.
+Shading comes from the best and worse data across 50 replicates.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{interval_df =}\StringTok{ }\KeywordTok{filter}\NormalTok{(}\KeywordTok{filter}\NormalTok{(over_time_df, (gen }\OperatorTok{==}\StringTok{ }\DecValTok{50000} \OperatorTok{|}\StringTok{ }\NormalTok{gen }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)))}
-\NormalTok{interval_df}\OperatorTok{$}\NormalTok{Generation <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(interval_df}\OperatorTok{$}\NormalTok{gen, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\DecValTok{40000}\NormalTok{,}\DecValTok{50000}\NormalTok{))}
-\NormalTok{interval_df}\OperatorTok{$}\NormalTok{acro <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(interval_df}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{levels =}\NormalTok{ ACRO)}
+\NormalTok{lines =}\StringTok{ }\NormalTok{over_time_df }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(scheme, gen) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
+    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(ele_big_peak),}
+    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(ele_big_peak),}
+    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(ele_big_peak)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
 
-\KeywordTok{ggplot}\NormalTok{(interval_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{acro, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.3}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position=}\KeywordTok{position_dodge}\NormalTok{(}\DataTypeTok{width=}\FloatTok{1.0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Scheme"}
-\NormalTok{    ) }\OperatorTok{+}
+\begin{verbatim}
+## `summarise()` has grouped output by 'scheme'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{over_time_plot =}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(lines, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{gen, }\DataTypeTok{y=}\NormalTok{mean, }\DataTypeTok{group =}\NormalTok{ scheme, }\DataTypeTok{fill =}\NormalTok{ scheme, }\DataTypeTok{color =}\NormalTok{ scheme, }\DataTypeTok{shape =}\NormalTok{ scheme)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_ribbon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin =}\NormalTok{ min, }\DataTypeTok{ymax =}\NormalTok{ max), }\DataTypeTok{alpha =} \FloatTok{0.1}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{size =} \FloatTok{0.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =} \KeywordTok{filter}\NormalTok{(lines, gen }\OperatorTok{%%}\StringTok{ }\DecValTok{2000} \OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{&}\StringTok{ }\NormalTok{gen }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{), }\DataTypeTok{size =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{stroke =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
+    \DataTypeTok{name=}\StringTok{"Valley reached"}\NormalTok{,}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{14.5}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{14}\NormalTok{)}
+\NormalTok{  ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}
+    \DataTypeTok{name=}\StringTok{"Generations"}\NormalTok{,}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50000}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10000}\NormalTok{, }\DecValTok{20000}\NormalTok{, }\DecValTok{30000}\NormalTok{, }\DecValTok{40000}\NormalTok{, }\DecValTok{50000}\NormalTok{),}
+    \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"0e+4"}\NormalTok{, }\StringTok{"1e+4"}\NormalTok{, }\StringTok{"2e+4"}\NormalTok{, }\StringTok{"3e+4"}\NormalTok{, }\StringTok{"4e+4"}\NormalTok{, }\StringTok{"5e+4"}\NormalTok{)}
+
+\NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme}
+\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Valley reached over time'}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{(),}\DataTypeTok{legend.text=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{12}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{guides}\NormalTok{(}
+    \DataTypeTok{shape=}\KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{, }\DataTypeTok{title.position =} \StringTok{"bottom"}\NormalTok{),}
+    \DataTypeTok{color=}\KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{, }\DataTypeTok{title.position =} \StringTok{"bottom"}\NormalTok{),}
+    \DataTypeTok{fill=}\KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{, }\DataTypeTok{title.position =} \StringTok{"bottom"}\NormalTok{)}
+\NormalTok{  )}
+
+\NormalTok{over_time_plot}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/ord-per-cmp-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/ord-val-ot-1}
 
-\hypertarget{stats-by-interval-comparisons-1}{%
-\subsection{Stats by interval comparisons}\label{stats-by-interval-comparisons-1}}
+\hypertarget{largest-valley-reached-throughout-1}{%
+\section{Largest valley reached throughout}\label{largest-valley-reached-throughout-1}}
 
-Here we present statistical analysis between the performances found at different generation intervals.
-
-\hypertarget{truncation-1}{%
-\subsubsection{Truncation}\label{truncation-1}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
+Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tru'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
+\NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'ele_big_peak'}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ acro, }\DataTypeTok{y =}\NormalTok{ val, }\DataTypeTok{color =}\NormalTok{ acro, }\DataTypeTok{fill =}\NormalTok{ acro, }\DataTypeTok{shape =}\NormalTok{ acro)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.16}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.03}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
+    \DataTypeTok{name=}\StringTok{"Valley reached"}\NormalTok{,}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\FloatTok{3.5}\NormalTok{,}\FloatTok{14.5}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{14}\NormalTok{)}
+\NormalTok{  ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}
+    \DataTypeTok{name=}\StringTok{"Scheme"}
+\NormalTok{  )}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette, ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Largest valley reached'}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{())}
+
+\KeywordTok{plot_grid}\NormalTok{(}
+\NormalTok{  plot }\OperatorTok{+}
+\StringTok{    }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{),}
+\NormalTok{  legend,}
+  \DataTypeTok{nrow=}\DecValTok{2}\NormalTok{,}
+  \DataTypeTok{rel_heights =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/ord-per-cmp-plt-tru-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/ord-val-bst-1}
 
-Summary statistics for the best performance.
+\hypertarget{stats-3}{%
+\subsection{Stats}\label{stats-3}}
+
+Summary statistics for the largest valley crossed.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tru'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
+\NormalTok{valleys =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'ele_big_peak'}\NormalTok{)}
+\NormalTok{valleys}\OperatorTok{$}\NormalTok{acro =}\StringTok{ }\KeywordTok{factor}\NormalTok{(valleys}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{'pfs'}\NormalTok{,}\StringTok{'gfs'}\NormalTok{,}\StringTok{'nov'}\NormalTok{,}\StringTok{'nds'}\NormalTok{,}\StringTok{'ran'}\NormalTok{,}\StringTok{'tru'}\NormalTok{,}\StringTok{'tor'}\NormalTok{,}\StringTok{'lex'}\NormalTok{))}
+\NormalTok{valleys }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(acro) }\OperatorTok{%>%}
 \StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
     \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(val)),}
+    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
+    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
 \NormalTok{  )}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  5.76   8.33  8.21  8.72 0.156
-## 2 50000         50      0  6.07   8.35  8.23  8.72 0.166
+## # A tibble: 8 x 8
+##   acro  count na_cnt   min median  mean   max   IQR
+##   <fct> <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
+## 1 pfs      50      0    13     14 14.0     14  0   
+## 2 gfs      50      0    12     13 12.9     14  0   
+## 3 nov      50      0     9     11 10.5     12  1   
+## 4 nds      50      0     5      7  6.72     8  1   
+## 5 ran      50      0     4      6  6.48    10  1.75
+## 6 tru      50      0     4      5  4.96     6  0   
+## 7 tor      50      0     4      5  4.94     6  0   
+## 8 lex      50      0     4      5  4.78     5  0
 \end{verbatim}
 
-Results for post-hoc Wilcoxon rank-sum test.
+Kruskal--Wallis test illustrates evidence of statistical differences.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tru'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tru'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'t'}\NormalTok{)}
+\KeywordTok{kruskal.test}\NormalTok{(val }\OperatorTok{~}\StringTok{ }\NormalTok{acro, }\DataTypeTok{data =}\NormalTok{ valleys)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## 
-##  Wilcoxon rank sum test with continuity correction
+##  Kruskal-Wallis rank sum test
 ## 
-## data:  filter(interval_df, acro == "tru" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "tru" & Generation == 40000)$pop_fit_max
-## W = 1351, p-value = 0.4884
-## alternative hypothesis: true location shift is not equal to 0
+## data:  val by acro
+## Kruskal-Wallis chi-squared = 364.41, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
-\hypertarget{tournament-1}{%
-\subsubsection{Tournament}\label{tournament-1}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tor'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/ord-per-cmp-plt-tor-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tor'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  5.59   8.17  7.75  8.59  1.10
-## 2 50000         50      0  5.60   8.26  7.79  8.61  1.07
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tor'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'tor'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'t'}\NormalTok{)}
+\KeywordTok{pairwise.wilcox.test}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ valleys}\OperatorTok{$}\NormalTok{val, }\DataTypeTok{g =}\NormalTok{ valleys}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{p.adjust.method =} \StringTok{"bonferroni"}\NormalTok{,}
+                     \DataTypeTok{paired =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{conf.int =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{alternative =} \StringTok{'l'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## 
-##  Wilcoxon rank sum test with continuity correction
+##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
 ## 
-## data:  filter(interval_df, acro == "tor" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "tor" & Generation == 40000)$pop_fit_max
-## W = 1343, p-value = 0.5237
-## alternative hypothesis: true location shift is not equal to 0
-\end{verbatim}
-
-\hypertarget{lexicase-1}{%
-\subsubsection{Lexicase}\label{lexicase-1}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'lex'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/ord-per-cmp-plt-lex-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'lex'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  5.27   6.77  6.62  7.64 0.912
-## 2 50000         50      0  5.44   6.81  6.71  7.76 0.948
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'lex'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'lex'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'t'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
+## data:  valleys$val and valleys$acro 
 ## 
-##  Wilcoxon rank sum test with continuity correction
+##     pfs     gfs     nov     nds     ran     tru  tor 
+## gfs 3.3e-15 -       -       -       -       -    -   
+## nov < 2e-16 < 2e-16 -       -       -       -    -   
+## nds < 2e-16 < 2e-16 < 2e-16 -       -       -    -   
+## ran < 2e-16 < 2e-16 < 2e-16 1.00    -       -    -   
+## tru < 2e-16 < 2e-16 < 2e-16 < 2e-16 1.6e-09 -    -   
+## tor < 2e-16 < 2e-16 < 2e-16 < 2e-16 2.8e-09 1.00 -   
+## lex < 2e-16 < 2e-16 < 2e-16 < 2e-16 2.9e-10 0.21 0.72
 ## 
-## data:  filter(interval_df, acro == "lex" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "lex" & Generation == 40000)$pop_fit_max
-## W = 1346, p-value = 0.5103
-## alternative hypothesis: true location shift is not equal to 0
-\end{verbatim}
-
-\hypertarget{genotypic-fitness-sharing-1}{%
-\subsubsection{Genotypic fitness sharing}\label{genotypic-fitness-sharing-1}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'gfs'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/ord-per-cmp-plt-gfs-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'gfs'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  8.17   9.38  9.43  10.9 0.760
-## 2 50000         50      0 10.2   11.6  11.6   12.8 0.885
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'gfs'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'gfs'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'g'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  filter(interval_df, acro == "gfs" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "gfs" & Generation == 40000)$pop_fit_max
-## W = 2494, p-value < 2.2e-16
-## alternative hypothesis: true location shift is greater than 0
-\end{verbatim}
-
-\hypertarget{phenotypic-fitness-sharing-1}{%
-\subsubsection{Phenotypic fitness sharing}\label{phenotypic-fitness-sharing-1}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'pfs'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/ord-per-cmp-plt-pfs-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'pfs'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  8.20   9.28  9.28  10.1 0.574
-## 2 50000         50      0 10.1   11.1  11.0   11.9 0.831
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'pfs'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'pfs'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'g'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  filter(interval_df, acro == "pfs" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "pfs" & Generation == 40000)$pop_fit_max
-## W = 2498, p-value < 2.2e-16
-## alternative hypothesis: true location shift is greater than 0
-\end{verbatim}
-
-\hypertarget{nondominated-sorting-1}{%
-\subsubsection{Nondominated sorting}\label{nondominated-sorting-1}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nds'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/ord-per-cmp-plt-nds-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nds'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  1.35   1.57  1.57  1.81 0.150
-## 2 50000         50      0  1.36   1.59  1.59  1.86 0.160
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nds'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nds'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'t'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  filter(interval_df, acro == "nds" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "nds" & Generation == 40000)$pop_fit_max
-## W = 1359, p-value = 0.4545
-## alternative hypothesis: true location shift is not equal to 0
-\end{verbatim}
-
-\hypertarget{novelty-search-1}{%
-\subsubsection{Novelty search}\label{novelty-search-1}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nov'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/ord-per-cmp-plt-nov-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nov'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt   min median  mean   max   IQR
-##   <fct>      <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0  2.13   3.15  3.15  4.38 0.570
-## 2 50000         50      0  2.46   3.21  3.32  4.48 0.569
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nov'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'nov'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'t'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  filter(interval_df, acro == "nov" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "nov" & Generation == 40000)$pop_fit_max
-## W = 1506, p-value = 0.07818
-## alternative hypothesis: true location shift is not equal to 0
-\end{verbatim}
-
-\hypertarget{random-1}{%
-\subsubsection{Random}\label{random-1}}
-
-Plot for comparing performances at interval 40,000 \& 50,000.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'ran'}\NormalTok{) }\OperatorTok{%>%}
-\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Generation, }\DataTypeTok{y=}\NormalTok{pop_fit_max}\OperatorTok{/}\NormalTok{DIMENSIONALITY,}\DataTypeTok{fill=}\NormalTok{Generation,}\DataTypeTok{color=}\NormalTok{Generation,}\DataTypeTok{shape=}\NormalTok{Generation)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{scale_x_discrete}\NormalTok{(}
-      \DataTypeTok{name=}\StringTok{"Generation"}
-\NormalTok{    ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\KeywordTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{16}\NormalTok{))}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ mvc_col) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Performance comparisons'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/ord-per-cmp-plt-ran-1.pdf}
-
-Summary statistics for the best performance.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'ran'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(Generation) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(pop_fit_max)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(pop_fit_max }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 2 x 8
-##   Generation count na_cnt    min median  mean   max   IQR
-##   <fct>      <int>  <int>  <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 40000         50      0 0.0433  0.184 0.233 0.641 0.193
-## 2 50000         50      0 0.0350  0.229 0.270 1.05  0.243
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{wilcox.test}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'ran'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{y =} \KeywordTok{filter}\NormalTok{(interval_df, acro }\OperatorTok{==}\StringTok{ 'ran'} \OperatorTok{&}\StringTok{ }\NormalTok{Generation }\OperatorTok{==}\StringTok{ }\DecValTok{40000}\NormalTok{)}\OperatorTok{$}\NormalTok{pop_fit_max,}
-            \DataTypeTok{alternative =} \StringTok{'t'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Wilcoxon rank sum test with continuity correction
-## 
-## data:  filter(interval_df, acro == "ran" & Generation == 50000)$pop_fit_max and filter(interval_df, acro == "ran" & Generation == 40000)$pop_fit_max
-## W = 1335, p-value = 0.5602
-## alternative hypothesis: true location shift is not equal to 0
+## P value adjustment method: bonferroni
 \end{verbatim}
 
 \hypertarget{contradictory-objectives-results}{%
 \chapter{Contradictory objectives results}\label{contradictory-objectives-results}}
 
-Here we present the results for \textbf{activation gene coverage} and \textbf{satisfacotory trait coverage} found by each selection scheme on the contradictory objectives diagnostic with valley crossing integrated.
+Here we present the results for \textbf{activation gene coverage} and \textbf{satisfactory trait coverage} found by each selection scheme on the contradictory objectives diagnostic with valley crossing integrated.
 50 replicates are conducted for each scheme explored.
 
 \hypertarget{analysis-dependencies-2}{%
@@ -2039,7 +1156,7 @@ Shading comes from the best and worse coverage across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/con-act-ot-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/con-act-ot-1}
 
 \hypertarget{final-activation-gene-coverage}{%
 \section{Final activation gene coverage}\label{final-activation-gene-coverage}}
@@ -2050,9 +1167,9 @@ Activation gene coverage found in the final population at 50,000 generations.
 \begin{Highlighting}[]
 \NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(over_time_df, gen }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ acro, }\DataTypeTok{y =}\NormalTok{ uni_str_pos, }\DataTypeTok{color =}\NormalTok{ acro, }\DataTypeTok{fill =}\NormalTok{ acro, }\DataTypeTok{shape =}\NormalTok{ acro)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.01}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.1}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.16}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.03}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Coverage"}\NormalTok{,}
     \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{),}
@@ -2079,13 +1196,13 @@ Activation gene coverage found in the final population at 50,000 generations.
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 41 rows containing missing values (`geom_point()`).
+## Warning: Removed 53 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/con-act-end-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/con-act-end-1}
 
-\hypertarget{stats-2}{%
-\subsection{Stats}\label{stats-2}}
+\hypertarget{stats-4}{%
+\subsection{Stats}\label{stats-4}}
 
 Summary statistics for the coverage found in the final population.
 
@@ -2113,12 +1230,12 @@ Summary statistics for the coverage found in the final population.
 ##   <fct> <int>  <int> <int>  <dbl>  <dbl> <int> <dbl>
 ## 1 nov      50      0    99    100  99.9    100  0   
 ## 2 nds      50      0    99    100 100.     100  0   
-## 3 lex      50      0    83     89  89.3     94  3   
-## 4 gfs      50      0     5     30  28.7     43 11.5 
-## 5 tor      50      0     1      5   4.72     8  3   
-## 6 tru      50      0     2      6   6.28    12  2.75
-## 7 pfs      50      0     2      4   3.84     5  1   
-## 8 ran      50      0     1      1   1.72     5  1
+## 3 lex      50      0    85     90  89.8     94  2.75
+## 4 gfs      50      0    13     32  30.1     42 11.8 
+## 5 tor      50      0     1      5   4.86     9  2   
+## 6 tru      50      0     1      6   5.5     10  3   
+## 7 pfs      50      0     3      4   4.18     6  0.75
+## 8 ran      50      0     1      2   1.96     5  1.75
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -2134,7 +1251,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  uni_str_pos by acro
-## Kruskal-Wallis chi-squared = 373.95, df = 7, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 369.27, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -2153,13 +1270,13 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## data:  act_coverage$uni_str_pos and act_coverage$acro 
 ## 
 ##     nov     nds     lex     gfs     tor     tru     pfs    
-## nds 1.00    -       -       -       -       -       -      
+## nds 1.0000  -       -       -       -       -       -      
 ## lex < 2e-16 < 2e-16 -       -       -       -       -      
 ## gfs < 2e-16 < 2e-16 < 2e-16 -       -       -       -      
-## tor < 2e-16 < 2e-16 < 2e-16 1.3e-15 -       -       -      
-## tru < 2e-16 < 2e-16 < 2e-16 7.3e-15 1.00    -       -      
-## pfs < 2e-16 < 2e-16 < 2e-16 < 2e-16 0.05    3.4e-10 -      
-## ran < 2e-16 < 2e-16 < 2e-16 < 2e-16 1.4e-12 1.9e-15 1.8e-12
+## tor < 2e-16 < 2e-16 < 2e-16 < 2e-16 -       -       -      
+## tru < 2e-16 < 2e-16 < 2e-16 < 2e-16 1.0000  -       -      
+## pfs < 2e-16 < 2e-16 < 2e-16 < 2e-16 0.1827  0.0095  -      
+## ran < 2e-16 < 2e-16 < 2e-16 < 2e-16 1.3e-11 1.7e-12 5.0e-13
 ## 
 ## P value adjustment method: bonferroni
 \end{verbatim}
@@ -2219,128 +1336,7 @@ Shading comes from the best and worse coverage across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/con-sat-ot-1.pdf}
-
-\hypertarget{best-satisfactory-trait-coverage-throughout}{%
-\section{Best satisfactory trait coverage throughout}\label{best-satisfactory-trait-coverage-throughout}}
-
-Best satisfactory trait coverage reached throughout 50,000 generations in a population.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'pop_uni_obj'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ acro, }\DataTypeTok{y =}\NormalTok{ val, }\DataTypeTok{color =}\NormalTok{ acro, }\DataTypeTok{fill =}\NormalTok{ acro, }\DataTypeTok{shape =}\NormalTok{ acro)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.01}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.1}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
-    \DataTypeTok{name=}\StringTok{"Coverage"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{5}\NormalTok{)}
-\NormalTok{  ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}
-    \DataTypeTok{name=}\StringTok{"Scheme"}
-\NormalTok{  )}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best satisfactory trait coverage'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{())}
-
-\KeywordTok{plot_grid}\NormalTok{(}
-\NormalTok{  plot }\OperatorTok{+}
-\StringTok{    }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{),}
-\NormalTok{  legend,}
-  \DataTypeTok{nrow=}\DecValTok{2}\NormalTok{,}
-  \DataTypeTok{rel_heights =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{)}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: Removed 173 rows containing missing values (`geom_point()`).
-\end{verbatim}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/con-sat-bst-1.pdf}
-
-\hypertarget{stats-3}{%
-\subsection{Stats}\label{stats-3}}
-
-Summary statistics for the best coverage.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{sat_coverage =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'pop_uni_obj'}\NormalTok{)}
-\NormalTok{sat_coverage}\OperatorTok{$}\NormalTok{acro =}\StringTok{ }\KeywordTok{factor}\NormalTok{(sat_coverage}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{'pfs'}\NormalTok{,}\StringTok{'nds'}\NormalTok{,}\StringTok{'lex'}\NormalTok{,}\StringTok{'gfs'}\NormalTok{,}\StringTok{'tor'}\NormalTok{,}\StringTok{'tru'}\NormalTok{,}\StringTok{'nov'}\NormalTok{,}\StringTok{'ran'}\NormalTok{))}
-\NormalTok{sat_coverage }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(acro) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(val)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 8 x 8
-##   acro  count na_cnt   min median  mean   max   IQR
-##   <fct> <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 pfs      50      0     2      3  3.44     5     1
-## 2 nds      50      0     0      0  0        0     0
-## 3 lex      50      0     0      0  0        0     0
-## 4 gfs      50      0     0      0  0        0     0
-## 5 tor      50      0     0      0  0        0     0
-## 6 tru      50      0     0      0  0        0     0
-## 7 nov      50      0     0      0  0        0     0
-## 8 ran      50      0     0      0  0        0     0
-\end{verbatim}
-
-Kruskal--Wallis test illustrates evidence of statistical differences.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{kruskal.test}\NormalTok{(val }\OperatorTok{~}\StringTok{ }\NormalTok{acro, }\DataTypeTok{data =}\NormalTok{ sat_coverage)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Kruskal-Wallis rank sum test
-## 
-## data:  val by acro
-## Kruskal-Wallis chi-squared = 397.02, df = 7, p-value < 2.2e-16
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{pairwise.wilcox.test}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ sat_coverage}\OperatorTok{$}\NormalTok{val, }\DataTypeTok{g =}\NormalTok{ sat_coverage}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{p.adjust.method =} \StringTok{"bonferroni"}\NormalTok{,}
-                     \DataTypeTok{paired =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{conf.int =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{alternative =} \StringTok{'l'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
-## 
-## data:  sat_coverage$val and sat_coverage$acro 
-## 
-##     pfs    nds lex gfs tor tru nov
-## nds <2e-16 -   -   -   -   -   -  
-## lex <2e-16 1   -   -   -   -   -  
-## gfs <2e-16 1   1   -   -   -   -  
-## tor <2e-16 1   1   1   -   -   -  
-## tru <2e-16 1   1   1   1   -   -  
-## nov <2e-16 1   1   1   1   1   -  
-## ran <2e-16 1   1   1   1   1   1  
-## 
-## P value adjustment method: bonferroni
-\end{verbatim}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/con-sat-ot-1}
 
 \hypertarget{final-satisfactory-trait-coverage}{%
 \section{Final satisfactory trait coverage}\label{final-satisfactory-trait-coverage}}
@@ -2351,9 +1347,9 @@ Satisfactory trait coverage found in the final population at 50,000 generations.
 \begin{Highlighting}[]
 \NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(over_time_df, gen }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ acro, }\DataTypeTok{y =}\NormalTok{ pop_uni_obj, }\DataTypeTok{color =}\NormalTok{ acro, }\DataTypeTok{fill =}\NormalTok{ acro, }\DataTypeTok{shape =}\NormalTok{ acro)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.01}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.1}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.16}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.03}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Coverage"}\NormalTok{,}
     \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{5}\NormalTok{)}
@@ -2378,13 +1374,13 @@ Satisfactory trait coverage found in the final population at 50,000 generations.
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 174 rows containing missing values (`geom_point()`).
+## Warning: Removed 211 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/con-sat-end-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/con-sat-end-1}
 
-\hypertarget{stats-4}{%
-\subsection{Stats}\label{stats-4}}
+\hypertarget{stats-5}{%
+\subsection{Stats}\label{stats-5}}
 
 Summary statistics for the coverage found in the final population.
 
@@ -2410,7 +1406,7 @@ Summary statistics for the coverage found in the final population.
 ## # A tibble: 8 x 8
 ##   acro  count na_cnt   min median  mean   max   IQR
 ##   <fct> <int>  <int> <int>  <dbl> <dbl> <int> <dbl>
-## 1 pfs      50      0     2      3  3.32     5     1
+## 1 pfs      50      0     1      3  3.34     5     1
 ## 2 nds      50      0     0      0  0        0     0
 ## 3 lex      50      0     0      0  0        0     0
 ## 4 gfs      50      0     0      0  0        0     0
@@ -2433,7 +1429,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  pop_uni_obj by acro
-## Kruskal-Wallis chi-squared = 396.97, df = 7, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 396.94, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -2459,186 +1455,6 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## tru <2e-16 1   1   1   1   -   -  
 ## nov <2e-16 1   1   1   1   1   -  
 ## ran <2e-16 1   1   1   1   1   1  
-## 
-## P value adjustment method: bonferroni
-\end{verbatim}
-
-\hypertarget{best-trait-value-over-time}{%
-\section{Best trait value over time}\label{best-trait-value-over-time}}
-
-Best trait value in a population over time.
-Data points on the graph is the average trait value across 50 replicates every 2000 generations.
-Shading comes from the best and worse trait value across 50 replicates.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{lines =}\StringTok{ }\NormalTok{over_time_df }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(scheme, gen) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(pop_fit_max),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(pop_fit_max),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(pop_fit_max)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## `summarise()` has grouped output by 'scheme'. You can override using the
-## `.groups` argument.
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{over_time_plot =}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(lines, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{gen, }\DataTypeTok{y=}\NormalTok{mean, }\DataTypeTok{group =}\NormalTok{ scheme, }\DataTypeTok{fill =}\NormalTok{ scheme, }\DataTypeTok{color =}\NormalTok{ scheme, }\DataTypeTok{shape =}\NormalTok{ scheme)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_ribbon}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin =}\NormalTok{ min, }\DataTypeTok{ymax =}\NormalTok{ max), }\DataTypeTok{alpha =} \FloatTok{0.1}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\DataTypeTok{size =} \FloatTok{0.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =} \KeywordTok{filter}\NormalTok{(lines, gen }\OperatorTok{%%}\StringTok{ }\DecValTok{2000} \OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{&}\StringTok{ }\NormalTok{gen }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{), }\DataTypeTok{size =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{stroke =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
-    \DataTypeTok{name=}\StringTok{"Trait value"}
-\NormalTok{  ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}
-    \DataTypeTok{name=}\StringTok{"Generations"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50000}\NormalTok{),}
-    \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{10000}\NormalTok{, }\DecValTok{20000}\NormalTok{, }\DecValTok{30000}\NormalTok{, }\DecValTok{40000}\NormalTok{, }\DecValTok{50000}\NormalTok{),}
-    \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"0e+4"}\NormalTok{, }\StringTok{"1e+4"}\NormalTok{, }\StringTok{"2e+4"}\NormalTok{, }\StringTok{"3e+4"}\NormalTok{, }\StringTok{"4e+4"}\NormalTok{, }\StringTok{"5e+4"}\NormalTok{)}
-
-\NormalTok{  ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best trait value over time'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{(),}\DataTypeTok{legend.text=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{12}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{guides}\NormalTok{(}
-    \DataTypeTok{shape=}\KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{, }\DataTypeTok{title.position =} \StringTok{"bottom"}\NormalTok{),}
-    \DataTypeTok{color=}\KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{, }\DataTypeTok{title.position =} \StringTok{"bottom"}\NormalTok{),}
-    \DataTypeTok{fill=}\KeywordTok{guide_legend}\NormalTok{(}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{, }\DataTypeTok{title.position =} \StringTok{"bottom"}\NormalTok{)}
-\NormalTok{  )}
-
-\NormalTok{over_time_plot}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/con-per-ot-1.pdf}
-
-\hypertarget{best-trait-value-throughout}{%
-\section{Best trait value throughout}\label{best-trait-value-throughout}}
-
-Best trait value reached throughout 50,000 generations in a population.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'pop_fit_max'}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ acro, }\DataTypeTok{y =}\NormalTok{ val, }\DataTypeTok{color =}\NormalTok{ acro, }\DataTypeTok{fill =}\NormalTok{ acro, }\DataTypeTok{shape =}\NormalTok{ acro)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
-    \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{),}
-    \DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{, }\DecValTok{20}\NormalTok{),}
-    \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"0"}\NormalTok{, }\StringTok{"20"}\NormalTok{, }\StringTok{"40"}\NormalTok{, }\StringTok{"60"}\NormalTok{, }\StringTok{"80"}\NormalTok{, }\StringTok{"100"}\NormalTok{)}
-\NormalTok{  ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}
-    \DataTypeTok{name=}\StringTok{"Scheme"}
-\NormalTok{  )}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette, ) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best trait value throughout'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{())}
-
-\KeywordTok{plot_grid}\NormalTok{(}
-\NormalTok{  plot }\OperatorTok{+}
-\StringTok{    }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{),}
-\NormalTok{  legend,}
-  \DataTypeTok{nrow=}\DecValTok{2}\NormalTok{,}
-  \DataTypeTok{rel_heights =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{)}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: Removed 15 rows containing missing values (`geom_point()`).
-\end{verbatim}
-
-\includegraphics{mvc-diagnostics_files/figure-latex/con-per-bst-1.pdf}
-
-\hypertarget{stats-5}{%
-\subsection{Stats}\label{stats-5}}
-
-Summary statistics for the best trait value.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{trait_val =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'pop_fit_max'}\NormalTok{)}
-\NormalTok{trait_val}\OperatorTok{$}\NormalTok{acro =}\StringTok{ }\KeywordTok{factor}\NormalTok{(trait_val}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{'pfs'}\NormalTok{,}\StringTok{'ran'}\NormalTok{,}\StringTok{'gfs'}\NormalTok{,}\StringTok{'nov'}\NormalTok{,}\StringTok{'nds'}\NormalTok{,}\StringTok{'lex'}\NormalTok{,}\StringTok{'tru'}\NormalTok{,}\StringTok{'tor'}\NormalTok{))}
-\NormalTok{trait_val }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{group_by}\NormalTok{(acro) }\OperatorTok{%>%}
-\StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
-    \DataTypeTok{count =} \KeywordTok{n}\NormalTok{(),}
-    \DataTypeTok{na_cnt =} \KeywordTok{sum}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(val)),}
-    \DataTypeTok{min =} \KeywordTok{min}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{median =} \KeywordTok{median}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{mean =} \KeywordTok{mean}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{max =} \KeywordTok{max}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{),}
-    \DataTypeTok{IQR =} \KeywordTok{IQR}\NormalTok{(val, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
-\NormalTok{  )}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## # A tibble: 8 x 8
-##   acro  count na_cnt   min median  mean   max      IQR
-##   <fct> <int>  <int> <dbl>  <dbl> <dbl> <dbl>    <dbl>
-## 1 pfs      50      0 100.   100   100.  100   0.000100
-## 2 ran      50      0  43.9   53.0  56.7  74.0 9.99    
-## 3 gfs      50      0  23.0   23    24.7  29   5.76    
-## 4 nov      50      0  18.0   23.0  23.0  28.9 0.0528  
-## 5 nds      50      0  18     23    22.4  29   0.00328 
-## 6 lex      50      0  18     22.9  21.5  23   4.98    
-## 7 tru      50      0  18.0   18    18.4  23   0       
-## 8 tor      50      0  18.0   18    18.4  23   0
-\end{verbatim}
-
-Kruskal--Wallis test illustrates evidence of statistical differences.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{kruskal.test}\NormalTok{(val }\OperatorTok{~}\StringTok{ }\NormalTok{acro, }\DataTypeTok{data =}\NormalTok{ trait_val)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Kruskal-Wallis rank sum test
-## 
-## data:  val by acro
-## Kruskal-Wallis chi-squared = 337.68, df = 7, p-value < 2.2e-16
-\end{verbatim}
-
-Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{pairwise.wilcox.test}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ trait_val}\OperatorTok{$}\NormalTok{val, }\DataTypeTok{g =}\NormalTok{ trait_val}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{p.adjust.method =} \StringTok{"bonferroni"}\NormalTok{,}
-                     \DataTypeTok{paired =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{conf.int =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{alternative =} \StringTok{'l'}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 
-##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
-## 
-## data:  trait_val$val and trait_val$acro 
-## 
-##     pfs     ran     gfs     nov     nds     lex     tru    
-## ran < 2e-16 -       -       -       -       -       -      
-## gfs < 2e-16 < 2e-16 -       -       -       -       -      
-## nov < 2e-16 < 2e-16 3.2e-16 -       -       -       -      
-## nds < 2e-16 < 2e-16 0.00015 1.00000 -       -       -      
-## lex < 2e-16 < 2e-16 3.7e-15 0.00722 1.4e-05 -       -      
-## tru < 2e-16 < 2e-16 < 2e-16 4.5e-12 3.0e-11 1.0e-07 -      
-## tor < 2e-16 < 2e-16 < 2e-16 6.3e-12 7.2e-11 9.4e-08 1.00000
 ## 
 ## P value adjustment method: bonferroni
 \end{verbatim}
@@ -2735,7 +1551,7 @@ Shading comes from the best and worse coverage across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/mul-act-ot-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/mul-act-ot-1}
 
 \hypertarget{final-activation-gene-coverage-1}{%
 \section{Final activation gene coverage}\label{final-activation-gene-coverage-1}}
@@ -2746,9 +1562,9 @@ Activation gene coverage found in the final population at 50,000 generations.
 \begin{Highlighting}[]
 \NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(over_time_df, gen }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ acro, }\DataTypeTok{y =}\NormalTok{ uni_str_pos, }\DataTypeTok{color =}\NormalTok{ acro, }\DataTypeTok{fill =}\NormalTok{ acro, }\DataTypeTok{shape =}\NormalTok{ acro)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.01}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.1}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.16}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.03}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Coverage"}\NormalTok{,}
     \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100}\NormalTok{),}
@@ -2774,7 +1590,7 @@ Activation gene coverage found in the final population at 50,000 generations.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/mul-act-end-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/mul-act-end-1}
 
 \hypertarget{stats-6}{%
 \subsection{Stats}\label{stats-6}}
@@ -2784,7 +1600,7 @@ Summary statistics for the coverage found in the final population.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{act_coverage =}\StringTok{ }\KeywordTok{filter}\NormalTok{(over_time_df, gen }\OperatorTok{==}\StringTok{ }\DecValTok{50000}\NormalTok{)}
-\NormalTok{act_coverage}\OperatorTok{$}\NormalTok{acro =}\StringTok{ }\KeywordTok{factor}\NormalTok{(act_coverage}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{'nov'}\NormalTok{,}\StringTok{'lex'}\NormalTok{,}\StringTok{'nds'}\NormalTok{,}\StringTok{'tor'}\NormalTok{,}\StringTok{'tru'}\NormalTok{,}\StringTok{'gfs'}\NormalTok{,}\StringTok{'pfs'}\NormalTok{,}\StringTok{'ran'}\NormalTok{))}
+\NormalTok{act_coverage}\OperatorTok{$}\NormalTok{acro =}\StringTok{ }\KeywordTok{factor}\NormalTok{(act_coverage}\OperatorTok{$}\NormalTok{acro, }\DataTypeTok{levels =} \KeywordTok{c}\NormalTok{(}\StringTok{'nov'}\NormalTok{,}\StringTok{'lex'}\NormalTok{,}\StringTok{'nds'}\NormalTok{,}\StringTok{'tor'}\NormalTok{,}\StringTok{'tru'}\NormalTok{,}\StringTok{'pfs'}\NormalTok{,}\StringTok{'gfs'}\NormalTok{,}\StringTok{'ran'}\NormalTok{))}
 \NormalTok{act_coverage }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(acro) }\OperatorTok{%>%}
 \StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{summarise}\NormalTok{(}
@@ -2803,14 +1619,14 @@ Summary statistics for the coverage found in the final population.
 ## # A tibble: 8 x 8
 ##   acro  count na_cnt   min median  mean   max   IQR
 ##   <fct> <int>  <int> <int>  <dbl> <dbl> <int> <dbl>
-## 1 nov      50      0    65   79   78.4     89  6.75
-## 2 lex      50      0    56   67   66.5     77  6   
-## 3 nds      50      0    12   43.5 41.0     82 35.8 
-## 4 tor      50      0     1    4    4.4     10  3   
-## 5 tru      50      0     1    4    4.28    10  2   
-## 6 gfs      50      0     1    3    2.88     5  1   
-## 7 pfs      50      0     2    5    4.64     7  1   
-## 8 ran      50      0     1    2    1.98     5  2
+## 1 nov      50      0    68   79.5 79.9     92  6.75
+## 2 lex      50      0    56   65   66.1     75  9   
+## 3 nds      50      0     7   43   42.5     80 36.5 
+## 4 tor      50      0     1    4    4.84    13  3.75
+## 5 tru      50      0     1    4    4.9     15  4.75
+## 6 pfs      50      0     2    4    4.4      7  1   
+## 7 gfs      50      0     1    3    3        5  1.75
+## 8 ran      50      0     1    2    2.02     6  2
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -2826,7 +1642,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  uni_str_pos by acro
-## Kruskal-Wallis chi-squared = 333.43, df = 7, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 324.89, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -2844,14 +1660,14 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## 
 ## data:  act_coverage$uni_str_pos and act_coverage$acro 
 ## 
-##     nov     lex     nds     tor     tru     gfs     pfs    
-## lex 3.0e-14 -       -       -       -       -       -      
-## nds 1.5e-14 2.0e-09 -       -       -       -       -      
+##     nov     lex     nds     tor     tru     pfs     gfs    
+## lex 1.4e-14 -       -       -       -       -       -      
+## nds 8.1e-15 1.5e-06 -       -       -       -       -      
 ## tor < 2e-16 < 2e-16 < 2e-16 -       -       -       -      
-## tru < 2e-16 < 2e-16 < 2e-16 1.0000  -       -       -      
-## gfs < 2e-16 < 2e-16 < 2e-16 0.0032  0.0012  -       -      
-## pfs < 2e-16 < 2e-16 < 2e-16 1.0000  1.0000  1.0000  -      
-## ran < 2e-16 < 2e-16 < 2e-16 1.6e-08 1.1e-08 5.8e-05 2.2e-14
+## tru < 2e-16 < 2e-16 2.7e-16 1.000   -       -       -      
+## pfs < 2e-16 < 2e-16 < 2e-16 1.000   1.000   -       -      
+## gfs < 2e-16 < 2e-16 < 2e-16 0.011   0.157   3.8e-08 -      
+## ran < 2e-16 < 2e-16 < 2e-16 3.7e-08 2.7e-06 1.3e-13 4.0e-05
 ## 
 ## P value adjustment method: bonferroni
 \end{verbatim}
@@ -2888,7 +1704,8 @@ Shading comes from the best and worse performance across 50 replicates.
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =} \KeywordTok{filter}\NormalTok{(lines, gen }\OperatorTok{%%}\StringTok{ }\DecValTok{2000} \OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{&}\StringTok{ }\NormalTok{gen }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{), }\DataTypeTok{size =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{stroke =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{),}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{14.5}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{14}\NormalTok{)}
 \NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Generations"}\NormalTok{,}
@@ -2912,7 +1729,7 @@ Shading comes from the best and worse performance across 50 replicates.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/mul-per-ot-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/mul-per-ot-1}
 
 \hypertarget{best-performance-throughout-2}{%
 \section{Best performance throughout}\label{best-performance-throughout-2}}
@@ -2923,12 +1740,13 @@ Best performance reached throughout 50,000 generations in a population.
 \begin{Highlighting}[]
 \NormalTok{plot =}\StringTok{ }\KeywordTok{filter}\NormalTok{(best_df, var }\OperatorTok{==}\StringTok{ 'pop_fit_max'}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(., }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ acro, }\DataTypeTok{y =}\NormalTok{ val }\OperatorTok{/}\StringTok{ }\NormalTok{DIMENSIONALITY, }\DataTypeTok{color =}\NormalTok{ acro, }\DataTypeTok{fill =}\NormalTok{ acro, }\DataTypeTok{shape =}\NormalTok{ acro)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.09}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.15}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_flat_violin}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.1}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{), }\DataTypeTok{scale =} \StringTok{'width'}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.2}\NormalTok{, }\DataTypeTok{width =} \FloatTok{1.5}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{color =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{width =} \FloatTok{.07}\NormalTok{, }\DataTypeTok{outlier.shape =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.0}\NormalTok{, }\DataTypeTok{size =} \FloatTok{1.0}\NormalTok{, }\DataTypeTok{position =} \KeywordTok{position_nudge}\NormalTok{(}\DataTypeTok{x =} \FloatTok{.16}\NormalTok{, }\DataTypeTok{y =} \DecValTok{0}\NormalTok{)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.03}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Average trait score"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{),}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{14.5}\NormalTok{),}
+    \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{14}\NormalTok{)}
 \NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Scheme"}
@@ -2936,7 +1754,7 @@ Best performance reached throughout 50,000 generations in a population.
 \StringTok{  }\KeywordTok{scale_shape_manual}\NormalTok{(}\DataTypeTok{values=}\NormalTok{SHAPE)}\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette, ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
-\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best performance throughout'}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best performance'}\NormalTok{)}\OperatorTok{+}
 \StringTok{  }\NormalTok{p_theme }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title=}\KeywordTok{element_blank}\NormalTok{())}
 
 \KeywordTok{plot_grid}\NormalTok{(}
@@ -2949,7 +1767,7 @@ Best performance reached throughout 50,000 generations in a population.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{mvc-diagnostics_files/figure-latex/mul-per-bst-1.pdf}
+\includegraphics[width=1\linewidth]{mvc-diagnostics_files/figure-latex/mul-per-bst-1}
 
 \hypertarget{stats-7}{%
 \subsection{Stats}\label{stats-7}}
@@ -2978,14 +1796,14 @@ Summary statistics for the best performance.
 ## # A tibble: 8 x 8
 ##   acro  count na_cnt   min median  mean   max   IQR
 ##   <fct> <int>  <int> <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 gfs      50      0 3.07   11.5  10.8  13.3  1.48 
-## 2 pfs      50      0 7.07   11.0  10.8  12.3  1.24 
-## 3 tru      50      0 1.93    5.82  5.61  8.62 3.24 
-## 4 tor      50      0 1.28    4.94  5.37  8.69 3.93 
-## 5 nov      50      0 2.66    3.92  3.88  5.29 0.536
-## 6 lex      50      0 2.80    3.41  3.45  4.23 0.531
-## 7 nds      50      0 1.59    1.95  1.92  2.30 0.235
-## 8 ran      50      0 0.659   1.08  1.11  1.86 0.311
+## 1 gfs      50      0 3.15  11.4   11.1  13.4  1.25 
+## 2 pfs      50      0 7.23  11.0   10.8  12.8  0.949
+## 3 tru      50      0 0.880  4.41   4.71  8.85 3.56 
+## 4 tor      50      0 1.60   4.37   4.84  8.70 3.68 
+## 5 nov      50      0 2.70   3.84   3.89  5.22 0.639
+## 6 lex      50      0 2.60   3.44   3.45  4.21 0.523
+## 7 nds      50      0 1.52   1.93   1.97  2.45 0.322
+## 8 ran      50      0 0.780  0.998  1.06  1.60 0.261
 \end{verbatim}
 
 Kruskal--Wallis test illustrates evidence of statistical differences.
@@ -3001,7 +1819,7 @@ Kruskal--Wallis test illustrates evidence of statistical differences.
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  val by acro
-## Kruskal-Wallis chi-squared = 341.54, df = 7, p-value < 2.2e-16
+## Kruskal-Wallis chi-squared = 327.4, df = 7, p-value < 2.2e-16
 \end{verbatim}
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
@@ -3020,13 +1838,13 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 ## data:  performance$val and performance$acro 
 ## 
 ##     gfs     pfs     tru     tor     nov     lex     nds    
-## pfs 0.3635  -       -       -       -       -       -      
-## tru 4.1e-13 5.9e-16 -       -       -       -       -      
-## tor 3.2e-13 5.2e-16 1.0000  -       -       -       -      
-## nov 1.9e-15 < 2e-16 3.2e-05 0.0055  -       -       -      
-## lex 1.1e-15 < 2e-16 3.1e-07 1.6e-05 6.3e-05 -       -      
-## nds < 2e-16 < 2e-16 2.5e-15 1.2e-13 < 2e-16 < 2e-16 -      
-## ran < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 < 2e-16 3.5e-16
+## pfs 0.03925 -       -       -       -       -       -      
+## tru 2.2e-14 < 2e-16 -       -       -       -       -      
+## tor 2.4e-14 < 2e-16 1.00000 -       -       -       -      
+## nov 2.1e-14 < 2e-16 1.00000 1.00000 -       -       -      
+## lex 5.3e-15 < 2e-16 0.23671 0.04294 0.00042 -       -      
+## nds < 2e-16 < 2e-16 5.5e-10 8.2e-13 < 2e-16 < 2e-16 -      
+## ran < 2e-16 < 2e-16 1.4e-15 < 2e-16 < 2e-16 < 2e-16 < 2e-16
 ## 
 ## P value adjustment method: bonferroni
 \end{verbatim}

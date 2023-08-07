@@ -23,7 +23,7 @@
 <meta name="author" content="Jose Guadalupe Hernandez" />
 
 
-<meta name="date" content="2023-08-01" />
+<meta name="date" content="2023-08-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -215,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Supplemental Material: Base Diagnostics</h1>
 <p class="author"><em>Jose Guadalupe Hernandez</em></p>
-<p class="date"><em>2023-08-01</em></p>
+<p class="date"><em>2023-08-07</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor">
 <h1><span class="header-section-number">Chapter 1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -282,7 +282,7 @@ We compiled our data analyses and supplemental documentation into this nifty web
 <a class="sourceLine" id="cb9-2" title="2">DATA_DIR =<span class="st"> &#39;/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/BASE_DIAGNOSTICS/&#39;</span></a>
 <a class="sourceLine" id="cb9-3" title="3"></a>
 <a class="sourceLine" id="cb9-4" title="4"><span class="co"># data diractory for local testing</span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="co"># DATA_DIR = &#39;C:/Users/jgh9094/Desktop/Research/Projects/SelectionDiagnostics/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/BASE_DIAGNOSTICS/&#39;</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co"># DATA_DIR = &#39;~/Desktop/Repositories/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/BASE_DIAGNOSTICS/&#39;</span></a>
 <a class="sourceLine" id="cb9-6" title="6"></a>
 <a class="sourceLine" id="cb9-7" title="7"><span class="co"># graph variables</span></a>
 <a class="sourceLine" id="cb9-8" title="8">SHAPE =<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">20</span>,<span class="dv">1</span>)</a>
@@ -307,14 +307,18 @@ We compiled our data analyses and supplemental documentation into this nifty web
 ## This warning is displayed once every 8 hours.
 ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
 ## generated.</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># default variables</span></a>
-<a class="sourceLine" id="cb11-2" title="2">REPLICATES =<span class="st"> </span><span class="dv">50</span></a>
-<a class="sourceLine" id="cb11-3" title="3">DIMENSIONALITY =<span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb11-4" title="4">GENERATIONS =<span class="st"> </span><span class="dv">50000</span></a>
-<a class="sourceLine" id="cb11-5" title="5"></a>
-<a class="sourceLine" id="cb11-6" title="6"><span class="co"># selection scheme related stuff</span></a>
-<a class="sourceLine" id="cb11-7" title="7">ACRO =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;tru&#39;</span>,<span class="st">&#39;tor&#39;</span>,<span class="st">&#39;lex&#39;</span>,<span class="st">&#39;gfs&#39;</span>,<span class="st">&#39;pfs&#39;</span>,<span class="st">&#39;nds&#39;</span>,<span class="st">&#39;nov&#39;</span>,<span class="st">&#39;ran&#39;</span>)</a>
-<a class="sourceLine" id="cb11-8" title="8">NAMES =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Truncation (tru)&#39;</span>,<span class="st">&#39;Tournament (tor)&#39;</span>,<span class="st">&#39;Lexicase (lex)&#39;</span>, <span class="st">&#39;Genotypic Fitness Sharing (gfs)&#39;</span>,<span class="st">&#39;Phenotypic Fitness Sharing (pfs)&#39;</span>,<span class="st">&#39;Nondominated Sorting (nds)&#39;</span>,<span class="st">&#39;Novelty Search (nov)&#39;</span>,<span class="st">&#39;Random (ran)&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># colors for streak plots</span></a>
+<a class="sourceLine" id="cb11-2" title="2">STK_SHAPE =<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">20</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb11-3" title="3">stk_cb_palette &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;#EE3377&#39;</span>,<span class="st">&#39;#117733&#39;</span>,<span class="st">&#39;#882255&#39;</span>,<span class="st">&#39;#44AA99&#39;</span>,<span class="st">&#39;#CCBB44&#39;</span>, <span class="st">&#39;#000000&#39;</span>)</a>
+<a class="sourceLine" id="cb11-4" title="4"></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="co"># default variables</span></a>
+<a class="sourceLine" id="cb11-6" title="6">REPLICATES =<span class="st"> </span><span class="dv">50</span></a>
+<a class="sourceLine" id="cb11-7" title="7">DIMENSIONALITY =<span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb11-8" title="8">GENERATIONS =<span class="st"> </span><span class="dv">50000</span></a>
+<a class="sourceLine" id="cb11-9" title="9"></a>
+<a class="sourceLine" id="cb11-10" title="10"><span class="co"># selection scheme related stuff</span></a>
+<a class="sourceLine" id="cb11-11" title="11">ACRO =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;tru&#39;</span>,<span class="st">&#39;tor&#39;</span>,<span class="st">&#39;lex&#39;</span>,<span class="st">&#39;gfs&#39;</span>,<span class="st">&#39;pfs&#39;</span>,<span class="st">&#39;nds&#39;</span>,<span class="st">&#39;nov&#39;</span>,<span class="st">&#39;ran&#39;</span>)</a>
+<a class="sourceLine" id="cb11-12" title="12">NAMES =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Truncation (tru)&#39;</span>,<span class="st">&#39;Tournament (tor)&#39;</span>,<span class="st">&#39;Lexicase (lex)&#39;</span>, <span class="st">&#39;Genotypic Fitness Sharing (gfs)&#39;</span>,<span class="st">&#39;Phenotypic Fitness Sharing (pfs)&#39;</span>,<span class="st">&#39;Nondominated Sorting (nds)&#39;</span>,<span class="st">&#39;Novelty Search (nov)&#39;</span>,<span class="st">&#39;Random (ran)&#39;</span>)</a></code></pre></div>
 
 </div>
 </div>

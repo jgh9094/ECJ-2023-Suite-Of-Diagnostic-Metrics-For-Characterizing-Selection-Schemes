@@ -23,7 +23,7 @@
 <meta name="author" content="Jose Guadalupe Hernandez" />
 
 
-<meta name="date" content="2023-08-01" />
+<meta name="date" content="2023-08-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -277,7 +277,7 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb90-27" title="27">  )</a>
 <a class="sourceLine" id="cb90-28" title="28"></a>
 <a class="sourceLine" id="cb90-29" title="29">over_time_plot</a></code></pre></div>
-<p><img src="base-diagnostics_files/figure-html/mul-act-ot-1.png" width="672" /></p>
+<p><img src="base-diagnostics_files/figure-html/mul-act-ot-1.png" width="100%" /></p>
 </div>
 <div id="final-activation-gene-coverage-1" class="section level2 hasAnchor">
 <h2><span class="header-section-number">5.4</span> Final activation gene coverage<a href="multi-path-exploration-results.html#final-activation-gene-coverage-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -309,7 +309,7 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb91-25" title="25">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
 <a class="sourceLine" id="cb91-26" title="26">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb91-27" title="27">)</a></code></pre></div>
-<p><img src="base-diagnostics_files/figure-html/mul-act-end-1.png" width="672" /></p>
+<p><img src="base-diagnostics_files/figure-html/mul-act-end-1.png" width="100%" /></p>
 <div id="stats-7" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.4.1</span> Stats<a href="multi-path-exploration-results.html#stats-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Summary statistics for the coverage found in the final population.</p>
@@ -329,21 +329,21 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <pre><code>## # A tibble: 8 x 8
 ##   acro  count na_cnt   min median  mean   max   IQR
 ##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
-## 1 nov      50      0    75     86 86.2     95     4
-## 2 lex      50      0    26     30 30.7     40     4
-## 3 nds      50      0     5      9  9.68    22     2
-## 4 gfs      50      0     2      3  3.18     5     1
-## 5 pfs      50      0     2      3  2.66     4     1
-## 6 ran      50      0     1      2  2.02     5     2
-## 7 tor      50      0     1      2  1.94     2     0
-## 8 tru      50      0     1      2  1.98     3     0</code></pre>
+## 1 nov      50      0    71   85.5 85.4     96  7.75
+## 2 lex      50      0    25   31   31.1     37  4   
+## 3 nds      50      0     5    9   10.2     20  3   
+## 4 gfs      50      0     2    3    3.48     5  1   
+## 5 pfs      50      0     2    2.5  2.5      3  1   
+## 6 ran      50      0     1    2    2.16     5  2   
+## 7 tor      50      0     1    2    2.04     3  0   
+## 8 tru      50      0     1    2    1.98     2  0</code></pre>
 <p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="kw">kruskal.test</span>(uni_str_pos <span class="op">~</span><span class="st"> </span>acro, <span class="dt">data =</span> act_coverage)</a></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  uni_str_pos by acro
-## Kruskal-Wallis chi-squared = 350.22, df = 7, p-value &lt; 2.2e-16</code></pre>
+## Kruskal-Wallis chi-squared = 350.25, df = 7, p-value &lt; 2.2e-16</code></pre>
 <p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
 <div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> act_coverage<span class="op">$</span>uni_str_pos, <span class="dt">g =</span> act_coverage<span class="op">$</span>acro, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
 <a class="sourceLine" id="cb96-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;l&#39;</span>)</a></code></pre></div>
@@ -352,14 +352,14 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 ## 
 ## data:  act_coverage$uni_str_pos and act_coverage$acro 
 ## 
-##     nov     lex     nds     gfs     pfs     ran     tor    
-## lex &lt; 2e-16 -       -       -       -       -       -      
-## nds &lt; 2e-16 &lt; 2e-16 -       -       -       -       -      
-## gfs &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 -       -       -       -      
-## pfs &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 0.00097 -       -       -      
-## ran &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 2.2e-07 0.00068 -       -      
-## tor &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 4.9e-16 1.2e-10 1.00000 -      
-## tru &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 1.7e-15 7.1e-10 1.00000 1.00000
+##     nov     lex     nds     gfs     pfs     ran tor
+## lex &lt; 2e-16 -       -       -       -       -   -  
+## nds &lt; 2e-16 &lt; 2e-16 -       -       -       -   -  
+## gfs &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 -       -       -   -  
+## pfs &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 3.6e-10 -       -   -  
+## ran &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 9.4e-08 0.4     -   -  
+## tor &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 1.2e-05 1.0 -  
+## tru &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 1.1e-07 1.0 1.0
 ## 
 ## P value adjustment method: bonferroni</code></pre>
 </div>
@@ -407,7 +407,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb100-27" title="27">  )</a>
 <a class="sourceLine" id="cb100-28" title="28"></a>
 <a class="sourceLine" id="cb100-29" title="29">over_time_plot</a></code></pre></div>
-<p><img src="base-diagnostics_files/figure-html/mul-per-ot-1.png" width="672" /></p>
+<p><img src="base-diagnostics_files/figure-html/mul-per-ot-1.png" width="100%" /></p>
 </div>
 <div id="best-performance-throughout-2" class="section level2 hasAnchor">
 <h2><span class="header-section-number">5.6</span> Best performance throughout<a href="multi-path-exploration-results.html#best-performance-throughout-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -439,7 +439,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb101-25" title="25">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
 <a class="sourceLine" id="cb101-26" title="26">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb101-27" title="27">)</a></code></pre></div>
-<p><img src="base-diagnostics_files/figure-html/mul-per-bst-1.png" width="672" /></p>
+<p><img src="base-diagnostics_files/figure-html/mul-per-bst-1.png" width="100%" /></p>
 <div id="stats-8" class="section level3 hasAnchor">
 <h3><span class="header-section-number">5.6.1</span> Stats<a href="multi-path-exploration-results.html#stats-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Summary statistics for the best performance.</p>
@@ -457,23 +457,23 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb102-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb102-13" title="13">  )</a></code></pre></div>
 <pre><code>## # A tibble: 8 x 8
-##   acro  count na_cnt    min median  mean    max    IQR
-##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-## 1 lex      50      0 85.3    93.9  93.3   98.5   4.02 
-## 2 tru      50      0  5      46.0  51.4  100.   40.0  
-## 3 tor      50      0  6      50.0  54.1   96.9  44.2  
-## 4 gfs      50      0  3.00   20.9  19.4   22.4   0.843
-## 5 nds      50      0 15.9    19.8  19.6   21.9   1.05 
-## 6 pfs      50      0  6.78   13.4  12.9   15.4   1.15 
-## 7 nov      50      0  2.51    3.87  3.95   5.30  0.895
-## 8 ran      50      0  0.919   1.17  1.18   1.52  0.209</code></pre>
+##   acro  count na_cnt    min median  mean   max    IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 lex      50      0 83.4    92.3  91.9  98.1   5.51 
+## 2 tru      50      0 16      66.0  61.1  99.0  47.0  
+## 3 tor      50      0  5      47.0  48.9  97.9  46.2  
+## 4 gfs      50      0  4.99   20.7  19.3  21.7   1.45 
+## 5 nds      50      0 12.0    19.9  19.7  22.8   1.72 
+## 6 pfs      50      0  5.87   13.6  13.2  15.9   1.39 
+## 7 nov      50      0  2.52    3.83  3.87  5.33  0.793
+## 8 ran      50      0  0.865   1.19  1.23  1.72  0.247</code></pre>
 <p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
 <div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>acro, <span class="dt">data =</span> performance)</a></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  val by acro
-## Kruskal-Wallis chi-squared = 348.24, df = 7, p-value &lt; 2.2e-16</code></pre>
+## Kruskal-Wallis chi-squared = 356.22, df = 7, p-value &lt; 2.2e-16</code></pre>
 <p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> performance<span class="op">$</span>val, <span class="dt">g =</span> performance<span class="op">$</span>acro, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
 <a class="sourceLine" id="cb106-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;l&#39;</span>)</a></code></pre></div>
@@ -483,12 +483,12 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 ## data:  performance$val and performance$acro 
 ## 
 ##     lex     tru     tor     gfs     nds     pfs     nov    
-## tru 5.7e-10 -       -       -       -       -       -      
-## tor 8.7e-13 1.00000 -       -       -       -       -      
-## gfs &lt; 2e-16 8.8e-08 2.5e-11 -       -       -       -      
-## nds &lt; 2e-16 1.7e-07 4.1e-11 0.00099 -       -       -      
-## pfs &lt; 2e-16 1.0e-09 4.5e-14 5.0e-11 &lt; 2e-16 -       -      
-## nov &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 1.5e-15 &lt; 2e-16 &lt; 2e-16 -      
+## tru 4.4e-09 -       -       -       -       -       -      
+## tor 1.1e-12 0.33    -       -       -       -       -      
+## gfs &lt; 2e-16 2.3e-13 4.3e-07 -       -       -       -      
+## nds &lt; 2e-16 1.2e-13 6.8e-07 0.47    -       -       -      
+## pfs &lt; 2e-16 &lt; 2e-16 5.0e-12 2.3e-11 1.3e-15 -       -      
+## nov &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 -      
 ## ran &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 &lt; 2e-16 &lt; 2e-16
 ## 
 ## P value adjustment method: bonferroni</code></pre>
