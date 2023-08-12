@@ -3,15 +3,6 @@
 Here we present the results for **activation gene coverage** and **satisfactory trait coverage** found by each selection scheme on the contradictory objectives diagnostic.
 50 replicates are conducted for each scheme explored.
 
-## Analysis dependencies
-
-```{r con-libs, message=FALSE}
-library(ggplot2)
-library(cowplot)
-library(dplyr)
-library(PupillometryR)
-```
-
 ## Data setup
 
 ```{r con-data-setup, message=FALSE}

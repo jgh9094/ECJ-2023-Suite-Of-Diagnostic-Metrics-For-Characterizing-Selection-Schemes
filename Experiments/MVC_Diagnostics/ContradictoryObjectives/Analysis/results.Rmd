@@ -3,15 +3,6 @@
 Here we present the results for **activation gene coverage** and **satisfactory trait coverage** found by each selection scheme on the contradictory objectives diagnostic with valley crossing integrated.
 50 replicates are conducted for each scheme explored.
 
-## Analysis dependencies
-
-```{r con-libs, message=FALSE}
-library(ggplot2)
-library(cowplot)
-library(dplyr)
-library(PupillometryR)
-```
-
 ## Data setup
 
 ```{r con-data-setup, message=FALSE}
@@ -261,5 +252,72 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r con-sat-wil-end}
 pairwise.wilcox.test(x = act_coverage$pop_uni_obj, g = act_coverage$acro, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+```
+
+## Largest valley reached throughout
+
+Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+
+```{r ord-val-bst, out.width="100%"}
+plot = filter(best_df, var == 'ele_big_peak') %>%
+  ggplot(., aes(x = acro, y = val, color = acro, fill = acro, shape = acro)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Valley reached",
+    limits=c(3.5,14.5),
+    breaks=c(4,9,14)
+  ) +
+  scale_x_discrete(
+    name="Scheme"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Largest valley reached')+
+  p_theme + theme(legend.title=element_blank())
+
+plot_grid(
+  plot +
+    theme(legend.position="none"),
+  legend,
+  nrow=2,
+  rel_heights = c(3,1)
+)
+```
+
+### Stats
+
+Summary statistics for the largest valley crossed.
+
+```{r ord-val-sum}
+valleys = filter(best_df, var == 'ele_big_peak')
+valleys$acro = factor(valleys$acro, levels = c('pfs','ran','gfs','nov','nds','lex','tru','tor'))
+valleys %>%
+  group_by(acro) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(val)),
+    min = min(val, na.rm = TRUE),
+    median = median(val, na.rm = TRUE),
+    mean = mean(val, na.rm = TRUE),
+    max = max(val, na.rm = TRUE),
+    IQR = IQR(val, na.rm = TRUE)
+  )
+```
+
+
+Kruskal–Wallis test illustrates evidence of statistical differences.
+
+```{r ord-val-kru}
+kruskal.test(val ~ acro, data = valleys)
+```
+
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
+
+```{r ord-val-wil}
+pairwise.wilcox.test(x = valleys$val, g = valleys$acro, p.adjust.method = "bonferroni",
                      paired = FALSE, conf.int = FALSE, alternative = 'l')
 ```
