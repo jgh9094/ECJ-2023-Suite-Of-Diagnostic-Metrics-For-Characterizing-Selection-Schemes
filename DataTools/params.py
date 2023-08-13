@@ -168,7 +168,7 @@ def GetSweepSeedLists(offs,sch):
         return seed
     
     # fitness sharing, nondominated sorting
-    elif sch ==  2 or sch == 3 or sch == 5:
+    elif sch ==  2 or sch == 3 or sch == 4:
         seed.append([x + offs for x in range(1,351)])
         seed.append([x + offs + 500 for x in range(1,351)])
         seed.append([x + offs + 1000 for x in range(1,351)])
@@ -176,7 +176,7 @@ def GetSweepSeedLists(offs,sch):
         return seed
 
     # novelty search
-    elif sch == 6:
+    elif sch == 5:
         seed.append([x + offs for x in range(1,351)])
         seed.append([x + offs + 500 for x in range(1,301)])
         seed.append([x + offs + 1000 for x in range(1,301)])
