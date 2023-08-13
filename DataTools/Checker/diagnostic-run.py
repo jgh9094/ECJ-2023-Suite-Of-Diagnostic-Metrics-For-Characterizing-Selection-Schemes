@@ -67,7 +67,7 @@ def CheckDir(dir,dia,offs,val,exp):
         sys.exit('SELECTION DATA DIRECTORY DOES NOT EXIST')
 
     # create seed data directories and check if exist
-    SCHEMES = params.GetSchemeList(exp)
+    SCHEMES = ['TRUNCATION','TOURNAMENT','FITSHARING_G','FITSHARING_P','LEXICASE','NONDOMINATED','NOVELTY','RANDOM']
     DIR_DNE = []
     DAT_DNE = []
     DAT_DNF = []
@@ -123,7 +123,7 @@ def main():
     parser.add_argument("diagnostic",     type=int,  help="Diagnostic we are looking for?\n0: Exploitation\n1: Ordered Exploitation\n2: Contradictory Objectives\n3: Multi-path Exploration\n4: Multi-valley Crossing")
     parser.add_argument("seed_offset",    type=int,  help="Experiment seed offset.")
     parser.add_argument("valleys",        type=int,  help="True (1) or False (0) on whether or not valleys are applied")
-    parser.add_argument("experiment",     type=int,  help="What experiment are we running?: (0) Base Diagnostics, (1) MVC Diagnostics, (2) Parameter Sweep")
+    parser.add_argument("experiment",     type=int,  help="What experiment are we running?: (0) Base Diagnostics, (1) MVC Diagnostics")
 
     # Parse all the arguments
     args = parser.parse_args()

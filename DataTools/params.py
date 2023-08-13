@@ -9,6 +9,9 @@
 import sys
 import os
 
+# diagnostics
+DIAGNOSTICS = ['EXPLOITATION_RATE','ORDERED_EXPLOITATION','CONTRADICTORY_OBJECTIVES','MULTIPATH_EXPLORATION']
+
 # variables we are testing for each replicate range
 TR_LIST = ['1','2','4','8','16','32','64','128','256']
 TS_LIST = ['2','4','8','16','32','64','128','256']
@@ -103,14 +106,6 @@ def GetSchemeVarList(s):
     else:
         sys.exit("UNKNOWN VARIABLE LIST")
 
-# selection scheme list to get dependent on experiment running
-def GetSchemeList(e):
-    # case by case
-    if e == 0 or e == 1:
-        return ['TRUNCATION','TOURNAMENT','FITSHARING_G','FITSHARING_P','LEXICASE','NONDOMINATED','NOVELTY','RANDOM']
-    else:
-        sys.exit("UNKNOWN VARIABLE LIST")
-
 def GetSchemeAcro(s):
     # case by case
     if s == 'TRUNCATION':
@@ -140,6 +135,57 @@ def GetSchemeAcro(s):
     else:
         sys.exit("UNKNOWN VARIABLE LIST")
 
+def GetSweepScheme(s):
+    #case by case
+    if s == 0:
+        return 'TRUNCATION'
+    
+    elif s == 1:
+        return 'TOURNAMENT'
+    
+    elif s ==  2:
+        return 'FITSHARING_G'
+
+    elif s == 3:
+        return 'FITSHARING_P'
+
+    elif s == 4:
+        return 'NONDOMINATED'
+
+    elif s == 5:
+        return 'NOVELTY'
+        
+def GetSweepSeedLists(offs,sch):
+    #case by case
+    seed = []
+    
+    # truncation, tournament: 450 replidates
+    if sch == 0 or sch == 1:
+        seed.append([x + offs for x in range(1,451)])
+        seed.append([x + offs + 500 for x in range(1,451)])
+        seed.append([x + offs + 1000 for x in range(1,451)])
+        seed.append([x + offs + 1500 for x in range(1,451)])
+        return seed
+    
+    # fitness sharing, nondominated sorting
+    elif sch ==  2 or sch == 3 or sch == 5:
+        seed.append([x + offs for x in range(1,351)])
+        seed.append([x + offs + 500 for x in range(1,351)])
+        seed.append([x + offs + 1000 for x in range(1,351)])
+        seed.append([x + offs + 1500 for x in range(1,351)])
+        return seed
+
+    # novelty search
+    elif sch == 6:
+        seed.append([x + offs for x in range(1,351)])
+        seed.append([x + offs + 500 for x in range(1,301)])
+        seed.append([x + offs + 1000 for x in range(1,301)])
+        seed.append([x + offs + 1500 for x in range(1,301)])
+        return seed
+
+    else:
+        sys.exit('SEED SELECTION UNKNOWN')
+
 def GetSchemeName(s):
     # case by case
     if s == 'TRUNCATION':
@@ -168,7 +214,6 @@ def GetSchemeName(s):
 
     else:
         sys.exit("UNKNOWN VARIABLE LIST")
-
 
 def GetDataList(val):
 
