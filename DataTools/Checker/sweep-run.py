@@ -91,7 +91,7 @@ def CheckDir(dir,sch,offs,val):
                 continue
             
     # print out the list of incomplete seeds
-    print('Scheme:', sch)
+    print('Scheme:', params.GetSweepScheme(sch))
     print('Directories and seed that did not finish running:')
     
     for key,val in missing.items():
