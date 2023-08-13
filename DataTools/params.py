@@ -177,7 +177,7 @@ def GetSweepSeedLists(offs,sch):
 
     # novelty search
     elif sch == 5:
-        seed.append([x + offs for x in range(1,351)])
+        seed.append([x + offs for x in range(1,301)])
         seed.append([x + offs + 500 for x in range(1,301)])
         seed.append([x + offs + 1000 for x in range(1,301)])
         seed.append([x + offs + 1500 for x in range(1,301)])
