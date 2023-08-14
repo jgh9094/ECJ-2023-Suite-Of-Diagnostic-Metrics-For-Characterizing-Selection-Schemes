@@ -1,0 +1,76 @@
+#!/bin/bash
+########## Define Resources Needed with SBATCH Lines ##########
+
+#SBATCH --time=00:20:00               # limit of wall clock time - how long the job will run (same as -t)
+#SBATCH --array=1-6                   # number of jobs being created, each with its array id
+#SBATCH --mem=2G                      # memory required per node - amount of memory (in gigs)
+#SBATCH --job-name par-bst            # you can give your job a name for easier identification (same as -J)
+#SBATCH --account=devolab             # research group account being used
+
+##################################
+# Setup required dependencies
+##################################
+module load GCCcore/11.2.0; module load Python/3.9.6; pip3 install pandas;
+
+##################################
+# Setup relevant directories
+##################################
+DATA_DIR=/mnt/gs21/scratch/herna383/ECJ-2023/
+DUMP_DIR=/mnt/gs21/scratch/herna383/ECJ-2023-DUMP/PARAM_SWEEP/SOL-FND/
+
+##################################
+# Selection scheme
+##################################
+TRUNCATION=0
+TOURNAMENT=1
+FITSHARING_G=2
+FITSHARING_P=3
+NONDOMINATED=4
+NOVELTY=5
+
+##################################
+# Valley vars
+##################################
+
+VALLEY=0
+
+####################################################################
+
+if [ ${SLURM_ARRAY_TASK_ID} -eq 1 ] ; then
+  SCHEME=${TRUNCATION}
+  OFFSET=50000
+
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 2 ] ; then
+  SCHEME=${TOURNAMENT}
+  OFFSET=52000
+
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 3 ] ; then
+  SCHEME=${NOVELTY}
+  OFFSET=54000
+
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 4 ] ; then
+  SCHEME=${NONDOMINATED}
+  OFFSET=56000
+
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 5 ] ; then
+  SCHEME=${FITSHARING_P}
+  OFFSET=58000
+
+elif [ ${SLURM_ARRAY_TASK_ID} -eq 6 ] ; then
+  SCHEME=${FITSHARING_G}
+  OFFSET=60000
+
+else
+  echo "${SLURM_ARRAY_TASK_ID} from failed to launch" >> /mnt/ls15/scratch/users/herna383/ps-coh-failtolaunch.txt
+fi
+
+####################################################################
+
+# make DUMP directory
+mkdir -p ${DUMP_DIR}
+
+SEED_OFFSET=$((OFFSET))
+
+echo "python3 sol-fnd.py ${DATA_DIR} ${DUMP_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY} > run.log" > ./cmd-coh.txt
+
+python3 sol-fnd.py ${DATA_DIR} ${DUMP_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY}
