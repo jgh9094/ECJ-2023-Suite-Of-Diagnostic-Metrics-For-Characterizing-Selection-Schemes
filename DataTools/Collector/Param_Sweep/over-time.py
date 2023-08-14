@@ -85,8 +85,8 @@ def CheckDir(dir,dump,sch,offs,val):
                     params.UNI_STR_POS:   pd.Series(df[params.UNI_STR_POS].tolist()),
                     params.ELE_BIG_PEAK:   pd.Series(df[params.ELE_BIG_PEAK].tolist()),
                     params.ELE_STK_CNT:   pd.Series(df[params.ELE_STK_CNT].tolist()),
-                    params.GetSchemeParam(sch):pd.Series(params.GetSchemeParamSet(sch)[int(((s % params.GetSchemeSeedBound(sch)))/params.REPLICATES)] * len(GEN_LIST)),
-                    'acro':pd.Series(params.GetDiagnosticAcro(i) * len(GEN_LIST))
+                    params.GetSchemeParam(sch):pd.Series([params.GetSchemeParamSet(sch)[int(((s % params.GetSchemeSeedBound(sch)))/params.REPLICATES)]] * len(GEN_LIST)),
+                    'acro':pd.Series([params.GetDiagnosticAcro(i)] * len(GEN_LIST))
                 }))
 
             else:
@@ -100,8 +100,8 @@ def CheckDir(dir,dump,sch,offs,val):
                     params.OVERLAP:       pd.Series(df[params.OVERLAP].tolist()),
                     params.UNI_STR_POS:   pd.Series(df[params.UNI_STR_POS].tolist()),
                     params.ELE_STK_CNT:   pd.Series(df[params.ELE_STK_CNT].tolist()),
-                    params.GetSchemeParam(sch):pd.Series(params.GetSchemeParamSet(sch)[int(((s % params.GetSchemeSeedBound(sch)))/params.REPLICATES)] * len(GEN_LIST)),
-                    'acro':pd.Series(params.GetDiagnosticAcro(i) * len(GEN_LIST))
+                    params.GetSchemeParam(sch):pd.Series([params.GetSchemeParamSet(sch)[int(((s % params.GetSchemeSeedBound(sch)))/params.REPLICATES)]] * len(GEN_LIST)),
+                    'acro':pd.Series([params.GetDiagnosticAcro(i)] * len(GEN_LIST))
                 }))
 
     print('SAVING DATA NOW...')
