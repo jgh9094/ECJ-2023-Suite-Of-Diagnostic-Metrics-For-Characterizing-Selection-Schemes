@@ -67,6 +67,6 @@ fi
 
 SEED_OFFSET=$((OFFSET))
 
-echo "python3 sweep-run.py ${DATA_DIR} ${DIAGNOSTIC} ${SEED_OFFSET} ${VALLEY} ${EXPERIMENT} > run.log" > ./cmd-coh.txt
+echo "python3 sweep-run.py ${DATA_DIR} ${DIAGNOSTIC} ${SEED_OFFSET} ${VALLEY} > run.log" > ./cmd-coh.txt
 
-python3 sweep-run.py ${DATA_DIR} ${DIAGNOSTIC} ${SEED_OFFSET} ${VALLEY} ${EXPERIMENT}
+python3 sweep-run.py ${DATA_DIR} ${DIAGNOSTIC} ${SEED_OFFSET} ${VALLEY}
