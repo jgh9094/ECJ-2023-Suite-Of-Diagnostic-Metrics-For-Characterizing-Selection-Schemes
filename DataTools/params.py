@@ -107,25 +107,25 @@ def GetSchemeVarList(s):
 
 def GetSchemeAcro(s):
     # case by case
-    if s == 'TRUNCATION':
+    if s == 'TRUNCATION' or s == 0:
         return 'tru'
 
-    elif s == 'TOURNAMENT':
+    elif s == 'TOURNAMENT' or s == 1:
         return 'tor'
 
-    elif s == 'FITSHARING_G':
+    elif s == 'FITSHARING_G' or s == 2:
         return 'gfs'
 
-    elif s == 'FITSHARING_P':
+    elif s == 'FITSHARING_P' or s == 3:
         return 'pfs'
 
     elif s == 'LEXICASE':
         return 'lex'
 
-    elif s == 'NONDOMINATED':
+    elif s == 'NONDOMINATED' or s == 4:
         return 'nds'
 
-    elif s == 'NOVELTY':
+    elif s == 'NOVELTY' or s == 5:
         return 'nov'
 
     elif s == 'RANDOM':

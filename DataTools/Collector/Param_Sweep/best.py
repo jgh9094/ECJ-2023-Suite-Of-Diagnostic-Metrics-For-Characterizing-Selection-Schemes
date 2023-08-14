@@ -89,8 +89,8 @@ def CheckDir(dir,dump,sch,offs,val):
                 PAR.append(params.GetSchemeParamSet(sch)[int(((s % params.GetSchemeSeedBound(sch)))/params.REPLICATES)])
                 ACR.append(params.GetDiagnosticAcro(i))
 
+    print('SAVING DATA NOW...')
     fin_df = pd.DataFrame({'val': pd.Series(VAL),'var': pd.Series(VAR),'gen': pd.Series(GEN),params.GetSchemeParam(sch):pd.Series(PAR),'acro':pd.Series(ACR)})
-
     fin_df.to_csv(path_or_buf= dump + params.GetSchemeAcro(sch) + '.csv', index=False)
 
 # runner
