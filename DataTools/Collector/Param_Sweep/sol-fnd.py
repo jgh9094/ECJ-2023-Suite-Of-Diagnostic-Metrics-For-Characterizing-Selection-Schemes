@@ -69,6 +69,9 @@ def CheckDir(dir,dump,sch,offs,val):
             
             print(FILE_DIR, flush=True)
             FILE_DIR += '/data.csv'
+            
+            # get data from file and check if can store it
+            df = pd.read_csv(FILE_DIR)
 
             # create subset of data frame with only winning solutions
             df = df[df[params.POP_OPT_MAX] == params.DIMENSIONALITY]
