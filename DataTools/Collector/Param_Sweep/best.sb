@@ -68,6 +68,6 @@ fi
 
 SEED_OFFSET=$((OFFSET))
 
-echo "python3 sweep-run.py ${DATA_DIR} ${DUMP_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY} > run.log" > ./cmd-coh.txt
+echo "python3 best.py ${DATA_DIR} ${DUMP_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY} > run.log" > ./cmd-coh.txt
 
-python3 sweep-run.py ${DATA_DIR} ${DUMP_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY}
+python3 best.py ${DATA_DIR} ${DUMP_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY}
