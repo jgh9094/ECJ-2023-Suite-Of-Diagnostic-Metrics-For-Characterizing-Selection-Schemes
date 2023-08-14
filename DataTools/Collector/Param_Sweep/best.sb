@@ -66,6 +66,9 @@ fi
 
 ####################################################################
 
+# make DUMP directory
+mkdir -p ${DUMP}
+
 SEED_OFFSET=$((OFFSET))
 
 echo "python3 best.py ${DATA_DIR} ${DUMP_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY} > run.log" > ./cmd-coh.txt
