@@ -16,7 +16,7 @@ module load GCCcore/11.2.0; module load Python/3.9.6; pip3 install pandas;
 # Setup relevant directories
 ##################################
 DATA_DIR=/mnt/gs21/scratch/herna383/ECJ-2023/
-DUMP_DIR=/mnt/gs21/scratch/herna383/ECJ-2023-DUMP/BEST/
+DUMP_DIR=/mnt/gs21/scratch/herna383/ECJ-2023-DUMP/PARAM_SWEEP/BEST/
 
 ##################################
 # Selection scheme
@@ -67,7 +67,7 @@ fi
 ####################################################################
 
 # make DUMP directory
-mkdir -p ${DUMP}
+mkdir -p ${DUMP_DIR}
 
 SEED_OFFSET=$((OFFSET))
 
