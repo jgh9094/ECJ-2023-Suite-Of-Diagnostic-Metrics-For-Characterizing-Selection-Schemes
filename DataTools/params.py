@@ -15,10 +15,9 @@ DIAGNOSTICS = ['EXPLOITATION_RATE','ORDERED_EXPLOITATION','CONTRADICTORY_OBJECTI
 # variables we are testing for each replicate range
 TR_LIST = ['1','2','4','8','16','32','64','128','256']
 TS_LIST = ['2','4','8','16','32','64','128','256']
-LX_LIST = ['0.0']
 FS_LIST = ['0.0','0.1','0.3','0.6','1.2','2.5','5.0']
 ND_LIST = ['0.0','0.1','0.3','0.6','1.2','2.5','5.0']
-NS_LIST = ['0','1','2','4','8','15','30']
+NS_LIST = ['1','2','4','8','15','30']
 
 # columns we are interested in grabbing
 GENERATION = 'gen'
@@ -183,6 +182,57 @@ def GetSweepSeedLists(offs,sch):
         seed.append([x + offs + 1500 for x in range(1,301)])
         return seed
 
+    else:
+        sys.exit('SEED SELECTION UNKNOWN')
+
+def GetSchemeParam(sch):
+    # truncation, tournament
+    if sch == 0 or sch == 1:
+        return 'T'
+    
+    # fitness sharing, nondominated sorting
+    elif sch ==  2 or sch == 3 or sch == 4:
+        return 'Sigma'
+
+    # novelty search
+    elif sch == 5:
+        return 'K'
+
+    else:
+        sys.exit('SEED SELECTION UNKNOWN')
+        
+def GetSchemeSeedBound(sch):
+    # truncation, tournament
+    if sch == 0 or sch == 1:
+        return 450
+    
+    # fitness sharing, nondominated sorting
+    elif sch ==  2 or sch == 3 or sch == 4:
+        return 350
+
+    # novelty search
+    elif sch == 5:
+        return 300
+
+    else:
+        sys.exit('SEED SELECTION UNKNOWN')
+        
+def GetSchemeParamSet(sch):
+    # truncation
+    if sch == 0:
+        return TR_LIST
+    # truncation
+    elif sch == 1:
+        return TS_LIST
+    # fitness sharing
+    elif sch ==  2 or sch == 3:
+        return FS_LIST
+    # nondominated sorting
+    elif sch == 4:
+        return ND_LIST
+    # novelty search
+    elif sch == 5:
+        return NS_LIST
     else:
         sys.exit('SEED SELECTION UNKNOWN')
 
