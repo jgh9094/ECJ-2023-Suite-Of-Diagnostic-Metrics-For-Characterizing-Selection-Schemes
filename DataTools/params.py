@@ -14,7 +14,7 @@ DIAGNOSTICS = ['EXPLOITATION_RATE','ORDERED_EXPLOITATION','CONTRADICTORY_OBJECTI
 
 # variables we are testing for each replicate range
 TR_LIST = ['1','2','4','8','16','32','64','128','256']
-TS_LIST = ['2','4','8','16','32','64','128','256']
+TS_LIST = ['2','4','8','16','32','64','128','256','512']
 FS_LIST = ['0.0','0.1','0.3','0.6','1.2','2.5','5.0']
 ND_LIST = ['0.0','0.1','0.3','0.6','1.2','2.5','5.0']
 NS_LIST = ['1','2','4','8','15','30']
