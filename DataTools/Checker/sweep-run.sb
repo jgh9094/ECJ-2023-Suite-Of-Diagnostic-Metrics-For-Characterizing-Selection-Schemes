@@ -36,27 +36,27 @@ VALLEY=0
 ####################################################################
 
 if [ ${SLURM_ARRAY_TASK_ID} -eq 1 ] ; then
-  DIAGNOSTIC=${TRUNCATION}
+  SCHEME=${TRUNCATION}
   OFFSET=50000
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 2 ] ; then
-  DIAGNOSTIC=${TOURNAMENT}
+  SCHEME=${TOURNAMENT}
   OFFSET=52000
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 3 ] ; then
-  DIAGNOSTIC=${NOVELTY}
+  SCHEME=${NOVELTY}
   OFFSET=54000
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 4 ] ; then
-  DIAGNOSTIC=${NONDOMINATED}
+  SCHEME=${NONDOMINATED}
   OFFSET=56000
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 5 ] ; then
-  DIAGNOSTIC=${FITSHARING_P}
+  SCHEME=${FITSHARING_P}
   OFFSET=58000
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 6 ] ; then
-  DIAGNOSTIC=${FITSHARING_G}
+  SCHEME=${FITSHARING_G}
   OFFSET=60000
 
 else
@@ -67,6 +67,6 @@ fi
 
 SEED_OFFSET=$((OFFSET))
 
-echo "python3 sweep-run.py ${DATA_DIR} ${DIAGNOSTIC} ${SEED_OFFSET} ${VALLEY} > run.log" > ./cmd-coh.txt
+echo "python3 sweep-run.py ${DATA_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY} > run.log" > ./cmd-coh.txt
 
-python3 sweep-run.py ${DATA_DIR} ${DIAGNOSTIC} ${SEED_OFFSET} ${VALLEY}
+python3 sweep-run.py ${DATA_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY}
