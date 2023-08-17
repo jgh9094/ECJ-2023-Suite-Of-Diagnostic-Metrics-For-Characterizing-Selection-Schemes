@@ -1,0 +1,14 @@
+book_filename: "base-diagnostics"
+output_dir: /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/Books/Base-Diagnostics
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+rmd_files: [
+  "index.Rmd",
+  "../ExploitationRate/Analysis/results.Rmd",
+  "../OrderedExploitation/Analysis/results.Rmd",
+  "../ContradictoryObjectives/Analysis/results.Rmd",
+  "../MultipathExploration/Analysis/results.Rmd",
+  "tail.Rmd"
+]
