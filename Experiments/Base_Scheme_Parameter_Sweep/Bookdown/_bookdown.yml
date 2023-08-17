@@ -1,4 +1,4 @@
-book_filename: "base-diagnostics"
+book_filename: "parameter-sweep"
 output_dir: /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/Books/Selection-Scheme-Parameter-Sweep
 language:
   ui:
