@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Tournament selection | Supplemental Material: Selection Scheme Parameter Sweep Base Diagnostics</title>
+  <meta name="description" content="Supplemental material for selection scheme parameter sweep with diagnostics and no valleys." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Tournament selection | Supplemental Material: Selection Scheme Parameter Sweep Base Diagnostics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Supplemental material for selection scheme parameter sweep with diagnostics and no valleys." />
+  <meta name="github-repo" content="jgh9094/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Tournament selection | Supplemental Material: Selection Scheme Parameter Sweep Base Diagnostics" />
+  
+  <meta name="twitter:description" content="Supplemental material for selection scheme parameter sweep with diagnostics and no valleys." />
+  
+
+<meta name="author" content="Jose Guadalupe Hernandez" />
+
+
+<meta name="date" content="2023-08-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="truncation-selection.html"/>
+<link rel="next" href="genotypic-fitness-sharing.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-our-supplemental-material"><i class="fa fa-check"></i><b>1.1</b> About our supplemental material</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contributing-authors"><i class="fa fa-check"></i><b>1.2</b> Contributing authors</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#computer-setup"><i class="fa fa-check"></i><b>1.3</b> Computer Setup</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#experimental-setup"><i class="fa fa-check"></i><b>1.4</b> Experimental setup</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="truncation-selection.html"><a href="truncation-selection.html"><i class="fa fa-check"></i><b>2</b> Truncation selection</a><ul>
+<li class="chapter" data-level="2.1" data-path="truncation-selection.html"><a href="truncation-selection.html#data-setup"><i class="fa fa-check"></i><b>2.1</b> Data setup</a></li>
+<li class="chapter" data-level="2.2" data-path="truncation-selection.html"><a href="truncation-selection.html#exploitation-rate-results"><i class="fa fa-check"></i><b>2.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="truncation-selection.html"><a href="truncation-selection.html#performance-over-time"><i class="fa fa-check"></i><b>2.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="2.2.2" data-path="truncation-selection.html"><a href="truncation-selection.html#generation-satisfactory-solution-found"><i class="fa fa-check"></i><b>2.2.2</b> Generation satisfactory solution found</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="truncation-selection.html"><a href="truncation-selection.html#ordered-exploitation-results"><i class="fa fa-check"></i><b>2.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="truncation-selection.html"><a href="truncation-selection.html#performance-over-time-1"><i class="fa fa-check"></i><b>2.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="2.3.2" data-path="truncation-selection.html"><a href="truncation-selection.html#generation-satisfactory-solution-found-1"><i class="fa fa-check"></i><b>2.3.2</b> Generation satisfactory solution found</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="truncation-selection.html"><a href="truncation-selection.html#contradictory-objectives-results"><i class="fa fa-check"></i><b>2.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="truncation-selection.html"><a href="truncation-selection.html#activation-gene-coverage-over-time"><i class="fa fa-check"></i><b>2.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="2.4.2" data-path="truncation-selection.html"><a href="truncation-selection.html#final-activation-gene-coverage"><i class="fa fa-check"></i><b>2.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="2.4.3" data-path="truncation-selection.html"><a href="truncation-selection.html#satisfactory-trait-coverage-over-time"><i class="fa fa-check"></i><b>2.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="2.4.4" data-path="truncation-selection.html"><a href="truncation-selection.html#final-satisfactory-trait-coverage"><i class="fa fa-check"></i><b>2.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="truncation-selection.html"><a href="truncation-selection.html#multi-path-exploration-results"><i class="fa fa-check"></i><b>2.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="truncation-selection.html"><a href="truncation-selection.html#activation-gene-coverage-over-time-1"><i class="fa fa-check"></i><b>2.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="2.5.2" data-path="truncation-selection.html"><a href="truncation-selection.html#final-activation-gene-coverage-1"><i class="fa fa-check"></i><b>2.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="2.5.3" data-path="truncation-selection.html"><a href="truncation-selection.html#performance-over-time-2"><i class="fa fa-check"></i><b>2.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="2.5.4" data-path="truncation-selection.html"><a href="truncation-selection.html#best-performance-throughout"><i class="fa fa-check"></i><b>2.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tournament-selection.html"><a href="tournament-selection.html"><i class="fa fa-check"></i><b>3</b> Tournament selection</a><ul>
+<li class="chapter" data-level="3.1" data-path="tournament-selection.html"><a href="tournament-selection.html#data-setup-1"><i class="fa fa-check"></i><b>3.1</b> Data setup</a></li>
+<li class="chapter" data-level="3.2" data-path="tournament-selection.html"><a href="tournament-selection.html#exploitation-rate-results-1"><i class="fa fa-check"></i><b>3.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="tournament-selection.html"><a href="tournament-selection.html#performance-over-time-3"><i class="fa fa-check"></i><b>3.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tournament-selection.html"><a href="tournament-selection.html#generation-satisfactory-solution-found-2"><i class="fa fa-check"></i><b>3.2.2</b> Generation satisfactory solution found</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="tournament-selection.html"><a href="tournament-selection.html#ordered-exploitation-results-1"><i class="fa fa-check"></i><b>3.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="tournament-selection.html"><a href="tournament-selection.html#performance-over-time-4"><i class="fa fa-check"></i><b>3.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="3.3.2" data-path="tournament-selection.html"><a href="tournament-selection.html#generation-satisfactory-solution-found-3"><i class="fa fa-check"></i><b>3.3.2</b> Generation satisfactory solution found</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="tournament-selection.html"><a href="tournament-selection.html#contradictory-objectives-results-1"><i class="fa fa-check"></i><b>3.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="tournament-selection.html"><a href="tournament-selection.html#activation-gene-coverage-over-time-2"><i class="fa fa-check"></i><b>3.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="3.4.2" data-path="tournament-selection.html"><a href="tournament-selection.html#final-activation-gene-coverage-2"><i class="fa fa-check"></i><b>3.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="3.4.3" data-path="tournament-selection.html"><a href="tournament-selection.html#satisfactory-trait-coverage-over-time-1"><i class="fa fa-check"></i><b>3.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="3.4.4" data-path="tournament-selection.html"><a href="tournament-selection.html#final-satisfactory-trait-coverage-1"><i class="fa fa-check"></i><b>3.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="tournament-selection.html"><a href="tournament-selection.html#multi-path-exploration-results-1"><i class="fa fa-check"></i><b>3.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="tournament-selection.html"><a href="tournament-selection.html#activation-gene-coverage-over-time-3"><i class="fa fa-check"></i><b>3.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="3.5.2" data-path="tournament-selection.html"><a href="tournament-selection.html#final-activation-gene-coverage-3"><i class="fa fa-check"></i><b>3.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="3.5.3" data-path="tournament-selection.html"><a href="tournament-selection.html#performance-over-time-5"><i class="fa fa-check"></i><b>3.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="3.5.4" data-path="tournament-selection.html"><a href="tournament-selection.html#best-performance-throughout-1"><i class="fa fa-check"></i><b>3.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html"><i class="fa fa-check"></i><b>4</b> Genotypic fitness sharing</a><ul>
+<li class="chapter" data-level="4.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#data-setup-2"><i class="fa fa-check"></i><b>4.1</b> Data setup</a></li>
+<li class="chapter" data-level="4.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#exploitation-rate-results-2"><i class="fa fa-check"></i><b>4.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#performance-over-time-6"><i class="fa fa-check"></i><b>4.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="4.2.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#best-performance-throughout-2"><i class="fa fa-check"></i><b>4.2.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#ordered-exploitation-results-2"><i class="fa fa-check"></i><b>4.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#performance-over-time-7"><i class="fa fa-check"></i><b>4.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="4.3.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#best-performance-throughout-3"><i class="fa fa-check"></i><b>4.3.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#contradictory-objectives-results-2"><i class="fa fa-check"></i><b>4.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#activation-gene-coverage-over-time-4"><i class="fa fa-check"></i><b>4.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="4.4.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#final-activation-gene-coverage-4"><i class="fa fa-check"></i><b>4.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="4.4.3" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#satisfactory-trait-coverage-over-time-2"><i class="fa fa-check"></i><b>4.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="4.4.4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#final-satisfactory-trait-coverage-2"><i class="fa fa-check"></i><b>4.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#multi-path-exploration-results-2"><i class="fa fa-check"></i><b>4.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#activation-gene-coverage-over-time-5"><i class="fa fa-check"></i><b>4.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="4.5.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#final-activation-gene-coverage-5"><i class="fa fa-check"></i><b>4.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="4.5.3" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#performance-over-time-8"><i class="fa fa-check"></i><b>4.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="4.5.4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#best-performance-throughout-4"><i class="fa fa-check"></i><b>4.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html"><i class="fa fa-check"></i><b>5</b> Phenotypic fitness sharing</a><ul>
+<li class="chapter" data-level="5.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#data-setup-3"><i class="fa fa-check"></i><b>5.1</b> Data setup</a></li>
+<li class="chapter" data-level="5.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#exploitation-rate-results-3"><i class="fa fa-check"></i><b>5.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#performance-over-time-9"><i class="fa fa-check"></i><b>5.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="5.2.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#best-performance-throughout-5"><i class="fa fa-check"></i><b>5.2.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#ordered-exploitation-results-3"><i class="fa fa-check"></i><b>5.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#performance-over-time-10"><i class="fa fa-check"></i><b>5.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="5.3.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#best-performance-throughout-6"><i class="fa fa-check"></i><b>5.3.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#contradictory-objectives-results-3"><i class="fa fa-check"></i><b>5.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#activation-gene-coverage-over-time-6"><i class="fa fa-check"></i><b>5.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="5.4.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#final-activation-gene-coverage-6"><i class="fa fa-check"></i><b>5.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="5.4.3" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#satisfactory-trait-coverage-over-time-3"><i class="fa fa-check"></i><b>5.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="5.4.4" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#final-satisfactory-trait-coverage-3"><i class="fa fa-check"></i><b>5.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#multi-path-exploration-results-3"><i class="fa fa-check"></i><b>5.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#activation-gene-coverage-over-time-7"><i class="fa fa-check"></i><b>5.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="5.5.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#final-activation-gene-coverage-7"><i class="fa fa-check"></i><b>5.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="5.5.3" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#performance-over-time-11"><i class="fa fa-check"></i><b>5.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="5.5.4" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#best-performance-throughout-7"><i class="fa fa-check"></i><b>5.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html"><i class="fa fa-check"></i><b>6</b> Nondominated sorting</a><ul>
+<li class="chapter" data-level="6.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#data-setup-4"><i class="fa fa-check"></i><b>6.1</b> Data setup</a></li>
+<li class="chapter" data-level="6.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#exploitation-rate-results-4"><i class="fa fa-check"></i><b>6.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#performance-over-time-12"><i class="fa fa-check"></i><b>6.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="6.2.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#best-performance-throughout-8"><i class="fa fa-check"></i><b>6.2.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#ordered-exploitation-results-4"><i class="fa fa-check"></i><b>6.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#performance-over-time-13"><i class="fa fa-check"></i><b>6.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="6.3.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#best-performance-throughout-9"><i class="fa fa-check"></i><b>6.3.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#contradictory-objectives-results-4"><i class="fa fa-check"></i><b>6.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#activation-gene-coverage-over-time-8"><i class="fa fa-check"></i><b>6.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="6.4.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#final-activation-gene-coverage-8"><i class="fa fa-check"></i><b>6.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="6.4.3" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#satisfactory-trait-coverage-over-time-4"><i class="fa fa-check"></i><b>6.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="6.4.4" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#final-satisfactory-trait-coverage-4"><i class="fa fa-check"></i><b>6.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#multi-path-exploration-results-4"><i class="fa fa-check"></i><b>6.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#activation-gene-coverage-over-time-9"><i class="fa fa-check"></i><b>6.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="6.5.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#final-activation-gene-coverage-9"><i class="fa fa-check"></i><b>6.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="6.5.3" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#performance-over-time-14"><i class="fa fa-check"></i><b>6.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="6.5.4" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#best-performance-throughout-10"><i class="fa fa-check"></i><b>6.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="novelty-search.html"><a href="novelty-search.html"><i class="fa fa-check"></i><b>7</b> Novelty search</a><ul>
+<li class="chapter" data-level="7.1" data-path="novelty-search.html"><a href="novelty-search.html#data-setup-5"><i class="fa fa-check"></i><b>7.1</b> Data setup</a></li>
+<li class="chapter" data-level="7.2" data-path="novelty-search.html"><a href="novelty-search.html#exploitation-rate-results-5"><i class="fa fa-check"></i><b>7.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="novelty-search.html"><a href="novelty-search.html#performance-over-time-15"><i class="fa fa-check"></i><b>7.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="7.2.2" data-path="novelty-search.html"><a href="novelty-search.html#best-performance-throughout-11"><i class="fa fa-check"></i><b>7.2.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="novelty-search.html"><a href="novelty-search.html#ordered-exploitation-results-5"><i class="fa fa-check"></i><b>7.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="novelty-search.html"><a href="novelty-search.html#performance-over-time-16"><i class="fa fa-check"></i><b>7.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="7.3.2" data-path="novelty-search.html"><a href="novelty-search.html#best-performance-throughout-12"><i class="fa fa-check"></i><b>7.3.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="novelty-search.html"><a href="novelty-search.html#contradictory-objectives-results-5"><i class="fa fa-check"></i><b>7.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="novelty-search.html"><a href="novelty-search.html#activation-gene-coverage-over-time-10"><i class="fa fa-check"></i><b>7.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="7.4.2" data-path="novelty-search.html"><a href="novelty-search.html#final-activation-gene-coverage-10"><i class="fa fa-check"></i><b>7.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="7.4.3" data-path="novelty-search.html"><a href="novelty-search.html#satisfactory-trait-coverage-over-time-5"><i class="fa fa-check"></i><b>7.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="7.4.4" data-path="novelty-search.html"><a href="novelty-search.html#final-satisfactory-trait-coverage-5"><i class="fa fa-check"></i><b>7.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="novelty-search.html"><a href="novelty-search.html#multi-path-exploration-results-5"><i class="fa fa-check"></i><b>7.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="novelty-search.html"><a href="novelty-search.html#activation-gene-coverage-over-time-11"><i class="fa fa-check"></i><b>7.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="7.5.2" data-path="novelty-search.html"><a href="novelty-search.html#final-activation-gene-coverage-11"><i class="fa fa-check"></i><b>7.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="7.5.3" data-path="novelty-search.html"><a href="novelty-search.html#performance-over-time-17"><i class="fa fa-check"></i><b>7.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="7.5.4" data-path="novelty-search.html"><a href="novelty-search.html#best-performance-throughout-13"><i class="fa fa-check"></i><b>7.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with ❤ and bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Supplemental Material: Selection Scheme Parameter Sweep Base Diagnostics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tournament-selection" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 3</span> Tournament selection<a href="tournament-selection.html#tournament-selection" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Results for the tournament selection parameter sweep on the diagnostics with no valleys.</p>
+<div id="data-setup-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.1</span> Data setup<a href="tournament-selection.html#data-setup-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">over_time_df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">paste</span>(DATA_DIR,<span class="st">&#39;OVER-TIME/tor.csv&#39;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>, <span class="dt">collapse =</span> <span class="ot">NULL</span>), <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb64-2" title="2">over_time_df<span class="op">$</span>T &lt;-<span class="st"> </span><span class="kw">factor</span>(over_time_df<span class="op">$</span>T, <span class="dt">levels =</span> TS_LIST)</a>
+<a class="sourceLine" id="cb64-3" title="3"></a>
+<a class="sourceLine" id="cb64-4" title="4">best_df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">paste</span>(DATA_DIR,<span class="st">&#39;BEST/tor.csv&#39;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>, <span class="dt">collapse =</span> <span class="ot">NULL</span>), <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb64-5" title="5">best_df<span class="op">$</span>T &lt;-<span class="st"> </span><span class="kw">factor</span>(best_df<span class="op">$</span>T, <span class="dt">levels =</span> TS_LIST)</a>
+<a class="sourceLine" id="cb64-6" title="6"></a>
+<a class="sourceLine" id="cb64-7" title="7">sati_df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">paste</span>(DATA_DIR,<span class="st">&#39;SOL-FND/tor.csv&#39;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>, <span class="dt">collapse =</span> <span class="ot">NULL</span>), <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb64-8" title="8">sati_df<span class="op">$</span>T &lt;-<span class="st"> </span><span class="kw">factor</span>(sati_df<span class="op">$</span>T, <span class="dt">levels =</span> TS_LIST)</a></code></pre></div>
+</div>
+<div id="exploitation-rate-results-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.2</span> Exploitation rate results<a href="tournament-selection.html#exploitation-rate-results-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we present the results for <strong>best performances</strong> found by each selection scheme parameter on the exploitation rate diagnostic.
+50 replicates are conducted for each scheme explored.</p>
+<div id="performance-over-time-3" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.2.1</span> Performance over time<a href="tournament-selection.html#performance-over-time-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Best performance in a population over time.
+Data points on the graph is the average performance across 50 replicates every 2000 generations.
+Shading comes from the best and worse performance across 50 replicates.</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;exp&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb65-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb65-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb65-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb65-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY</a>
+<a class="sourceLine" id="cb65-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">over_time_plot =<span class="st"> </span><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb67-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb67-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb67-8" title="8">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">20</span>),</a>
+<a class="sourceLine" id="cb67-9" title="9">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;100&quot;</span>)</a>
+<a class="sourceLine" id="cb67-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-11" title="11"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb67-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb67-13" title="13">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb67-14" title="14">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb67-15" title="15">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb67-16" title="16">    </a>
+<a class="sourceLine" id="cb67-17" title="17">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-18" title="18"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb67-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb67-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb67-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb67-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb67-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb67-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb67-27" title="27">  )</a>
+<a class="sourceLine" id="cb67-28" title="28"></a>
+<a class="sourceLine" id="cb67-29" title="29">over_time_plot</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-exp-per-ot-1.png" width="100%" /></p>
+</div>
+<div id="generation-satisfactory-solution-found-2" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.2.2</span> Generation satisfactory solution found<a href="tournament-selection.html#generation-satisfactory-solution-found-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First generation a satisfactory solution is found throughout the 50,000 generations.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(sati_df, acro <span class="op">==</span><span class="st"> &#39;exp&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb68-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> gen , <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb68-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Generation&quot;</span>,</a>
+<a class="sourceLine" id="cb68-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">2000</span>, <span class="dv">12000</span>),</a>
+<a class="sourceLine" id="cb68-9" title="9">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">2000</span>, <span class="dv">4000</span>, <span class="dv">6000</span>, <span class="dv">8000</span>, <span class="dv">10000</span>, <span class="dv">12000</span>),</a>
+<a class="sourceLine" id="cb68-10" title="10">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;2e+3&quot;</span>, <span class="st">&quot;4e+3&quot;</span>, <span class="st">&quot;6e+3&quot;</span>, <span class="st">&quot;8e+3&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;1.2e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb68-11" title="11">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-12" title="12"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb68-13" title="13">    <span class="dt">name=</span><span class="st">&quot;Tournament size&quot;</span></a>
+<a class="sourceLine" id="cb68-14" title="14">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-15" title="15"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-16" title="16"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-17" title="17"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-18" title="18"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Generation satisfactory solution found&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb68-19" title="19"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb68-20" title="20"></a>
+<a class="sourceLine" id="cb68-21" title="21"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb68-22" title="22">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-23" title="23"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb68-24" title="24">  legend,</a>
+<a class="sourceLine" id="cb68-25" title="25">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb68-26" title="26">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb68-27" title="27">)</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-exp-ssf-1.png" width="100%" /></p>
+<div id="stats-6" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.2.2.1</span> Stats<a href="tournament-selection.html#stats-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the generation a satisfactory solution is found.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1">ssf =<span class="st"> </span><span class="kw">filter</span>(sati_df, gen <span class="op">&lt;=</span><span class="st"> </span>GENERATIONS <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;exp&#39;</span>)</a>
+<a class="sourceLine" id="cb69-2" title="2">ssf<span class="op">$</span>acro =<span class="st"> </span><span class="kw">factor</span>(ssf<span class="op">$</span>acro, <span class="dt">levels =</span> TS_LIST)</a>
+<a class="sourceLine" id="cb69-3" title="3">ssf <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb69-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb69-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb69-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb69-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(gen)),</a>
+<a class="sourceLine" id="cb69-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(gen, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb69-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(gen, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb69-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(gen, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb69-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(gen, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb69-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(gen, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb69-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median   mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+## 1 2        50      0 10756 10958. 10960. 11232 140  
+## 2 4        50      0  6959  7040   7049.  7141  66  
+## 3 8        50      0  5387  5442   5449.  5518  45.5
+## 4 16       50      0  4455  4528   4532.  4592  32.5
+## 5 32       50      0  3888  3930.  3929.  3974  30.8
+## 6 64       50      0  3468  3509   3510.  3545  23  
+## 7 128      50      0  3156  3189   3191.  3234  22.5
+## 8 256      50      0  2908  2949   2948.  2985  19.5
+## 9 512      50      0  2718  2764.  2766.  2801  16.8</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">kruskal.test</span>(gen <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> ssf)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  gen by T
+## Kruskal-Wallis chi-squared = 443.46, df = 8, p-value &lt; 2.2e-16</code></pre>
+<p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> ssf<span class="op">$</span>gen, <span class="dt">g =</span> ssf<span class="op">$</span>T, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
+<a class="sourceLine" id="cb73-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;l&#39;</span>)</a></code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
+## 
+## data:  ssf$gen and ssf$T 
+## 
+##     2      4      8      16     32     64     128    256   
+## 4   &lt;2e-16 -      -      -      -      -      -      -     
+## 8   &lt;2e-16 &lt;2e-16 -      -      -      -      -      -     
+## 16  &lt;2e-16 &lt;2e-16 &lt;2e-16 -      -      -      -      -     
+## 32  &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 -      -      -      -     
+## 64  &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 -      -      -     
+## 128 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 -      -     
+## 256 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 -     
+## 512 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16
+## 
+## P value adjustment method: bonferroni</code></pre>
+</div>
+</div>
+</div>
+<div id="ordered-exploitation-results-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.3</span> Ordered exploitation results<a href="tournament-selection.html#ordered-exploitation-results-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we present the results for <strong>best performances</strong> found by each selection scheme parameter on the exploitation rate diagnostic.
+50 replicates are conducted for each scheme explored.</p>
+<div id="performance-over-time-4" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.3.1</span> Performance over time<a href="tournament-selection.html#performance-over-time-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Best performance in a population over time.
+Data points on the graph is the average performance across 50 replicates every 2000 generations.
+Shading comes from the best and worse performance across 50 replicates.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;ord&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb75-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb75-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb75-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb75-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb75-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY</a>
+<a class="sourceLine" id="cb75-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb77-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb77-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb77-8" title="8">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">20</span>),</a>
+<a class="sourceLine" id="cb77-9" title="9">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;100&quot;</span>)</a>
+<a class="sourceLine" id="cb77-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-11" title="11"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb77-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb77-13" title="13">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb77-14" title="14">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb77-15" title="15">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb77-16" title="16">    </a>
+<a class="sourceLine" id="cb77-17" title="17">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-18" title="18"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb77-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb77-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb77-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb77-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb77-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb77-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb77-27" title="27">  )</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-ord-per-ot-1.png" width="100%" /></p>
+</div>
+<div id="generation-satisfactory-solution-found-3" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.3.2</span> Generation satisfactory solution found<a href="tournament-selection.html#generation-satisfactory-solution-found-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First generation a satisfactory solution is found throughout the 50,000 generations.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(sati_df, acro <span class="op">==</span><span class="st"> &#39;ord&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb78-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> gen , <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb78-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Generation&quot;</span>,</a>
+<a class="sourceLine" id="cb78-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">10000</span>, <span class="dv">60000</span>),</a>
+<a class="sourceLine" id="cb78-9" title="9">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>,<span class="dv">50000</span>,<span class="dv">60000</span>),</a>
+<a class="sourceLine" id="cb78-10" title="10">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;1e+4&quot;</span>,<span class="st">&quot;2e+4&quot;</span>,<span class="st">&quot;3e+4&quot;</span>,<span class="st">&quot;4e+4&quot;</span>,<span class="st">&quot;5e+4&quot;</span>,<span class="st">&quot;FAIL&quot;</span>)</a>
+<a class="sourceLine" id="cb78-11" title="11">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-12" title="12"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb78-13" title="13">    <span class="dt">name=</span><span class="st">&quot;Tournament size&quot;</span></a>
+<a class="sourceLine" id="cb78-14" title="14">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb78-15" title="15"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb78-16" title="16"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-17" title="17"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-18" title="18"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Generation satisfactory solution found&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb78-19" title="19"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb78-20" title="20"></a>
+<a class="sourceLine" id="cb78-21" title="21"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb78-22" title="22">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-23" title="23"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb78-24" title="24">  legend,</a>
+<a class="sourceLine" id="cb78-25" title="25">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb78-26" title="26">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb78-27" title="27">)</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-ord-ssf-1.png" width="100%" /></p>
+<div id="stats-7" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.3.2.1</span> Stats<a href="tournament-selection.html#stats-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the generation a satisfactory solution is found.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">ssf =<span class="st"> </span><span class="kw">filter</span>(sati_df, gen <span class="op">&lt;=</span><span class="st"> </span>GENERATIONS <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;ord&#39;</span>)</a>
+<a class="sourceLine" id="cb79-2" title="2">ssf<span class="op">$</span>acro =<span class="st"> </span><span class="kw">factor</span>(ssf<span class="op">$</span>acro, <span class="dt">levels =</span> TS_LIST)</a>
+<a class="sourceLine" id="cb79-3" title="3">ssf <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb79-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb79-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb79-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb79-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(gen)),</a>
+<a class="sourceLine" id="cb79-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(gen, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb79-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(gen, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb79-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(gen, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb79-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(gen, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb79-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(gen, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb79-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 8 x 8
+##   T     count na_cnt   min median   mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+## 1 4        50      0 39102 42086  41858. 44378 1207.
+## 2 8        50      0 25443 27089  27014. 28293  995.
+## 3 16       50      0 20292 21306. 21277. 22188  786.
+## 4 32       50      0 16868 18107  18085. 19256  786 
+## 5 64       50      0 15114 15949  15885. 16540  488 
+## 6 128      50      0 13487 14228. 14238. 14789  495 
+## 7 256      50      0 11756 12532. 12520. 13078  412.
+## 8 512      50      0 10311 11221  11209. 11823  366.</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">kruskal.test</span>(gen <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> ssf)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  gen by T
+## Kruskal-Wallis chi-squared = 392.76, df = 7, p-value &lt; 2.2e-16</code></pre>
+<p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> ssf<span class="op">$</span>gen, <span class="dt">g =</span> ssf<span class="op">$</span>T, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
+<a class="sourceLine" id="cb83-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;l&#39;</span>)</a></code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
+## 
+## data:  ssf$gen and ssf$T 
+## 
+##     4      8      16     32     64     128    256   
+## 8   &lt;2e-16 -      -      -      -      -      -     
+## 16  &lt;2e-16 &lt;2e-16 -      -      -      -      -     
+## 32  &lt;2e-16 &lt;2e-16 &lt;2e-16 -      -      -      -     
+## 64  &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 -      -      -     
+## 128 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 -      -     
+## 256 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 -     
+## 512 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16 &lt;2e-16
+## 
+## P value adjustment method: bonferroni</code></pre>
+</div>
+</div>
+</div>
+<div id="contradictory-objectives-results-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.4</span> Contradictory objectives results<a href="tournament-selection.html#contradictory-objectives-results-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we present the results for <strong>activation gene coverage</strong> and <strong>satisfactory trait coverage</strong> found by each selection scheme parameter on the contradictory objectives diagnostic.
+50 replicates are conducted for each scheme parameters explored.</p>
+<div id="activation-gene-coverage-over-time-2" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.4.1</span> Activation gene coverage over time<a href="tournament-selection.html#activation-gene-coverage-over-time-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Activation gene coverage in a population over time.
+Data points on the graph is the average activation gene coverage across 50 replicates every 2000 generations.
+Shading comes from the best and worse coverage across 50 replicates.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb85-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb85-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb85-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos),</a>
+<a class="sourceLine" id="cb85-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos),</a>
+<a class="sourceLine" id="cb85-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos)</a>
+<a class="sourceLine" id="cb85-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb87-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb87-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb87-8" title="8">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">20</span>),</a>
+<a class="sourceLine" id="cb87-9" title="9">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;100&quot;</span>)</a>
+<a class="sourceLine" id="cb87-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-11" title="11"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb87-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb87-13" title="13">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb87-14" title="14">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb87-15" title="15">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb87-16" title="16">    </a>
+<a class="sourceLine" id="cb87-17" title="17">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-18" title="18"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb87-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Activation gene coverage over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb87-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb87-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb87-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb87-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb87-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb87-27" title="27">  )</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-con-act-ot-1.png" width="100%" /></p>
+</div>
+<div id="final-activation-gene-coverage-2" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.4.2</span> Final activation gene coverage<a href="tournament-selection.html#final-activation-gene-coverage-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Activation gene coverage found in the final population at 50,000 generations.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb88-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> uni_str_pos, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb88-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb88-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb88-9" title="9">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb88-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb88-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Tournament size&quot;</span></a>
+<a class="sourceLine" id="cb88-13" title="13">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb88-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb88-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final activation gene coverage&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb88-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb88-19" title="19"></a>
+<a class="sourceLine" id="cb88-20" title="20"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb88-21" title="21">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb88-23" title="23">  legend,</a>
+<a class="sourceLine" id="cb88-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb88-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb88-26" title="26">)</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-con-act-end-1.png" width="100%" /></p>
+<div id="stats-8" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.4.2.1</span> Stats<a href="tournament-selection.html#stats-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the generation a satisfactory solution is found.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">act_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)</a>
+<a class="sourceLine" id="cb89-2" title="2">act_coverage<span class="op">$</span>acro =<span class="st"> </span><span class="kw">factor</span>(act_coverage<span class="op">$</span>acro, <span class="dt">levels =</span> TS_LIST)</a>
+<a class="sourceLine" id="cb89-3" title="3">act_coverage <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb89-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb89-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb89-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(uni_str_pos)),</a>
+<a class="sourceLine" id="cb89-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb89-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb89-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb89-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb89-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb89-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+## 1 2        50      0     1      1     1     1     0
+## 2 4        50      0     1      1     1     1     0
+## 3 8        50      0     1      1     1     1     0
+## 4 16       50      0     1      1     1     1     0
+## 5 32       50      0     1      1     1     1     0
+## 6 64       50      0     1      1     1     1     0
+## 7 128      50      0     1      1     1     1     0
+## 8 256      50      0     1      1     1     1     0
+## 9 512      50      0     1      1     1     1     0</code></pre>
+</div>
+</div>
+<div id="satisfactory-trait-coverage-over-time-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.4.3</span> Satisfactory trait coverage over time<a href="tournament-selection.html#satisfactory-trait-coverage-over-time-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Satisfactory trait coverage in a population over time.
+Data points on the graph is the average activation gene coverage across 50 replicates every 2000 generations.
+Shading comes from the best and worse coverage across 50 replicates.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb91-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb91-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb91-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_uni_obj),</a>
+<a class="sourceLine" id="cb91-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_uni_obj),</a>
+<a class="sourceLine" id="cb91-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_uni_obj)</a>
+<a class="sourceLine" id="cb91-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb93-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb93-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb93-8" title="8">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb93-9" title="9">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-10" title="10"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb93-11" title="11">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb93-12" title="12">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb93-13" title="13">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb93-14" title="14">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb93-15" title="15">    </a>
+<a class="sourceLine" id="cb93-16" title="16">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-17" title="17"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb93-18" title="18"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-19" title="19"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-20" title="20"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Satisfactory trait coverage over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb93-21" title="21"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb93-22" title="22"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb93-23" title="23">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb93-24" title="24">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb93-25" title="25">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb93-26" title="26">  )</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-con-sat-ot-1.png" width="100%" /></p>
+</div>
+<div id="final-satisfactory-trait-coverage-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.4.4</span> Final satisfactory trait coverage<a href="tournament-selection.html#final-satisfactory-trait-coverage-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Satisfactory trait coverage found in the final population at 50,000 generations.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> pop_uni_obj, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb94-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb94-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb94-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb94-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb94-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb94-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb94-9" title="9">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb94-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb94-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb94-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Tournament size&quot;</span></a>
+<a class="sourceLine" id="cb94-13" title="13">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb94-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb94-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb94-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb94-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final satisfactory trait coverage&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb94-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb94-19" title="19"></a>
+<a class="sourceLine" id="cb94-20" title="20"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb94-21" title="21">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb94-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb94-23" title="23">  legend,</a>
+<a class="sourceLine" id="cb94-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb94-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb94-26" title="26">)</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-con-sat-end-1.png" width="100%" /></p>
+<div id="stats-9" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.4.4.1</span> Stats<a href="tournament-selection.html#stats-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the generation a satisfactory solution is found.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">sat_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)</a>
+<a class="sourceLine" id="cb95-2" title="2">sat_coverage<span class="op">$</span>acro =<span class="st"> </span><span class="kw">factor</span>(sat_coverage<span class="op">$</span>acro, <span class="dt">levels =</span> TS_LIST)</a>
+<a class="sourceLine" id="cb95-3" title="3">sat_coverage <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb95-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb95-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb95-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb95-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(pop_uni_obj)),</a>
+<a class="sourceLine" id="cb95-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb95-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb95-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb95-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb95-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb95-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+## 1 2        50      0     1      1     1     1     0
+## 2 4        50      0     1      1     1     1     0
+## 3 8        50      0     1      1     1     1     0
+## 4 16       50      0     1      1     1     1     0
+## 5 32       50      0     1      1     1     1     0
+## 6 64       50      0     1      1     1     1     0
+## 7 128      50      0     1      1     1     1     0
+## 8 256      50      0     1      1     1     1     0
+## 9 512      50      0     1      1     1     1     0</code></pre>
+</div>
+</div>
+</div>
+<div id="multi-path-exploration-results-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">3.5</span> Multi-path exploration results<a href="tournament-selection.html#multi-path-exploration-results-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we present the results for <strong>best performances</strong> and <strong>activation gene coverage</strong> found by each selection scheme parameter on the multi-path exploration diagnostic.
+50 replicates are conducted for each scheme parameter explored.</p>
+<div id="activation-gene-coverage-over-time-3" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.5.1</span> Activation gene coverage over time<a href="tournament-selection.html#activation-gene-coverage-over-time-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Activation gene coverage in a population over time.
+Data points on the graph is the average activation gene coverage across 50 replicates every 2000 generations.
+Shading comes from the best and worse coverage across 50 replicates.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>)  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb97-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb97-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb97-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos),</a>
+<a class="sourceLine" id="cb97-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos),</a>
+<a class="sourceLine" id="cb97-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos)</a>
+<a class="sourceLine" id="cb97-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb99-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb99-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb99-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb99-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb99-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb99-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb99-8" title="8">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">20</span>),</a>
+<a class="sourceLine" id="cb99-9" title="9">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;100&quot;</span>)</a>
+<a class="sourceLine" id="cb99-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb99-11" title="11"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb99-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb99-13" title="13">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb99-14" title="14">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb99-15" title="15">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb99-16" title="16">    </a>
+<a class="sourceLine" id="cb99-17" title="17">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb99-18" title="18"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb99-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb99-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb99-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Activation gene coverage over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb99-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb99-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb99-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb99-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb99-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb99-27" title="27">  )</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-mpe-act-ot-1.png" width="100%" /></p>
+</div>
+<div id="final-activation-gene-coverage-3" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.5.2</span> Final activation gene coverage<a href="tournament-selection.html#final-activation-gene-coverage-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Activation gene coverage found in the final population at 50,000 generations.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb100-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> uni_str_pos, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb100-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb100-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb100-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb100-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb100-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb100-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">15</span>),</a>
+<a class="sourceLine" id="cb100-9" title="9">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>)</a>
+<a class="sourceLine" id="cb100-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb100-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb100-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Tournament size&quot;</span></a>
+<a class="sourceLine" id="cb100-13" title="13">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb100-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb100-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb100-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb100-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final activation gene coverage&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb100-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb100-19" title="19"></a>
+<a class="sourceLine" id="cb100-20" title="20"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb100-21" title="21">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb100-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb100-23" title="23">  legend,</a>
+<a class="sourceLine" id="cb100-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb100-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb100-26" title="26">)</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-mpe-act-end-1.png" width="100%" /></p>
+<div id="stats-10" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.5.2.1</span> Stats<a href="tournament-selection.html#stats-10" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the generation a satisfactory solution is found.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">act_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>)</a>
+<a class="sourceLine" id="cb101-2" title="2">act_coverage<span class="op">$</span>acro =<span class="st"> </span><span class="kw">factor</span>(act_coverage<span class="op">$</span>acro, <span class="dt">levels =</span> TS_LIST)</a>
+<a class="sourceLine" id="cb101-3" title="3">act_coverage <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb101-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb101-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb101-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb101-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(uni_str_pos)),</a>
+<a class="sourceLine" id="cb101-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb101-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb101-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb101-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb101-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb101-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+## 1 2        50      0     2      2  2.92    12     1
+## 2 4        50      0     2      2  2.06     3     0
+## 3 8        50      0     1      2  1.98     3     0
+## 4 16       50      0     1      2  1.94     2     0
+## 5 32       50      0     1      2  2        3     0
+## 6 64       50      0     1      2  1.96     3     0
+## 7 128      50      0     1      2  2.04     3     0
+## 8 256      50      0     1      2  2.02     3     0
+## 9 512      50      0     1      2  2.02     3     0</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="kw">kruskal.test</span>(uni_str_pos <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> act_coverage)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  uni_str_pos by T
+## Kruskal-Wallis chi-squared = 80.365, df = 8, p-value = 4.127e-14</code></pre>
+<p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> act_coverage<span class="op">$</span>uni_str_pos, <span class="dt">g =</span> act_coverage<span class="op">$</span>T, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
+<a class="sourceLine" id="cb105-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;l&#39;</span>)</a></code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
+## 
+## data:  act_coverage$uni_str_pos and act_coverage$T 
+## 
+##     2       4       8       16      32      64      128     256    
+## 4   0.00033 -       -       -       -       -       -       -      
+## 8   1.6e-05 1.00000 -       -       -       -       -       -      
+## 16  3.0e-06 0.27265 1.00000 -       -       -       -       -      
+## 32  5.6e-05 1.00000 1.00000 1.00000 -       -       -       -      
+## 64  1.2e-05 1.00000 1.00000 1.00000 1.00000 -       -       -      
+## 128 0.00024 1.00000 1.00000 1.00000 1.00000 1.00000 -       -      
+## 256 7.5e-05 1.00000 1.00000 1.00000 1.00000 1.00000 1.00000 -      
+## 512 0.00018 1.00000 1.00000 1.00000 1.00000 1.00000 1.00000 1.00000
+## 
+## P value adjustment method: bonferroni</code></pre>
+</div>
+</div>
+<div id="performance-over-time-5" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.5.3</span> Performance over time<a href="tournament-selection.html#performance-over-time-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Best performance in a population over time.
+Data points on the graph is the average performance across 50 replicates every 2000 generations.
+Shading comes from the best and worse performance across 50 replicates.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb107-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb107-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb107-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb107-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb107-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY</a>
+<a class="sourceLine" id="cb107-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb109-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb109-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb109-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb109-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb109-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb109-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb109-8" title="8">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">20</span>),</a>
+<a class="sourceLine" id="cb109-9" title="9">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;100&quot;</span>)</a>
+<a class="sourceLine" id="cb109-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb109-11" title="11"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb109-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb109-13" title="13">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb109-14" title="14">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb109-15" title="15">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb109-16" title="16">    </a>
+<a class="sourceLine" id="cb109-17" title="17">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb109-18" title="18"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb109-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb109-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb109-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb109-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb109-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb109-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb109-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb109-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb109-27" title="27">  )</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-mpe-per-ot-1.png" width="100%" /></p>
+</div>
+<div id="best-performance-throughout-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.5.4</span> Best performance throughout<a href="tournament-selection.html#best-performance-throughout-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Best performance reached throughout 50,000 generations in a population.</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb110-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb110-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb110-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb110-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb110-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb110-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb110-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb110-9" title="9">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">20</span>),</a>
+<a class="sourceLine" id="cb110-10" title="10">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;100&quot;</span>)</a>
+<a class="sourceLine" id="cb110-11" title="11">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb110-12" title="12"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb110-13" title="13">    <span class="dt">name=</span><span class="st">&quot;Tournament size&quot;</span></a>
+<a class="sourceLine" id="cb110-14" title="14">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb110-15" title="15"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb110-16" title="16"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb110-17" title="17"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb110-18" title="18"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Best performance throughout&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb110-19" title="19"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb110-20" title="20"></a>
+<a class="sourceLine" id="cb110-21" title="21"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb110-22" title="22">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb110-23" title="23"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb110-24" title="24">  legend,</a>
+<a class="sourceLine" id="cb110-25" title="25">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb110-26" title="26">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb110-27" title="27">)</a></code></pre></div>
+<p><img src="parameter-sweep_files/figure-html/tor-mpe-per-bst-1.png" width="100%" /></p>
+<div id="stats-11" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.5.4.1</span> Stats<a href="tournament-selection.html#stats-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the best performance.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1">performance =<span class="st"> </span><span class="kw">filter</span>(best_df, var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>)</a>
+<a class="sourceLine" id="cb111-2" title="2">performance <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb111-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb111-4" title="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb111-5" title="5">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb111-6" title="6">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
+<a class="sourceLine" id="cb111-7" title="7">    <span class="dt">min =</span> <span class="kw">min</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb111-8" title="8">    <span class="dt">median =</span> <span class="kw">median</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb111-9" title="9">    <span class="dt">mean =</span> <span class="kw">mean</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb111-10" title="10">    <span class="dt">max =</span> <span class="kw">max</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb111-11" title="11">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb111-12" title="12">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 2        50      0  4      53.0  49.7  95.0  48.5
+## 2 4        50      0  4      52.0  54.4  97.8  56.2
+## 3 8        50      0  6      59.0  55.5  99.9  45.0
+## 4 16       50      0  5      54.0  54.7  98.0  49.5
+## 5 32       50      0  7.00   49.0  50.4  95.0  49.7
+## 6 64       50      0  7      62.0  57.2 100.   35.2
+## 7 128      50      0  6      38.0  45.7 100.   41.5
+## 8 256      50      0  8      50.5  52.6  99.0  50.0
+## 9 512      50      0  7.00   55.0  55.9  99.0  49.0</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of no statistical differences.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> performance)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  val by T
+## Kruskal-Wallis chi-squared = 6.8162, df = 8, p-value = 0.5566</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="truncation-selection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="genotypic-fitness-sharing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/amlalejini/auto-deploying-bookdown-example/tree/main/../Tournament/Analysis/results.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["parameter-sweep.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
