@@ -93,7 +93,7 @@ plot = filter(best_df, var == 'pop_fit_max' & acro == 'exp') %>%
     limits = c(10,40)
   ) +
   scale_x_discrete(
-    name="Scheme"
+    name="K nearest neighbors"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
@@ -206,7 +206,7 @@ plot = filter(best_df, var == 'pop_fit_max' & acro == 'ord') %>%
     limits = c(0,10)
   ) +
   scale_x_discrete(
-    name="Scheme"
+    name="K nearest neighbors"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
@@ -321,7 +321,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
     limits=c(0, 100)
   ) +
   scale_x_discrete(
-    name="Scheme"
+    name="K nearest neighbors"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
@@ -426,10 +426,11 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
   geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
-    limits=c(0, 100)
+    limits=c(-0.1, 1.1),
+    breaks = c(0,1)
   ) +
   scale_x_discrete(
-    name="Scheme"
+    name="K nearest neighbors"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
@@ -441,7 +442,7 @@ plot_grid(
   plot +
     theme(legend.position="none"),
   legend,
-  nrow=1,
+  nrow=2,
   rel_heights = c(3,1)
 )
 ```
@@ -452,7 +453,7 @@ Summary statistics for the generation a satisfactory solution is found.
 
 ```{r nov-con-sat-sum}
 sat_coverage = filter(over_time_df, gen == 50000 & acro == 'con')
-act_coverage$K = factor(act_coverage$K, levels = c('2.5','1.2','0.6','0.3','0.1','5','0'))
+sat_coverage$K = factor(sat_coverage$K, levels = NS_LIST)
 sat_coverage %>%
   group_by(K) %>%
   dplyr::summarise(
@@ -476,7 +477,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nov-con-sat-wil}
 pairwise.wilcox.test(x = sat_coverage$pop_uni_obj, g = sat_coverage$K, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'g')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ## Multi-path exploration results
@@ -541,10 +542,10 @@ plot = filter(over_time_df, gen == 50000 & acro == 'mpe') %>%
   geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
-    limits=c(0, 40)
+    limits=c(0, 100)
   ) +
   scale_x_discrete(
-    name="Scheme"
+    name="K nearest neighbors"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
@@ -556,7 +557,7 @@ plot_grid(
   plot +
     theme(legend.position="none"),
   legend,
-  nrow=1,
+  nrow=2,
   rel_heights = c(3,1)
 )
 ```
@@ -566,7 +567,7 @@ plot_grid(
 Summary statistics for activation gene coverage found in the final population at 50,000 generations.
 ```{r nov-mpe-act-sum}
 act_coverage = filter(over_time_df, gen == 50000 & acro == 'mpe')
-act_coverage$K = factor(act_coverage$K, levels = c('0','5','2.5','1.2','0.6','0.3','0.1'))
+act_coverage$K = factor(act_coverage$K, levels = c('15','8','4','2','30','1'))
 act_coverage %>%
   group_by(K) %>%
   dplyr::summarise(
@@ -583,14 +584,14 @@ act_coverage %>%
 Kruskal–Wallis test illustrates evidence of statistical differences.
 
 ```{r nov-mpe-act-kru-end}
-# kruskal.test(uni_str_pos ~ K, data = act_coverage)
+kruskal.test(uni_str_pos ~ K, data = act_coverage)
 ```
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nov-mpe-act-wil-end}
-# pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$K, p.adjust.method = "bonferroni",
-#                      paired = FALSE, conf.int = FALSE, alternative = 'l')
+pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$K, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 'l')
 ```
 
 ### Performance over time
@@ -647,10 +648,10 @@ plot = filter(best_df, var == 'pop_fit_max' & acro == 'mpe') %>%
   geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Average trait score",
-    limits=c(0, 25)
+    limits=c(0, 10)
   ) +
   scale_x_discrete(
-    name="Scheme"
+    name="K nearest neighbors"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
@@ -662,7 +663,7 @@ plot_grid(
   plot +
     theme(legend.position="none"),
   legend,
-  nrow=1,
+  nrow=2,
   rel_heights = c(3,1)
 )
 ```
@@ -673,7 +674,7 @@ Summary statistics for the best performance.
 
 ```{r nov-mpe-per-sum}
 performance = filter(best_df, var == 'pop_fit_max' & acro == 'mpe')
-performance$K = factor(performance$K, levels = rev(c('0','5','2.5','1.2','0.6','0.3','0.1')))
+performance$K = factor(performance$K, levels = c('30','4','2','8','1','15'))
 
 performance %>%
   group_by(K) %>%
@@ -691,12 +692,12 @@ performance %>%
 Kruskal–Wallis test illustrates evidence of statistical differences.
 
 ```{r nov-mpe-per-kru}
-# kruskal.test(val ~ K, data = performance)
+kruskal.test(val ~ K, data = performance)
 ```
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nov-mpe-per-wil}
-# pairwise.wilcox.test(x = performance$val, g = performance$K, p.adjust.method = "bonferroni",
-#                      paired = FALSE, conf.int = FALSE, alternative = 'l')
+pairwise.wilcox.test(x = performance$val, g = performance$K, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 'l')
 ```
