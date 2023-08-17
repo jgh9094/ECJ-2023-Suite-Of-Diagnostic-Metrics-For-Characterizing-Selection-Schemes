@@ -87,9 +87,9 @@ Activation gene coverage found in the final population at 50,000 generations.
 ```{r mul-act-end, out.width="100%"}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = uni_str_pos, color = acro, fill = acro, shape = acro)) +
-  geom_flat_violin(position = position_nudge(x = .09, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
-  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .15, y = 0)) +
-  geom_point(position = position_jitter(width = .02), size = 2.0, alpha = 1.0) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
     limits=c(0, 100),
@@ -202,9 +202,9 @@ Best performance reached throughout 50,000 generations in a population.
 ```{r mul-per-bst, out.width="100%"}
 plot = filter(best_df, var == 'pop_fit_max') %>%
   ggplot(., aes(x = acro, y = val / DIMENSIONALITY, color = acro, fill = acro, shape = acro)) +
-  geom_flat_violin(position = position_nudge(x = .09, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
-  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .15, y = 0)) +
-  geom_point(position = position_jitter(width = .02), size = 2.0, alpha = 1.0) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Average trait score",
     limits=c(0, 100),

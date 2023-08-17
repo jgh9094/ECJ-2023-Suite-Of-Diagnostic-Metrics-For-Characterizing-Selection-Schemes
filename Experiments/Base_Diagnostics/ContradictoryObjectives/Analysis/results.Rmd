@@ -84,9 +84,9 @@ Activation gene coverage found in the final population at 50,000 generations.
 ```{r con-act-end, out.width="100%"}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = uni_str_pos, color = acro, fill = acro, shape = acro)) +
-  geom_flat_violin(position = position_nudge(x = .09, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
-  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .15, y = 0)) +
-  geom_point(position = position_jitter(width = .02), size = 2.0, alpha = 1.0) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
     limits=c(0, 100),
@@ -198,9 +198,9 @@ Satisfactory trait coverage found in the final population at 50,000 generations.
 ```{r con-sat-end, out.width="100%"}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = pop_uni_obj, color = acro, fill = acro, shape = acro)) +
-  geom_flat_violin(position = position_nudge(x = .09, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
-  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .15, y = 0)) +
-  geom_point(position = position_jitter(width = .02), size = 2.0, alpha = 1.0) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
     limits=c(0, 100),
@@ -230,9 +230,9 @@ plot_grid(
 Summary statistics for the coverage found in the final population.
 
 ```{r con-sat-sum-end}
-act_coverage = filter(over_time_df, gen == 50000)
-act_coverage$acro = factor(act_coverage$acro, levels = c('nds','lex','pfs','gfs','tor','tru','nov','ran'))
-act_coverage %>%
+sat_coverage = filter(over_time_df, gen == 50000)
+sat_coverage$acro = factor(sat_coverage$acro, levels = c('nds','lex','pfs','gfs','tor','tru','nov','ran'))
+sat_coverage %>%
   group_by(acro) %>%
   dplyr::summarise(
     count = n(),
@@ -248,12 +248,12 @@ act_coverage %>%
 Kruskal–Wallis test illustrates evidence of statistical differences.
 
 ```{r con-sat-kru-end}
-kruskal.test(pop_uni_obj ~ acro, data = act_coverage)
+kruskal.test(pop_uni_obj ~ acro, data = sat_coverage)
 ```
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r con-sat-wil-end}
-pairwise.wilcox.test(x = act_coverage$pop_uni_obj, g = act_coverage$acro, p.adjust.method = "bonferroni",
+pairwise.wilcox.test(x = sat_coverage$pop_uni_obj, g = sat_coverage$acro, p.adjust.method = "bonferroni",
                      paired = FALSE, conf.int = FALSE, alternative = 'l')
 ```
