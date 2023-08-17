@@ -265,7 +265,7 @@ pairwise.wilcox.test(x = performance$val, g = performance$acro, p.adjust.method 
 
 Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
 
-```{r ord-val-bst, out.width="100%"}
+```{r mul-val-bst, out.width="100%"}
 plot = filter(best_df, var == 'ele_big_peak') %>%
   ggplot(., aes(x = acro, y = val, color = acro, fill = acro, shape = acro)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
@@ -298,7 +298,7 @@ plot_grid(
 
 Summary statistics for the largest valley crossed.
 
-```{r ord-val-sum}
+```{r mul-val-sum}
 valleys = filter(best_df, var == 'ele_big_peak')
 valleys$acro = factor(valleys$acro, levels = c('pfs','gfs','ran','nov','nds','lex','tru','tor'))
 valleys %>%
@@ -317,13 +317,13 @@ valleys %>%
 
 Kruskal–Wallis test illustrates evidence of statistical differences.
 
-```{r ord-val-kru}
+```{r mul-val-kru}
 kruskal.test(val ~ acro, data = valleys)
 ```
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
-```{r ord-val-wil}
+```{r mul-val-wil}
 pairwise.wilcox.test(x = valleys$val, g = valleys$acro, p.adjust.method = "bonferroni",
                      paired = FALSE, conf.int = FALSE, alternative = 'l')
 ```
