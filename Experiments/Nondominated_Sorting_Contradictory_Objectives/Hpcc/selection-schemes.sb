@@ -1,0 +1,82 @@
+#!/bin/bash
+########## Define Resources Needed with SBATCH Lines ##########
+
+#SBATCH --time=3:00:00                # limit of wall clock time - how long the job will run (same as -t)
+#SBATCH --array=1-150                 # number of jobs being created, each with its array id
+#SBATCH --mem=1G                      # memory required per node - amount of memory (in gigs)
+#SBATCH --job-name con-nds            # you can give your job a name for easier identification (same as -J)
+#SBATCH --account=devolab             # research group account being used
+
+##################################
+# Setup required dependencies
+##################################
+module load GCC/10.2.0; module load CUDA/11.1.1; module load Clang/11.0.1;
+
+##################################
+# Setup relevant directories
+##################################
+DATA_DIR=/mnt/gs21/scratch/herna383/ECJ-2023
+
+##################################
+# Setup random seed info
+##################################
+REPILCATE_OFFSET=100000
+PROBLEM_SEED_OFFSET=0
+SEED_OFFSET=0
+SEED=$((SLURM_ARRAY_TASK_ID + PROBLEM_SEED_OFFSET + SEED_OFFSET + REPILCATE_OFFSET))
+
+##################################
+# Setup selection scheme
+##################################
+FITSHARING=2
+NONDOMINATED=4
+
+##################################
+# Treatments
+##################################
+
+# phenotypic fitness sharing
+SELECTION__SCHEME__FITP__MIN=1
+SELECTION__SCHEME__FITP__MAX=50
+
+# nondominated sorting
+SELECTION__SCHEME__NOND__MIN=51
+SELECTION__SCHEME__NOND__MAX=100
+
+#nondominated front ranking
+SELECTION__SCHEME__NDFR__MIN=101
+SELECTION__SCHEME__NDFR__MAX=150
+
+
+####################################################################
+
+if [ ${SLURM_ARRAY_TASK_ID} -ge ${SELECTION__SCHEME__FITP__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${SELECTION__SCHEME__FITP__MAX} ] ; then
+  SELECTION=${FITSHARING}
+  SCHEME=FITSHARING_P
+  FIT_APPLI=1
+  SIGMA=0.3
+
+elif [ ${SLURM_ARRAY_TASK_ID} -ge ${SELECTION__SCHEME__NOND__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${SELECTION__SCHEME__NOND__MAX} ] ; then
+  SELECTION=${NONDOMINATED}
+  SCHEME=NONDOMINATED_SORTING
+  SIGMA=0.3
+
+elif [ ${SLURM_ARRAY_TASK_ID} -ge ${SELECTION__SCHEME__NDFR__MIN} ] && [ ${SLURM_ARRAY_TASK_ID} -le ${SELECTION__SCHEME__NDFR__MAX} ] ; then
+  SELECTION=${NONDOMINATED}
+  SCHEME=NONDOMINATED_FRONTS
+  SIGMA=0.0
+
+else
+  echo "${SEED} from ${PROBLEM} failed to launch" >> /mnt/ls15/scratch/users/herna383/ps-coh-failtolaunch.txt
+fi
+
+####################################################################
+
+RUN_DIR=${DATA_DIR}/CONTRADICTORY_NONDOMINATED/${SCHEME}/${SEED}/
+
+# make a run directory
+mkdir -p ${RUN_DIR}
+
+echo "../../../../dia_world -SEED ${SEED} -DIAGNOSTIC 2 -SELECTION ${SELECTION} -OUTPUT_DIR ${RUN_DIR} -FIT_APPLI 1 -NDS_SIGMA ${SIGMA} > run.log" > ./cmd-coh.txt
+
+../../../../dia_world -SEED ${SEED} -DIAGNOSTIC 2 -SELECTION ${SELECTION} -OUTPUT_DIR ${RUN_DIR} -FIT_APPLI 1 -NDS_SIGMA ${SIGMA}
