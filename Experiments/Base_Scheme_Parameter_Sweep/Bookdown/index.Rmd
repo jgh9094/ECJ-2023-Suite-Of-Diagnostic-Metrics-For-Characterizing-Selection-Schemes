@@ -28,8 +28,8 @@ We compiled our data analyses and supplemental documentation into this nifty web
 
 This supplemental material includes the following selection schemes:
 
-- Truncation (Section \@ref(exploitation-rate-results))
-- Tournament (Section \@ref(ordered-exploitation-results))
+- Truncation (Section \@ref(truncation-selection))
+- Tournament (Section \@ref(tournament-selection))
 - Genotypic fitness sharing (Section \@ref(genotypic-fitness-sharing))
 - Phenotypic fitness sharing (Section \@ref(phenotypic-fitness-sharing))
 - Nondominated sorting (Section \@ref(nondominated-sorting))
