@@ -50,7 +50,7 @@ def CheckDir(dir,dump,dia,offs,val,exp):
 
     # get seeds and schemes we are recording
 
-    SCHEMES = params.GetSchemeList(exp)
+    SCHEMES = ['TRUNCATION','TOURNAMENT','FITSHARING_G','FITSHARING_P','LEXICASE','NONDOMINATED','NOVELTY','RANDOM']
     SEED = params.GetSeedLists(exp,offs)
 
     print('Full data Dir=', DIA_DIR + 'SEED' + '/', flush=True)
