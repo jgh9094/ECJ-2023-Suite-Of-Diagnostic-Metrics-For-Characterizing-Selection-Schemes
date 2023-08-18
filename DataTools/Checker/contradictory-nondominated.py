@@ -59,7 +59,7 @@ def CheckDir(dir,offs):
         sys.exit('SELECTION DATA DIRECTORY DOES NOT EXIST' + DIA_DIR)
 
     # create seed data directories and check if exist
-    SCHEMES = ['FITSHARING_P','NONDOMINATED_SORTIN','NONDOMINATED_SORTIN']
+    SCHEMES = ['FITSHARING_P','NONDOMINATED_SORTING','NONDOMINATED_FRONTS']
     DIR_DNE = []
     DAT_DNE = []
     DAT_DNF = []
