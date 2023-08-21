@@ -60,8 +60,8 @@ def CheckDir(dir,dump,offs):
 
     # create seed data directories and check if exist
     SCHEMES = ['FITSHARING_P','NONDOMINATED_SORTING','NONDOMINATED_FRONTS']
-    NAMES = ['Phenotypic fitness sharing (fsp)','Nondominated sorting (nds)','Nondominated front ranking (ndf)']
-    ACRONYM = ['fsp','nds','ndf']
+    NAMES = ['Phenotypic fitness sharing (pfs)','Nondominated sorting (nds)','Nondominated front ranking (nfr)']
+    ACRONYM = ['pfs','nds','nfr']
     
     # gens we are expecting
     GEN_LIST = [x for x in range(int(params.GENERATIONS)+1) if x % params.RESOLUTION == 0]
