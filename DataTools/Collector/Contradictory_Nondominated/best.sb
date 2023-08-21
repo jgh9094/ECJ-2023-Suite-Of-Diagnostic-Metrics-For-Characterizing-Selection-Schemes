@@ -25,7 +25,7 @@ DUMP_DIR=/mnt/gs21/scratch/herna383/ECJ-2023-DUMP/CONTRADICTORY_NONDOMINATED/
 SEED_OFFSET=100000
 
 # make DUMP directory
-mkdir -p ${DUMP}
+mkdir -p ${DUMP_DIR}
 
 echo "python3 best.py ${DATA_DIR} ${DUMP_DIR} ${SEED_OFFSET}  > run.log" > ./cmd-coh.txt
 
