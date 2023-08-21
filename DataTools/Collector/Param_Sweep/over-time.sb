@@ -39,68 +39,68 @@ VALLEY=0
 if [ ${SLURM_ARRAY_TASK_ID} -eq 1 ] ; then
   SCHEME=${TRUNCATION}
   OFFSET=50000
-  DIR=/OVER-TIME/
+  DIR=OVER-TIME
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 2 ] ; then
   SCHEME=${TOURNAMENT}
   OFFSET=52000
-  DIR=/OVER-TIME/
+  DIR=OVER-TIME
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 3 ] ; then
   SCHEME=${NOVELTY}
   OFFSET=54000
-  DIR=/OVER-TIME/
+  DIR=OVER-TIME
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 4 ] ; then
   SCHEME=${NONDOMINATED}
   OFFSET=56000
-  DIR=/OVER-TIME/
+  DIR=OVER-TIME
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 5 ] ; then
   SCHEME=${FITSHARING_P}
   OFFSET=58000
-  DIR=/OVER-TIME/
+  DIR=OVER-TIME
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 6 ] ; then
   SCHEME=${FITSHARING_G}
   OFFSET=60000
-  DIR=/OVER-TIME/
+  DIR=OVER-TIME
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 7 ] ; then
   SCHEME=${TRUNCATION}
   OFFSET=70000
   VALLEY=1
-  DIR=/OVER-TIME-MVC/
+  DIR=OVER-TIME-MVC
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 8 ] ; then
   SCHEME=${TOURNAMENT}
   OFFSET=72000
   VALLEY=1
-  DIR=/OVER-TIME-MVC/
+  DIR=OVER-TIME-MVC
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 9 ] ; then
   SCHEME=${NOVELTY}
   OFFSET=74000
   VALLEY=1
-  DIR=/OVER-TIME-MVC/
+  DIR=OVER-TIME-MVC
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 10 ] ; then
   SCHEME=${NONDOMINATED}
   OFFSET=76000
   VALLEY=1
-  DIR=/OVER-TIME-MVC/
+  DIR=OVER-TIME-MVC
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 11 ] ; then
   SCHEME=${FITSHARING_P}
   OFFSET=78000
   VALLEY=1
-  DIR=/OVER-TIME-MVC/
+  DIR=OVER-TIME-MVC
 
 elif [ ${SLURM_ARRAY_TASK_ID} -eq 12 ] ; then
   SCHEME=${FITSHARING_G}
   OFFSET=80000
   VALLEY=1
-  DIR=/OVER-TIME-MVC/
+  DIR=OVER-TIME-MVC
 
 else
   echo "${SLURM_ARRAY_TASK_ID} from failed to launch" >> /mnt/ls15/scratch/users/herna383/ps-coh-failtolaunch.txt
@@ -109,7 +109,7 @@ fi
 ####################################################################
 
 # make DUMP directory
-FINAL_DIR=${DUMP_DIR}/${DIR}
+FINAL_DIR=${DUMP_DIR}/${DIR}/
 mkdir -p ${FINAL_DIR}
 
 SEED_OFFSET=$((OFFSET))
