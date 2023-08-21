@@ -6,6 +6,6 @@ language:
 delete_merged_file: true
 rmd_files: [
   "index.Rmd",
-  "../Analysis/results.Rmd"
+  "../Analysis/results.Rmd",
   "tail.Rmd"
 ]
