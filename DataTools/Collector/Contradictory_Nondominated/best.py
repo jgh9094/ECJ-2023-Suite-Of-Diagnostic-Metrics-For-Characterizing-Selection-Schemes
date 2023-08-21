@@ -22,7 +22,7 @@ import sys
 import os
 
 # file location for params.py file
-sys.path.insert(1, '../')
+sys.path.insert(1, '../../')
 import params
 
 # return the number of rows in a csv file
