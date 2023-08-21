@@ -16,7 +16,7 @@ module load GCCcore/11.2.0; module load Python/3.9.6; pip3 install pandas;
 # Setup relevant directories
 ##################################
 DATA_DIR=/mnt/gs21/scratch/herna383/ECJ-2023/
-DUMP_DIR=/mnt/gs21/scratch/herna383/ECJ-2023-DUMP/
+DUMP_DIR=/mnt/gs21/scratch/herna383/ECJ-2023-DUMP/CONTRADICTORY_NONDOMINATED/
 
 ##################################
 # Seed offset for replications
