@@ -114,6 +114,6 @@ mkdir -p ${FINAL_DIR}
 
 SEED_OFFSET=$((OFFSET))
 
-echo "python3 best.py ${DATA_DIR} ${DUMP_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY} > run.log" > ./cmd-coh.txt
+echo "python3 best.py ${DATA_DIR} ${FINAL_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY} > run.log" > ./cmd-coh.txt
 
-python3 best.py ${DATA_DIR} ${DUMP_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY}
+python3 best.py ${DATA_DIR} ${FINAL_DIR} ${SCHEME} ${SEED_OFFSET} ${VALLEY}
