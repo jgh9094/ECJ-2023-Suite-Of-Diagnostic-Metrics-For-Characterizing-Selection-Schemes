@@ -121,6 +121,13 @@ Each focuses on a different set analysis.
 3. [Selection scheme parameter sweep](https://jgh9094.github.io/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/Selection-Scheme-Parameter-Sweep/):
     - We evalate different parameterization of the previously mentioned selection schemes on the exploitaiton rate, ordered exploitaiton, contradictory obejctives, and multi-path exploration diagnositcs.
 
+4. [Selection scheme parameter sweep with valleys](https://jgh9094.github.io/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/Selection-Scheme-Parameter-Sweep-MVC/):
+    - We evalate different parameterization of the previously mentioned selection schemes on the exploitaiton rate, ordered exploitaiton, contradictory obejctives, and multi-path exploration diagnositcs with valleys.
+
+5. [Nondominated sorting breakdown](https://jgh9094.github.io/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/Contradictory-Nondominated-Parts/)
+    - We evaluate the two key components of nondominated sorting: phenotypic fitness sharing and nondominated front ranking.
+    We isolate each component and compart them to each other and standard nondominated sorting on the contradictory objectives. 
+
 ## Reference
 
 Hernandez, J. G., Lalejini, A., & Ofria, C. (2022). A suite of diagnostic metrics for characterizing selection schemes. arXiv preprint arXiv:2204.13839.
