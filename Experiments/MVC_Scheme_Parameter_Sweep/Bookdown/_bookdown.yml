@@ -1,0 +1,16 @@
+book_filename: "parameter-sweep-mvc"
+output_dir: /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/Books/Selection-Scheme-Parameter-Sweep-MVC
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+rmd_files: [
+  "index.Rmd",
+  "../Truncation/Analysis/results.Rmd",
+  "../Tournament/Analysis/results.Rmd",
+  "../Fitness_Sharing_G/Analysis/results.Rmd",
+  "../Fitness_Sharing_P/Analysis/results.Rmd",
+  "../Nondominated_Sorting/Analysis/results.Rmd",
+  "../Novelty_Search/Analysis/results.Rmd",
+  "tail.Rmd"
+]

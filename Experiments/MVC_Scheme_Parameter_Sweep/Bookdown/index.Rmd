@@ -1,0 +1,100 @@
+---
+title: "Supplemental Material: Selection Scheme Parameter Sweep MVC Diagnostics"
+author: "Jose Guadalupe Hernandez"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+documentclass: book
+biblio-style: apalike
+nocite: '@*'
+link-citations: yes
+github-repo:  jgh9094/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes
+description: "Supplemental material for selection scheme parameter sweep with diagnostics and valleys."
+---
+
+```{r base-idx-init, include=FALSE}
+rm(list = ls())
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+This is the supplemental material for selection scheme parameter sweep experiments with diagnostics combined with valleys.
+
+## About our supplemental material
+
+This supplemental material is hosted on [GitHub](https://github.com) using GitHub pages.
+The source code and configuration files used to generate this supplemental material can be found in [this GitHub repository](https://github.com/jgh9094/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes).
+We compiled our data analyses and supplemental documentation into this nifty web-accessible book using [bookdown](https://bookdown.org/).
+
+This supplemental material includes the following selection schemes:
+
+- Truncation (Section \@ref(truncation-selection))
+- Tournament (Section \@ref(tournament-selection))
+- Genotypic fitness sharing (Section \@ref(genotypic-fitness-sharing))
+- Phenotypic fitness sharing (Section \@ref(phenotypic-fitness-sharing))
+- Nondominated sorting (Section \@ref(nondominated-sorting))
+- Novelty search (Section \@ref(novelty-search))
+
+## Contributing authors
+
+- [Jose Guadalupe Hernandez](https://jgh9094.github.io/)
+- [Alexander Lalejini](https://lalejini.com)
+- [Charles Ofria](http://ofria.com)
+
+## Computer Setup
+
+These analyses were conducted in the following computing environment:
+
+```{r base-com-ver}
+print(version)
+```
+
+
+## Experimental setup
+
+Setting up required variables variables.
+
+```{r base-data-setup}
+# libraries we are using
+library(ggplot2)
+library(cowplot)
+library(dplyr)
+library(PupillometryR)
+
+# data diractory for gh-pages
+# DATA_DIR = '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/PARAM_SWEEP/'
+
+# data diractory for local testing
+DATA_DIR = '~/Desktop/Repositories/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/PARAM_SWEEP/'
+
+# graph variables
+SHAPE = c(5,3,1,2,6,0,4,20,8)
+cb_palette <- c('#332288','#88CCEE','#EE7733','#EE3377','#117733','#882255','#44AA99','#CCBB44', '#000000')
+TSIZE = 26
+p_theme <- theme(
+  text = element_text(size = 28),
+  plot.title = element_text( face = "bold", size = 22, hjust=0.5),
+  panel.border = element_blank(),
+  panel.grid.minor = element_blank(),
+  legend.title=element_text(size=22),
+  legend.text=element_text(size=23),
+  axis.title = element_text(size=23),
+  axis.text = element_text(size=22),
+  legend.position="bottom",
+  panel.background = element_rect(fill = "#f1f2f5",
+                                  colour = "white",
+                                  linewidth = 0.5, linetype = "solid")
+)
+
+# default variables
+REPLICATES = 50
+DIMENSIONALITY = 100
+GENERATIONS = 50000
+
+# selection scheme params exploring
+TR_LIST = c('1','2','4','8','16','32','64','128','256')
+TS_LIST = c('2','4','8','16','32','64','128','256','512')
+FS_LIST = c('0','0.1','0.3','0.6','1.2','2.5','5')
+ND_LIST = c('0','0.1','0.3','0.6','1.2','2.5','5')
+NS_LIST = c('1','2','4','8','15','30')
+```

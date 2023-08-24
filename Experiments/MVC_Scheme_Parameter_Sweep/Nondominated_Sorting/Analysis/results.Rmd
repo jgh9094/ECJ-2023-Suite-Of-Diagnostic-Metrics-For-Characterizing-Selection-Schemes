@@ -1,0 +1,974 @@
+# Nondominated sorting
+
+Results for the nondominated sorting parameter sweep on the diagnostics with valleys.
+
+## Data setup
+
+```{r nds-data-setup, message=FALSE}
+over_time_df <- read.csv(paste(DATA_DIR,'OVER-TIME-MVC/nds.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+over_time_df$Sigma <- factor(over_time_df$Sigma, levels = ND_LIST)
+
+best_df <- read.csv(paste(DATA_DIR,'BEST-MVC/nds.csv', sep = "", collapse = NULL), header = TRUE, stringsAsFactors = FALSE)
+best_df$Sigma <- factor(best_df$Sigma, levels = ND_LIST)
+```
+
+## Exploitation rate results
+
+Here we present the results for **best performances** found by each selection scheme parameter on the exploitation rate diagnostic with valleys.
+50 replicates are conducted for each scheme explored.
+
+### Performance over time
+
+Best performance in a population over time.
+Data points on the graph is the average performance across 50 replicates every 2000 generations.
+Shading comes from the best and worse performance across 50 replicates.
+
+```{r nds-exp-per-ot, out.width="100%"}
+lines = filter(over_time_df, acro == 'exp') %>%
+  group_by(Sigma, gen) %>%
+  dplyr::summarise(
+    min = min(pop_fit_max) / DIMENSIONALITY,
+    mean = mean(pop_fit_max) / DIMENSIONALITY,
+    max = max(pop_fit_max) / DIMENSIONALITY
+  )
+
+over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, shape = Sigma)) +
+  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
+  geom_line(size = 0.5) +
+  geom_point(data = filter(lines, gen %% 2000 == 0 & gen != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Average trait score",
+    limits = c(0,20)
+  ) +
+  scale_x_continuous(
+    name="Generations",
+    limits=c(0, 50000),
+    breaks=c(0, 10000, 20000, 30000, 40000, 50000),
+    labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
+
+  ) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Performance over time')+
+  p_theme + theme(legend.title=element_blank()) +
+  guides(
+    shape=guide_legend(nrow=2, title.position = "bottom"),
+    color=guide_legend(nrow=2, title.position = "bottom"),
+    fill=guide_legend(nrow=2, title.position = "bottom")
+  )
+
+over_time_plot
+```
+
+```{r nds-legend, echo=FALSE}
+legend <- cowplot::get_legend(
+  over_time_plot +
+    guides(
+    shape=guide_legend(nrow=2, title.position = "bottom"),
+    color=guide_legend(nrow=2, title.position = "bottom"),
+    fill=guide_legend(nrow=2, title.position = "bottom")
+    ) +
+    theme(
+      legend.position = "top",
+      legend.box="verticle",
+      legend.justification="center"
+    )
+)
+```
+
+### Best performance throughout
+
+Best performance reached throughout 50,000 generations in a population.
+
+```{r nds-exp-bst, out.width="100%"}
+plot = filter(best_df, acro == 'exp' &  var == 'pop_fit_max') %>%
+  ggplot(., aes(x = Sigma, y = val / DIMENSIONALITY, color = Sigma, fill = Sigma, shape = Sigma)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Average trait score",
+    limits=c(14,19)
+  ) +
+  scale_x_discrete(
+    name="Sigma"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Best performance throughout')+
+  p_theme + theme(legend.title=element_blank())
+
+plot_grid(
+  plot +
+    theme(legend.position="none"),
+  legend,
+  nrow=2,
+  rel_heights = c(3,1)
+)
+```
+
+#### Stats
+
+Summary statistics for the best performance.
+
+```{r nds-exp-per-sum}
+performance = filter(best_df, acro == 'exp' &  var == 'pop_fit_max')
+performance$Sigma = factor(performance$Sigma, levels = ND_LIST)
+performance %>%
+  group_by(Sigma) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(val)),
+    min = min(val / DIMENSIONALITY, na.rm = TRUE),
+    median = median(val / DIMENSIONALITY, na.rm = TRUE),
+    mean = mean(val / DIMENSIONALITY, na.rm = TRUE),
+    max = max(val / DIMENSIONALITY, na.rm = TRUE),
+    IQR = IQR(val / DIMENSIONALITY, na.rm = TRUE)
+  )
+```
+
+Kruskal–Wallis test illustrates evidence of statistical differences.
+
+```{r nds-exp-per-kru}
+kruskal.test(val ~ Sigma, data = performance)
+```
+
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
+
+```{r nds-exp-per-wil}
+pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
+```
+
+### Largest valley reached throughout
+
+Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+
+```{r nds-exp-val-bst, out.width="100%"}
+plot = filter(best_df, acro == 'exp' & var == 'ele_big_peak') %>%
+  ggplot(., aes(x = Sigma, y = val, color = Sigma, fill = Sigma, shape = Sigma)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Valley reached",
+    limits=c(9.9,14.1),
+    breaks = c(10,11,12,13,14)
+  ) +
+  scale_x_discrete(
+    name="Sigma"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Largest valley reached')+
+  p_theme + theme(legend.title=element_blank())
+
+plot_grid(
+  plot +
+    theme(legend.position="none"),
+  legend,
+  nrow=2,
+  rel_heights = c(3,1)
+)
+```
+
+#### Stats
+
+Summary statistics for the largest valley crossed.
+
+```{r nds-exp-val-sum}
+valleys = filter(best_df, acro == 'exp' & var == 'ele_big_peak')
+valleys$Sigma = factor(valleys$Sigma, levels = ND_LIST)
+valleys %>%
+  group_by(Sigma) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(val)),
+    min = min(val, na.rm = TRUE),
+    median = median(val, na.rm = TRUE),
+    mean = mean(val, na.rm = TRUE),
+    max = max(val, na.rm = TRUE),
+    IQR = IQR(val, na.rm = TRUE)
+  )
+```
+
+
+Kruskal–Wallis test illustrates evidence of statistical differences.
+
+```{r nds-exp-val-kru}
+kruskal.test(val ~ Sigma, data = valleys)
+```
+
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
+
+```{r nds-exp-val-wil}
+pairwise.wilcox.test(x = valleys$val, g = valleys$Sigma, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
+```
+
+## Ordered exploitation results
+
+Here we present the results for **best performances** found by each selection scheme parameter on the ordered exploitation diagnostic with valleys.
+50 replicates are conducted for each scheme explored.
+
+### Performance over time
+
+Best performance in a population over time.
+Data points on the graph is the average performance across 50 replicates every 2000 generations.
+Shading comes from the best and worse performance across 50 replicates.
+
+```{r nds-ord-per-ot, out.width="100%"}
+lines = filter(over_time_df, acro == 'ord') %>%
+  group_by(Sigma, gen) %>%
+  dplyr::summarise(
+    min = min(pop_fit_max) / DIMENSIONALITY,
+    mean = mean(pop_fit_max) / DIMENSIONALITY,
+    max = max(pop_fit_max) / DIMENSIONALITY
+  )
+
+over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, shape = Sigma)) +
+  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
+  geom_line(size = 0.5) +
+  geom_point(data = filter(lines, gen %% 2000 == 0 & gen != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Average trait score",
+    limits = c(0,6)
+  ) +
+  scale_x_continuous(
+    name="Generations",
+    limits=c(0, 50000),
+    breaks=c(0, 10000, 20000, 30000, 40000, 50000),
+    labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
+
+  ) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Performance over time')+
+  p_theme + theme(legend.title=element_blank()) +
+  guides(
+    shape=guide_legend(nrow=2, title.position = "bottom"),
+    color=guide_legend(nrow=2, title.position = "bottom"),
+    fill=guide_legend(nrow=2, title.position = "bottom")
+  )
+
+over_time_plot
+```
+
+### Best performance throughout
+
+Best performance reached throughout 50,000 generations in a population.
+
+```{r nds-ord-bst, out.width="100%"}
+plot = filter(best_df, acro == 'ord' &  var == 'pop_fit_max') %>%
+  ggplot(., aes(x = Sigma, y = val / DIMENSIONALITY, color = Sigma, fill = Sigma, shape = Sigma)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Average trait score",
+    limits=c(0,6)
+  ) +
+  scale_x_discrete(
+    name="Sigma"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Best performance throughout')+
+  p_theme + theme(legend.title=element_blank())
+
+plot_grid(
+  plot +
+    theme(legend.position="none"),
+  legend,
+  nrow=2,
+  rel_heights = c(3,1)
+)
+```
+
+#### Stats
+
+Summary statistics for the best performance.
+
+```{r nds-ord-per-sum}
+performance = filter(best_df, acro == 'ord' &  var == 'pop_fit_max')
+performance$Sigma = factor(performance$Sigma, levels = ND_LIST)
+performance %>%
+  group_by(Sigma) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(val)),
+    min = min(val / DIMENSIONALITY, na.rm = TRUE),
+    median = median(val / DIMENSIONALITY, na.rm = TRUE),
+    mean = mean(val / DIMENSIONALITY, na.rm = TRUE),
+    max = max(val / DIMENSIONALITY, na.rm = TRUE),
+    IQR = IQR(val / DIMENSIONALITY, na.rm = TRUE)
+  )
+```
+
+Kruskal–Wallis test illustrates evidence of statistical differences.
+
+```{r nds-ord-per-kru}
+kruskal.test(val ~ Sigma, data = performance)
+```
+
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
+
+```{r nds-ord-per-wil}
+pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
+```
+
+### Largest valley reached throughout
+
+Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+
+```{r nds-ord-val-bst, out.width="100%"}
+plot = filter(best_df, acro == 'ord' & var == 'ele_big_peak') %>%
+  ggplot(., aes(x = Sigma, y = val, color = Sigma, fill = Sigma, shape = Sigma)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Valley reached",
+    limits=c(4.9,14.1),
+    breaks = c(5,8,11,14)
+  ) +
+  scale_x_discrete(
+    name="Sigma"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Largest valley reached')+
+  p_theme + theme(legend.title=element_blank())
+
+plot_grid(
+  plot +
+    theme(legend.position="none"),
+  legend,
+  nrow=2,
+  rel_heights = c(3,1)
+)
+```
+
+#### Stats
+
+Summary statistics for the largest valley crossed.
+
+```{r nds-ord-val-sum}
+valleys = filter(best_df, acro == 'ord' & var == 'ele_big_peak')
+valleys$Sigma = factor(valleys$Sigma, levels = ND_LIST)
+valleys %>%
+  group_by(Sigma) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(val)),
+    min = min(val, na.rm = TRUE),
+    median = median(val, na.rm = TRUE),
+    mean = mean(val, na.rm = TRUE),
+    max = max(val, na.rm = TRUE),
+    IQR = IQR(val, na.rm = TRUE)
+  )
+```
+
+
+Kruskal–Wallis test illustrates evidence of statistical differences.
+
+```{r nds-ord-val-kru}
+kruskal.test(val ~ Sigma, data = valleys)
+```
+
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
+
+```{r nds-ord-val-wil}
+pairwise.wilcox.test(x = valleys$val, g = valleys$Sigma, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
+```
+
+## Contradictory objectives results
+
+Here we present the results for **activation gene coverage** and **satisfactory trait coverage** found by each selection scheme parameter on the contradictory objectives diagnostic with valleys.
+50 replicates are conducted for each scheme parameters explored.
+
+### Activation gene coverage over time
+
+Activation gene coverage in a population over time.
+Data points on the graph is the average activation gene coverage across 50 replicates every 2000 generations.
+Shading comes from the best and worse coverage across 50 replicates.
+
+
+```{r nds-con-act-ot, out.width="100%"}
+lines = filter(over_time_df, acro == 'con')  %>%
+  group_by(Sigma, gen) %>%
+  dplyr::summarise(
+    min = min(uni_str_pos),
+    mean = mean(uni_str_pos),
+    max = max(uni_str_pos)
+  )
+
+ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, shape = Sigma)) +
+  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
+  geom_line(size = 0.5) +
+  geom_point(data = filter(lines, gen %% 2000 == 0 & gen != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+    limits=c(0, 100),
+    breaks=seq(0,100, 20),
+    labels=c("0", "20", "40", "60", "80", "100")
+  ) +
+  scale_x_continuous(
+    name="Generations",
+    limits=c(0, 50000),
+    breaks=c(0, 10000, 20000, 30000, 40000, 50000),
+    labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
+
+  ) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Activation gene coverage over time')+
+  p_theme + theme(legend.title=element_blank()) +
+  guides(
+    shape=guide_legend(nrow=2, title.position = "bottom"),
+    color=guide_legend(nrow=2, title.position = "bottom"),
+    fill=guide_legend(nrow=2, title.position = "bottom")
+  )
+```
+
+### Final activation gene coverage
+
+Activation gene coverage found in the final population at 50,000 generations.
+
+```{r nds-con-act-end, out.width="100%"}
+plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
+  ggplot(., aes(x = Sigma, y = uni_str_pos, color = Sigma, fill = Sigma, shape = Sigma)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+    limits=c(50, 100.1)
+  ) +
+  scale_x_discrete(
+    name="Sigma"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Final activation gene coverage')+
+  p_theme + theme(legend.title=element_blank())
+
+plot_grid(
+  plot +
+    theme(legend.position="none"),
+  legend,
+  nrow=2,
+  rel_heights = c(3,1)
+)
+```
+
+#### Stats
+
+Summary statistics for the generation a satisfactory solution is found.
+
+```{r nds-con-act-sum}
+act_coverage = filter(over_time_df, gen == 50000 & acro == 'con')
+act_coverage$Sigma = factor(act_coverage$Sigma, levels = ND_LIST)
+act_coverage %>%
+  group_by(Sigma) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(uni_str_pos)),
+    min = min(uni_str_pos, na.rm = TRUE),
+    median = median(uni_str_pos, na.rm = TRUE),
+    mean = mean(uni_str_pos, na.rm = TRUE),
+    max = max(uni_str_pos, na.rm = TRUE),
+    IQR = IQR(uni_str_pos, na.rm = TRUE)
+  )
+```
+
+Kruskal–Wallis test illustrates evidence of statistical differences.
+
+```{r nds-con-act-kru}
+kruskal.test(uni_str_pos ~ Sigma, data = act_coverage)
+```
+
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
+
+```{r nds-con-act-wil}
+pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$Sigma, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
+```
+
+### Satisfactory trait coverage over time
+
+Satisfactory trait coverage in a population over time.
+Data points on the graph is the average activation gene coverage across 50 replicates every 2000 generations.
+Shading comes from the best and worse coverage across 50 replicates.
+
+
+```{r nds-con-sat-ot, out.width="100%"}
+lines = filter(over_time_df, acro == 'con')  %>%
+  group_by(Sigma, gen) %>%
+  dplyr::summarise(
+    min = min(pop_uni_obj),
+    mean = mean(pop_uni_obj),
+    max = max(pop_uni_obj)
+  )
+
+ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, shape = Sigma)) +
+  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
+  geom_line(size = 0.5) +
+  geom_point(data = filter(lines, gen %% 2000 == 0 & gen != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+    limits=c(0, 2)
+  ) +
+  scale_x_continuous(
+    name="Generations",
+    limits=c(0, 50000),
+    breaks=c(0, 10000, 20000, 30000, 40000, 50000),
+    labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
+
+  ) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Satisfactory trait coverage over time')+
+  p_theme + theme(legend.title=element_blank()) +
+  guides(
+    shape=guide_legend(nrow=2, title.position = "bottom"),
+    color=guide_legend(nrow=2, title.position = "bottom"),
+    fill=guide_legend(nrow=2, title.position = "bottom")
+  )
+```
+
+### Final satisfactory trait coverage
+
+Satisfactory trait coverage found in the final population at 50,000 generations.
+
+```{r nds-con-sat-end, out.width="100%"}
+plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
+  ggplot(., aes(x = Sigma, y = pop_uni_obj, color = Sigma, fill = Sigma, shape = Sigma)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+    limits=c(-0.1, 2)
+  ) +
+  scale_x_discrete(
+    name="Sigma"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Final satisfactory trait coverage')+
+  p_theme + theme(legend.title=element_blank())
+
+plot_grid(
+  plot +
+    theme(legend.position="none"),
+  legend,
+  nrow=2,
+  rel_heights = c(3,1)
+)
+```
+
+#### Stats
+
+Summary statistics for the generation a satisfactory solution is found.
+
+```{r nds-con-sat-sum}
+sat_coverage = filter(over_time_df, gen == 50000 & acro == 'con')
+sat_coverage$Sigma = factor(sat_coverage$Sigma, levels = ND_LIST)
+sat_coverage %>%
+  group_by(Sigma) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(pop_uni_obj)),
+    min = min(pop_uni_obj, na.rm = TRUE),
+    median = median(pop_uni_obj, na.rm = TRUE),
+    mean = mean(pop_uni_obj, na.rm = TRUE),
+    max = max(pop_uni_obj, na.rm = TRUE),
+    IQR = IQR(pop_uni_obj, na.rm = TRUE)
+  )
+```
+
+### Largest valley reached throughout
+
+Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+
+```{r nds-con-val-bst, out.width="100%"}
+plot = filter(best_df, acro == 'con' & var == 'ele_big_peak') %>%
+  ggplot(., aes(x = Sigma, y = val, color = Sigma, fill = Sigma, shape = Sigma)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Valley reached",
+    limits=c(4.9,14.1),
+    breaks=c(5,8,11,14)
+  ) +
+  scale_x_discrete(
+    name="Sigma"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Largest valley reached')+
+  p_theme + theme(legend.title=element_blank())
+
+plot_grid(
+  plot +
+    theme(legend.position="none"),
+  legend,
+  nrow=2,
+  rel_heights = c(3,1)
+)
+```
+
+#### Stats
+
+Summary statistics for the largest valley crossed.
+
+```{r nds-con-val-sum}
+valleys = filter(best_df, acro == 'con' & var == 'ele_big_peak')
+valleys$Sigma = factor(valleys$Sigma, levels = ND_LIST)
+valleys %>%
+  group_by(Sigma) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(val)),
+    min = min(val, na.rm = TRUE),
+    median = median(val, na.rm = TRUE),
+    mean = mean(val, na.rm = TRUE),
+    max = max(val, na.rm = TRUE),
+    IQR = IQR(val, na.rm = TRUE)
+  )
+```
+
+
+Kruskal–Wallis test illustrates evidence of statistical differences.
+
+```{r nds-con-val-kru}
+kruskal.test(val ~ Sigma, data = valleys)
+```
+
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
+
+```{r nds-con-val-wil}
+pairwise.wilcox.test(x = valleys$val, g = valleys$Sigma, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
+```
+
+## Multi-path exploration results
+
+Here we present the results for best performances and activation gene coverage found by each selection scheme parameter on the multi-path exploration diagnostic with valleys. 
+50 replicates are conducted for each scheme parameter explored.
+
+### Activation gene coverage over time
+
+Activation gene coverage in a population over time.
+Data points on the graph is the average activation gene coverage across 50 replicates every 2000 generations.
+Shading comes from the best and worse coverage across 50 replicates.
+
+
+```{r nds-mpe-act-ot, out.width="100%"}
+lines = filter(over_time_df, acro == 'mpe')  %>%
+  group_by(Sigma, gen) %>%
+  dplyr::summarise(
+    min = min(uni_str_pos),
+    mean = mean(uni_str_pos),
+    max = max(uni_str_pos)
+  )
+
+ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, shape = Sigma)) +
+  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
+  geom_line(size = 0.5) +
+  geom_point(data = filter(lines, gen %% 2000 == 0 & gen != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+    limits=c(0, 100),
+    breaks=seq(0,100, 20),
+    labels=c("0", "20", "40", "60", "80", "100")
+  ) +
+  scale_x_continuous(
+    name="Generations",
+    limits=c(0, 50000),
+    breaks=c(0, 10000, 20000, 30000, 40000, 50000),
+    labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
+
+  ) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Activation gene coverage over time')+
+  p_theme + theme(legend.title=element_blank()) +
+  guides(
+    shape=guide_legend(nrow=2, title.position = "bottom"),
+    color=guide_legend(nrow=2, title.position = "bottom"),
+    fill=guide_legend(nrow=2, title.position = "bottom")
+  )
+```
+
+### Final activation gene coverage
+
+Activation gene coverage found in the final population at 50,000 generations.
+
+```{r nds-mpe-act-end, out.width="100%"}
+plot = filter(over_time_df, gen == 50000 & acro == 'mpe') %>%
+  ggplot(., aes(x = Sigma, y = uni_str_pos, color = Sigma, fill = Sigma, shape = Sigma)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Coverage",
+    limits=c(0, 100),
+    breaks=seq(0,100, 20),
+    labels=c("0", "20", "40", "60", "80", "100")
+  ) +
+  scale_x_discrete(
+    name="Sigma"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Final activation gene coverage')+
+  p_theme + theme(legend.title=element_blank())
+
+plot_grid(
+  plot +
+    theme(legend.position="none"),
+  legend,
+  nrow=2,
+  rel_heights = c(3,1)
+)
+```
+
+#### Stats
+
+Summary statistics for the generation a satisfactory solution is found.
+
+```{r nds-mpe-act-sum}
+act_coverage = filter(over_time_df, gen == 50000 & acro == 'mpe')
+act_coverage$Sigma = factor(act_coverage$Sigma, levels = ND_LIST)
+act_coverage %>%
+  group_by(Sigma) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(uni_str_pos)),
+    min = min(uni_str_pos, na.rm = TRUE),
+    median = median(uni_str_pos, na.rm = TRUE),
+    mean = mean(uni_str_pos, na.rm = TRUE),
+    max = max(uni_str_pos, na.rm = TRUE),
+    IQR = IQR(uni_str_pos, na.rm = TRUE)
+  )
+```
+
+Kruskal–Wallis test illustrates evidence of statistical differences.
+
+```{r nds-mpe-act-kru}
+kruskal.test(uni_str_pos ~ Sigma, data = act_coverage)
+```
+
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
+
+```{r nds-mpe-act-wil}
+pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$Sigma, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
+```
+
+### Performance over time
+
+Best performance in a population over time.
+Data points on the graph is the average performance across 50 replicates every 2000 generations.
+Shading comes from the best and worse performance across 50 replicates.
+
+```{r nds-mpe-per-ot, out.width="100%"}
+lines = filter(over_time_df, acro == 'mpe') %>%
+  group_by(Sigma, gen) %>%
+  dplyr::summarise(
+    min = min(pop_fit_max) / DIMENSIONALITY,
+    mean = mean(pop_fit_max) / DIMENSIONALITY,
+    max = max(pop_fit_max) / DIMENSIONALITY
+  )
+
+over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, shape = Sigma)) +
+  geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
+  geom_line(size = 0.5) +
+  geom_point(data = filter(lines, gen %% 2000 == 0 & gen != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Average trait score",
+    limits=c(0, 5)
+  ) +
+  scale_x_continuous(
+    name="Generations",
+    limits=c(0, 50000),
+    breaks=c(0, 10000, 20000, 30000, 40000, 50000),
+    labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
+
+  ) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Performance over time')+
+  p_theme + theme(legend.title=element_blank()) +
+  guides(
+    shape=guide_legend(nrow=2, title.position = "bottom"),
+    color=guide_legend(nrow=2, title.position = "bottom"),
+    fill=guide_legend(nrow=2, title.position = "bottom")
+  )
+
+over_time_plot
+```
+
+### Best performance throughout
+
+Best performance reached throughout 50,000 generations in a population.
+
+```{r nds-mpe-bst, out.width="100%"}
+plot = filter(best_df, acro == 'mpe' &  var == 'pop_fit_max') %>%
+  ggplot(., aes(x = Sigma, y = val / DIMENSIONALITY, color = Sigma, fill = Sigma, shape = Sigma)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Average trait score",
+    limits=c(0,5)
+  ) +
+  scale_x_discrete(
+    name="Sigma"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Best performance throughout')+
+  p_theme + theme(legend.title=element_blank())
+
+plot_grid(
+  plot +
+    theme(legend.position="none"),
+  legend,
+  nrow=2,
+  rel_heights = c(3,1)
+)
+```
+
+#### Stats
+
+Summary statistics for the best performance.
+
+```{r nds-mpe-per-sum}
+performance = filter(best_df, acro == 'mpe' &  var == 'pop_fit_max')
+performance$Sigma = factor(performance$Sigma, levels = ND_LIST)
+performance %>%
+  group_by(Sigma) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(val)),
+    min = min(val / DIMENSIONALITY, na.rm = TRUE),
+    median = median(val / DIMENSIONALITY, na.rm = TRUE),
+    mean = mean(val / DIMENSIONALITY, na.rm = TRUE),
+    max = max(val / DIMENSIONALITY, na.rm = TRUE),
+    IQR = IQR(val / DIMENSIONALITY, na.rm = TRUE)
+  )
+```
+
+Kruskal–Wallis test illustrates evidence of statistical differences.
+
+```{r nds-mpe-per-kru}
+kruskal.test(val ~ Sigma, data = performance)
+```
+
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
+
+```{r nds-mpe-per-wil}
+pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
+```
+
+### Largest valley reached throughout
+
+Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+
+```{r nds-mpe-val-bst, out.width="100%"}
+plot = filter(best_df, acro == 'mpe' & var == 'ele_big_peak') %>%
+  ggplot(., aes(x = Sigma, y = val, color = Sigma, fill = Sigma, shape = Sigma)) +
+  geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
+  geom_boxplot(color = 'black', width = .07, outlier.shape = NA, alpha = 0.0, size = 1.0, position = position_nudge(x = .16, y = 0)) +
+  geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
+  scale_y_continuous(
+    name="Valley reached",
+    limits=c(6.9,14.1)
+  ) +
+  scale_x_discrete(
+    name="Sigma"
+  )+
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values = cb_palette, ) +
+  scale_fill_manual(values = cb_palette) +
+  ggtitle('Largest valley reached')+
+  p_theme + theme(legend.title=element_blank())
+
+plot_grid(
+  plot +
+    theme(legend.position="none"),
+  legend,
+  nrow=2,
+  rel_heights = c(3,1)
+)
+```
+
+#### Stats
+
+Summary statistics for the largest valley crossed.
+
+```{r nds-mpe-val-sum}
+valleys = filter(best_df, acro == 'mpe' & var == 'ele_big_peak')
+valleys$Sigma = factor(valleys$Sigma, levels = ND_LIST)
+valleys %>%
+  group_by(Sigma) %>%
+  dplyr::summarise(
+    count = n(),
+    na_cnt = sum(is.na(val)),
+    min = min(val, na.rm = TRUE),
+    median = median(val, na.rm = TRUE),
+    mean = mean(val, na.rm = TRUE),
+    max = max(val, na.rm = TRUE),
+    IQR = IQR(val, na.rm = TRUE)
+  )
+```
+
+
+Kruskal–Wallis test illustrates evidence of statistical differences.
+
+```{r nds-mpe-val-kru}
+kruskal.test(val ~ Sigma, data = valleys)
+```
+
+Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
+
+```{r nds-mpe-val-wil}
+pairwise.wilcox.test(x = valleys$val, g = valleys$Sigma, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
