@@ -52,9 +52,9 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
   ggtitle('Activation gene coverage over time')+
   p_theme + theme(legend.title=element_blank(),legend.text=element_text(size=12)) +
   guides(
-    shape=guide_legend(ncol=2, title.position = "bottom"),
-    color=guide_legend(ncol=2, title.position = "bottom"),
-    fill=guide_legend(ncol=2, title.position = "bottom")
+    shape=guide_legend(ncol=1, title.position = "bottom"),
+    color=guide_legend(ncol=1, title.position = "bottom"),
+    fill=guide_legend(ncol=1, title.position = "bottom")
   )
 
 over_time_plot
@@ -64,9 +64,9 @@ over_time_plot
 legend <- cowplot::get_legend(
   over_time_plot +
     guides(
-    shape=guide_legend(ncol=2, title.position = "bottom"),
-    color=guide_legend(ncol=2, title.position = "bottom"),
-    fill=guide_legend(ncol=2, title.position = "bottom")
+    shape=guide_legend(ncol=1, title.position = "bottom"),
+    color=guide_legend(ncol=1, title.position = "bottom"),
+    fill=guide_legend(ncol=1, title.position = "bottom")
     ) +
     theme(
       legend.position = "top",
@@ -182,9 +182,9 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
   ggtitle('Satisfactory trait coverage over time')+
   p_theme + theme(legend.title=element_blank(),legend.text=element_text(size=12)) +
   guides(
-    shape=guide_legend(ncol=2, title.position = "bottom"),
-    color=guide_legend(ncol=2, title.position = "bottom"),
-    fill=guide_legend(ncol=2, title.position = "bottom")
+    shape=guide_legend(ncol=1, title.position = "bottom"),
+    color=guide_legend(ncol=1, title.position = "bottom"),
+    fill=guide_legend(ncol=1, title.position = "bottom")
   )
 
 over_time_plot
