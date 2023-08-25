@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Truncation selection | Supplemental Material: Selection Scheme Parameter Sweep MVC Diagnostics</title>
+  <meta name="description" content="Supplemental material for selection scheme parameter sweep with diagnostics and valleys." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Truncation selection | Supplemental Material: Selection Scheme Parameter Sweep MVC Diagnostics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Supplemental material for selection scheme parameter sweep with diagnostics and valleys." />
+  <meta name="github-repo" content="jgh9094/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Truncation selection | Supplemental Material: Selection Scheme Parameter Sweep MVC Diagnostics" />
+  
+  <meta name="twitter:description" content="Supplemental material for selection scheme parameter sweep with diagnostics and valleys." />
+  
+
+<meta name="author" content="Jose Guadalupe Hernandez" />
+
+
+<meta name="date" content="2023-08-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="tournament-selection.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-our-supplemental-material"><i class="fa fa-check"></i><b>1.1</b> About our supplemental material</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contributing-authors"><i class="fa fa-check"></i><b>1.2</b> Contributing authors</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#computer-setup"><i class="fa fa-check"></i><b>1.3</b> Computer Setup</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#experimental-setup"><i class="fa fa-check"></i><b>1.4</b> Experimental setup</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="truncation-selection.html"><a href="truncation-selection.html"><i class="fa fa-check"></i><b>2</b> Truncation selection</a><ul>
+<li class="chapter" data-level="2.1" data-path="truncation-selection.html"><a href="truncation-selection.html#data-setup"><i class="fa fa-check"></i><b>2.1</b> Data setup</a></li>
+<li class="chapter" data-level="2.2" data-path="truncation-selection.html"><a href="truncation-selection.html#exploitation-rate-results"><i class="fa fa-check"></i><b>2.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="truncation-selection.html"><a href="truncation-selection.html#performance-over-time"><i class="fa fa-check"></i><b>2.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="2.2.2" data-path="truncation-selection.html"><a href="truncation-selection.html#best-performance-throughout"><i class="fa fa-check"></i><b>2.2.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="2.2.3" data-path="truncation-selection.html"><a href="truncation-selection.html#largest-valley-reached-throughout"><i class="fa fa-check"></i><b>2.2.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="truncation-selection.html"><a href="truncation-selection.html#ordered-exploitation-results"><i class="fa fa-check"></i><b>2.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="truncation-selection.html"><a href="truncation-selection.html#performance-over-time-1"><i class="fa fa-check"></i><b>2.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="2.3.2" data-path="truncation-selection.html"><a href="truncation-selection.html#best-performance-throughout-1"><i class="fa fa-check"></i><b>2.3.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="2.3.3" data-path="truncation-selection.html"><a href="truncation-selection.html#largest-valley-reached-throughout-1"><i class="fa fa-check"></i><b>2.3.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="truncation-selection.html"><a href="truncation-selection.html#contradictory-objectives-resutls"><i class="fa fa-check"></i><b>2.4</b> Contradictory objectives resutls</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="truncation-selection.html"><a href="truncation-selection.html#activation-gene-coverage-over-time"><i class="fa fa-check"></i><b>2.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="2.4.2" data-path="truncation-selection.html"><a href="truncation-selection.html#final-activation-gene-coverage"><i class="fa fa-check"></i><b>2.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="2.4.3" data-path="truncation-selection.html"><a href="truncation-selection.html#satisfactory-trait-coverage-over-time"><i class="fa fa-check"></i><b>2.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="2.4.4" data-path="truncation-selection.html"><a href="truncation-selection.html#final-satisfactory-trait-coverage"><i class="fa fa-check"></i><b>2.4.4</b> Final satisfactory trait coverage</a></li>
+<li class="chapter" data-level="2.4.5" data-path="truncation-selection.html"><a href="truncation-selection.html#largest-valley-reached-throughout-2"><i class="fa fa-check"></i><b>2.4.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="truncation-selection.html"><a href="truncation-selection.html#multi-path-exploration-results"><i class="fa fa-check"></i><b>2.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="truncation-selection.html"><a href="truncation-selection.html#activation-gene-coverage-over-time-1"><i class="fa fa-check"></i><b>2.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="2.5.2" data-path="truncation-selection.html"><a href="truncation-selection.html#final-activation-gene-coverage-1"><i class="fa fa-check"></i><b>2.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="2.5.3" data-path="truncation-selection.html"><a href="truncation-selection.html#performance-over-time-2"><i class="fa fa-check"></i><b>2.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="2.5.4" data-path="truncation-selection.html"><a href="truncation-selection.html#best-performance-throughout-2"><i class="fa fa-check"></i><b>2.5.4</b> Best performance throughout</a></li>
+<li class="chapter" data-level="2.5.5" data-path="truncation-selection.html"><a href="truncation-selection.html#largest-valley-reached-throughout-3"><i class="fa fa-check"></i><b>2.5.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tournament-selection.html"><a href="tournament-selection.html"><i class="fa fa-check"></i><b>3</b> Tournament selection</a><ul>
+<li class="chapter" data-level="3.1" data-path="tournament-selection.html"><a href="tournament-selection.html#data-setup-1"><i class="fa fa-check"></i><b>3.1</b> Data setup</a></li>
+<li class="chapter" data-level="3.2" data-path="tournament-selection.html"><a href="tournament-selection.html#exploitation-rate-results-1"><i class="fa fa-check"></i><b>3.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="tournament-selection.html"><a href="tournament-selection.html#performance-over-time-3"><i class="fa fa-check"></i><b>3.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tournament-selection.html"><a href="tournament-selection.html#best-performance-throughout-3"><i class="fa fa-check"></i><b>3.2.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="3.2.3" data-path="tournament-selection.html"><a href="tournament-selection.html#largest-valley-reached-throughout-4"><i class="fa fa-check"></i><b>3.2.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="tournament-selection.html"><a href="tournament-selection.html#ordered-exploitation-results-1"><i class="fa fa-check"></i><b>3.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="tournament-selection.html"><a href="tournament-selection.html#performance-over-time-4"><i class="fa fa-check"></i><b>3.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="3.3.2" data-path="tournament-selection.html"><a href="tournament-selection.html#best-performance-throughout-4"><i class="fa fa-check"></i><b>3.3.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="3.3.3" data-path="tournament-selection.html"><a href="tournament-selection.html#largest-valley-reached-throughout-5"><i class="fa fa-check"></i><b>3.3.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="tournament-selection.html"><a href="tournament-selection.html#contradictory-objectives-resutls-1"><i class="fa fa-check"></i><b>3.4</b> Contradictory objectives resutls</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="tournament-selection.html"><a href="tournament-selection.html#activation-gene-coverage-over-time-2"><i class="fa fa-check"></i><b>3.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="3.4.2" data-path="tournament-selection.html"><a href="tournament-selection.html#final-activation-gene-coverage-2"><i class="fa fa-check"></i><b>3.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="3.4.3" data-path="tournament-selection.html"><a href="tournament-selection.html#satisfactory-trait-coverage-over-time-1"><i class="fa fa-check"></i><b>3.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="3.4.4" data-path="tournament-selection.html"><a href="tournament-selection.html#final-satisfactory-trait-coverage-1"><i class="fa fa-check"></i><b>3.4.4</b> Final satisfactory trait coverage</a></li>
+<li class="chapter" data-level="3.4.5" data-path="tournament-selection.html"><a href="tournament-selection.html#largest-valley-reached-throughout-6"><i class="fa fa-check"></i><b>3.4.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="tournament-selection.html"><a href="tournament-selection.html#multi-path-exploration-results-1"><i class="fa fa-check"></i><b>3.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="tournament-selection.html"><a href="tournament-selection.html#activation-gene-coverage-over-time-3"><i class="fa fa-check"></i><b>3.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="3.5.2" data-path="tournament-selection.html"><a href="tournament-selection.html#final-activation-gene-coverage-3"><i class="fa fa-check"></i><b>3.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="3.5.3" data-path="tournament-selection.html"><a href="tournament-selection.html#performance-over-time-5"><i class="fa fa-check"></i><b>3.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="3.5.4" data-path="tournament-selection.html"><a href="tournament-selection.html#best-performance-throughout-5"><i class="fa fa-check"></i><b>3.5.4</b> Best performance throughout</a></li>
+<li class="chapter" data-level="3.5.5" data-path="tournament-selection.html"><a href="tournament-selection.html#largest-valley-reached-throughout-7"><i class="fa fa-check"></i><b>3.5.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html"><i class="fa fa-check"></i><b>4</b> Genotypic fitness sharing</a><ul>
+<li class="chapter" data-level="4.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#data-setup-2"><i class="fa fa-check"></i><b>4.1</b> Data setup</a></li>
+<li class="chapter" data-level="4.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#exploitation-rate-results-2"><i class="fa fa-check"></i><b>4.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#performance-over-time-6"><i class="fa fa-check"></i><b>4.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="4.2.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#best-performance-throughout-6"><i class="fa fa-check"></i><b>4.2.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="4.2.3" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#largest-valley-reached-throughout-8"><i class="fa fa-check"></i><b>4.2.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#ordered-exploitation-results-2"><i class="fa fa-check"></i><b>4.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#performance-over-time-7"><i class="fa fa-check"></i><b>4.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="4.3.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#best-performance-throughout-7"><i class="fa fa-check"></i><b>4.3.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="4.3.3" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#largest-valley-reached-throughout-9"><i class="fa fa-check"></i><b>4.3.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#contradictory-objectives-results"><i class="fa fa-check"></i><b>4.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#activation-gene-coverage-over-time-4"><i class="fa fa-check"></i><b>4.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="4.4.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#final-activation-gene-coverage-4"><i class="fa fa-check"></i><b>4.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="4.4.3" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#satisfactory-trait-coverage-over-time-2"><i class="fa fa-check"></i><b>4.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="4.4.4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#final-satisfactory-trait-coverage-2"><i class="fa fa-check"></i><b>4.4.4</b> Final satisfactory trait coverage</a></li>
+<li class="chapter" data-level="4.4.5" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#largest-valley-reached-throughout-10"><i class="fa fa-check"></i><b>4.4.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#multi-path-exploration-results-2"><i class="fa fa-check"></i><b>4.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#activation-gene-coverage-over-time-5"><i class="fa fa-check"></i><b>4.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="4.5.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#final-activation-gene-coverage-5"><i class="fa fa-check"></i><b>4.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="4.5.3" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#performance-over-time-8"><i class="fa fa-check"></i><b>4.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="4.5.4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#best-performance-throughout-8"><i class="fa fa-check"></i><b>4.5.4</b> Best performance throughout</a></li>
+<li class="chapter" data-level="4.5.5" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#largest-valley-reached-throughout-11"><i class="fa fa-check"></i><b>4.5.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html"><i class="fa fa-check"></i><b>5</b> Phenotypic fitness sharing</a><ul>
+<li class="chapter" data-level="5.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#data-setup-3"><i class="fa fa-check"></i><b>5.1</b> Data setup</a></li>
+<li class="chapter" data-level="5.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#exploitation-rate-results-3"><i class="fa fa-check"></i><b>5.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#performance-over-time-9"><i class="fa fa-check"></i><b>5.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="5.2.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#best-performance-throughout-9"><i class="fa fa-check"></i><b>5.2.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="5.2.3" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#largest-valley-reached-throughout-12"><i class="fa fa-check"></i><b>5.2.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#ordered-exploitation-results-3"><i class="fa fa-check"></i><b>5.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#performance-over-time-10"><i class="fa fa-check"></i><b>5.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="5.3.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#best-performance-throughout-10"><i class="fa fa-check"></i><b>5.3.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="5.3.3" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#largest-valley-reached-throughout-13"><i class="fa fa-check"></i><b>5.3.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#contradictory-objectives-results-1"><i class="fa fa-check"></i><b>5.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#activation-gene-coverage-over-time-6"><i class="fa fa-check"></i><b>5.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="5.4.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#final-activation-gene-coverage-6"><i class="fa fa-check"></i><b>5.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="5.4.3" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#satisfactory-trait-coverage-over-time-3"><i class="fa fa-check"></i><b>5.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="5.4.4" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#final-satisfactory-trait-coverage-3"><i class="fa fa-check"></i><b>5.4.4</b> Final satisfactory trait coverage</a></li>
+<li class="chapter" data-level="5.4.5" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#largest-valley-reached-throughout-14"><i class="fa fa-check"></i><b>5.4.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#multi-path-exploration-results-3"><i class="fa fa-check"></i><b>5.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#activation-gene-coverage-over-time-7"><i class="fa fa-check"></i><b>5.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="5.5.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#final-activation-gene-coverage-7"><i class="fa fa-check"></i><b>5.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="5.5.3" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#performance-over-time-11"><i class="fa fa-check"></i><b>5.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="5.5.4" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#best-performance-throughout-11"><i class="fa fa-check"></i><b>5.5.4</b> Best performance throughout</a></li>
+<li class="chapter" data-level="5.5.5" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#largest-valley-reached-throughout-15"><i class="fa fa-check"></i><b>5.5.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html"><i class="fa fa-check"></i><b>6</b> Nondominated sorting</a><ul>
+<li class="chapter" data-level="6.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#data-setup-4"><i class="fa fa-check"></i><b>6.1</b> Data setup</a></li>
+<li class="chapter" data-level="6.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#exploitation-rate-results-4"><i class="fa fa-check"></i><b>6.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#performance-over-time-12"><i class="fa fa-check"></i><b>6.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="6.2.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#best-performance-throughout-12"><i class="fa fa-check"></i><b>6.2.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="6.2.3" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#largest-valley-reached-throughout-16"><i class="fa fa-check"></i><b>6.2.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#ordered-exploitation-results-4"><i class="fa fa-check"></i><b>6.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#performance-over-time-13"><i class="fa fa-check"></i><b>6.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="6.3.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#best-performance-throughout-13"><i class="fa fa-check"></i><b>6.3.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="6.3.3" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#largest-valley-reached-throughout-17"><i class="fa fa-check"></i><b>6.3.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#contradictory-objectives-results-2"><i class="fa fa-check"></i><b>6.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#activation-gene-coverage-over-time-8"><i class="fa fa-check"></i><b>6.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="6.4.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#final-activation-gene-coverage-8"><i class="fa fa-check"></i><b>6.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="6.4.3" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#satisfactory-trait-coverage-over-time-4"><i class="fa fa-check"></i><b>6.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="6.4.4" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#final-satisfactory-trait-coverage-4"><i class="fa fa-check"></i><b>6.4.4</b> Final satisfactory trait coverage</a></li>
+<li class="chapter" data-level="6.4.5" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#largest-valley-reached-throughout-18"><i class="fa fa-check"></i><b>6.4.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#multi-path-exploration-results-4"><i class="fa fa-check"></i><b>6.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#activation-gene-coverage-over-time-9"><i class="fa fa-check"></i><b>6.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="6.5.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#final-activation-gene-coverage-9"><i class="fa fa-check"></i><b>6.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="6.5.3" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#performance-over-time-14"><i class="fa fa-check"></i><b>6.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="6.5.4" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#best-performance-throughout-14"><i class="fa fa-check"></i><b>6.5.4</b> Best performance throughout</a></li>
+<li class="chapter" data-level="6.5.5" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#largest-valley-reached-throughout-19"><i class="fa fa-check"></i><b>6.5.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="novelty-search.html"><a href="novelty-search.html"><i class="fa fa-check"></i><b>7</b> Novelty search</a><ul>
+<li class="chapter" data-level="7.1" data-path="novelty-search.html"><a href="novelty-search.html#data-setup-5"><i class="fa fa-check"></i><b>7.1</b> Data setup</a></li>
+<li class="chapter" data-level="7.2" data-path="novelty-search.html"><a href="novelty-search.html#exploitation-rate-results-5"><i class="fa fa-check"></i><b>7.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="novelty-search.html"><a href="novelty-search.html#performance-over-time-15"><i class="fa fa-check"></i><b>7.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="7.2.2" data-path="novelty-search.html"><a href="novelty-search.html#best-performance-throughout-15"><i class="fa fa-check"></i><b>7.2.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="7.2.3" data-path="novelty-search.html"><a href="novelty-search.html#largest-valley-reached-throughout-20"><i class="fa fa-check"></i><b>7.2.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="novelty-search.html"><a href="novelty-search.html#ordered-exploitation-results-5"><i class="fa fa-check"></i><b>7.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="novelty-search.html"><a href="novelty-search.html#performance-over-time-16"><i class="fa fa-check"></i><b>7.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="7.3.2" data-path="novelty-search.html"><a href="novelty-search.html#best-performance-throughout-16"><i class="fa fa-check"></i><b>7.3.2</b> Best performance throughout</a></li>
+<li class="chapter" data-level="7.3.3" data-path="novelty-search.html"><a href="novelty-search.html#largest-valley-reached-throughout-21"><i class="fa fa-check"></i><b>7.3.3</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="novelty-search.html"><a href="novelty-search.html#contradictory-objectives-results-3"><i class="fa fa-check"></i><b>7.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="novelty-search.html"><a href="novelty-search.html#activation-gene-coverage-over-time-10"><i class="fa fa-check"></i><b>7.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="7.4.2" data-path="novelty-search.html"><a href="novelty-search.html#final-activation-gene-coverage-10"><i class="fa fa-check"></i><b>7.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="7.4.3" data-path="novelty-search.html"><a href="novelty-search.html#satisfactory-trait-coverage-over-time-5"><i class="fa fa-check"></i><b>7.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="7.4.4" data-path="novelty-search.html"><a href="novelty-search.html#final-satisfactory-trait-coverage-5"><i class="fa fa-check"></i><b>7.4.4</b> Final satisfactory trait coverage</a></li>
+<li class="chapter" data-level="7.4.5" data-path="novelty-search.html"><a href="novelty-search.html#largest-valley-reached-throughout-22"><i class="fa fa-check"></i><b>7.4.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="novelty-search.html"><a href="novelty-search.html#multi-path-exploration-results-5"><i class="fa fa-check"></i><b>7.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="novelty-search.html"><a href="novelty-search.html#activation-gene-coverage-over-time-11"><i class="fa fa-check"></i><b>7.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="7.5.2" data-path="novelty-search.html"><a href="novelty-search.html#final-activation-gene-coverage-11"><i class="fa fa-check"></i><b>7.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="7.5.3" data-path="novelty-search.html"><a href="novelty-search.html#performance-over-time-17"><i class="fa fa-check"></i><b>7.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="7.5.4" data-path="novelty-search.html"><a href="novelty-search.html#best-performance-throughout-17"><i class="fa fa-check"></i><b>7.5.4</b> Best performance throughout</a></li>
+<li class="chapter" data-level="7.5.5" data-path="novelty-search.html"><a href="novelty-search.html#largest-valley-reached-throughout-23"><i class="fa fa-check"></i><b>7.5.5</b> Largest valley reached throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with ❤ and bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Supplemental Material: Selection Scheme Parameter Sweep MVC Diagnostics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="truncation-selection" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 2</span> Truncation selection<a href="truncation-selection.html#truncation-selection" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Results for the truncation selection parameter sweep on the diagnostics with valleys.</p>
+<div id="data-setup" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.1</span> Data setup<a href="truncation-selection.html#data-setup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">over_time_df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">paste</span>(DATA_DIR,<span class="st">&#39;OVER-TIME-MVC/tru.csv&#39;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>, <span class="dt">collapse =</span> <span class="ot">NULL</span>), <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb10-2" title="2">over_time_df<span class="op">$</span>T &lt;-<span class="st"> </span><span class="kw">factor</span>(over_time_df<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a>
+<a class="sourceLine" id="cb10-3" title="3"></a>
+<a class="sourceLine" id="cb10-4" title="4">best_df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">paste</span>(DATA_DIR,<span class="st">&#39;BEST-MVC/tru.csv&#39;</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>, <span class="dt">collapse =</span> <span class="ot">NULL</span>), <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb10-5" title="5">best_df<span class="op">$</span>T &lt;-<span class="st"> </span><span class="kw">factor</span>(best_df<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a></code></pre></div>
+</div>
+<div id="exploitation-rate-results" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.2</span> Exploitation rate results<a href="truncation-selection.html#exploitation-rate-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we present the results for <strong>best performances</strong> found by each selection scheme parameter on the exploitation rate diagnostic with valleys.
+50 replicates are conducted for each scheme explored.</p>
+<div id="performance-over-time" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.2.1</span> Performance over time<a href="truncation-selection.html#performance-over-time" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Best performance in a population over time.
+Data points on the graph is the average performance across 50 replicates every 2000 generations.
+Shading comes from the best and worse performance across 50 replicates.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;exp&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb11-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb11-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb11-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY</a>
+<a class="sourceLine" id="cb11-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">over_time_plot =<span class="st"> </span><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb13-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb13-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb13-8" title="8">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-9" title="9"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb13-10" title="10">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb13-11" title="11">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb13-12" title="12">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb13-13" title="13">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb13-14" title="14"></a>
+<a class="sourceLine" id="cb13-15" title="15">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-16" title="16"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb13-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb13-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb13-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb13-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb13-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb13-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb13-25" title="25">  )</a>
+<a class="sourceLine" id="cb13-26" title="26"></a>
+<a class="sourceLine" id="cb13-27" title="27">over_time_plot</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-exp-per-ot-1.png" width="100%" /></p>
+</div>
+<div id="best-performance-throughout" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.2.2</span> Best performance throughout<a href="truncation-selection.html#best-performance-throughout" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Best performance reached throughout 50,000 generations in a population.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;exp&#39;</span> <span class="op">&amp;</span><span class="st">  </span>var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb14-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb14-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">17</span>, <span class="dv">19</span>)</a>
+<a class="sourceLine" id="cb14-9" title="9">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb14-11" title="11">    <span class="dt">name=</span><span class="st">&quot;Truncation size&quot;</span></a>
+<a class="sourceLine" id="cb14-12" title="12">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-13" title="13"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Best performance throughout&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb14-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb14-18" title="18"></a>
+<a class="sourceLine" id="cb14-19" title="19"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb14-20" title="20">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-21" title="21"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb14-22" title="22">  legend,</a>
+<a class="sourceLine" id="cb14-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb14-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb14-25" title="25">)</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-exp-bst-1.png" width="100%" /></p>
+<div id="stats" class="section level4 hasAnchor">
+<h4><span class="header-section-number">2.2.2.1</span> Stats<a href="truncation-selection.html#stats" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the best performance.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">performance =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;exp&#39;</span> <span class="op">&amp;</span><span class="st">  </span>var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span>)</a>
+<a class="sourceLine" id="cb15-2" title="2">performance<span class="op">$</span>T =<span class="st"> </span><span class="kw">factor</span>(performance<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a>
+<a class="sourceLine" id="cb15-3" title="3">performance <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb15-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb15-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb15-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
+<a class="sourceLine" id="cb15-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb15-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb15-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb15-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb15-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb15-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max    IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 1        50      0  17.8   18.1  18.1  18.3 0.0999
+## 2 2        50      0  17.8   18.1  18.1  18.3 0.150 
+## 3 4        50      0  17.9   18.1  18.1  18.3 0.155 
+## 4 8        50      0  17.8   18.1  18.1  18.3 0.117 
+## 5 16       50      0  17.9   18.1  18.1  18.3 0.107 
+## 6 32       50      0  17.8   18.1  18.1  18.2 0.122 
+## 7 64       50      0  17.8   18.1  18.1  18.3 0.140 
+## 8 128      50      0  17.8   18.1  18.1  18.3 0.147 
+## 9 256      50      0  18.0   18.2  18.2  18.4 0.144</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> performance)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  val by T
+## Kruskal-Wallis chi-squared = 40.639, df = 8, p-value = 2.435e-06</code></pre>
+<p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> performance<span class="op">$</span>val, <span class="dt">g =</span> performance<span class="op">$</span>T, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
+<a class="sourceLine" id="cb19-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
+## 
+## data:  performance$val and performance$T 
+## 
+##     1       2       4       8       16      32      64      128    
+## 2   1.00000 -       -       -       -       -       -       -      
+## 4   1.00000 1.00000 -       -       -       -       -       -      
+## 8   1.00000 1.00000 1.00000 -       -       -       -       -      
+## 16  1.00000 1.00000 1.00000 1.00000 -       -       -       -      
+## 32  1.00000 1.00000 1.00000 1.00000 1.00000 -       -       -      
+## 64  1.00000 1.00000 1.00000 1.00000 1.00000 1.00000 -       -      
+## 128 1.00000 1.00000 1.00000 1.00000 1.00000 1.00000 1.00000 -      
+## 256 1.7e-05 1.6e-05 0.00018 0.00043 0.00023 0.00104 0.00114 0.03366
+## 
+## P value adjustment method: bonferroni</code></pre>
+</div>
+</div>
+<div id="largest-valley-reached-throughout" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.2.3</span> Largest valley reached throughout<a href="truncation-selection.html#largest-valley-reached-throughout" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;exp&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> val, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb21-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Valley reached&quot;</span>,</a>
+<a class="sourceLine" id="cb21-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="fl">4.9</span>,<span class="fl">6.1</span>),</a>
+<a class="sourceLine" id="cb21-9" title="9">    <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb21-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb21-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Truncation size&quot;</span></a>
+<a class="sourceLine" id="cb21-13" title="13">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb21-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb21-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb21-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb21-19" title="19"></a>
+<a class="sourceLine" id="cb21-20" title="20"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb21-21" title="21">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb21-23" title="23">  legend,</a>
+<a class="sourceLine" id="cb21-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb21-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb21-26" title="26">)</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-exp-val-bst-1.png" width="100%" /></p>
+<div id="stats-1" class="section level4 hasAnchor">
+<h4><span class="header-section-number">2.2.3.1</span> Stats<a href="truncation-selection.html#stats-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the largest valley crossed.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">valleys =<span class="st"> </span><span class="kw">filter</span>(best_df,acro <span class="op">==</span><span class="st"> &#39;exp&#39;</span> <span class="op">&amp;</span><span class="st">  </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>)</a>
+<a class="sourceLine" id="cb22-2" title="2">valleys<span class="op">$</span>T =<span class="st"> </span><span class="kw">factor</span>(valleys<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a>
+<a class="sourceLine" id="cb22-3" title="3">valleys <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb22-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb22-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb22-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
+<a class="sourceLine" id="cb22-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb22-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb22-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb22-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb22-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb22-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 1        50      0     5      6  5.9      6     0
+## 2 2        50      0     5      6  5.92     6     0
+## 3 4        50      0     5      6  5.98     6     0
+## 4 8        50      0     5      6  5.94     6     0
+## 5 16       50      0     6      6  6        6     0
+## 6 32       50      0     5      6  5.94     6     0
+## 7 64       50      0     5      6  5.94     6     0
+## 8 128      50      0     5      6  5.98     6     0
+## 9 256      50      0     6      6  6        6     0</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of <strong>no statistical differences</strong>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> valleys)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  val by T
+## Kruskal-Wallis chi-squared = 12.008, df = 8, p-value = 0.1508</code></pre>
+</div>
+</div>
+</div>
+<div id="ordered-exploitation-results" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.3</span> Ordered exploitation results<a href="truncation-selection.html#ordered-exploitation-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we present the results for <strong>best performances</strong> found by each selection scheme parameter on the ordered exploitation diagnostic with valleys.
+50 replicates are conducted for each scheme explored.</p>
+<div id="performance-over-time-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.3.1</span> Performance over time<a href="truncation-selection.html#performance-over-time-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Best performance in a population over time.
+Data points on the graph is the average performance across 50 replicates every 2000 generations.
+Shading comes from the best and worse performance across 50 replicates.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;ord&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb26-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb26-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb26-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY</a>
+<a class="sourceLine" id="cb26-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">over_time_plot =<span class="st"> </span><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb28-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb28-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb28-8" title="8">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-9" title="9"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb28-10" title="10">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb28-11" title="11">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb28-12" title="12">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb28-13" title="13">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb28-14" title="14"></a>
+<a class="sourceLine" id="cb28-15" title="15">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-16" title="16"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb28-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb28-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb28-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb28-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb28-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb28-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb28-25" title="25">  )</a>
+<a class="sourceLine" id="cb28-26" title="26"></a>
+<a class="sourceLine" id="cb28-27" title="27">over_time_plot</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-ord-per-ot-1.png" width="100%" /></p>
+</div>
+<div id="best-performance-throughout-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.3.2</span> Best performance throughout<a href="truncation-selection.html#best-performance-throughout-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Best performance reached throughout 50,000 generations in a population.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;ord&#39;</span> <span class="op">&amp;</span><span class="st">  </span>var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb29-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb29-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb29-9" title="9">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb29-11" title="11">    <span class="dt">name=</span><span class="st">&quot;Truncation size&quot;</span></a>
+<a class="sourceLine" id="cb29-12" title="12">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb29-13" title="13"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb29-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Best performance throughout&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb29-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb29-18" title="18"></a>
+<a class="sourceLine" id="cb29-19" title="19"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb29-20" title="20">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-21" title="21"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb29-22" title="22">  legend,</a>
+<a class="sourceLine" id="cb29-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb29-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb29-25" title="25">)</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-ord-bst-1.png" width="100%" /></p>
+<div id="stats-2" class="section level4 hasAnchor">
+<h4><span class="header-section-number">2.3.2.1</span> Stats<a href="truncation-selection.html#stats-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the best performance.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">performance =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;ord&#39;</span> <span class="op">&amp;</span><span class="st">  </span>var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span>)</a>
+<a class="sourceLine" id="cb30-2" title="2">performance<span class="op">$</span>T =<span class="st"> </span><span class="kw">factor</span>(performance<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a>
+<a class="sourceLine" id="cb30-3" title="3">performance <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb30-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb30-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb30-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb30-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
+<a class="sourceLine" id="cb30-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb30-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb30-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb30-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb30-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb30-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max    IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1 1        50      0  6.77   8.36  8.32  8.56 0.0867
+## 2 2        50      0  7.53   8.35  8.30  8.59 0.0808
+## 3 4        50      0  4.40   8.36  8.10  8.59 0.128 
+## 4 8        50      0  6.62   8.37  8.24  8.63 0.142 
+## 5 16       50      0  5.46   8.33  8.05  8.74 0.563 
+## 6 32       50      0  6.25   8.36  8.10  8.55 0.316 
+## 7 64       50      0  4.66   8.20  7.75  8.64 1.32  
+## 8 128      50      0  4.59   7.52  7.36  8.57 1.25  
+## 9 256      50      0  3.86   6.42  6.26  7.94 1.06</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> performance)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  val by T
+## Kruskal-Wallis chi-squared = 148.77, df = 8, p-value &lt; 2.2e-16</code></pre>
+<p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> performance<span class="op">$</span>val, <span class="dt">g =</span> performance<span class="op">$</span>T, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
+<a class="sourceLine" id="cb34-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
+## 
+## data:  performance$val and performance$T 
+## 
+##     1       2       4       8       16      32      64      128    
+## 2   1.00000 -       -       -       -       -       -       -      
+## 4   1.00000 1.00000 -       -       -       -       -       -      
+## 8   1.00000 1.00000 1.00000 -       -       -       -       -      
+## 16  1.00000 1.00000 1.00000 1.00000 -       -       -       -      
+## 32  1.00000 1.00000 1.00000 1.00000 1.00000 -       -       -      
+## 64  0.91020 1.00000 1.00000 0.95152 1.00000 1.00000 -       -      
+## 128 6.0e-08 8.7e-08 3.7e-05 1.3e-06 0.00104 0.00013 0.34001 -      
+## 256 6.6e-16 3.4e-16 8.6e-13 2.9e-15 2.9e-13 2.9e-13 2.9e-09 1.7e-06
+## 
+## P value adjustment method: bonferroni</code></pre>
+</div>
+</div>
+<div id="largest-valley-reached-throughout-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.3.3</span> Largest valley reached throughout<a href="truncation-selection.html#largest-valley-reached-throughout-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;ord&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb36-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> val, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb36-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Valley reached&quot;</span>,</a>
+<a class="sourceLine" id="cb36-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="fl">3.9</span>,<span class="fl">6.1</span>),</a>
+<a class="sourceLine" id="cb36-9" title="9">    <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb36-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb36-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Truncation size&quot;</span></a>
+<a class="sourceLine" id="cb36-13" title="13">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb36-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb36-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb36-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb36-19" title="19"></a>
+<a class="sourceLine" id="cb36-20" title="20"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb36-21" title="21">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb36-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb36-23" title="23">  legend,</a>
+<a class="sourceLine" id="cb36-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb36-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb36-26" title="26">)</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-ord-val-bst-1.png" width="100%" /></p>
+<div id="stats-3" class="section level4 hasAnchor">
+<h4><span class="header-section-number">2.3.3.1</span> Stats<a href="truncation-selection.html#stats-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the largest valley crossed.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1">valleys =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;ord&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>)</a>
+<a class="sourceLine" id="cb37-2" title="2">valleys<span class="op">$</span>T =<span class="st"> </span><span class="kw">factor</span>(valleys<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a>
+<a class="sourceLine" id="cb37-3" title="3">valleys <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb37-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb37-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb37-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb37-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
+<a class="sourceLine" id="cb37-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb37-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb37-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb37-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb37-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb37-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 1        50      0     4      5  4.98     5     0
+## 2 2        50      0     4      5  4.96     6     0
+## 3 4        50      0     4      5  4.96     6     0
+## 4 8        50      0     4      5  4.92     6     0
+## 5 16       50      0     4      5  4.96     6     0
+## 6 32       50      0     4      5  4.98     6     0
+## 7 64       50      0     4      5  5        6     0
+## 8 128      50      0     4      5  5.04     6     0
+## 9 256      50      0     4      5  5.02     6     0</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of <strong>no statistical differences</strong>.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> valleys)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  val by T
+## Kruskal-Wallis chi-squared = 5.7698, df = 8, p-value = 0.673</code></pre>
+</div>
+</div>
+</div>
+<div id="contradictory-objectives-resutls" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.4</span> Contradictory objectives resutls<a href="truncation-selection.html#contradictory-objectives-resutls" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we present the results for <strong>activation gene coverage</strong> and <strong>satisfactory trait coverage</strong> found by each selection scheme parameter on the contradictory objectives diagnostic with valleys.
+50 replicates are conducted for each scheme parameters explored.</p>
+<div id="activation-gene-coverage-over-time" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.4.1</span> Activation gene coverage over time<a href="truncation-selection.html#activation-gene-coverage-over-time" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Activation gene coverage in a population over time.
+Data points on the graph is the average activation gene coverage across 50 replicates every 2000 generations.
+Shading comes from the best and worse coverage across 50 replicates.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb41-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb41-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos),</a>
+<a class="sourceLine" id="cb41-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos),</a>
+<a class="sourceLine" id="cb41-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos)</a>
+<a class="sourceLine" id="cb41-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb43-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb43-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb43-8" title="8">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">20</span>),</a>
+<a class="sourceLine" id="cb43-9" title="9">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;100&quot;</span>)</a>
+<a class="sourceLine" id="cb43-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-11" title="11"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb43-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb43-13" title="13">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb43-14" title="14">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb43-15" title="15">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb43-16" title="16"></a>
+<a class="sourceLine" id="cb43-17" title="17">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-18" title="18"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb43-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Activation gene coverage over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb43-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb43-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb43-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb43-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb43-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb43-27" title="27">  )</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-con-act-ot-1.png" width="100%" /></p>
+</div>
+<div id="final-activation-gene-coverage" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.4.2</span> Final activation gene coverage<a href="truncation-selection.html#final-activation-gene-coverage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Activation gene coverage found in the final population at 50,000 generations.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb44-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> uni_str_pos, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb44-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb44-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">12.1</span>),</a>
+<a class="sourceLine" id="cb44-9" title="9">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">12</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb44-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb44-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Trunation size&quot;</span></a>
+<a class="sourceLine" id="cb44-13" title="13">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb44-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb44-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final activation gene coverage&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb44-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb44-19" title="19"></a>
+<a class="sourceLine" id="cb44-20" title="20"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb44-21" title="21">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb44-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb44-23" title="23">  legend,</a>
+<a class="sourceLine" id="cb44-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb44-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb44-26" title="26">)</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-con-act-end-1.png" width="100%" /></p>
+<div id="stats-4" class="section level4 hasAnchor">
+<h4><span class="header-section-number">2.4.2.1</span> Stats<a href="truncation-selection.html#stats-4" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the generation a satisfactory solution is found.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1">act_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)</a>
+<a class="sourceLine" id="cb45-2" title="2">act_coverage<span class="op">$</span>T =<span class="st"> </span><span class="kw">factor</span>(act_coverage<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a>
+<a class="sourceLine" id="cb45-3" title="3">act_coverage <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb45-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb45-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb45-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb45-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(uni_str_pos)),</a>
+<a class="sourceLine" id="cb45-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb45-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb45-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb45-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb45-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb45-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+## 1 1        50      0     3      6  6.1     10  2   
+## 2 2        50      0     2      6  6.28    11  2.75
+## 3 4        50      0     2      6  5.98    10  2   
+## 4 8        50      0     2      5  5.68    11  3   
+## 5 16       50      0     2      6  5.94    11  3.75
+## 6 32       50      0     1      6  5.96    12  2.75
+## 7 64       50      0     2      5  5.54    10  3   
+## 8 128      50      0     2      5  5.28    11  2.75
+## 9 256      50      0     2      5  4.66    11  3</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="kw">kruskal.test</span>(uni_str_pos <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> act_coverage)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  uni_str_pos by T
+## Kruskal-Wallis chi-squared = 24.29, df = 8, p-value = 0.002049</code></pre>
+<p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> act_coverage<span class="op">$</span>uni_str_pos, <span class="dt">g =</span> act_coverage<span class="op">$</span>T, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
+<a class="sourceLine" id="cb49-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
+<pre><code>## 
+##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
+## 
+## data:  act_coverage$uni_str_pos and act_coverage$T 
+## 
+##     1      2      4      8      16     32     64     128   
+## 2   1.0000 -      -      -      -      -      -      -     
+## 4   1.0000 1.0000 -      -      -      -      -      -     
+## 8   1.0000 1.0000 1.0000 -      -      -      -      -     
+## 16  1.0000 1.0000 1.0000 1.0000 -      -      -      -     
+## 32  1.0000 1.0000 1.0000 1.0000 1.0000 -      -      -     
+## 64  1.0000 1.0000 1.0000 1.0000 1.0000 1.0000 -      -     
+## 128 1.0000 0.8123 1.0000 1.0000 1.0000 1.0000 1.0000 -     
+## 256 0.0053 0.0079 0.0194 0.6738 0.0578 0.1290 0.8827 1.0000
+## 
+## P value adjustment method: bonferroni</code></pre>
+</div>
+</div>
+<div id="satisfactory-trait-coverage-over-time" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.4.3</span> Satisfactory trait coverage over time<a href="truncation-selection.html#satisfactory-trait-coverage-over-time" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Satisfactory trait coverage in a population over time.
+Data points on the graph is the average activation gene coverage across 50 replicates every 2000 generations.
+Shading comes from the best and worse coverage across 50 replicates.</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb51-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb51-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_uni_obj),</a>
+<a class="sourceLine" id="cb51-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_uni_obj),</a>
+<a class="sourceLine" id="cb51-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_uni_obj)</a>
+<a class="sourceLine" id="cb51-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb53-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb53-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb53-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb53-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb53-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb53-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb53-8" title="8">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb53-9" title="9">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb53-10" title="10"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb53-11" title="11">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb53-12" title="12">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb53-13" title="13">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb53-14" title="14">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb53-15" title="15"></a>
+<a class="sourceLine" id="cb53-16" title="16">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb53-17" title="17"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb53-18" title="18"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb53-19" title="19"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb53-20" title="20"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Satisfactory trait coverage over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb53-21" title="21"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb53-22" title="22"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb53-23" title="23">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb53-24" title="24">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb53-25" title="25">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb53-26" title="26">  )</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-con-sat-ot-1.png" width="100%" /></p>
+</div>
+<div id="final-satisfactory-trait-coverage" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.4.4</span> Final satisfactory trait coverage<a href="truncation-selection.html#final-satisfactory-trait-coverage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Satisfactory trait coverage found in the final population at 50,000 generations.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb54-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> pop_uni_obj, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb54-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb54-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb54-9" title="9">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb54-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb54-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Trunation size&quot;</span></a>
+<a class="sourceLine" id="cb54-13" title="13">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb54-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb54-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final satisfactory trait coverage&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb54-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb54-19" title="19"></a>
+<a class="sourceLine" id="cb54-20" title="20"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb54-21" title="21">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb54-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb54-23" title="23">  legend,</a>
+<a class="sourceLine" id="cb54-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb54-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb54-26" title="26">)</a></code></pre></div>
+<pre><code>## Warning: Removed 217 rows containing missing values (`geom_point()`).</code></pre>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-con-sat-end-1.png" width="100%" /></p>
+<div id="stats-5" class="section level4 hasAnchor">
+<h4><span class="header-section-number">2.4.4.1</span> Stats<a href="truncation-selection.html#stats-5" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the generation a satisfactory solution is found.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1">sat_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)</a>
+<a class="sourceLine" id="cb56-2" title="2">sat_coverage<span class="op">$</span>T =<span class="st"> </span><span class="kw">factor</span>(sat_coverage<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a>
+<a class="sourceLine" id="cb56-3" title="3">sat_coverage <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb56-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb56-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb56-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(pop_uni_obj)),</a>
+<a class="sourceLine" id="cb56-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb56-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb56-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb56-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb56-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb56-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+## 1 1        50      0     0      0     0     0     0
+## 2 2        50      0     0      0     0     0     0
+## 3 4        50      0     0      0     0     0     0
+## 4 8        50      0     0      0     0     0     0
+## 5 16       50      0     0      0     0     0     0
+## 6 32       50      0     0      0     0     0     0
+## 7 64       50      0     0      0     0     0     0
+## 8 128      50      0     0      0     0     0     0
+## 9 256      50      0     0      0     0     0     0</code></pre>
+</div>
+</div>
+<div id="largest-valley-reached-throughout-2" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.4.5</span> Largest valley reached throughout<a href="truncation-selection.html#largest-valley-reached-throughout-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb58-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> val, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb58-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb58-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb58-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb58-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb58-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Valley reached&quot;</span>,</a>
+<a class="sourceLine" id="cb58-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="fl">4.9</span>,<span class="fl">6.1</span>),</a>
+<a class="sourceLine" id="cb58-9" title="9">    <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb58-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb58-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb58-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Truncation size&quot;</span></a>
+<a class="sourceLine" id="cb58-13" title="13">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb58-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb58-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb58-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb58-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb58-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb58-19" title="19"></a>
+<a class="sourceLine" id="cb58-20" title="20"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb58-21" title="21">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb58-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb58-23" title="23">  legend,</a>
+<a class="sourceLine" id="cb58-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb58-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb58-26" title="26">)</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-con-val-bst-1.png" width="100%" /></p>
+<div id="stats-6" class="section level4 hasAnchor">
+<h4><span class="header-section-number">2.4.5.1</span> Stats<a href="truncation-selection.html#stats-6" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the largest valley crossed.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1">valleys =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>)</a>
+<a class="sourceLine" id="cb59-2" title="2">valleys<span class="op">$</span>T =<span class="st"> </span><span class="kw">factor</span>(valleys<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a>
+<a class="sourceLine" id="cb59-3" title="3">valleys <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb59-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb59-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb59-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb59-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
+<a class="sourceLine" id="cb59-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb59-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb59-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb59-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb59-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb59-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 1        50      0     5      5  5.04     6     0
+## 2 2        50      0     5      5  5.08     6     0
+## 3 4        50      0     5      5  5.04     6     0
+## 4 8        50      0     5      5  5.04     6     0
+## 5 16       50      0     5      5  5.06     6     0
+## 6 32       50      0     5      5  5.06     6     0
+## 7 64       50      0     5      5  5.06     6     0
+## 8 128      50      0     5      5  5.04     6     0
+## 9 256      50      0     5      5  5.06     6     0</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of <strong>no statistical differences</strong>.</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> valleys)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  val by T
+## Kruskal-Wallis chi-squared = 1.581, df = 8, p-value = 0.9913</code></pre>
+</div>
+</div>
+</div>
+<div id="multi-path-exploration-results" class="section level2 hasAnchor">
+<h2><span class="header-section-number">2.5</span> Multi-path exploration results<a href="truncation-selection.html#multi-path-exploration-results" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Here we present the results for best performances and activation gene coverage found by each selection scheme parameter on the multi-path exploration diagnostic with valleys.
+50 replicates are conducted for each scheme parameter explored.</p>
+<div id="activation-gene-coverage-over-time-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.5.1</span> Activation gene coverage over time<a href="truncation-selection.html#activation-gene-coverage-over-time-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Activation gene coverage in a population over time.
+Data points on the graph is the average activation gene coverage across 50 replicates every 2000 generations.
+Shading comes from the best and worse coverage across 50 replicates.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>)  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb63-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb63-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos),</a>
+<a class="sourceLine" id="cb63-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos),</a>
+<a class="sourceLine" id="cb63-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos)</a>
+<a class="sourceLine" id="cb63-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb65-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb65-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb65-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb65-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb65-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb65-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb65-8" title="8">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">20</span>),</a>
+<a class="sourceLine" id="cb65-9" title="9">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;100&quot;</span>)</a>
+<a class="sourceLine" id="cb65-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb65-11" title="11"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb65-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb65-13" title="13">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb65-14" title="14">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb65-15" title="15">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb65-16" title="16"></a>
+<a class="sourceLine" id="cb65-17" title="17">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb65-18" title="18"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb65-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb65-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb65-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Activation gene coverage over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb65-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb65-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb65-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb65-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb65-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb65-27" title="27">  )</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-mpe-act-ot-1.png" width="100%" /></p>
+</div>
+<div id="final-activation-gene-coverage-1" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.5.2</span> Final activation gene coverage<a href="truncation-selection.html#final-activation-gene-coverage-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Activation gene coverage found in the final population at 50,000 generations.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb66-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> uni_str_pos, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb66-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb66-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb66-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb66-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb66-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb66-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">12.1</span>),</a>
+<a class="sourceLine" id="cb66-9" title="9">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">12</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb66-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb66-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb66-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Trunation size&quot;</span></a>
+<a class="sourceLine" id="cb66-13" title="13">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb66-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb66-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb66-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb66-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final activation gene coverage&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb66-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb66-19" title="19"></a>
+<a class="sourceLine" id="cb66-20" title="20"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb66-21" title="21">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb66-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb66-23" title="23">  legend,</a>
+<a class="sourceLine" id="cb66-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb66-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb66-26" title="26">)</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-mpe-act-end-1.png" width="100%" /></p>
+<div id="stats-7" class="section level4 hasAnchor">
+<h4><span class="header-section-number">2.5.2.1</span> Stats<a href="truncation-selection.html#stats-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the generation a satisfactory solution is found.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">act_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>)</a>
+<a class="sourceLine" id="cb67-2" title="2">act_coverage<span class="op">$</span>T =<span class="st"> </span><span class="kw">factor</span>(act_coverage<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a>
+<a class="sourceLine" id="cb67-3" title="3">act_coverage <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb67-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb67-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb67-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb67-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(uni_str_pos)),</a>
+<a class="sourceLine" id="cb67-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb67-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb67-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb67-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb67-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb67-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+## 1 1        50      0     1    4    4.68    12     3
+## 2 2        50      0     2    5    5.34    12     4
+## 3 4        50      0     2    4    4.04    11     2
+## 4 8        50      0     1    4.5  4.7     12     3
+## 5 16       50      0     2    4    4.46    10     2
+## 6 32       50      0     1    5    4.58    12     3
+## 7 64       50      0     1    4    4.64    12     3
+## 8 128      50      0     1    4    4.66    10     3
+## 9 256      50      0     1    5    5.12     9     4</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of <strong>no statistical differences</strong>.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">kruskal.test</span>(uni_str_pos <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> act_coverage)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  uni_str_pos by T
+## Kruskal-Wallis chi-squared = 10.094, df = 8, p-value = 0.2585</code></pre>
+</div>
+</div>
+<div id="performance-over-time-2" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.5.3</span> Performance over time<a href="truncation-selection.html#performance-over-time-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Best performance in a population over time.
+Data points on the graph is the average performance across 50 replicates every 2000 generations.
+Shading comes from the best and worse performance across 50 replicates.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb71-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(T, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb71-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb71-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb71-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb71-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY</a>
+<a class="sourceLine" id="cb71-7" title="7">  )</a></code></pre></div>
+<pre><code>## `summarise()` has grouped output by &#39;T&#39;. You can override using the `.groups`
+## argument.</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">over_time_plot =<span class="st"> </span><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> T, <span class="dt">fill =</span> T, <span class="dt">color =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb73-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb73-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb73-8" title="8">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-9" title="9"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb73-10" title="10">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb73-11" title="11">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb73-12" title="12">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb73-13" title="13">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb73-14" title="14"></a>
+<a class="sourceLine" id="cb73-15" title="15">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-16" title="16"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb73-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb73-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb73-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb73-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb73-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb73-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb73-25" title="25">  )</a>
+<a class="sourceLine" id="cb73-26" title="26"></a>
+<a class="sourceLine" id="cb73-27" title="27">over_time_plot</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-mpe-per-ot-1.png" width="100%" /></p>
+</div>
+<div id="best-performance-throughout-2" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.5.4</span> Best performance throughout<a href="truncation-selection.html#best-performance-throughout-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Best performance reached throughout 50,000 generations in a population.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st">  </span>var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb74-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb74-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb74-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb74-9" title="9">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb74-11" title="11">    <span class="dt">name=</span><span class="st">&quot;Truncation size&quot;</span></a>
+<a class="sourceLine" id="cb74-12" title="12">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb74-13" title="13"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb74-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Best performance throughout&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb74-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb74-18" title="18"></a>
+<a class="sourceLine" id="cb74-19" title="19"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb74-20" title="20">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-21" title="21"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb74-22" title="22">  legend,</a>
+<a class="sourceLine" id="cb74-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb74-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb74-25" title="25">)</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-mpe-bst-1.png" width="100%" /></p>
+<div id="stats-8" class="section level4 hasAnchor">
+<h4><span class="header-section-number">2.5.4.1</span> Stats<a href="truncation-selection.html#stats-8" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the best performance.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1">performance =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st">  </span>var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span>)</a>
+<a class="sourceLine" id="cb75-2" title="2">performance<span class="op">$</span>T =<span class="st"> </span><span class="kw">factor</span>(performance<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a>
+<a class="sourceLine" id="cb75-3" title="3">performance <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb75-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb75-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb75-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb75-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
+<a class="sourceLine" id="cb75-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb75-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb75-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb75-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb75-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb75-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 1        50      0 0.760   4.83  5.09  8.64  4.60
+## 2 2        50      0 1.30    3.94  4.66  8.77  4.22
+## 3 4        50      0 1.13    5.59  5.57  8.69  3.11
+## 4 8        50      0 0.860   5.69  5.20  8.54  3.70
+## 5 16       50      0 1.45    4.97  5.08  8.43  2.27
+## 6 32       50      0 1.06    4.72  4.96  8.87  4.17
+## 7 64       50      0 1.15    4.71  5.13  8.76  4.44
+## 8 128      50      0 0.830   3.85  4.66  8.78  4.83
+## 9 256      50      0 1.3     5.54  5.12  8.08  2.72</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of <strong>no statistical differences</strong>.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> performance)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  val by T
+## Kruskal-Wallis chi-squared = 5.6719, df = 8, p-value = 0.6839</code></pre>
+</div>
+</div>
+<div id="largest-valley-reached-throughout-3" class="section level3 hasAnchor">
+<h3><span class="header-section-number">2.5.5</span> Largest valley reached throughout<a href="truncation-selection.html#largest-valley-reached-throughout-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb79-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> T, <span class="dt">y =</span> val, <span class="dt">color =</span> T, <span class="dt">fill =</span> T, <span class="dt">shape =</span> T)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb79-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb79-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb79-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb79-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb79-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Valley reached&quot;</span>,</a>
+<a class="sourceLine" id="cb79-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="fl">3.9</span>,<span class="fl">6.1</span>),</a>
+<a class="sourceLine" id="cb79-9" title="9">    <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb79-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb79-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb79-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Truncation size&quot;</span></a>
+<a class="sourceLine" id="cb79-13" title="13">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb79-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb79-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb79-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb79-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb79-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb79-19" title="19"></a>
+<a class="sourceLine" id="cb79-20" title="20"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb79-21" title="21">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb79-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb79-23" title="23">  legend,</a>
+<a class="sourceLine" id="cb79-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb79-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb79-26" title="26">)</a></code></pre></div>
+<p><img src="parameter-sweep-mvc_files/figure-html/tru-mpe-val-bst-1.png" width="100%" /></p>
+<div id="stats-9" class="section level4 hasAnchor">
+<h4><span class="header-section-number">2.5.5.1</span> Stats<a href="truncation-selection.html#stats-9" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Summary statistics for the largest valley crossed.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">valleys =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>)</a>
+<a class="sourceLine" id="cb80-2" title="2">valleys<span class="op">$</span>T =<span class="st"> </span><span class="kw">factor</span>(valleys<span class="op">$</span>T, <span class="dt">levels =</span> TR_LIST)</a>
+<a class="sourceLine" id="cb80-3" title="3">valleys <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb80-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb80-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb80-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb80-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
+<a class="sourceLine" id="cb80-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb80-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb80-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb80-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb80-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb80-13" title="13">  )</a></code></pre></div>
+<pre><code>## # A tibble: 9 x 8
+##   T     count na_cnt   min median  mean   max   IQR
+##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 1        50      0     5      5  5.02     6     0
+## 2 2        50      0     4      5  4.98     5     0
+## 3 4        50      0     5      5  5.02     6     0
+## 4 8        50      0     4      5  5.02     6     0
+## 5 16       50      0     4      5  5.02     6     0
+## 6 32       50      0     5      5  5.02     6     0
+## 7 64       50      0     5      5  5.02     6     0
+## 8 128      50      0     4      5  4.94     5     0
+## 9 256      50      0     5      5  5.08     6     0</code></pre>
+<p>Kruskal–Wallis test illustrates evidence of <strong>no statistical differences</strong>.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>T, <span class="dt">data =</span> valleys)</a></code></pre></div>
+<pre><code>## 
+##  Kruskal-Wallis rank sum test
+## 
+## data:  val by T
+## Kruskal-Wallis chi-squared = 13.997, df = 8, p-value = 0.08184</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tournament-selection.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/amlalejini/auto-deploying-bookdown-example/tree/main/../Truncation/Analysis/results.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["parameter-sweep-mvc.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

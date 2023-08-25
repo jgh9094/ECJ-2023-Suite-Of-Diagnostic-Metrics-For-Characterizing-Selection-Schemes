@@ -23,7 +23,7 @@
 <meta name="author" content="Jose Guadalupe Hernandez" />
 
 
-<meta name="date" content="2023-08-21" />
+<meta name="date" content="2023-08-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -222,13 +222,13 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb15-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Activation gene coverage over time&#39;</span>)<span class="op">+</span></a>
 <a class="sourceLine" id="cb15-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>(),<span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb15-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb15-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb15-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb15-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb15-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb15-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb15-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
 <a class="sourceLine" id="cb15-27" title="27">  )</a>
 <a class="sourceLine" id="cb15-28" title="28"></a>
 <a class="sourceLine" id="cb15-29" title="29">over_time_plot</a></code></pre></div>
-<p><img src="base-diagnostics_files/figure-html/con-act-ot-1.png" width="100%" /></p>
+<p><img src="contradictory-nondominated-sorting-breakdown_files/figure-html/con-act-ot-1.png" width="100%" /></p>
 </div>
 <div id="final-activation-gene-coverage" class="section level2 hasAnchor">
 <h2><span class="header-section-number">2.3</span> Final activation gene coverage<a href="nondominated-sorting-breakdown.html#final-activation-gene-coverage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -265,7 +265,7 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 ## This warning is displayed once every 8 hours.
 ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
 ## generated.</code></pre>
-<p><img src="base-diagnostics_files/figure-html/con-act-end-1.png" width="100%" /></p>
+<p><img src="contradictory-nondominated-sorting-breakdown_files/figure-html/con-act-end-1.png" width="100%" /></p>
 <div id="stats" class="section level3 hasAnchor">
 <h3><span class="header-section-number">2.3.1</span> Stats<a href="nondominated-sorting-breakdown.html#stats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Summary statistics for the coverage found in the final population.</p>
@@ -347,13 +347,13 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb26-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Satisfactory trait coverage over time&#39;</span>)<span class="op">+</span></a>
 <a class="sourceLine" id="cb26-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>(),<span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb26-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb26-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb26-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb26-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb26-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb26-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
+<a class="sourceLine" id="cb26-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
 <a class="sourceLine" id="cb26-27" title="27">  )</a>
 <a class="sourceLine" id="cb26-28" title="28"></a>
 <a class="sourceLine" id="cb26-29" title="29">over_time_plot</a></code></pre></div>
-<p><img src="base-diagnostics_files/figure-html/con-sat-ot-1.png" width="100%" /></p>
+<p><img src="contradictory-nondominated-sorting-breakdown_files/figure-html/con-sat-ot-1.png" width="100%" /></p>
 </div>
 <div id="final-satisfactory-trait-coverage" class="section level2 hasAnchor">
 <h2><span class="header-section-number">2.5</span> Final satisfactory trait coverage<a href="nondominated-sorting-breakdown.html#final-satisfactory-trait-coverage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -385,7 +385,7 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb27-25" title="25">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
 <a class="sourceLine" id="cb27-26" title="26">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb27-27" title="27">)</a></code></pre></div>
-<p><img src="base-diagnostics_files/figure-html/con-sat-end-1.png" width="100%" /></p>
+<p><img src="contradictory-nondominated-sorting-breakdown_files/figure-html/con-sat-end-1.png" width="100%" /></p>
 <div id="stats-1" class="section level3 hasAnchor">
 <h3><span class="header-section-number">2.5.1</span> Stats<a href="nondominated-sorting-breakdown.html#stats-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Summary statistics for the coverage found in the final population.</p>
@@ -480,7 +480,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["base-diagnostics.pdf"],
+"download": ["contradictory-nondominated-sorting-breakdown.pdf"],
 "search": {
 "engine": "fuse",
 "options": null
