@@ -82,6 +82,7 @@ p_theme <- theme(
                                   size = 0.5, linetype = "solid")
 )
 
+
 # default variables
 REPLICATES = 50
 DIMENSIONALITY = 100
