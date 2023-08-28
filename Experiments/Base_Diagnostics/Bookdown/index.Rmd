@@ -60,10 +60,10 @@ library(dplyr)
 library(PupillometryR)
 
 # data diractory for gh-pages
-# DATA_DIR = '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/BASE_DIAGNOSTICS/'
+DATA_DIR = '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/BASE_DIAGNOSTICS/'
 
 # data diractory for local testing
-DATA_DIR = '~/Desktop/Repositories/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/BASE_DIAGNOSTICS/'
+# DATA_DIR = '~/Desktop/Repositories/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/BASE_DIAGNOSTICS/'
 
 # graph variables
 SHAPE = c(5,3,1,2,6,0,4,20,1)
@@ -74,8 +74,8 @@ p_theme <- theme(
   plot.title = element_text( face = "bold", size = 22, hjust=0.5),
   panel.border = element_blank(),
   panel.grid.minor = element_blank(),
-  legend.title=element_text(size=20),
-  legend.text=element_text(size=20),
+  legend.title=element_text(size=14),
+  legend.text=element_text(size=14),
   axis.title = element_text(size=20),
   axis.text = element_text(size=20),
   legend.position="bottom",

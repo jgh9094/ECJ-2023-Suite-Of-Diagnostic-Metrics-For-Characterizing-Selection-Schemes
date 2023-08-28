@@ -31,6 +31,7 @@ lines = over_time_df %>%
     mean = mean(uni_str_pos),
     max = max(uni_str_pos)
   )
+lines$scheme <- factor(lines$scheme, levels = c('Truncation (tru)','Tournament (tor)','Lexicase (lex)','Random (ran)','Genotypic Fitness Sharing (gfs)','Phenotypic Fitness Sharing (pfs)','Nondominated Sorting (nds)','Novelty Search (nov)'))
 
 over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme, color = scheme, shape = scheme)) +
   geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
@@ -49,15 +50,15 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
     labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
 
   ) +
-  scale_shape_manual(values=SHAPE)+
-  scale_colour_manual(values = cb_palette) +
-  scale_fill_manual(values = cb_palette) +
-  ggtitle('Activation gene coverage over time')+
-  p_theme + theme(legend.title=element_blank(),legend.text=element_text(size=12)) +
+  scale_shape_manual(values=c(5,3,1,20,2,6,0,4))+
+  scale_colour_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
+  scale_fill_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
+  ggtitle('Performance over time')+
+  p_theme +
   guides(
-    shape=guide_legend(ncol=2, title.position = "bottom"),
-    color=guide_legend(ncol=2, title.position = "bottom"),
-    fill=guide_legend(ncol=2, title.position = "bottom")
+    shape=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
+    color=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
+    fill=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme')
   )
 
 over_time_plot
@@ -67,15 +68,9 @@ over_time_plot
 legend <- cowplot::get_legend(
   over_time_plot +
     guides(
-    shape=guide_legend(ncol=2, title.position = "bottom"),
-    color=guide_legend(ncol=2, title.position = "bottom"),
-    fill=guide_legend(ncol=2, title.position = "bottom")
-    ) +
-    theme(
-      legend.position = "top",
-      legend.box="verticle",
-      legend.justification="center"
-    )
+    shape=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
+    color=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
+    fill=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme')
 )
 ```
 
@@ -103,7 +98,7 @@ plot = filter(over_time_df, gen == 50000) %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -176,15 +171,15 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
     labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
 
   ) +
-  scale_shape_manual(values=SHAPE)+
-  scale_colour_manual(values = cb_palette) +
-  scale_fill_manual(values = cb_palette) +
-  ggtitle('Satisfactory trait coverage over time')+
-  p_theme + theme(legend.title=element_blank(),legend.text=element_text(size=12)) +
+  scale_shape_manual(values=c(5,3,1,20,2,6,0,4))+
+  scale_colour_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
+  scale_fill_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
+  ggtitle('Performance over time')+
+  p_theme +
   guides(
-    shape=guide_legend(ncol=2, title.position = "bottom"),
-    color=guide_legend(ncol=2, title.position = "bottom"),
-    fill=guide_legend(ncol=2, title.position = "bottom")
+    shape=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
+    color=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
+    fill=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme')
   )
 
 over_time_plot
@@ -211,7 +206,7 @@ plot = filter(over_time_df, gen == 50000) %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final satisfactory trait coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -277,7 +272,7 @@ plot = filter(best_df, var == 'ele_big_peak') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
