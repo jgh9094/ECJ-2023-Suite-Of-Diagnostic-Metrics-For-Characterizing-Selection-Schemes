@@ -141,7 +141,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nds-exp-ssf-wil}
 pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'g')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ## Ordered exploitation results
@@ -367,7 +367,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nds-con-ssf-wil}
 pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$Sigma, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ### Satisfactory trait coverage over time
@@ -475,7 +475,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nds-con-sat-wil}
 pairwise.wilcox.test(x = sat_coverage$pop_uni_obj, g = sat_coverage$Sigma, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ## Multi-path exploration results
@@ -589,7 +589,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nds-mpe-act-wil-end}
 pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$Sigma, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ### Performance over time
@@ -697,5 +697,5 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nds-mpe-per-wil}
 pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```

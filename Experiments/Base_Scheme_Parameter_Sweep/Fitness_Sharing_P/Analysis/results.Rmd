@@ -593,7 +593,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r pfs-mpe-act-wil-end}
 pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$Sigma, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ### Performance over time
@@ -701,6 +701,6 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r pfs-mpe-per-wil}
 pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 

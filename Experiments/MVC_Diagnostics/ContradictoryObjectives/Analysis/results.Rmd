@@ -38,7 +38,7 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
   geom_point(data = filter(lines, gen %% 2000 == 0 & gen != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
-    limits=c(0, 100),
+    limits=c(0, 100.1),
     breaks=seq(0,100, 20),
     labels=c("0", "20", "40", "60", "80", "100")
   ) +
@@ -120,7 +120,7 @@ Summary statistics for the coverage found in the final population.
 
 ```{r con-act-sum-end}
 act_coverage = filter(over_time_df, gen == 50000)
-act_coverage$acro = factor(act_coverage$acro, levels = c('nov','nds','lex','gfs','tor','tru','pfs','ran'))
+act_coverage$acro = factor(act_coverage$acro, levels = c('nds','nov','lex','gfs','tru','tor','pfs','ran'))
 act_coverage %>%
   group_by(acro) %>%
   dplyr::summarise(
@@ -267,8 +267,8 @@ plot = filter(best_df, var == 'ele_big_peak') %>%
   geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Valley reached",
-    limits=c(3.5,14.5),
-    breaks=c(4,9,14)
+    limits=c(4.9,14.1),
+    breaks=c(5,8,11,14)
   ) +
   scale_x_discrete(
     name="Scheme"

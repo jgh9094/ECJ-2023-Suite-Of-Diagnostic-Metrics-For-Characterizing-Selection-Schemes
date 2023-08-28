@@ -360,7 +360,7 @@ act_coverage %>%
   )
 ```
 
-Kruskal–Wallis test illustrates evidence of no statistical differences.
+Kruskal–Wallis test illustrates evidence of **no statistical differences**.
 
 ```{r gfs-con-act-kru}
 kruskal.test(uni_str_pos ~ Sigma, data = act_coverage)
@@ -463,7 +463,7 @@ sat_coverage %>%
   )
 ```
 
-Kruskal–Wallis test illustrates evidence of no statistical differences.
+Kruskal–Wallis test illustrates evidence of **no statistical differences**.
 
 ```{r gfs-con-sat-kru}
 kruskal.test(pop_uni_obj ~ Sigma, data = sat_coverage)
@@ -581,7 +581,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r gfs-mpe-act-wil-end}
 pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$Sigma, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ### Performance over time

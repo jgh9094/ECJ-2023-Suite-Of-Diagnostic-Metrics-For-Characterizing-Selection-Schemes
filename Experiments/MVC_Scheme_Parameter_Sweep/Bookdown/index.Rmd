@@ -87,7 +87,6 @@ p_theme <- theme(
 )
 
 # default variables
-REPLICATES = 50
 DIMENSIONALITY = 100
 GENERATIONS = 50000
 

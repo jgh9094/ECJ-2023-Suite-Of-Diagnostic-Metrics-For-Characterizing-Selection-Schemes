@@ -141,7 +141,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nov-exp-ssf-wil}
 pairwise.wilcox.test(x = performance$val, g = performance$K, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ## Ordered exploitation results
@@ -253,7 +253,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nov-ord-ssf-wil}
 pairwise.wilcox.test(x = performance$val, g = performance$K, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ## Contradictory objectives results
@@ -318,7 +318,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
   geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
-    limits=c(0, 100)
+    limits=c(0, 100.1)
   ) +
   scale_x_discrete(
     name="K nearest neighbors"
@@ -344,7 +344,7 @@ Summary statistics for the generation a satisfactory solution is found.
 
 ```{r nov-con-act-sum}
 act_coverage = filter(over_time_df, gen == 50000 & acro == 'con')
-act_coverage$K = factor(act_coverage$K, levels = c('2.5','1.2','0.6','0.3','0.1','5','0'))
+act_coverage$K = factor(act_coverage$K, levels = NS_LIST)
 act_coverage %>%
   group_by(K) %>%
   dplyr::summarise(
@@ -361,14 +361,14 @@ act_coverage %>%
 Kruskal–Wallis test illustrates evidence of statistical differences.
 
 ```{r nov-con-act-kru}
-# kruskal.test(uni_str_pos ~ K, data = act_coverage)
+kruskal.test(uni_str_pos ~ K, data = act_coverage)
 ```
 
 Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nov-con-ssf-wil}
-# pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$K, p.adjust.method = "bonferroni",
-#                      paired = FALSE, conf.int = FALSE, alternative = 'l')
+pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$K, p.adjust.method = "bonferroni",
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ### Satisfactory trait coverage over time
@@ -393,7 +393,7 @@ ggplot(lines, aes(x=gen, y=mean, group = K, fill = K, color = K, shape = K)) +
   geom_point(data = filter(lines, gen %% 2000 == 0 & gen != 0), size = 1.5, stroke = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
-    limits=c(0, 100)
+    limits=c(-0.1, 1.1)
   ) +
   scale_x_continuous(
     name="Generations",
@@ -591,7 +591,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nov-mpe-act-wil-end}
 pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$K, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ### Performance over time
@@ -699,5 +699,5 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r nov-mpe-per-wil}
 pairwise.wilcox.test(x = performance$val, g = performance$K, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```

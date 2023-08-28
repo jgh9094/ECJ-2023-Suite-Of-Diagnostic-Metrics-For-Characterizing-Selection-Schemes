@@ -79,12 +79,11 @@ p_theme <- theme(
   legend.position="bottom",
   panel.background = element_rect(fill = "#f1f2f5",
                                   colour = "white",
-                                  size = 0.5, linetype = "solid")
+                                  linewidth = 0.5, linetype = "solid")
 )
 
 
 # default variables
-REPLICATES = 50
 DIMENSIONALITY = 100
 GENERATIONS = 50000
 

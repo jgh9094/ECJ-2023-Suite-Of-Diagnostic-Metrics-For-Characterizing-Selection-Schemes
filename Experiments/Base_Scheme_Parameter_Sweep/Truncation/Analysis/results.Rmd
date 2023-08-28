@@ -679,7 +679,7 @@ performance %>%
   )
 ```
 
-Kruskal–Wallis test illustrates evidence of no statistical differences.
+Kruskal–Wallis test illustrates evidence of **no statistical differences**.
 
 ```{r tru-mpe-per-kru}
 kruskal.test(val ~ T, data = performance)

@@ -578,7 +578,7 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 
 ```{r tor-mpe-act-wil-end}
 pairwise.wilcox.test(x = act_coverage$uni_str_pos, g = act_coverage$T, p.adjust.method = "bonferroni",
-                     paired = FALSE, conf.int = FALSE, alternative = 'l')
+                     paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
 
 ### Performance over time
@@ -679,7 +679,7 @@ performance %>%
   )
 ```
 
-Kruskal–Wallis test illustrates evidence of no statistical differences.
+Kruskal–Wallis test illustrates evidence of **no statistical differences**.
 
 ```{r tor-mpe-per-kru}
 kruskal.test(val ~ T, data = performance)
