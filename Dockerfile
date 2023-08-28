@@ -132,13 +132,17 @@ RUN \
     && \
   chmod +x build_book.sh \
     && \
+  ./build_book.sh \
+    && \
+  echo "compiled bookdown selection scheme sweep ebook" \
+    && \
   cd /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/Experiments/MVC_Scheme_Parameter_Sweep/Bookdown \
     && \
   chmod +x build_book.sh \
     && \
   ./build_book.sh \
     && \
-  echo "compiled bookdown selection scheme sweep ebook" \
+  echo "compiled bookdown selection scheme sweep mvc ebook" \
     && \
   cd /opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/Experiments/Nondominated_Sorting_Contradictory_Objectives/Bookdown \
     && \
