@@ -110,7 +110,7 @@
 
 \title{Supplemental Material: Base Diagnostics}
 \author{Jose Guadalupe Hernandez}
-\date{2023-08-25}
+\date{2023-08-28}
 
 \begin{document}
 \maketitle
@@ -241,38 +241,25 @@ Setting up required variables variables.
 \NormalTok{cb_palette <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'#332288'}\NormalTok{,}\StringTok{'#88CCEE'}\NormalTok{,}\StringTok{'#EE7733'}\NormalTok{,}\StringTok{'#EE3377'}\NormalTok{,}\StringTok{'#117733'}\NormalTok{,}\StringTok{'#882255'}\NormalTok{,}\StringTok{'#44AA99'}\NormalTok{,}\StringTok{'#CCBB44'}\NormalTok{, }\StringTok{'#000000'}\NormalTok{)}
 \NormalTok{TSIZE =}\StringTok{ }\DecValTok{26}
 \NormalTok{p_theme <-}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
-  \DataTypeTok{text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{28}\NormalTok{),}
+  \DataTypeTok{text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{20}\NormalTok{),}
   \DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{( }\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{22}\NormalTok{, }\DataTypeTok{hjust=}\FloatTok{0.5}\NormalTok{),}
   \DataTypeTok{panel.border =} \KeywordTok{element_blank}\NormalTok{(),}
   \DataTypeTok{panel.grid.minor =} \KeywordTok{element_blank}\NormalTok{(),}
-  \DataTypeTok{legend.title=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{22}\NormalTok{),}
-  \DataTypeTok{legend.text=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{23}\NormalTok{),}
-  \DataTypeTok{axis.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{23}\NormalTok{),}
-  \DataTypeTok{axis.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{22}\NormalTok{),}
+  \DataTypeTok{legend.title=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{20}\NormalTok{),}
+  \DataTypeTok{legend.text=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{20}\NormalTok{),}
+  \DataTypeTok{axis.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{20}\NormalTok{),}
+  \DataTypeTok{axis.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{20}\NormalTok{),}
   \DataTypeTok{legend.position=}\StringTok{"bottom"}\NormalTok{,}
   \DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"#f1f2f5"}\NormalTok{,}
                                   \DataTypeTok{colour =} \StringTok{"white"}\NormalTok{,}
-                                  \DataTypeTok{size =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{linetype =} \StringTok{"solid"}\NormalTok{)}
+                                  \DataTypeTok{linewidth =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{linetype =} \StringTok{"solid"}\NormalTok{)}
 \NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
-## i Please use the `linewidth` argument instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \CommentTok{# colors for streak plots}
 \NormalTok{STK_SHAPE =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{1}\NormalTok{)}
 \NormalTok{stk_cb_palette <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'#EE3377'}\NormalTok{,}\StringTok{'#117733'}\NormalTok{,}\StringTok{'#882255'}\NormalTok{,}\StringTok{'#44AA99'}\NormalTok{,}\StringTok{'#CCBB44'}\NormalTok{, }\StringTok{'#000000'}\NormalTok{)}
 
 \CommentTok{# default variables}
-\NormalTok{REPLICATES =}\StringTok{ }\DecValTok{50}
 \NormalTok{DIMENSIONALITY =}\StringTok{ }\DecValTok{100}
 \NormalTok{GENERATIONS =}\StringTok{ }\DecValTok{50000}
 
@@ -411,7 +398,7 @@ Best performance reached throughout 50,000 generations in a population.
 \end{verbatim}
 
 \begin{verbatim}
-## Warning: Removed 51 rows containing missing values (`geom_point()`).
+## Warning: Removed 48 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
 \includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/exp-per-bst-1}
@@ -1215,7 +1202,7 @@ Activation gene coverage found in the final population at 50,000 generations.
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 14 rows containing missing values (`geom_point()`).
+## Warning: Removed 12 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
 \includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/con-act-end-1}
@@ -1398,7 +1385,7 @@ Satisfactory trait coverage found in the final population at 50,000 generations.
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 53 rows containing missing values (`geom_point()`).
+## Warning: Removed 46 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
 \includegraphics[width=1\linewidth]{base-diagnostics_files/figure-latex/con-sat-end-1}
