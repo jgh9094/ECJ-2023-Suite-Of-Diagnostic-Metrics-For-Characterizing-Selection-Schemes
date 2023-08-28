@@ -68,7 +68,7 @@ DATA_DIR = '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selecti
 # graph variables
 SHAPE = c(5,3,1,2,6,0,4,20,1)
 cb_palette <- c('#332288','#88CCEE','#EE7733','#EE3377','#117733','#882255','#44AA99','#CCBB44', '#000000')
-TSIZE = 26
+TSIZE = 20
 p_theme <- theme(
   text = element_text(size = 20),
   plot.title = element_text( face = "bold", size = 22, hjust=0.5),
