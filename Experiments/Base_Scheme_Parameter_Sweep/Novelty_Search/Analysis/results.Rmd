@@ -51,11 +51,11 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = K, fill = K, color = K
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=1, title.position = "bottom"),
-    color=guide_legend(nrow=1, title.position = "bottom"),
-    fill=guide_legend(nrow=1, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors')
   )
 
 over_time_plot
@@ -65,14 +65,9 @@ over_time_plot
 legend <- cowplot::get_legend(
   over_time_plot +
     guides(
-      shape=guide_legend(nrow=1, title.position = "bottom"),
-      color=guide_legend(nrow=1, title.position = "bottom"),
-      fill=guide_legend(nrow=1, title.position = "bottom")
-    ) +
-    theme(
-      legend.position = "top",
-      legend.box="verticle",
-      legend.justification="center"
+    shape=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors')
     )
 )
 ```
@@ -93,7 +88,7 @@ plot = filter(best_df, var == 'pop_fit_max' & acro == 'exp') %>%
     limits = c(10,40)
   ) +
   scale_x_discrete(
-    name="K nearest neighbors"
+    name="K"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
@@ -182,11 +177,11 @@ ggplot(lines, aes(x=gen, y=mean, group = K, fill = K, color = K, shape = K)) +
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=1, title.position = "bottom"),
-    color=guide_legend(nrow=1, title.position = "bottom"),
-    fill=guide_legend(nrow=1, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors')
   )
 ```
 
@@ -206,7 +201,7 @@ plot = filter(best_df, var == 'pop_fit_max' & acro == 'ord') %>%
     limits = c(0,10)
   ) +
   scale_x_discrete(
-    name="K nearest neighbors"
+    name="K"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
@@ -298,11 +293,11 @@ ggplot(lines, aes(x=gen, y=mean, group = K, fill = K, color = K, shape = K)) +
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Activation gene coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=1, title.position = "bottom"),
-    color=guide_legend(nrow=1, title.position = "bottom"),
-    fill=guide_legend(nrow=1, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors')
   )
 ```
 
@@ -321,7 +316,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
     limits=c(0, 100.1)
   ) +
   scale_x_discrete(
-    name="K nearest neighbors"
+    name="K"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
@@ -406,11 +401,11 @@ ggplot(lines, aes(x=gen, y=mean, group = K, fill = K, color = K, shape = K)) +
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Satisfactory trait coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=1, title.position = "bottom"),
-    color=guide_legend(nrow=1, title.position = "bottom"),
-    fill=guide_legend(nrow=1, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors')
   )
 ```
 
@@ -430,7 +425,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
     breaks = c(0,1)
   ) +
   scale_x_discrete(
-    name="K nearest neighbors"
+    name="K"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
@@ -522,11 +517,11 @@ ggplot(lines, aes(x=gen, y=mean, group = K, fill = K, color = K, shape = K)) +
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Activation gene coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=1, title.position = "bottom"),
-    color=guide_legend(nrow=1, title.position = "bottom"),
-    fill=guide_legend(nrow=1, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors')
   )
 ```
 
@@ -545,7 +540,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'mpe') %>%
     limits=c(0, 100)
   ) +
   scale_x_discrete(
-    name="K nearest neighbors"
+    name="K"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
@@ -627,11 +622,11 @@ ggplot(lines, aes(x=gen, y=mean, group = K, fill = K, color = K, shape = K)) +
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=1, title.position = "bottom"),
-    color=guide_legend(nrow=1, title.position = "bottom"),
-    fill=guide_legend(nrow=1, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'K-nearest \nNeighbors')
   )
 ```
 
@@ -651,7 +646,7 @@ plot = filter(best_df, var == 'pop_fit_max' & acro == 'mpe') %>%
     limits=c(0, 10)
   ) +
   scale_x_discrete(
-    name="K nearest neighbors"
+    name="K"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +

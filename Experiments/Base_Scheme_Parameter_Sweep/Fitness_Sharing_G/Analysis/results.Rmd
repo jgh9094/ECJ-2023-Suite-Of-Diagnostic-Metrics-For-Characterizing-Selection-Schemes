@@ -53,11 +53,11 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, c
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 
 over_time_plot
@@ -67,14 +67,9 @@ over_time_plot
 legend <- cowplot::get_legend(
   over_time_plot +
     guides(
-      shape=guide_legend(nrow=2, title.position = "bottom"),
-      color=guide_legend(nrow=2, title.position = "bottom"),
-      fill=guide_legend(nrow=2, title.position = "bottom")
-    ) +
-    theme(
-      legend.position = "top",
-      legend.box="verticle",
-      legend.justification="center"
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
     )
 )
 ```
@@ -101,7 +96,7 @@ plot = filter(best_df, var == 'pop_fit_max' & acro == 'exp') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme 
 
 plot_grid(
   plot +
@@ -184,11 +179,11 @@ ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, sha
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 ```
 
@@ -214,7 +209,7 @@ plot = filter(best_df, var == 'pop_fit_max' & acro == 'ord') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme 
 
 plot_grid(
   plot +
@@ -299,11 +294,11 @@ ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, sha
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Activation gene coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 ```
 
@@ -329,7 +324,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme 
 
 plot_grid(
   plot +
@@ -402,11 +397,11 @@ ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, sha
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Satisfactory trait coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 ```
 
@@ -432,7 +427,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final satisfactory trait coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme 
 
 plot_grid(
   plot +
@@ -511,11 +506,11 @@ ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, sha
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Activation gene coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 ```
 
@@ -540,7 +535,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'mpe') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme 
 
 plot_grid(
   plot +
@@ -617,11 +612,11 @@ ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, sha
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 ```
 
@@ -647,7 +642,7 @@ plot = filter(best_df, var == 'pop_fit_max' & acro == 'mpe') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme 
 
 plot_grid(
   plot +

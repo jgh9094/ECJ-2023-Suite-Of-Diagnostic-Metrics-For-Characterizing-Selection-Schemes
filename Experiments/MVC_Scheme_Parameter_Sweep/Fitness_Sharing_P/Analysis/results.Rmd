@@ -51,11 +51,11 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, c
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 
 over_time_plot
@@ -65,14 +65,9 @@ over_time_plot
 legend <- cowplot::get_legend(
   over_time_plot +
     guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
-    ) +
-    theme(
-      legend.position = "top",
-      legend.box="verticle",
-      legend.justification="center"
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
     )
 )
 ```
@@ -98,7 +93,7 @@ plot = filter(best_df, acro == 'exp' &  var == 'pop_fit_max') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -164,7 +159,7 @@ plot = filter(best_df, acro == 'exp' & var == 'ele_big_peak') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -248,11 +243,11 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, c
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 
 over_time_plot
@@ -279,7 +274,7 @@ plot = filter(best_df, acro == 'ord' &  var == 'pop_fit_max') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -345,7 +340,7 @@ plot = filter(best_df, acro == 'ord' & var == 'ele_big_peak') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -433,11 +428,11 @@ ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, sha
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Activation gene coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 ```
 
@@ -462,7 +457,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -541,11 +536,11 @@ ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, sha
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Satisfactory trait coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 ```
 
@@ -570,7 +565,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final satisfactory trait coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -636,7 +631,7 @@ plot = filter(best_df, acro == 'con' & var == 'ele_big_peak') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -683,7 +678,7 @@ pairwise.wilcox.test(x = valleys$val, g = valleys$Sigma, p.adjust.method = "bonf
 
 ## Multi-path exploration results
 
-Here we present the results for best performances and activation gene coverage found by each selection scheme parameter on the multi-path exploration diagnostic with valleys. 
+Here we present the results for best performances and activation gene coverage found by each selection scheme parameter on the multi-path exploration diagnostic with valleys.
 50 replicates are conducted for each scheme parameter explored.
 
 ### Activation gene coverage over time
@@ -723,11 +718,11 @@ ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, color = Sigma, sha
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Activation gene coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 ```
 
@@ -753,7 +748,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'mpe') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -831,11 +826,11 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = Sigma, fill = Sigma, c
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    color=guide_legend(nrow=1, title.position = "left", title = 'Sigma'),
+    fill=guide_legend(nrow=1, title.position = "left", title = 'Sigma')
   )
 
 over_time_plot
@@ -863,7 +858,7 @@ plot = filter(best_df, acro == 'mpe' &  var == 'pop_fit_max') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -928,7 +923,7 @@ plot = filter(best_df, acro == 'mpe' & var == 'ele_big_peak') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +

@@ -51,11 +51,11 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize')
   )
 
 over_time_plot
@@ -65,14 +65,9 @@ over_time_plot
 legend <- cowplot::get_legend(
   over_time_plot +
     guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
-    ) +
-    theme(
-      legend.position = "top",
-      legend.box="verticle",
-      legend.justification="center"
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize')
     )
 )
 ```
@@ -92,13 +87,13 @@ plot = filter(best_df, acro == 'exp' &  var == 'pop_fit_max') %>%
     limits=c(17, 19)
   ) +
   scale_x_discrete(
-    name="Truncation size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -158,13 +153,13 @@ plot = filter(best_df, acro == 'exp' & var == 'ele_big_peak') %>%
     breaks = c(5,6)
   ) +
   scale_x_discrete(
-    name="Truncation size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -242,11 +237,11 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize')
   )
 
 over_time_plot
@@ -267,13 +262,13 @@ plot = filter(best_df, acro == 'ord' &  var == 'pop_fit_max') %>%
     limits=c(4, 10)
   ) +
   scale_x_discrete(
-    name="Truncation size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -333,13 +328,13 @@ plot = filter(best_df, acro == 'ord' & var == 'ele_big_peak') %>%
     breaks = c(4,5,6)
   ) +
   scale_x_discrete(
-    name="Truncation size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -420,11 +415,11 @@ ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T, shape = T)) +
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Activation gene coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize')
   )
 ```
 
@@ -450,7 +445,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -530,11 +525,11 @@ ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T, shape = T)) +
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Satisfactory trait coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize')
   )
 ```
 
@@ -560,7 +555,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final satisfactory trait coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -607,13 +602,13 @@ plot = filter(best_df, acro == 'con' & var == 'ele_big_peak') %>%
     breaks = c(5,6)
   ) +
   scale_x_discrete(
-    name="Truncation size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -693,11 +688,11 @@ ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T, shape = T)) +
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Activation gene coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize')
   )
 ```
 
@@ -723,7 +718,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'mpe') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -794,11 +789,11 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize')
   )
 
 over_time_plot
@@ -819,13 +814,13 @@ plot = filter(best_df, acro == 'mpe' &  var == 'pop_fit_max') %>%
     limits=c(0, 10)
   ) +
   scale_x_discrete(
-    name="Truncation size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -878,13 +873,13 @@ plot = filter(best_df, acro == 'mpe' & var == 'ele_big_peak') %>%
     breaks = c(4,5,6)
   ) +
   scale_x_discrete(
-    name="Truncation size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +

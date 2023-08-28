@@ -51,11 +51,11 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize')
   )
 
 over_time_plot
@@ -65,14 +65,9 @@ over_time_plot
 legend <- cowplot::get_legend(
   over_time_plot +
     guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
-    ) +
-    theme(
-      legend.position = "top",
-      legend.box="verticle",
-      legend.justification="center"
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize')
     )
 )
 ```
@@ -92,13 +87,13 @@ plot = filter(best_df, acro == 'exp' &  var == 'pop_fit_max') %>%
     limits=c(17.5, 19.5)
   ) +
   scale_x_discrete(
-    name="Tournament size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -158,13 +153,13 @@ plot = filter(best_df, acro == 'exp' & var == 'ele_big_peak') %>%
     breaks = c(5,6,7)
   ) +
   scale_x_discrete(
-    name="Tournament size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -210,7 +205,7 @@ pairwise.wilcox.test(x = valleys$val, g = valleys$T, p.adjust.method = "bonferro
 ```
 
 
-## Ordered exploitation results 
+## Ordered exploitation results
 
 Here we present the results for **best performances** found by each selection scheme parameter on the ordered exploitation diagnostic with valleys.
 50 replicates are conducted for each scheme explored.
@@ -249,11 +244,11 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize')
   )
 
 over_time_plot
@@ -274,13 +269,13 @@ plot = filter(best_df, acro == 'ord' &  var == 'pop_fit_max') %>%
     limits=c(4, 9)
   ) +
   scale_x_discrete(
-    name="Tournament size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -340,13 +335,13 @@ plot = filter(best_df, acro == 'ord' & var == 'ele_big_peak') %>%
     breaks = c(4,5,6)
   ) +
   scale_x_discrete(
-    name="Tournament size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -434,11 +429,11 @@ ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T, shape = T)) +
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Activation gene coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize')
   )
 ```
 
@@ -464,7 +459,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -537,11 +532,11 @@ ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T, shape = T)) +
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Satisfactory trait coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize')
   )
 ```
 
@@ -567,7 +562,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'con') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final satisfactory trait coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -614,13 +609,13 @@ plot = filter(best_df, acro == 'con' & var == 'ele_big_peak') %>%
     breaks = c(5,6)
   ) +
   scale_x_discrete(
-    name="Tournament size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -660,7 +655,7 @@ kruskal.test(val ~ T, data = valleys)
 
 ## Multi-path exploration results
 
-Here we present the results for best performances and activation gene coverage found by each selection scheme parameter on the multi-path exploration diagnostic with valleys. 
+Here we present the results for best performances and activation gene coverage found by each selection scheme parameter on the multi-path exploration diagnostic with valleys.
 50 replicates are conducted for each scheme parameter explored.
 
 ### Activation gene coverage over time
@@ -700,11 +695,11 @@ ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T, shape = T)) +
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Activation gene coverage over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize')
   )
 ```
 
@@ -730,7 +725,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'mpe') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Final activation gene coverage')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -801,11 +796,11 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Performance over time')+
-  p_theme + theme(legend.title=element_blank()) +
+  p_theme +
   guides(
-    shape=guide_legend(nrow=2, title.position = "bottom"),
-    color=guide_legend(nrow=2, title.position = "bottom"),
-    fill=guide_legend(nrow=2, title.position = "bottom")
+    shape=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    color=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize'),
+    fill=guide_legend(nrow=2, title.position = "left", title = 'Tournament \nSize')
   )
 
 over_time_plot
@@ -826,13 +821,13 @@ plot = filter(best_df, acro == 'mpe' &  var == 'pop_fit_max') %>%
     limits=c(0, 10)
   ) +
   scale_x_discrete(
-    name="Tournament size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -885,13 +880,13 @@ plot = filter(best_df, acro == 'mpe' & var == 'ele_big_peak') %>%
     breaks = c(4,5,6)
   ) +
   scale_x_discrete(
-    name="Tournament size"
+    name="Size"
   )+
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Largest valley reached')+
-  p_theme + theme(legend.title=element_blank())
+  p_theme
 
 plot_grid(
   plot +
@@ -935,5 +930,3 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 pairwise.wilcox.test(x = valleys$val, g = valleys$T, p.adjust.method = "bonferroni",
                      paired = FALSE, conf.int = FALSE, alternative = 't')
 ```
-
-
