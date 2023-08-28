@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Supplemental Material: Selection Scheme Parameter Sweep Base Diagnostics</title>
+  <meta name="description" content="Supplemental material for selection scheme parameter sweep with diagnostics and no valleys." />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Supplemental Material: Selection Scheme Parameter Sweep Base Diagnostics" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Supplemental material for selection scheme parameter sweep with diagnostics and no valleys." />
+  <meta name="github-repo" content="jgh9094/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Supplemental Material: Selection Scheme Parameter Sweep Base Diagnostics" />
+  
+  <meta name="twitter:description" content="Supplemental material for selection scheme parameter sweep with diagnostics and no valleys." />
+  
+
+<meta name="author" content="Jose Guadalupe Hernandez" />
+
+
+<meta name="date" content="2023-08-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="truncation-selection.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#about-our-supplemental-material"><i class="fa fa-check"></i><b>1.1</b> About our supplemental material</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#contributing-authors"><i class="fa fa-check"></i><b>1.2</b> Contributing authors</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#computer-setup"><i class="fa fa-check"></i><b>1.3</b> Computer Setup</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#experimental-setup"><i class="fa fa-check"></i><b>1.4</b> Experimental setup</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="truncation-selection.html"><a href="truncation-selection.html"><i class="fa fa-check"></i><b>2</b> Truncation selection</a><ul>
+<li class="chapter" data-level="2.1" data-path="truncation-selection.html"><a href="truncation-selection.html#data-setup"><i class="fa fa-check"></i><b>2.1</b> Data setup</a></li>
+<li class="chapter" data-level="2.2" data-path="truncation-selection.html"><a href="truncation-selection.html#exploitation-rate-results"><i class="fa fa-check"></i><b>2.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="truncation-selection.html"><a href="truncation-selection.html#performance-over-time"><i class="fa fa-check"></i><b>2.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="2.2.2" data-path="truncation-selection.html"><a href="truncation-selection.html#generation-satisfactory-solution-found"><i class="fa fa-check"></i><b>2.2.2</b> Generation satisfactory solution found</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="truncation-selection.html"><a href="truncation-selection.html#ordered-exploitation-results"><i class="fa fa-check"></i><b>2.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="truncation-selection.html"><a href="truncation-selection.html#performance-over-time-1"><i class="fa fa-check"></i><b>2.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="2.3.2" data-path="truncation-selection.html"><a href="truncation-selection.html#generation-satisfactory-solution-found-1"><i class="fa fa-check"></i><b>2.3.2</b> Generation satisfactory solution found</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="truncation-selection.html"><a href="truncation-selection.html#contradictory-objectives-results"><i class="fa fa-check"></i><b>2.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="truncation-selection.html"><a href="truncation-selection.html#activation-gene-coverage-over-time"><i class="fa fa-check"></i><b>2.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="2.4.2" data-path="truncation-selection.html"><a href="truncation-selection.html#final-activation-gene-coverage"><i class="fa fa-check"></i><b>2.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="2.4.3" data-path="truncation-selection.html"><a href="truncation-selection.html#satisfactory-trait-coverage-over-time"><i class="fa fa-check"></i><b>2.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="2.4.4" data-path="truncation-selection.html"><a href="truncation-selection.html#final-satisfactory-trait-coverage"><i class="fa fa-check"></i><b>2.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="truncation-selection.html"><a href="truncation-selection.html#multi-path-exploration-results"><i class="fa fa-check"></i><b>2.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="truncation-selection.html"><a href="truncation-selection.html#activation-gene-coverage-over-time-1"><i class="fa fa-check"></i><b>2.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="2.5.2" data-path="truncation-selection.html"><a href="truncation-selection.html#final-activation-gene-coverage-1"><i class="fa fa-check"></i><b>2.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="2.5.3" data-path="truncation-selection.html"><a href="truncation-selection.html#performance-over-time-2"><i class="fa fa-check"></i><b>2.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="2.5.4" data-path="truncation-selection.html"><a href="truncation-selection.html#best-performance-throughout"><i class="fa fa-check"></i><b>2.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="tournament-selection.html"><a href="tournament-selection.html"><i class="fa fa-check"></i><b>3</b> Tournament selection</a><ul>
+<li class="chapter" data-level="3.1" data-path="tournament-selection.html"><a href="tournament-selection.html#data-setup-1"><i class="fa fa-check"></i><b>3.1</b> Data setup</a></li>
+<li class="chapter" data-level="3.2" data-path="tournament-selection.html"><a href="tournament-selection.html#exploitation-rate-results-1"><i class="fa fa-check"></i><b>3.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="tournament-selection.html"><a href="tournament-selection.html#performance-over-time-3"><i class="fa fa-check"></i><b>3.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tournament-selection.html"><a href="tournament-selection.html#generation-satisfactory-solution-found-2"><i class="fa fa-check"></i><b>3.2.2</b> Generation satisfactory solution found</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="tournament-selection.html"><a href="tournament-selection.html#ordered-exploitation-results-1"><i class="fa fa-check"></i><b>3.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="tournament-selection.html"><a href="tournament-selection.html#performance-over-time-4"><i class="fa fa-check"></i><b>3.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="3.3.2" data-path="tournament-selection.html"><a href="tournament-selection.html#generation-satisfactory-solution-found-3"><i class="fa fa-check"></i><b>3.3.2</b> Generation satisfactory solution found</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="tournament-selection.html"><a href="tournament-selection.html#contradictory-objectives-results-1"><i class="fa fa-check"></i><b>3.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="tournament-selection.html"><a href="tournament-selection.html#activation-gene-coverage-over-time-2"><i class="fa fa-check"></i><b>3.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="3.4.2" data-path="tournament-selection.html"><a href="tournament-selection.html#final-activation-gene-coverage-2"><i class="fa fa-check"></i><b>3.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="3.4.3" data-path="tournament-selection.html"><a href="tournament-selection.html#satisfactory-trait-coverage-over-time-1"><i class="fa fa-check"></i><b>3.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="3.4.4" data-path="tournament-selection.html"><a href="tournament-selection.html#final-satisfactory-trait-coverage-1"><i class="fa fa-check"></i><b>3.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="tournament-selection.html"><a href="tournament-selection.html#multi-path-exploration-results-1"><i class="fa fa-check"></i><b>3.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="tournament-selection.html"><a href="tournament-selection.html#activation-gene-coverage-over-time-3"><i class="fa fa-check"></i><b>3.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="3.5.2" data-path="tournament-selection.html"><a href="tournament-selection.html#final-activation-gene-coverage-3"><i class="fa fa-check"></i><b>3.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="3.5.3" data-path="tournament-selection.html"><a href="tournament-selection.html#performance-over-time-5"><i class="fa fa-check"></i><b>3.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="3.5.4" data-path="tournament-selection.html"><a href="tournament-selection.html#best-performance-throughout-1"><i class="fa fa-check"></i><b>3.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html"><i class="fa fa-check"></i><b>4</b> Genotypic fitness sharing</a><ul>
+<li class="chapter" data-level="4.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#data-setup-2"><i class="fa fa-check"></i><b>4.1</b> Data setup</a></li>
+<li class="chapter" data-level="4.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#exploitation-rate-results-2"><i class="fa fa-check"></i><b>4.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#performance-over-time-6"><i class="fa fa-check"></i><b>4.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="4.2.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#best-performance-throughout-2"><i class="fa fa-check"></i><b>4.2.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#ordered-exploitation-results-2"><i class="fa fa-check"></i><b>4.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#performance-over-time-7"><i class="fa fa-check"></i><b>4.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="4.3.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#best-performance-throughout-3"><i class="fa fa-check"></i><b>4.3.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#contradictory-objectives-results-2"><i class="fa fa-check"></i><b>4.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#activation-gene-coverage-over-time-4"><i class="fa fa-check"></i><b>4.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="4.4.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#final-activation-gene-coverage-4"><i class="fa fa-check"></i><b>4.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="4.4.3" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#satisfactory-trait-coverage-over-time-2"><i class="fa fa-check"></i><b>4.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="4.4.4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#final-satisfactory-trait-coverage-2"><i class="fa fa-check"></i><b>4.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#multi-path-exploration-results-2"><i class="fa fa-check"></i><b>4.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#activation-gene-coverage-over-time-5"><i class="fa fa-check"></i><b>4.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="4.5.2" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#final-activation-gene-coverage-5"><i class="fa fa-check"></i><b>4.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="4.5.3" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#performance-over-time-8"><i class="fa fa-check"></i><b>4.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="4.5.4" data-path="genotypic-fitness-sharing.html"><a href="genotypic-fitness-sharing.html#best-performance-throughout-4"><i class="fa fa-check"></i><b>4.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html"><i class="fa fa-check"></i><b>5</b> Phenotypic fitness sharing</a><ul>
+<li class="chapter" data-level="5.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#data-setup-3"><i class="fa fa-check"></i><b>5.1</b> Data setup</a></li>
+<li class="chapter" data-level="5.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#exploitation-rate-results-3"><i class="fa fa-check"></i><b>5.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#performance-over-time-9"><i class="fa fa-check"></i><b>5.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="5.2.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#best-performance-throughout-5"><i class="fa fa-check"></i><b>5.2.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#ordered-exploitation-results-3"><i class="fa fa-check"></i><b>5.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#performance-over-time-10"><i class="fa fa-check"></i><b>5.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="5.3.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#best-performance-throughout-6"><i class="fa fa-check"></i><b>5.3.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#contradictory-objectives-results-3"><i class="fa fa-check"></i><b>5.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#activation-gene-coverage-over-time-6"><i class="fa fa-check"></i><b>5.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="5.4.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#final-activation-gene-coverage-6"><i class="fa fa-check"></i><b>5.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="5.4.3" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#satisfactory-trait-coverage-over-time-3"><i class="fa fa-check"></i><b>5.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="5.4.4" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#final-satisfactory-trait-coverage-3"><i class="fa fa-check"></i><b>5.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#multi-path-exploration-results-3"><i class="fa fa-check"></i><b>5.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#activation-gene-coverage-over-time-7"><i class="fa fa-check"></i><b>5.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="5.5.2" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#final-activation-gene-coverage-7"><i class="fa fa-check"></i><b>5.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="5.5.3" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#performance-over-time-11"><i class="fa fa-check"></i><b>5.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="5.5.4" data-path="phenotypic-fitness-sharing.html"><a href="phenotypic-fitness-sharing.html#best-performance-throughout-7"><i class="fa fa-check"></i><b>5.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html"><i class="fa fa-check"></i><b>6</b> Nondominated sorting</a><ul>
+<li class="chapter" data-level="6.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#data-setup-4"><i class="fa fa-check"></i><b>6.1</b> Data setup</a></li>
+<li class="chapter" data-level="6.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#exploitation-rate-results-4"><i class="fa fa-check"></i><b>6.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#performance-over-time-12"><i class="fa fa-check"></i><b>6.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="6.2.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#best-performance-throughout-8"><i class="fa fa-check"></i><b>6.2.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#ordered-exploitation-results-4"><i class="fa fa-check"></i><b>6.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#performance-over-time-13"><i class="fa fa-check"></i><b>6.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="6.3.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#best-performance-throughout-9"><i class="fa fa-check"></i><b>6.3.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#contradictory-objectives-results-4"><i class="fa fa-check"></i><b>6.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#activation-gene-coverage-over-time-8"><i class="fa fa-check"></i><b>6.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="6.4.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#final-activation-gene-coverage-8"><i class="fa fa-check"></i><b>6.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="6.4.3" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#satisfactory-trait-coverage-over-time-4"><i class="fa fa-check"></i><b>6.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="6.4.4" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#final-satisfactory-trait-coverage-4"><i class="fa fa-check"></i><b>6.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#multi-path-exploration-results-4"><i class="fa fa-check"></i><b>6.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#activation-gene-coverage-over-time-9"><i class="fa fa-check"></i><b>6.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="6.5.2" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#final-activation-gene-coverage-9"><i class="fa fa-check"></i><b>6.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="6.5.3" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#performance-over-time-14"><i class="fa fa-check"></i><b>6.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="6.5.4" data-path="nondominated-sorting.html"><a href="nondominated-sorting.html#best-performance-throughout-10"><i class="fa fa-check"></i><b>6.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="novelty-search.html"><a href="novelty-search.html"><i class="fa fa-check"></i><b>7</b> Novelty search</a><ul>
+<li class="chapter" data-level="7.1" data-path="novelty-search.html"><a href="novelty-search.html#data-setup-5"><i class="fa fa-check"></i><b>7.1</b> Data setup</a></li>
+<li class="chapter" data-level="7.2" data-path="novelty-search.html"><a href="novelty-search.html#exploitation-rate-results-5"><i class="fa fa-check"></i><b>7.2</b> Exploitation rate results</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="novelty-search.html"><a href="novelty-search.html#performance-over-time-15"><i class="fa fa-check"></i><b>7.2.1</b> Performance over time</a></li>
+<li class="chapter" data-level="7.2.2" data-path="novelty-search.html"><a href="novelty-search.html#best-performance-throughout-11"><i class="fa fa-check"></i><b>7.2.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="novelty-search.html"><a href="novelty-search.html#ordered-exploitation-results-5"><i class="fa fa-check"></i><b>7.3</b> Ordered exploitation results</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="novelty-search.html"><a href="novelty-search.html#performance-over-time-16"><i class="fa fa-check"></i><b>7.3.1</b> Performance over time</a></li>
+<li class="chapter" data-level="7.3.2" data-path="novelty-search.html"><a href="novelty-search.html#best-performance-throughout-12"><i class="fa fa-check"></i><b>7.3.2</b> Best performance throughout</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="novelty-search.html"><a href="novelty-search.html#contradictory-objectives-results-5"><i class="fa fa-check"></i><b>7.4</b> Contradictory objectives results</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="novelty-search.html"><a href="novelty-search.html#activation-gene-coverage-over-time-10"><i class="fa fa-check"></i><b>7.4.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="7.4.2" data-path="novelty-search.html"><a href="novelty-search.html#final-activation-gene-coverage-10"><i class="fa fa-check"></i><b>7.4.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="7.4.3" data-path="novelty-search.html"><a href="novelty-search.html#satisfactory-trait-coverage-over-time-5"><i class="fa fa-check"></i><b>7.4.3</b> Satisfactory trait coverage over time</a></li>
+<li class="chapter" data-level="7.4.4" data-path="novelty-search.html"><a href="novelty-search.html#final-satisfactory-trait-coverage-5"><i class="fa fa-check"></i><b>7.4.4</b> Final satisfactory trait coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="novelty-search.html"><a href="novelty-search.html#multi-path-exploration-results-5"><i class="fa fa-check"></i><b>7.5</b> Multi-path exploration results</a><ul>
+<li class="chapter" data-level="7.5.1" data-path="novelty-search.html"><a href="novelty-search.html#activation-gene-coverage-over-time-11"><i class="fa fa-check"></i><b>7.5.1</b> Activation gene coverage over time</a></li>
+<li class="chapter" data-level="7.5.2" data-path="novelty-search.html"><a href="novelty-search.html#final-activation-gene-coverage-11"><i class="fa fa-check"></i><b>7.5.2</b> Final activation gene coverage</a></li>
+<li class="chapter" data-level="7.5.3" data-path="novelty-search.html"><a href="novelty-search.html#performance-over-time-17"><i class="fa fa-check"></i><b>7.5.3</b> Performance over time</a></li>
+<li class="chapter" data-level="7.5.4" data-path="novelty-search.html"><a href="novelty-search.html#best-performance-throughout-13"><i class="fa fa-check"></i><b>7.5.4</b> Best performance throughout</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with ❤ and bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Supplemental Material: Selection Scheme Parameter Sweep Base Diagnostics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Supplemental Material: Selection Scheme Parameter Sweep Base Diagnostics</h1>
+<p class="author"><em>Jose Guadalupe Hernandez</em></p>
+<p class="date"><em>2023-08-28</em></p>
+</div>
+<div id="introduction" class="section level1 hasAnchor">
+<h1><span class="header-section-number">Chapter 1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This is the supplemental material for selection scheme parameter sweep experiments with basic diagnostics.</p>
+<div id="about-our-supplemental-material" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.1</span> About our supplemental material<a href="index.html#about-our-supplemental-material" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This supplemental material is hosted on <a href="https://github.com">GitHub</a> using GitHub pages.
+The source code and configuration files used to generate this supplemental material can be found in <a href="https://github.com/jgh9094/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes">this GitHub repository</a>.
+We compiled our data analyses and supplemental documentation into this nifty web-accessible book using <a href="https://bookdown.org/">bookdown</a>.</p>
+<p>This supplemental material includes the following selection schemes:</p>
+<ul>
+<li>Truncation (Section <a href="truncation-selection.html#truncation-selection">2</a>)</li>
+<li>Tournament (Section <a href="tournament-selection.html#tournament-selection">3</a>)</li>
+<li>Genotypic fitness sharing (Section <a href="genotypic-fitness-sharing.html#genotypic-fitness-sharing">4</a>)</li>
+<li>Phenotypic fitness sharing (Section <a href="phenotypic-fitness-sharing.html#phenotypic-fitness-sharing">5</a>)</li>
+<li>Nondominated sorting (Section <a href="nondominated-sorting.html#nondominated-sorting">6</a>)</li>
+<li>Novelty search (Section <a href="novelty-search.html#novelty-search">7</a>)</li>
+</ul>
+</div>
+<div id="contributing-authors" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.2</span> Contributing authors<a href="index.html#contributing-authors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="https://jgh9094.github.io/">Jose Guadalupe Hernandez</a></li>
+<li><a href="https://lalejini.com">Alexander Lalejini</a></li>
+<li><a href="http://ofria.com">Charles Ofria</a></li>
+</ul>
+</div>
+<div id="computer-setup" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.3</span> Computer Setup<a href="index.html#computer-setup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>These analyses were conducted in the following computing environment:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">print</span>(version)</a></code></pre></div>
+<pre><code>##                _                           
+## platform       x86_64-pc-linux-gnu         
+## arch           x86_64                      
+## os             linux-gnu                   
+## system         x86_64, linux-gnu           
+## status                                     
+## major          4                           
+## minor          3.1                         
+## year           2023                        
+## month          06                          
+## day            16                          
+## svn rev        84548                       
+## language       R                           
+## version.string R version 4.3.1 (2023-06-16)
+## nickname       Beagle Scouts</code></pre>
+</div>
+<div id="experimental-setup" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.4</span> Experimental setup<a href="index.html#experimental-setup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Setting up required variables variables.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># libraries we are using</span></a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="kw">library</span>(cowplot)</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">library</span>(PupillometryR)</a></code></pre></div>
+<pre><code>## Loading required package: rlang</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="co"># data diractory for gh-pages</span></a>
+<a class="sourceLine" id="cb9-2" title="2">DATA_DIR =<span class="st"> &#39;/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/PARAM_SWEEP/&#39;</span></a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="co"># data diractory for local testing</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co"># DATA_DIR = &#39;~/Desktop/Repositories/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/PARAM_SWEEP/&#39;</span></a>
+<a class="sourceLine" id="cb9-6" title="6"></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="co"># graph variables</span></a>
+<a class="sourceLine" id="cb9-8" title="8">SHAPE =<span class="st"> </span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">20</span>,<span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb9-9" title="9">cb_palette &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;#332288&#39;</span>,<span class="st">&#39;#88CCEE&#39;</span>,<span class="st">&#39;#EE7733&#39;</span>,<span class="st">&#39;#EE3377&#39;</span>,<span class="st">&#39;#117733&#39;</span>,<span class="st">&#39;#882255&#39;</span>,<span class="st">&#39;#44AA99&#39;</span>,<span class="st">&#39;#CCBB44&#39;</span>, <span class="st">&#39;#000000&#39;</span>)</a>
+<a class="sourceLine" id="cb9-10" title="10">TSIZE =<span class="st"> </span><span class="dv">26</span></a>
+<a class="sourceLine" id="cb9-11" title="11">p_theme &lt;-<span class="st"> </span><span class="kw">theme</span>(</a>
+<a class="sourceLine" id="cb9-12" title="12">  <span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">28</span>),</a>
+<a class="sourceLine" id="cb9-13" title="13">  <span class="dt">plot.title =</span> <span class="kw">element_text</span>( <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">size =</span> <span class="dv">22</span>, <span class="dt">hjust=</span><span class="fl">0.5</span>),</a>
+<a class="sourceLine" id="cb9-14" title="14">  <span class="dt">panel.border =</span> <span class="kw">element_blank</span>(),</a>
+<a class="sourceLine" id="cb9-15" title="15">  <span class="dt">panel.grid.minor =</span> <span class="kw">element_blank</span>(),</a>
+<a class="sourceLine" id="cb9-16" title="16">  <span class="dt">legend.title=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">22</span>),</a>
+<a class="sourceLine" id="cb9-17" title="17">  <span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">23</span>),</a>
+<a class="sourceLine" id="cb9-18" title="18">  <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">23</span>),</a>
+<a class="sourceLine" id="cb9-19" title="19">  <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">22</span>),</a>
+<a class="sourceLine" id="cb9-20" title="20">  <span class="dt">legend.position=</span><span class="st">&quot;bottom&quot;</span>,</a>
+<a class="sourceLine" id="cb9-21" title="21">  <span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;#f1f2f5&quot;</span>,</a>
+<a class="sourceLine" id="cb9-22" title="22">                                  <span class="dt">colour =</span> <span class="st">&quot;white&quot;</span>,</a>
+<a class="sourceLine" id="cb9-23" title="23">                                  <span class="dt">size =</span> <span class="fl">0.5</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>)</a>
+<a class="sourceLine" id="cb9-24" title="24">)</a></code></pre></div>
+<pre><code>## Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
+## i Please use the `linewidth` argument instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># default variables</span></a>
+<a class="sourceLine" id="cb11-2" title="2">REPLICATES =<span class="st"> </span><span class="dv">50</span></a>
+<a class="sourceLine" id="cb11-3" title="3">DIMENSIONALITY =<span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb11-4" title="4">GENERATIONS =<span class="st"> </span><span class="dv">50000</span></a>
+<a class="sourceLine" id="cb11-5" title="5"></a>
+<a class="sourceLine" id="cb11-6" title="6"><span class="co"># selection scheme params exploring</span></a>
+<a class="sourceLine" id="cb11-7" title="7">TR_LIST =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;1&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;4&#39;</span>,<span class="st">&#39;8&#39;</span>,<span class="st">&#39;16&#39;</span>,<span class="st">&#39;32&#39;</span>,<span class="st">&#39;64&#39;</span>,<span class="st">&#39;128&#39;</span>,<span class="st">&#39;256&#39;</span>)</a>
+<a class="sourceLine" id="cb11-8" title="8">TS_LIST =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;2&#39;</span>,<span class="st">&#39;4&#39;</span>,<span class="st">&#39;8&#39;</span>,<span class="st">&#39;16&#39;</span>,<span class="st">&#39;32&#39;</span>,<span class="st">&#39;64&#39;</span>,<span class="st">&#39;128&#39;</span>,<span class="st">&#39;256&#39;</span>,<span class="st">&#39;512&#39;</span>)</a>
+<a class="sourceLine" id="cb11-9" title="9">FS_LIST =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;0&#39;</span>,<span class="st">&#39;0.1&#39;</span>,<span class="st">&#39;0.3&#39;</span>,<span class="st">&#39;0.6&#39;</span>,<span class="st">&#39;1.2&#39;</span>,<span class="st">&#39;2.5&#39;</span>,<span class="st">&#39;5&#39;</span>)</a>
+<a class="sourceLine" id="cb11-10" title="10">ND_LIST =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;0&#39;</span>,<span class="st">&#39;0.1&#39;</span>,<span class="st">&#39;0.3&#39;</span>,<span class="st">&#39;0.6&#39;</span>,<span class="st">&#39;1.2&#39;</span>,<span class="st">&#39;2.5&#39;</span>,<span class="st">&#39;5&#39;</span>)</a>
+<a class="sourceLine" id="cb11-11" title="11">NS_LIST =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;1&#39;</span>,<span class="st">&#39;2&#39;</span>,<span class="st">&#39;4&#39;</span>,<span class="st">&#39;8&#39;</span>,<span class="st">&#39;15&#39;</span>,<span class="st">&#39;30&#39;</span>)</a></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="truncation-selection.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/amlalejini/auto-deploying-bookdown-example/tree/main/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["parameter-sweep.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
