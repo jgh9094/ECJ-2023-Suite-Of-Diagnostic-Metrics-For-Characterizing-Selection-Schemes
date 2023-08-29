@@ -2,7 +2,7 @@
 ########## Define Resources Needed with SBATCH Lines ##########
 
 #SBATCH --time=4:00:00                # limit of wall clock time - how long the job will run (same as -t)
-#SBATCH --array=56,69,73,74,79,84,90,91,92,99,104,128,134,136,160,164,166,181,183,184,185,186,190,192,200,201,202,206,207,213,217,221,223,224,231,238,240,241,245,256,258,261,262,263,269,272,274,275,286,291,294,300,302,303,304,306,309,312,315,319,326,334,340,342,345,348                 # number of jobs being created, each with its array id
+#SBATCH --array=1-350                 # number of jobs being created, each with its array id
 #SBATCH --mem=1G                      # memory required per node - amount of memory (in gigs)
 #SBATCH --job-name fsp-m-mul            # you can give your job a name for easier identification (same as -J)
 #SBATCH --account=devolab             # research group account being used
