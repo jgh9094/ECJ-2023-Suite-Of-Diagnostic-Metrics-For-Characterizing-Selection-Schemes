@@ -71,6 +71,7 @@ legend <- cowplot::get_legend(
     shape=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
     color=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
     fill=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme')
+    )
 )
 ```
 
