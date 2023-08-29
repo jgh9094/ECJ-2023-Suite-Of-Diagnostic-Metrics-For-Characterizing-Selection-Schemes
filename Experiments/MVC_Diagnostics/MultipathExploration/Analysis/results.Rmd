@@ -53,7 +53,7 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
   scale_shape_manual(values=c(5,3,1,20,2,6,0,4))+
   scale_colour_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
   scale_fill_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
-  ggtitle('Performance over time')+
+  ggtitle('Activation gene coverage over time')+
   p_theme +
   guides(
     shape=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
@@ -80,7 +80,7 @@ legend <- cowplot::get_legend(
 Activation gene coverage found in the final population at 50,000 generations.
 
 
-```{r mul-act-end, out.width="100%"}
+```{r mul-act-end, out.width="100%", warning=FALSE}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = uni_str_pos, color = acro, fill = acro, shape = acro)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
@@ -159,6 +159,7 @@ lines = over_time_df %>%
     mean = mean(pop_fit_max) / DIMENSIONALITY,
     max = max(pop_fit_max) / DIMENSIONALITY
   )
+lines$scheme <- factor(lines$scheme, levels = c('Truncation (tru)','Tournament (tor)','Lexicase (lex)','Random (ran)','Genotypic Fitness Sharing (gfs)','Phenotypic Fitness Sharing (pfs)','Nondominated Sorting (nds)','Novelty Search (nov)'))
 
 over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme, color = scheme, shape = scheme)) +
   geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
@@ -195,7 +196,7 @@ over_time_plot
 Best performance reached throughout 50,000 generations in a population.
 
 
-```{r mul-per-bst, out.width="100%"}
+```{r mul-per-bst, out.width="100%", warning=FALSE}
 plot = filter(best_df, var == 'pop_fit_max') %>%
   ggplot(., aes(x = acro, y = val / DIMENSIONALITY, color = acro, fill = acro, shape = acro)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
@@ -261,7 +262,7 @@ pairwise.wilcox.test(x = performance$val, g = performance$acro, p.adjust.method 
 
 Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
 
-```{r mul-val-bst, out.width="100%"}
+```{r mul-val-bst, out.width="100%", warning=FALSE}
 plot = filter(best_df, var == 'ele_big_peak') %>%
   ggplot(., aes(x = acro, y = val, color = acro, fill = acro, shape = acro)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
