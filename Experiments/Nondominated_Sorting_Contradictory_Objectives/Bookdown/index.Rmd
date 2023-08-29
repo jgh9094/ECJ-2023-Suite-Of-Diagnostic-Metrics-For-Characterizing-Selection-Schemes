@@ -68,14 +68,14 @@ SHAPE = c(5,3,1)
 cb_palette <- c('#88CCEE','#EE7733','#EE3377')
 TSIZE = 26
 p_theme <- theme(
-  text = element_text(size = 28),
-  plot.title = element_text( face = "bold", size = 22, hjust=0.5),
+  text = element_text(size = 19),
+  plot.title = element_text( face = "bold", size = 20, hjust=0.5),
   panel.border = element_blank(),
   panel.grid.minor = element_blank(),
-  legend.title=element_text(size=22),
-  legend.text=element_text(size=23),
-  axis.title = element_text(size=23),
-  axis.text = element_text(size=22),
+  legend.title=element_text(size=13),
+  legend.text=element_text(size=13),
+  axis.title = element_text(size=19),
+  axis.text = element_text(size=19),
   legend.position="bottom",
   panel.background = element_rect(fill = "#f1f2f5",
                                   colour = "white",
