@@ -23,7 +23,7 @@
 <meta name="author" content="Jose Guadalupe Hernandez" />
 
 
-<meta name="date" content="2023-08-28" />
+<meta name="date" content="2023-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -372,11 +372,11 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb340-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb340-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb340-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb340-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb340-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span></a>
 <a class="sourceLine" id="cb340-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb340-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb340-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb340-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb340-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb340-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb340-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>)</a>
 <a class="sourceLine" id="cb340-25" title="25">  )</a>
 <a class="sourceLine" id="cb340-26" title="26"></a>
 <a class="sourceLine" id="cb340-27" title="27">over_time_plot</a></code></pre></div>
@@ -401,7 +401,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb341-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb341-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb341-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Best performance throughout&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb341-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb341-17" title="17"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb341-18" title="18"></a>
 <a class="sourceLine" id="cb341-19" title="19"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb341-20" title="20">  plot <span class="op">+</span></a>
@@ -483,7 +483,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb348-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb348-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb348-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb348-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb348-18" title="18"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb348-19" title="19"></a>
 <a class="sourceLine" id="cb348-20" title="20"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb348-21" title="21">  plot <span class="op">+</span></a>
@@ -583,11 +583,11 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb357-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb357-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb357-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb357-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb357-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span></a>
 <a class="sourceLine" id="cb357-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb357-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb357-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb357-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb357-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb357-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb357-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>)</a>
 <a class="sourceLine" id="cb357-25" title="25">  )</a>
 <a class="sourceLine" id="cb357-26" title="26"></a>
 <a class="sourceLine" id="cb357-27" title="27">over_time_plot</a></code></pre></div>
@@ -612,7 +612,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb358-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb358-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb358-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Best performance throughout&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb358-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb358-17" title="17"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb358-18" title="18"></a>
 <a class="sourceLine" id="cb358-19" title="19"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb358-20" title="20">  plot <span class="op">+</span></a>
@@ -694,7 +694,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb365-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb365-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb365-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb365-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb365-18" title="18"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb365-19" title="19"></a>
 <a class="sourceLine" id="cb365-20" title="20"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb365-21" title="21">  plot <span class="op">+</span></a>
@@ -796,11 +796,11 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb374-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb374-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb374-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Activation gene coverage over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb374-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb374-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span></a>
 <a class="sourceLine" id="cb374-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb374-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb374-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb374-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb374-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb374-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb374-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>)</a>
 <a class="sourceLine" id="cb374-27" title="27">  )</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nds-con-act-ot-1.png" width="100%" /></p>
 </div>
@@ -823,7 +823,7 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb375-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb375-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb375-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final activation gene coverage&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb375-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb375-17" title="17"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb375-18" title="18"></a>
 <a class="sourceLine" id="cb375-19" title="19"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb375-20" title="20">  plot <span class="op">+</span></a>
@@ -918,11 +918,11 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb384-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb384-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb384-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Satisfactory trait coverage over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb384-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb384-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span></a>
 <a class="sourceLine" id="cb384-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb384-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb384-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb384-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb384-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb384-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb384-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>)</a>
 <a class="sourceLine" id="cb384-25" title="25">  )</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nds-con-sat-ot-1.png" width="100%" /></p>
 </div>
@@ -945,7 +945,7 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb385-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb385-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb385-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final satisfactory trait coverage&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb385-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb385-17" title="17"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb385-18" title="18"></a>
 <a class="sourceLine" id="cb385-19" title="19"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb385-20" title="20">  plot <span class="op">+</span></a>
@@ -1003,7 +1003,7 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb388-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb388-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb388-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb388-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb388-18" title="18"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb388-19" title="19"></a>
 <a class="sourceLine" id="cb388-20" title="20"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb388-21" title="21">  plot <span class="op">+</span></a>
@@ -1105,11 +1105,11 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb397-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb397-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb397-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Activation gene coverage over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb397-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb397-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span></a>
 <a class="sourceLine" id="cb397-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb397-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb397-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb397-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb397-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb397-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb397-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>)</a>
 <a class="sourceLine" id="cb397-27" title="27">  )</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nds-mpe-act-ot-1.png" width="100%" /></p>
 </div>
@@ -1134,7 +1134,7 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb398-16" title="16"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb398-17" title="17"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb398-18" title="18"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final activation gene coverage&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb398-19" title="19"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb398-19" title="19"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb398-20" title="20"></a>
 <a class="sourceLine" id="cb398-21" title="21"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb398-22" title="22">  plot <span class="op">+</span></a>
@@ -1229,11 +1229,11 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb407-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb407-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb407-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb407-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb407-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span></a>
 <a class="sourceLine" id="cb407-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb407-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb407-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb407-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb407-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb407-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>),</a>
+<a class="sourceLine" id="cb407-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Sigma&#39;</span>)</a>
 <a class="sourceLine" id="cb407-25" title="25">  )</a>
 <a class="sourceLine" id="cb407-26" title="26"></a>
 <a class="sourceLine" id="cb407-27" title="27">over_time_plot</a></code></pre></div>
@@ -1258,7 +1258,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb408-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb408-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb408-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Best performance throughout&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb408-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb408-17" title="17"><span class="st">  </span>p_theme </a>
 <a class="sourceLine" id="cb408-18" title="18"></a>
 <a class="sourceLine" id="cb408-19" title="19"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb408-20" title="20">  plot <span class="op">+</span></a>
@@ -1339,7 +1339,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb415-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb415-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb415-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb415-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb415-17" title="17"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb415-18" title="18"></a>
 <a class="sourceLine" id="cb415-19" title="19"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb415-20" title="20">  plot <span class="op">+</span></a>

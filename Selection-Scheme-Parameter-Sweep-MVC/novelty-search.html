@@ -23,7 +23,7 @@
 <meta name="author" content="Jose Guadalupe Hernandez" />
 
 
-<meta name="date" content="2023-08-28" />
+<meta name="date" content="2023-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -373,11 +373,11 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb425-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb425-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb425-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb425-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb425-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span></a>
 <a class="sourceLine" id="cb425-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb425-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb425-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb425-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb425-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb425-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb425-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>)</a>
 <a class="sourceLine" id="cb425-25" title="25">  )</a>
 <a class="sourceLine" id="cb425-26" title="26"></a>
 <a class="sourceLine" id="cb425-27" title="27">over_time_plot</a></code></pre></div>
@@ -402,7 +402,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb426-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb426-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb426-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Best performance throughout&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb426-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb426-17" title="17"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb426-18" title="18"></a>
 <a class="sourceLine" id="cb426-19" title="19"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb426-20" title="20">  plot <span class="op">+</span></a>
@@ -482,7 +482,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb433-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb433-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb433-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb433-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb433-18" title="18"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb433-19" title="19"></a>
 <a class="sourceLine" id="cb433-20" title="20"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb433-21" title="21">  plot <span class="op">+</span></a>
@@ -580,11 +580,11 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb442-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb442-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb442-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb442-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb442-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span></a>
 <a class="sourceLine" id="cb442-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb442-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb442-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb442-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb442-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb442-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb442-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>)</a>
 <a class="sourceLine" id="cb442-25" title="25">  )</a>
 <a class="sourceLine" id="cb442-26" title="26"></a>
 <a class="sourceLine" id="cb442-27" title="27">over_time_plot</a></code></pre></div>
@@ -609,7 +609,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb443-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb443-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb443-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Best performance throughout&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb443-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb443-17" title="17"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb443-18" title="18"></a>
 <a class="sourceLine" id="cb443-19" title="19"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb443-20" title="20">  plot <span class="op">+</span></a>
@@ -689,7 +689,7 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <a class="sourceLine" id="cb450-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb450-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb450-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb450-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb450-18" title="18"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb450-19" title="19"></a>
 <a class="sourceLine" id="cb450-20" title="20"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb450-21" title="21">  plot <span class="op">+</span></a>
@@ -789,11 +789,11 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb459-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb459-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb459-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Activation gene coverage over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb459-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb459-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span></a>
 <a class="sourceLine" id="cb459-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb459-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb459-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb459-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
+<a class="sourceLine" id="cb459-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb459-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb459-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>)</a>
 <a class="sourceLine" id="cb459-27" title="27">  )</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nov-con-act-ot-1.png" width="100%" /></p>
 </div>
@@ -807,7 +807,7 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb460-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb460-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
 <a class="sourceLine" id="cb460-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
-<a class="sourceLine" id="cb460-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb460-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">60</span>,<span class="fl">100.1</span>)</a>
 <a class="sourceLine" id="cb460-9" title="9">  ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb460-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
 <a class="sourceLine" id="cb460-11" title="11">    <span class="dt">name=</span><span class="st">&quot;K&quot;</span></a>
@@ -816,7 +816,7 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb460-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
 <a class="sourceLine" id="cb460-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb460-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final activation gene coverage&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb460-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
+<a class="sourceLine" id="cb460-17" title="17"><span class="st">  </span>p_theme</a>
 <a class="sourceLine" id="cb460-18" title="18"></a>
 <a class="sourceLine" id="cb460-19" title="19"><span class="kw">plot_grid</span>(</a>
 <a class="sourceLine" id="cb460-20" title="20">  plot <span class="op">+</span></a>
@@ -825,24 +825,23 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb460-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
 <a class="sourceLine" id="cb460-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb460-25" title="25">)</a></code></pre></div>
-<pre><code>## Warning: Removed 66 rows containing missing values (`geom_point()`).</code></pre>
 <p><img src="parameter-sweep-mvc_files/figure-html/nov-con-act-end-1.png" width="100%" /></p>
 <div id="stats-54" class="section level4 hasAnchor">
 <h4><span class="header-section-number">7.4.2.1</span> Stats<a href="novelty-search.html#stats-54" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Summary statistics for the generation a satisfactory solution is found.</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb462-1" title="1">act_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)</a>
-<a class="sourceLine" id="cb462-2" title="2">act_coverage<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(act_coverage<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
-<a class="sourceLine" id="cb462-3" title="3">act_coverage <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb462-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb462-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb462-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb462-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(uni_str_pos)),</a>
-<a class="sourceLine" id="cb462-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb462-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb462-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb462-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb462-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb462-13" title="13">  )</a></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" title="1">act_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)</a>
+<a class="sourceLine" id="cb461-2" title="2">act_coverage<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(act_coverage<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
+<a class="sourceLine" id="cb461-3" title="3">act_coverage <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb461-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb461-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb461-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb461-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(uni_str_pos)),</a>
+<a class="sourceLine" id="cb461-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb461-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb461-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb461-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb461-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb461-13" title="13">  )</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 8
 ##   K     count na_cnt   min median  mean   max   IQR
 ##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
@@ -853,15 +852,15 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 ## 5 15       50      0    99    100  99.9   100   0  
 ## 6 30       50      0    85     94  93.3    98   3</code></pre>
 <p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb464-1" title="1"><span class="kw">kruskal.test</span>(uni_str_pos <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> act_coverage)</a></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" title="1"><span class="kw">kruskal.test</span>(uni_str_pos <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> act_coverage)</a></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  uni_str_pos by K
 ## Kruskal-Wallis chi-squared = 262.41, df = 5, p-value &lt; 2.2e-16</code></pre>
 <p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> act_coverage<span class="op">$</span>uni_str_pos, <span class="dt">g =</span> act_coverage<span class="op">$</span>K, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
-<a class="sourceLine" id="cb466-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> act_coverage<span class="op">$</span>uni_str_pos, <span class="dt">g =</span> act_coverage<span class="op">$</span>K, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
+<a class="sourceLine" id="cb465-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
 ## 
@@ -882,87 +881,87 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <p>Satisfactory trait coverage in a population over time.
 Data points on the graph is the average activation gene coverage across 50 replicates every 2000 generations.
 Shading comes from the best and worse coverage across 50 replicates.</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb468-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)  <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb468-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(K, gen) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb468-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb468-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_uni_obj),</a>
-<a class="sourceLine" id="cb468-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_uni_obj),</a>
-<a class="sourceLine" id="cb468-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_uni_obj)</a>
-<a class="sourceLine" id="cb468-7" title="7">  )</a></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb467-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(K, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb467-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb467-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_uni_obj),</a>
+<a class="sourceLine" id="cb467-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_uni_obj),</a>
+<a class="sourceLine" id="cb467-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_uni_obj)</a>
+<a class="sourceLine" id="cb467-7" title="7">  )</a></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;K&#39;. You can override using the `.groups`
 ## argument.</code></pre>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb470-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> K, <span class="dt">fill =</span> K, <span class="dt">color =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb470-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb470-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb470-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb470-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
-<a class="sourceLine" id="cb470-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
-<a class="sourceLine" id="cb470-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb470-8" title="8">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb470-9" title="9"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
-<a class="sourceLine" id="cb470-10" title="10">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
-<a class="sourceLine" id="cb470-11" title="11">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
-<a class="sourceLine" id="cb470-12" title="12">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
-<a class="sourceLine" id="cb470-13" title="13">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
-<a class="sourceLine" id="cb470-14" title="14"></a>
-<a class="sourceLine" id="cb470-15" title="15">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb470-16" title="16"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
-<a class="sourceLine" id="cb470-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
-<a class="sourceLine" id="cb470-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
-<a class="sourceLine" id="cb470-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Satisfactory trait coverage over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb470-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
-<a class="sourceLine" id="cb470-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb470-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb470-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb470-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
-<a class="sourceLine" id="cb470-25" title="25">  )</a></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb469-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> K, <span class="dt">fill =</span> K, <span class="dt">color =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb469-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb469-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb469-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb469-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb469-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb469-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb469-8" title="8">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb469-9" title="9"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb469-10" title="10">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb469-11" title="11">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb469-12" title="12">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb469-13" title="13">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb469-14" title="14"></a>
+<a class="sourceLine" id="cb469-15" title="15">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb469-16" title="16"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb469-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb469-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb469-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Satisfactory trait coverage over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb469-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span></a>
+<a class="sourceLine" id="cb469-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb469-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb469-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb469-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>)</a>
+<a class="sourceLine" id="cb469-25" title="25">  )</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nov-con-sat-ot-1.png" width="100%" /></p>
 </div>
 <div id="final-satisfactory-trait-coverage-5" class="section level3 hasAnchor">
 <h3><span class="header-section-number">7.4.4</span> Final satisfactory trait coverage<a href="novelty-search.html#final-satisfactory-trait-coverage-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Satisfactory trait coverage found in the final population at 50,000 generations.</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb471-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> K, <span class="dt">y =</span> pop_uni_obj, <span class="dt">color =</span> K, <span class="dt">fill =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb471-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb471-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb471-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb471-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
-<a class="sourceLine" id="cb471-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
-<a class="sourceLine" id="cb471-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb471-9" title="9">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb471-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
-<a class="sourceLine" id="cb471-11" title="11">    <span class="dt">name=</span><span class="st">&quot;K&quot;</span></a>
-<a class="sourceLine" id="cb471-12" title="12">  )<span class="op">+</span></a>
-<a class="sourceLine" id="cb471-13" title="13"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
-<a class="sourceLine" id="cb471-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb471-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
-<a class="sourceLine" id="cb471-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final satisfactory trait coverage&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb471-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
-<a class="sourceLine" id="cb471-18" title="18"></a>
-<a class="sourceLine" id="cb471-19" title="19"><span class="kw">plot_grid</span>(</a>
-<a class="sourceLine" id="cb471-20" title="20">  plot <span class="op">+</span></a>
-<a class="sourceLine" id="cb471-21" title="21"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
-<a class="sourceLine" id="cb471-22" title="22">  legend,</a>
-<a class="sourceLine" id="cb471-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb471-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb471-25" title="25">)</a></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb470-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb470-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> K, <span class="dt">y =</span> pop_uni_obj, <span class="dt">color =</span> K, <span class="dt">fill =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb470-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb470-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb470-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb470-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb470-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb470-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb470-9" title="9">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb470-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb470-11" title="11">    <span class="dt">name=</span><span class="st">&quot;K&quot;</span></a>
+<a class="sourceLine" id="cb470-12" title="12">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb470-13" title="13"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb470-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb470-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb470-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final satisfactory trait coverage&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb470-17" title="17"><span class="st">  </span>p_theme</a>
+<a class="sourceLine" id="cb470-18" title="18"></a>
+<a class="sourceLine" id="cb470-19" title="19"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb470-20" title="20">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb470-21" title="21"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb470-22" title="22">  legend,</a>
+<a class="sourceLine" id="cb470-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb470-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb470-25" title="25">)</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nov-con-sat-end-1.png" width="100%" /></p>
 <div id="stats-55" class="section level4 hasAnchor">
 <h4><span class="header-section-number">7.4.4.1</span> Stats<a href="novelty-search.html#stats-55" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Summary statistics for the generation a satisfactory solution is found.</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb472-1" title="1">sat_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)</a>
-<a class="sourceLine" id="cb472-2" title="2">sat_coverage<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(sat_coverage<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
-<a class="sourceLine" id="cb472-3" title="3">sat_coverage <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb472-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb472-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb472-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb472-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(pop_uni_obj)),</a>
-<a class="sourceLine" id="cb472-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb472-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb472-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb472-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb472-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb472-13" title="13">  )</a></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" title="1">sat_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;con&#39;</span>)</a>
+<a class="sourceLine" id="cb471-2" title="2">sat_coverage<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(sat_coverage<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
+<a class="sourceLine" id="cb471-3" title="3">sat_coverage <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb471-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb471-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb471-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb471-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(pop_uni_obj)),</a>
+<a class="sourceLine" id="cb471-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb471-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb471-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb471-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb471-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(pop_uni_obj, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb471-13" title="13">  )</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 8
 ##   K     count na_cnt   min median  mean   max   IQR
 ##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
@@ -973,7 +972,7 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 ## 5 15       50      0     0      0  0        0     0
 ## 6 30       50      0     0      0  0        0     0</code></pre>
 <p>Kruskal–Wallis test illustrates evidence of <strong>no statistical differences</strong>.</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb474-1" title="1"><span class="kw">kruskal.test</span>(pop_uni_obj <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> sat_coverage)</a></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" title="1"><span class="kw">kruskal.test</span>(pop_uni_obj <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> sat_coverage)</a></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
@@ -984,49 +983,49 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <div id="largest-valley-reached-throughout-22" class="section level3 hasAnchor">
 <h3><span class="header-section-number">7.4.5</span> Largest valley reached throughout<a href="novelty-search.html#largest-valley-reached-throughout-22" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb476-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb476-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> K, <span class="dt">y =</span> val, <span class="dt">color =</span> K, <span class="dt">fill =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb476-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb476-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb476-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb476-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
-<a class="sourceLine" id="cb476-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Valley reached&quot;</span>,</a>
-<a class="sourceLine" id="cb476-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="fl">5.9</span>,<span class="fl">14.1</span>),</a>
-<a class="sourceLine" id="cb476-9" title="9">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>)</a>
-<a class="sourceLine" id="cb476-10" title="10">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb476-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
-<a class="sourceLine" id="cb476-12" title="12">    <span class="dt">name=</span><span class="st">&quot;K&quot;</span></a>
-<a class="sourceLine" id="cb476-13" title="13">  )<span class="op">+</span></a>
-<a class="sourceLine" id="cb476-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
-<a class="sourceLine" id="cb476-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb476-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
-<a class="sourceLine" id="cb476-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb476-18" title="18"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
-<a class="sourceLine" id="cb476-19" title="19"></a>
-<a class="sourceLine" id="cb476-20" title="20"><span class="kw">plot_grid</span>(</a>
-<a class="sourceLine" id="cb476-21" title="21">  plot <span class="op">+</span></a>
-<a class="sourceLine" id="cb476-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
-<a class="sourceLine" id="cb476-23" title="23">  legend,</a>
-<a class="sourceLine" id="cb476-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb476-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb476-26" title="26">)</a></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb475-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb475-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> K, <span class="dt">y =</span> val, <span class="dt">color =</span> K, <span class="dt">fill =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb475-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb475-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb475-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb475-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb475-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Valley reached&quot;</span>,</a>
+<a class="sourceLine" id="cb475-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="fl">5.9</span>,<span class="fl">14.1</span>),</a>
+<a class="sourceLine" id="cb475-9" title="9">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">14</span>)</a>
+<a class="sourceLine" id="cb475-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb475-11" title="11"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb475-12" title="12">    <span class="dt">name=</span><span class="st">&quot;K&quot;</span></a>
+<a class="sourceLine" id="cb475-13" title="13">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb475-14" title="14"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb475-15" title="15"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb475-16" title="16"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb475-17" title="17"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb475-18" title="18"><span class="st">  </span>p_theme</a>
+<a class="sourceLine" id="cb475-19" title="19"></a>
+<a class="sourceLine" id="cb475-20" title="20"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb475-21" title="21">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb475-22" title="22"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb475-23" title="23">  legend,</a>
+<a class="sourceLine" id="cb475-24" title="24">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb475-25" title="25">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb475-26" title="26">)</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nov-con-val-bst-1.png" width="100%" /></p>
 <div id="stats-56" class="section level4 hasAnchor">
 <h4><span class="header-section-number">7.4.5.1</span> Stats<a href="novelty-search.html#stats-56" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Summary statistics for the largest valley crossed.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb477-1" title="1">valleys =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>)</a>
-<a class="sourceLine" id="cb477-2" title="2">valleys<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(valleys<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
-<a class="sourceLine" id="cb477-3" title="3">valleys <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb477-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb477-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb477-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb477-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
-<a class="sourceLine" id="cb477-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb477-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb477-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb477-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb477-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb477-13" title="13">  )</a></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb476-1" title="1">valleys =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;con&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>)</a>
+<a class="sourceLine" id="cb476-2" title="2">valleys<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(valleys<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
+<a class="sourceLine" id="cb476-3" title="3">valleys <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb476-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb476-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb476-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb476-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
+<a class="sourceLine" id="cb476-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb476-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb476-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb476-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb476-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb476-13" title="13">  )</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 8
 ##   K     count na_cnt   min median  mean   max   IQR
 ##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1037,15 +1036,15 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 ## 5 15       50      0     6    6    6.04     7     0
 ## 6 30       50      0     7    8    7.88     9     0</code></pre>
 <p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb479-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> valleys)</a></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb478-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> valleys)</a></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  val by K
 ## Kruskal-Wallis chi-squared = 273.17, df = 5, p-value &lt; 2.2e-16</code></pre>
 <p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb481-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> valleys<span class="op">$</span>val, <span class="dt">g =</span> valleys<span class="op">$</span>K, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
-<a class="sourceLine" id="cb481-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb480-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> valleys<span class="op">$</span>val, <span class="dt">g =</span> valleys<span class="op">$</span>K, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
+<a class="sourceLine" id="cb480-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
 ## 
@@ -1071,89 +1070,89 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <p>Activation gene coverage in a population over time.
 Data points on the graph is the average activation gene coverage across 50 replicates every 2000 generations.
 Shading comes from the best and worse coverage across 50 replicates.</p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb483-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>)  <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb483-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(K, gen) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb483-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb483-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos),</a>
-<a class="sourceLine" id="cb483-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos),</a>
-<a class="sourceLine" id="cb483-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos)</a>
-<a class="sourceLine" id="cb483-7" title="7">  )</a></code></pre></div>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb482-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>)  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb482-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(K, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb482-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb482-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos),</a>
+<a class="sourceLine" id="cb482-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos),</a>
+<a class="sourceLine" id="cb482-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos)</a>
+<a class="sourceLine" id="cb482-7" title="7">  )</a></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;K&#39;. You can override using the `.groups`
 ## argument.</code></pre>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb485-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> K, <span class="dt">fill =</span> K, <span class="dt">color =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb485-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb485-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb485-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb485-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
-<a class="sourceLine" id="cb485-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
-<a class="sourceLine" id="cb485-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</a>
-<a class="sourceLine" id="cb485-8" title="8">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">20</span>),</a>
-<a class="sourceLine" id="cb485-9" title="9">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;100&quot;</span>)</a>
-<a class="sourceLine" id="cb485-10" title="10">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb485-11" title="11"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
-<a class="sourceLine" id="cb485-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
-<a class="sourceLine" id="cb485-13" title="13">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
-<a class="sourceLine" id="cb485-14" title="14">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
-<a class="sourceLine" id="cb485-15" title="15">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
-<a class="sourceLine" id="cb485-16" title="16"></a>
-<a class="sourceLine" id="cb485-17" title="17">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb485-18" title="18"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
-<a class="sourceLine" id="cb485-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
-<a class="sourceLine" id="cb485-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
-<a class="sourceLine" id="cb485-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Activation gene coverage over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb485-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
-<a class="sourceLine" id="cb485-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb485-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb485-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb485-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
-<a class="sourceLine" id="cb485-27" title="27">  )</a></code></pre></div>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb484-1" title="1"><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> K, <span class="dt">fill =</span> K, <span class="dt">color =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb484-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb484-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb484-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb484-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb484-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb484-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">100</span>),</a>
+<a class="sourceLine" id="cb484-8" title="8">    <span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">100</span>, <span class="dv">20</span>),</a>
+<a class="sourceLine" id="cb484-9" title="9">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;20&quot;</span>, <span class="st">&quot;40&quot;</span>, <span class="st">&quot;60&quot;</span>, <span class="st">&quot;80&quot;</span>, <span class="st">&quot;100&quot;</span>)</a>
+<a class="sourceLine" id="cb484-10" title="10">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb484-11" title="11"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb484-12" title="12">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb484-13" title="13">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb484-14" title="14">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb484-15" title="15">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb484-16" title="16"></a>
+<a class="sourceLine" id="cb484-17" title="17">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb484-18" title="18"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb484-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb484-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb484-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Activation gene coverage over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb484-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span></a>
+<a class="sourceLine" id="cb484-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb484-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb484-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb484-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>)</a>
+<a class="sourceLine" id="cb484-27" title="27">  )</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nov-mpe-act-ot-1.png" width="100%" /></p>
 </div>
 <div id="final-activation-gene-coverage-11" class="section level3 hasAnchor">
 <h3><span class="header-section-number">7.5.2</span> Final activation gene coverage<a href="novelty-search.html#final-activation-gene-coverage-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Activation gene coverage found in the final population at 50,000 generations.</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb486-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb486-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> K, <span class="dt">y =</span> uni_str_pos, <span class="dt">color =</span> K, <span class="dt">fill =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb486-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb486-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb486-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb486-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
-<a class="sourceLine" id="cb486-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
-<a class="sourceLine" id="cb486-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb486-9" title="9">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb486-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
-<a class="sourceLine" id="cb486-11" title="11">    <span class="dt">name=</span><span class="st">&quot;K&quot;</span></a>
-<a class="sourceLine" id="cb486-12" title="12">  )<span class="op">+</span></a>
-<a class="sourceLine" id="cb486-13" title="13"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
-<a class="sourceLine" id="cb486-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb486-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
-<a class="sourceLine" id="cb486-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final activation gene coverage&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb486-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
-<a class="sourceLine" id="cb486-18" title="18"></a>
-<a class="sourceLine" id="cb486-19" title="19"><span class="kw">plot_grid</span>(</a>
-<a class="sourceLine" id="cb486-20" title="20">  plot <span class="op">+</span></a>
-<a class="sourceLine" id="cb486-21" title="21"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
-<a class="sourceLine" id="cb486-22" title="22">  legend,</a>
-<a class="sourceLine" id="cb486-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb486-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb486-25" title="25">)</a></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb485-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb485-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> K, <span class="dt">y =</span> uni_str_pos, <span class="dt">color =</span> K, <span class="dt">fill =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb485-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb485-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb485-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb485-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb485-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Coverage&quot;</span>,</a>
+<a class="sourceLine" id="cb485-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb485-9" title="9">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb485-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb485-11" title="11">    <span class="dt">name=</span><span class="st">&quot;K&quot;</span></a>
+<a class="sourceLine" id="cb485-12" title="12">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb485-13" title="13"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb485-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb485-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb485-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Final activation gene coverage&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb485-17" title="17"><span class="st">  </span>p_theme</a>
+<a class="sourceLine" id="cb485-18" title="18"></a>
+<a class="sourceLine" id="cb485-19" title="19"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb485-20" title="20">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb485-21" title="21"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb485-22" title="22">  legend,</a>
+<a class="sourceLine" id="cb485-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb485-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb485-25" title="25">)</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nov-mpe-act-end-1.png" width="100%" /></p>
 <div id="stats-57" class="section level4 hasAnchor">
 <h4><span class="header-section-number">7.5.2.1</span> Stats<a href="novelty-search.html#stats-57" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Summary statistics for the generation a satisfactory solution is found.</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb487-1" title="1">act_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>)</a>
-<a class="sourceLine" id="cb487-2" title="2">act_coverage<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(act_coverage<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
-<a class="sourceLine" id="cb487-3" title="3">act_coverage <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb487-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb487-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb487-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb487-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(uni_str_pos)),</a>
-<a class="sourceLine" id="cb487-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb487-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb487-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb487-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb487-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb487-13" title="13">  )</a></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb486-1" title="1">act_coverage =<span class="st"> </span><span class="kw">filter</span>(over_time_df, gen <span class="op">==</span><span class="st"> </span><span class="dv">50000</span> <span class="op">&amp;</span><span class="st"> </span>acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>)</a>
+<a class="sourceLine" id="cb486-2" title="2">act_coverage<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(act_coverage<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
+<a class="sourceLine" id="cb486-3" title="3">act_coverage <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb486-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb486-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb486-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb486-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(uni_str_pos)),</a>
+<a class="sourceLine" id="cb486-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb486-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb486-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb486-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb486-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(uni_str_pos, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb486-13" title="13">  )</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 8
 ##   K     count na_cnt   min median  mean   max   IQR
 ##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
@@ -1164,15 +1163,15 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 ## 5 15       50      0    68   80    80.1    89  6   
 ## 6 30       50      0    50   67    66.1    78  9.75</code></pre>
 <p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb489-1" title="1"><span class="kw">kruskal.test</span>(uni_str_pos <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> act_coverage)</a></code></pre></div>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb488-1" title="1"><span class="kw">kruskal.test</span>(uni_str_pos <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> act_coverage)</a></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  uni_str_pos by K
 ## Kruskal-Wallis chi-squared = 186.99, df = 5, p-value &lt; 2.2e-16</code></pre>
 <p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb491-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> act_coverage<span class="op">$</span>uni_str_pos, <span class="dt">g =</span> act_coverage<span class="op">$</span>K, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
-<a class="sourceLine" id="cb491-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> act_coverage<span class="op">$</span>uni_str_pos, <span class="dt">g =</span> act_coverage<span class="op">$</span>K, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
+<a class="sourceLine" id="cb490-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
 ## 
@@ -1193,89 +1192,89 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <p>Best performance in a population over time.
 Data points on the graph is the average performance across 50 replicates every 2000 generations.
 Shading comes from the best and worse performance across 50 replicates.</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb493-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb493-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(K, gen) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb493-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb493-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
-<a class="sourceLine" id="cb493-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
-<a class="sourceLine" id="cb493-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY</a>
-<a class="sourceLine" id="cb493-7" title="7">  )</a></code></pre></div>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb492-1" title="1">lines =<span class="st"> </span><span class="kw">filter</span>(over_time_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb492-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(K, gen) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb492-3" title="3"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb492-4" title="4">    <span class="dt">min =</span> <span class="kw">min</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb492-5" title="5">    <span class="dt">mean =</span> <span class="kw">mean</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY,</a>
+<a class="sourceLine" id="cb492-6" title="6">    <span class="dt">max =</span> <span class="kw">max</span>(pop_fit_max) <span class="op">/</span><span class="st"> </span>DIMENSIONALITY</a>
+<a class="sourceLine" id="cb492-7" title="7">  )</a></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;K&#39;. You can override using the `.groups`
 ## argument.</code></pre>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb495-1" title="1">over_time_plot =<span class="st"> </span><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> K, <span class="dt">fill =</span> K, <span class="dt">color =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb495-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb495-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb495-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb495-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
-<a class="sourceLine" id="cb495-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
-<a class="sourceLine" id="cb495-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">7</span>)</a>
-<a class="sourceLine" id="cb495-8" title="8">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb495-9" title="9"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
-<a class="sourceLine" id="cb495-10" title="10">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
-<a class="sourceLine" id="cb495-11" title="11">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
-<a class="sourceLine" id="cb495-12" title="12">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
-<a class="sourceLine" id="cb495-13" title="13">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
-<a class="sourceLine" id="cb495-14" title="14"></a>
-<a class="sourceLine" id="cb495-15" title="15">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb495-16" title="16"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
-<a class="sourceLine" id="cb495-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
-<a class="sourceLine" id="cb495-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
-<a class="sourceLine" id="cb495-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb495-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>()) <span class="op">+</span></a>
-<a class="sourceLine" id="cb495-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb495-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb495-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb495-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">2</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
-<a class="sourceLine" id="cb495-25" title="25">  )</a>
-<a class="sourceLine" id="cb495-26" title="26"></a>
-<a class="sourceLine" id="cb495-27" title="27">over_time_plot</a></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb494-1" title="1">over_time_plot =<span class="st"> </span><span class="kw">ggplot</span>(lines, <span class="kw">aes</span>(<span class="dt">x=</span>gen, <span class="dt">y=</span>mean, <span class="dt">group =</span> K, <span class="dt">fill =</span> K, <span class="dt">color =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb494-2" title="2"><span class="st">  </span><span class="kw">geom_ribbon</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> min, <span class="dt">ymax =</span> max), <span class="dt">alpha =</span> <span class="fl">0.1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb494-3" title="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb494-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">data =</span> <span class="kw">filter</span>(lines, gen <span class="op">%%</span><span class="st"> </span><span class="dv">2000</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>gen <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">stroke =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb494-5" title="5"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb494-6" title="6">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb494-7" title="7">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb494-8" title="8">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb494-9" title="9"><span class="st">  </span><span class="kw">scale_x_continuous</span>(</a>
+<a class="sourceLine" id="cb494-10" title="10">    <span class="dt">name=</span><span class="st">&quot;Generations&quot;</span>,</a>
+<a class="sourceLine" id="cb494-11" title="11">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb494-12" title="12">    <span class="dt">breaks=</span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">30000</span>, <span class="dv">40000</span>, <span class="dv">50000</span>),</a>
+<a class="sourceLine" id="cb494-13" title="13">    <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;0e+4&quot;</span>, <span class="st">&quot;1e+4&quot;</span>, <span class="st">&quot;2e+4&quot;</span>, <span class="st">&quot;3e+4&quot;</span>, <span class="st">&quot;4e+4&quot;</span>, <span class="st">&quot;5e+4&quot;</span>)</a>
+<a class="sourceLine" id="cb494-14" title="14"></a>
+<a class="sourceLine" id="cb494-15" title="15">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb494-16" title="16"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb494-17" title="17"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb494-18" title="18"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb494-19" title="19"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Performance over time&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb494-20" title="20"><span class="st">  </span>p_theme <span class="op">+</span></a>
+<a class="sourceLine" id="cb494-21" title="21"><span class="st">  </span><span class="kw">guides</span>(</a>
+<a class="sourceLine" id="cb494-22" title="22">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb494-23" title="23">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>),</a>
+<a class="sourceLine" id="cb494-24" title="24">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">nrow=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;K-nearest </span><span class="ch">\n</span><span class="st">Neighbors&#39;</span>)</a>
+<a class="sourceLine" id="cb494-25" title="25">  )</a>
+<a class="sourceLine" id="cb494-26" title="26"></a>
+<a class="sourceLine" id="cb494-27" title="27">over_time_plot</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nov-mpe-per-ot-1.png" width="100%" /></p>
 </div>
 <div id="best-performance-throughout-17" class="section level3 hasAnchor">
 <h3><span class="header-section-number">7.5.4</span> Best performance throughout<a href="novelty-search.html#best-performance-throughout-17" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Best performance reached throughout 50,000 generations in a population.</p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb496-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st">  </span>var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb496-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> K, <span class="dt">y =</span> val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">color =</span> K, <span class="dt">fill =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb496-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb496-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb496-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb496-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
-<a class="sourceLine" id="cb496-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
-<a class="sourceLine" id="cb496-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">7</span>)</a>
-<a class="sourceLine" id="cb496-9" title="9">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb496-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
-<a class="sourceLine" id="cb496-11" title="11">    <span class="dt">name=</span><span class="st">&quot;K&quot;</span></a>
-<a class="sourceLine" id="cb496-12" title="12">  )<span class="op">+</span></a>
-<a class="sourceLine" id="cb496-13" title="13"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
-<a class="sourceLine" id="cb496-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb496-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
-<a class="sourceLine" id="cb496-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Best performance throughout&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb496-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
-<a class="sourceLine" id="cb496-18" title="18"></a>
-<a class="sourceLine" id="cb496-19" title="19"><span class="kw">plot_grid</span>(</a>
-<a class="sourceLine" id="cb496-20" title="20">  plot <span class="op">+</span></a>
-<a class="sourceLine" id="cb496-21" title="21"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
-<a class="sourceLine" id="cb496-22" title="22">  legend,</a>
-<a class="sourceLine" id="cb496-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb496-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb496-25" title="25">)</a></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb495-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st">  </span>var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb495-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> K, <span class="dt">y =</span> val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">color =</span> K, <span class="dt">fill =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb495-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb495-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb495-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb495-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb495-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Average trait score&quot;</span>,</a>
+<a class="sourceLine" id="cb495-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb495-9" title="9">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb495-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb495-11" title="11">    <span class="dt">name=</span><span class="st">&quot;K&quot;</span></a>
+<a class="sourceLine" id="cb495-12" title="12">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb495-13" title="13"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb495-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb495-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb495-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Best performance throughout&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb495-17" title="17"><span class="st">  </span>p_theme </a>
+<a class="sourceLine" id="cb495-18" title="18"></a>
+<a class="sourceLine" id="cb495-19" title="19"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb495-20" title="20">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb495-21" title="21"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb495-22" title="22">  legend,</a>
+<a class="sourceLine" id="cb495-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb495-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb495-25" title="25">)</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nov-mpe-bst-1.png" width="100%" /></p>
 <div id="stats-58" class="section level4 hasAnchor">
 <h4><span class="header-section-number">7.5.4.1</span> Stats<a href="novelty-search.html#stats-58" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Summary statistics for the best performance.</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb497-1" title="1">performance =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st">  </span>var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span>)</a>
-<a class="sourceLine" id="cb497-2" title="2">performance<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(performance<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
-<a class="sourceLine" id="cb497-3" title="3">performance <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb497-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb497-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb497-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb497-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
-<a class="sourceLine" id="cb497-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb497-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb497-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb497-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb497-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb497-13" title="13">  )</a></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb496-1" title="1">performance =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st">  </span>var <span class="op">==</span><span class="st"> &#39;pop_fit_max&#39;</span>)</a>
+<a class="sourceLine" id="cb496-2" title="2">performance<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(performance<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
+<a class="sourceLine" id="cb496-3" title="3">performance <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb496-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb496-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb496-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb496-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
+<a class="sourceLine" id="cb496-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb496-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb496-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb496-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb496-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val <span class="op">/</span><span class="st"> </span>DIMENSIONALITY, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb496-13" title="13">  )</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 8
 ##   K     count na_cnt   min median  mean   max   IQR
 ##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1286,15 +1285,15 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 ## 5 15       50      0  2.56   3.90  3.87  4.65 0.473
 ## 6 30       50      0  3.81   5.09  5.04  6.13 0.458</code></pre>
 <p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb499-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> performance)</a></code></pre></div>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb498-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> performance)</a></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  val by K
 ## Kruskal-Wallis chi-squared = 138.11, df = 5, p-value &lt; 2.2e-16</code></pre>
 <p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb501-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> performance<span class="op">$</span>val, <span class="dt">g =</span> performance<span class="op">$</span>K, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
-<a class="sourceLine" id="cb501-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb500-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> performance<span class="op">$</span>val, <span class="dt">g =</span> performance<span class="op">$</span>K, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
+<a class="sourceLine" id="cb500-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
 ## 
@@ -1313,48 +1312,48 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 <div id="largest-valley-reached-throughout-23" class="section level3 hasAnchor">
 <h3><span class="header-section-number">7.5.5</span> Largest valley reached throughout<a href="novelty-search.html#largest-valley-reached-throughout-23" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.</p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb503-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb503-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> K, <span class="dt">y =</span> val, <span class="dt">color =</span> K, <span class="dt">fill =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb503-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb503-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb503-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb503-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
-<a class="sourceLine" id="cb503-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Valley reached&quot;</span>,</a>
-<a class="sourceLine" id="cb503-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="fl">8.9</span>,<span class="fl">14.1</span>)</a>
-<a class="sourceLine" id="cb503-9" title="9">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb503-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
-<a class="sourceLine" id="cb503-11" title="11">    <span class="dt">name=</span><span class="st">&quot;K&quot;</span></a>
-<a class="sourceLine" id="cb503-12" title="12">  )<span class="op">+</span></a>
-<a class="sourceLine" id="cb503-13" title="13"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
-<a class="sourceLine" id="cb503-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb503-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
-<a class="sourceLine" id="cb503-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb503-17" title="17"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>())</a>
-<a class="sourceLine" id="cb503-18" title="18"></a>
-<a class="sourceLine" id="cb503-19" title="19"><span class="kw">plot_grid</span>(</a>
-<a class="sourceLine" id="cb503-20" title="20">  plot <span class="op">+</span></a>
-<a class="sourceLine" id="cb503-21" title="21"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
-<a class="sourceLine" id="cb503-22" title="22">  legend,</a>
-<a class="sourceLine" id="cb503-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb503-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb503-25" title="25">)</a></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb502-1" title="1">plot =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb502-2" title="2"><span class="st">  </span><span class="kw">ggplot</span>(., <span class="kw">aes</span>(<span class="dt">x =</span> K, <span class="dt">y =</span> val, <span class="dt">color =</span> K, <span class="dt">fill =</span> K, <span class="dt">shape =</span> K)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb502-3" title="3"><span class="st">  </span><span class="kw">geom_flat_violin</span>(<span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.1</span>, <span class="dt">y =</span> <span class="dv">0</span>), <span class="dt">scale =</span> <span class="st">&#39;width&#39;</span>, <span class="dt">alpha =</span> <span class="fl">0.2</span>, <span class="dt">width =</span> <span class="fl">1.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb502-4" title="4"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">width =</span> <span class="fl">.07</span>, <span class="dt">outlier.shape =</span> <span class="ot">NA</span>, <span class="dt">alpha =</span> <span class="fl">0.0</span>, <span class="dt">size =</span> <span class="fl">1.0</span>, <span class="dt">position =</span> <span class="kw">position_nudge</span>(<span class="dt">x =</span> <span class="fl">.16</span>, <span class="dt">y =</span> <span class="dv">0</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb502-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">position =</span> <span class="kw">position_jitter</span>(<span class="dt">width =</span> <span class="fl">0.03</span>, <span class="dt">height =</span> <span class="fl">0.02</span>), <span class="dt">size =</span> <span class="fl">2.0</span>, <span class="dt">alpha =</span> <span class="fl">1.0</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb502-6" title="6"><span class="st">  </span><span class="kw">scale_y_continuous</span>(</a>
+<a class="sourceLine" id="cb502-7" title="7">    <span class="dt">name=</span><span class="st">&quot;Valley reached&quot;</span>,</a>
+<a class="sourceLine" id="cb502-8" title="8">    <span class="dt">limits=</span><span class="kw">c</span>(<span class="fl">8.9</span>,<span class="fl">14.1</span>)</a>
+<a class="sourceLine" id="cb502-9" title="9">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb502-10" title="10"><span class="st">  </span><span class="kw">scale_x_discrete</span>(</a>
+<a class="sourceLine" id="cb502-11" title="11">    <span class="dt">name=</span><span class="st">&quot;K&quot;</span></a>
+<a class="sourceLine" id="cb502-12" title="12">  )<span class="op">+</span></a>
+<a class="sourceLine" id="cb502-13" title="13"><span class="st">  </span><span class="kw">scale_shape_manual</span>(<span class="dt">values=</span>SHAPE)<span class="op">+</span></a>
+<a class="sourceLine" id="cb502-14" title="14"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette, ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb502-15" title="15"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
+<a class="sourceLine" id="cb502-16" title="16"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Largest valley reached&#39;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb502-17" title="17"><span class="st">  </span>p_theme</a>
+<a class="sourceLine" id="cb502-18" title="18"></a>
+<a class="sourceLine" id="cb502-19" title="19"><span class="kw">plot_grid</span>(</a>
+<a class="sourceLine" id="cb502-20" title="20">  plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb502-21" title="21"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>),</a>
+<a class="sourceLine" id="cb502-22" title="22">  legend,</a>
+<a class="sourceLine" id="cb502-23" title="23">  <span class="dt">nrow=</span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb502-24" title="24">  <span class="dt">rel_heights =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb502-25" title="25">)</a></code></pre></div>
 <p><img src="parameter-sweep-mvc_files/figure-html/nov-mpe-val-bst-1.png" width="100%" /></p>
 <div id="stats-59" class="section level4 hasAnchor">
 <h4><span class="header-section-number">7.5.5.1</span> Stats<a href="novelty-search.html#stats-59" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Summary statistics for the largest valley crossed.</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb504-1" title="1">valleys =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>)</a>
-<a class="sourceLine" id="cb504-2" title="2">valleys<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(valleys<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
-<a class="sourceLine" id="cb504-3" title="3">valleys <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb504-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb504-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
-<a class="sourceLine" id="cb504-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb504-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
-<a class="sourceLine" id="cb504-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb504-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb504-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb504-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb504-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb504-13" title="13">  )</a></code></pre></div>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb503-1" title="1">valleys =<span class="st"> </span><span class="kw">filter</span>(best_df, acro <span class="op">==</span><span class="st"> &#39;mpe&#39;</span> <span class="op">&amp;</span><span class="st"> </span>var <span class="op">==</span><span class="st"> &#39;ele_big_peak&#39;</span>)</a>
+<a class="sourceLine" id="cb503-2" title="2">valleys<span class="op">$</span>K =<span class="st"> </span><span class="kw">factor</span>(valleys<span class="op">$</span>K, <span class="dt">levels =</span> NS_LIST)</a>
+<a class="sourceLine" id="cb503-3" title="3">valleys <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb503-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(K) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb503-5" title="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">summarise</span>(</a>
+<a class="sourceLine" id="cb503-6" title="6">    <span class="dt">count =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb503-7" title="7">    <span class="dt">na_cnt =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(val)),</a>
+<a class="sourceLine" id="cb503-8" title="8">    <span class="dt">min =</span> <span class="kw">min</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb503-9" title="9">    <span class="dt">median =</span> <span class="kw">median</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb503-10" title="10">    <span class="dt">mean =</span> <span class="kw">mean</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb503-11" title="11">    <span class="dt">max =</span> <span class="kw">max</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb503-12" title="12">    <span class="dt">IQR =</span> <span class="kw">IQR</span>(val, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb503-13" title="13">  )</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 8
 ##   K     count na_cnt   min median  mean   max   IQR
 ##   &lt;fct&gt; &lt;int&gt;  &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1365,15 +1364,15 @@ Shading comes from the best and worse performance across 50 replicates.</p>
 ## 5 15       50      0     9     10  9.92    11     0
 ## 6 30       50      0     9     10 10.2     11     1</code></pre>
 <p>Kruskal–Wallis test illustrates evidence of statistical differences.</p>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb506-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> valleys)</a></code></pre></div>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb505-1" title="1"><span class="kw">kruskal.test</span>(val <span class="op">~</span><span class="st"> </span>K, <span class="dt">data =</span> valleys)</a></code></pre></div>
 <pre><code>## 
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  val by K
 ## Kruskal-Wallis chi-squared = 201.02, df = 5, p-value &lt; 2.2e-16</code></pre>
 <p>Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.</p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb508-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> valleys<span class="op">$</span>val, <span class="dt">g =</span> valleys<span class="op">$</span>K, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
-<a class="sourceLine" id="cb508-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb507-1" title="1"><span class="kw">pairwise.wilcox.test</span>(<span class="dt">x =</span> valleys<span class="op">$</span>val, <span class="dt">g =</span> valleys<span class="op">$</span>K, <span class="dt">p.adjust.method =</span> <span class="st">&quot;bonferroni&quot;</span>,</a>
+<a class="sourceLine" id="cb507-2" title="2">                     <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">conf.int =</span> <span class="ot">FALSE</span>, <span class="dt">alternative =</span> <span class="st">&#39;t&#39;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Pairwise comparisons using Wilcoxon rank sum test with continuity correction 
 ## 

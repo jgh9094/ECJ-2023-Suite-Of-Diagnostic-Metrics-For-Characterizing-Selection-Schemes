@@ -23,7 +23,7 @@
 <meta name="author" content="Jose Guadalupe Hernandez" />
 
 
-<meta name="date" content="2023-08-28" />
+<meta name="date" content="2023-08-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -176,7 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Supplemental Material: Base Diagnostics</h1>
 <p class="author"><em>Jose Guadalupe Hernandez</em></p>
-<p class="date"><em>2023-08-28</em></p>
+<p class="date"><em>2023-08-29</em></p>
 </div>
 <div id="introduction" class="section level1 hasAnchor">
 <h1><span class="header-section-number">Chapter 1</span> Introduction<a href="index.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -259,21 +259,17 @@ We compiled our data analyses and supplemental documentation into this nifty web
 <a class="sourceLine" id="cb9-20" title="20">  <span class="dt">legend.position=</span><span class="st">&quot;bottom&quot;</span>,</a>
 <a class="sourceLine" id="cb9-21" title="21">  <span class="dt">panel.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;#f1f2f5&quot;</span>,</a>
 <a class="sourceLine" id="cb9-22" title="22">                                  <span class="dt">colour =</span> <span class="st">&quot;white&quot;</span>,</a>
-<a class="sourceLine" id="cb9-23" title="23">                                  <span class="dt">size =</span> <span class="fl">0.5</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>)</a>
-<a class="sourceLine" id="cb9-24" title="24">)</a></code></pre></div>
-<pre><code>## Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
-## i Please use the `linewidth` argument instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="co"># default variables</span></a>
-<a class="sourceLine" id="cb11-2" title="2">REPLICATES =<span class="st"> </span><span class="dv">50</span></a>
-<a class="sourceLine" id="cb11-3" title="3">DIMENSIONALITY =<span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb11-4" title="4">GENERATIONS =<span class="st"> </span><span class="dv">50000</span></a>
-<a class="sourceLine" id="cb11-5" title="5"></a>
-<a class="sourceLine" id="cb11-6" title="6"><span class="co"># selection scheme related stuff</span></a>
-<a class="sourceLine" id="cb11-7" title="7">ACRO =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;nds&#39;</span>,<span class="st">&#39;nfr&#39;</span>,<span class="st">&#39;pfs&#39;</span>)</a>
-<a class="sourceLine" id="cb11-8" title="8">NAMES =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Nondominated sorting (nds)&#39;</span>,<span class="st">&#39;Nondominated front ranking (nfr)&#39;</span>,<span class="st">&#39;Phenotypic fitness sharing (pfs)&#39;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb9-23" title="23">                                  <span class="dt">linewidth =</span> <span class="fl">0.5</span>, <span class="dt">linetype =</span> <span class="st">&quot;solid&quot;</span>)</a>
+<a class="sourceLine" id="cb9-24" title="24">)</a>
+<a class="sourceLine" id="cb9-25" title="25"></a>
+<a class="sourceLine" id="cb9-26" title="26"></a>
+<a class="sourceLine" id="cb9-27" title="27"><span class="co"># default variables</span></a>
+<a class="sourceLine" id="cb9-28" title="28">DIMENSIONALITY =<span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb9-29" title="29">GENERATIONS =<span class="st"> </span><span class="dv">50000</span></a>
+<a class="sourceLine" id="cb9-30" title="30"></a>
+<a class="sourceLine" id="cb9-31" title="31"><span class="co"># selection scheme related stuff</span></a>
+<a class="sourceLine" id="cb9-32" title="32">ACRO =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;nds&#39;</span>,<span class="st">&#39;nfr&#39;</span>,<span class="st">&#39;pfs&#39;</span>)</a>
+<a class="sourceLine" id="cb9-33" title="33">NAMES =<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Nondominated sorting (nds)&#39;</span>,<span class="st">&#39;Nondominated front ranking (nfr)&#39;</span>,<span class="st">&#39;Phenotypic fitness sharing (pfs)&#39;</span>)</a></code></pre></div>
 
 </div>
 </div>
