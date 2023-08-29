@@ -50,7 +50,7 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
   scale_shape_manual(values=c(5,3,1,20,2,6,0,4))+
   scale_colour_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
   scale_fill_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
-  ggtitle('Performance over time')+
+  ggtitle('Activation gene coverage over time')+
   p_theme +
   guides(
     shape=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
@@ -77,7 +77,7 @@ legend <- cowplot::get_legend(
 Activation gene coverage found in the final population at 50,000 generations.
 
 
-```{r con-act-end, out.width="100%"}
+```{r con-act-end, out.width="100%", warning=FALSE}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = uni_str_pos, color = acro, fill = acro, shape = acro)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
@@ -154,6 +154,7 @@ lines = over_time_df %>%
     mean = mean(pop_uni_obj),
     max = max(pop_uni_obj)
   )
+lines$scheme <- factor(lines$scheme, levels = c('Truncation (tru)','Tournament (tor)','Lexicase (lex)','Random (ran)','Genotypic Fitness Sharing (gfs)','Phenotypic Fitness Sharing (pfs)','Nondominated Sorting (nds)','Novelty Search (nov)'))
 
 over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme, color = scheme, shape = scheme)) +
   geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
@@ -175,7 +176,7 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
   scale_shape_manual(values=c(5,3,1,20,2,6,0,4))+
   scale_colour_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
   scale_fill_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
-  ggtitle('Performance over time')+
+  ggtitle('Satisfactory trait coverage over time')+
   p_theme +
   guides(
     shape=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
@@ -191,7 +192,7 @@ over_time_plot
 Satisfactory trait coverage found in the final population at 50,000 generations.
 
 
-```{r con-sat-end, out.width="100%"}
+```{r con-sat-end, out.width="100%", warning=FALSE}
 plot = filter(over_time_df, gen == 50000) %>%
   ggplot(., aes(x = acro, y = pop_uni_obj, color = acro, fill = acro, shape = acro)) +
   geom_flat_violin(position = position_nudge(x = .1, y = 0), scale = 'width', alpha = 0.2, width = 1.5) +
