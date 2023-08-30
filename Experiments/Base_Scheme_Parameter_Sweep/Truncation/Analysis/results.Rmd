@@ -301,7 +301,7 @@ ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T, shape = T)) +
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
-  ggtitle('Activation gene coverage over time')+
+  ggtitle('Performance over time')+
   p_theme +
   guides(
     shape=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
@@ -398,7 +398,7 @@ ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T, shape = T)) +
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
-  ggtitle('Satisfactory trait coverage over time')+
+  ggtitle('Performance over time')+
   p_theme +
   guides(
     shape=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),
@@ -501,7 +501,7 @@ ggplot(lines, aes(x=gen, y=mean, group = T, fill = T, color = T, shape = T)) +
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
-  ggtitle('Activation gene coverage over time')+
+  ggtitle('Performance over time')+
   p_theme +
   guides(
     shape=guide_legend(nrow=2, title.position = "left", title = 'Truncation \nSize'),

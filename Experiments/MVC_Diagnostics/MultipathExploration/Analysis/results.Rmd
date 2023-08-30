@@ -31,8 +31,6 @@ lines = over_time_df %>%
     mean = mean(uni_str_pos),
     max = max(uni_str_pos)
   )
-lines$scheme <- factor(lines$scheme, levels = c('Truncation (tru)','Tournament (tor)','Lexicase (lex)','Random (ran)','Genotypic Fitness Sharing (gfs)','Phenotypic Fitness Sharing (pfs)','Nondominated Sorting (nds)','Novelty Search (nov)'))
-
 over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme, color = scheme, shape = scheme)) +
   geom_ribbon(aes(ymin = min, ymax = max), alpha = 0.1) +
   geom_line(size = 0.5) +
@@ -50,29 +48,18 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
     labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
 
   ) +
-  scale_shape_manual(values=c(5,3,1,20,2,6,0,4))+
-  scale_colour_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
-  scale_fill_manual(values = c('#332288','#88CCEE','#EE7733','#CCBB44','#EE3377','#117733','#882255','#44AA99')) +
+  scale_shape_manual(values=SHAPE)+
+  scale_colour_manual(values =cb_palette) +
+  scale_fill_manual(values = cb_palette) +
   ggtitle('Activation gene coverage over time')+
   p_theme +
   guides(
-    shape=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
-    color=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
-    fill=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme')
+    shape=guide_legend(nrow=3, title.position = "bottom", title = 'Selection Scheme'),
+    color=guide_legend(nrow=3, title.position = "bottom", title = 'Selection Scheme'),
+    fill=guide_legend(nrow=3, title.position = "bottom", title = 'Selection Scheme')
   )
 
 over_time_plot
-```
-
-```{r mul-legend, echo=FALSE}
-legend <- cowplot::get_legend(
-  over_time_plot +
-    guides(
-      shape=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
-      color=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme'),
-      fill=guide_legend(ncol=2, title.position = "left", title = 'Selection \nScheme')
-  )
-)
 ```
 
 ## Final activation gene coverage

@@ -9,6 +9,7 @@ nocite: '@*'
 link-citations: yes
 github-repo:  jgh9094/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes
 description: "Supplemental material for selection scheme parameter sweep with diagnostics and valleys."
+geometry: margin=1in
 ---
 
 ```{r base-idx-init, include=FALSE}

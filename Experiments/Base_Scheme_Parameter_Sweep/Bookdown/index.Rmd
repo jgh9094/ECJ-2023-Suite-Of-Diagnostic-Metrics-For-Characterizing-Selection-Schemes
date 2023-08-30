@@ -9,6 +9,7 @@ nocite: '@*'
 link-citations: yes
 github-repo:  jgh9094/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes
 description: "Supplemental material for selection scheme parameter sweep with diagnostics and no valleys."
+geometry: margin=1in
 ---
 
 ```{r base-idx-init, include=FALSE}
@@ -62,24 +63,24 @@ library(dplyr)
 library(PupillometryR)
 
 # data diractory for gh-pages
-DATA_DIR = '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/PARAM_SWEEP/'
+# DATA_DIR = '/opt/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/PARAM_SWEEP/'
 
 # data diractory for local testing
-# DATA_DIR = '~/Desktop/Repositories/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/PARAM_SWEEP/'
+DATA_DIR = '~/Desktop/Repositories/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/PARAM_SWEEP/'
 
 # graph variables
 SHAPE = c(5,3,1,2,6,0,4,20,8)
 cb_palette <- c('#332288','#88CCEE','#EE7733','#EE3377','#117733','#882255','#44AA99','#CCBB44', '#000000')
 TSIZE = 20
 p_theme <- theme(
-  text = element_text(size = 18),
-  plot.title = element_text( face = "bold", size = 20, hjust=0.5),
+  text = element_text(size = 20),
+  plot.title = element_text( face = "bold", size = 22, hjust=0.5),
   panel.border = element_blank(),
   panel.grid.minor = element_blank(),
-  legend.title=element_text(size=12),
-  legend.text=element_text(size=12),
-  axis.title = element_text(size=18),
-  axis.text = element_text(size=18),
+  legend.title=element_text(size=14),
+  legend.text=element_text(size=14),
+  axis.title = element_text(size=20),
+  axis.text = element_text(size=20),
   legend.position="bottom",
   panel.background = element_rect(fill = "#f1f2f5",
                                   colour = "white",
