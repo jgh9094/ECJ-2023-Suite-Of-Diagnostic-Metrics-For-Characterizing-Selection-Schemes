@@ -64,6 +64,12 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
 over_time_plot
 ```
 
+```{r mul-legend, echo=FALSE}
+legend <- cowplot::get_legend(
+  over_time_plot
+)
+```
+
 ## Final activation gene coverage
 
 Activation gene coverage found in the final population at 50,000 generations.
