@@ -78,6 +78,7 @@ p_theme <- theme(
   axis.title = element_text(size=18),
   axis.text = element_text(size=16),
   legend.position="bottom",
+  legend.margin = margin(0, 0, 0, 0),
   panel.background = element_rect(fill = "#f1f2f5",
                                   colour = "white",
                                   linewidth = 0.5, linetype = "solid")
