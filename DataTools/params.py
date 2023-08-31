@@ -138,10 +138,10 @@ def GetSweepScheme(s):
     #case by case
     if s == 0:
         return 'TRUNCATION'
-    
+
     elif s == 1:
         return 'TOURNAMENT'
-    
+
     elif s ==  2:
         return 'FITSHARING_G'
 
@@ -153,11 +153,11 @@ def GetSweepScheme(s):
 
     elif s == 5:
         return 'NOVELTY'
-        
+
 def GetSweepSeedLists(offs,sch):
     #case by case
     seed = []
-    
+
     # truncation, tournament: 450 replidates
     if sch == 0 or sch == 1:
         seed.append([x + offs for x in range(1,451)])
@@ -165,7 +165,7 @@ def GetSweepSeedLists(offs,sch):
         seed.append([x + offs + 1000 for x in range(1,451)])
         seed.append([x + offs + 1500 for x in range(1,451)])
         return seed
-    
+
     # fitness sharing, nondominated sorting
     elif sch ==  2 or sch == 3 or sch == 4:
         seed.append([x + offs for x in range(1,351)])
@@ -189,7 +189,7 @@ def GetSchemeParam(sch):
     # truncation, tournament
     if sch == 0 or sch == 1:
         return 'T'
-    
+
     # fitness sharing, nondominated sorting
     elif sch ==  2 or sch == 3 or sch == 4:
         return 'Sigma'
@@ -200,12 +200,12 @@ def GetSchemeParam(sch):
 
     else:
         sys.exit('SEED SELECTION UNKNOWN')
-        
+
 def GetSchemeSeedBound(sch):
     # truncation, tournament
     if sch == 0 or sch == 1:
         return 450
-    
+
     # fitness sharing, nondominated sorting
     elif sch ==  2 or sch == 3 or sch == 4:
         return 350
@@ -216,7 +216,7 @@ def GetSchemeSeedBound(sch):
 
     else:
         sys.exit('SEED SELECTION UNKNOWN')
-        
+
 def GetSchemeParamSet(sch):
     # truncation
     if sch == 0:
