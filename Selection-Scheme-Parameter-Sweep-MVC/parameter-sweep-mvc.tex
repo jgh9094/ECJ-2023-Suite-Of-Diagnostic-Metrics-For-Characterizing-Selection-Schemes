@@ -244,17 +244,16 @@ Setting up required variables variables.
 \CommentTok{# graph variables}
 \NormalTok{SHAPE =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{8}\NormalTok{)}
 \NormalTok{cb_palette <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'#332288'}\NormalTok{,}\StringTok{'#88CCEE'}\NormalTok{,}\StringTok{'#EE7733'}\NormalTok{,}\StringTok{'#EE3377'}\NormalTok{,}\StringTok{'#117733'}\NormalTok{,}\StringTok{'#882255'}\NormalTok{,}\StringTok{'#44AA99'}\NormalTok{,}\StringTok{'#CCBB44'}\NormalTok{, }\StringTok{'#000000'}\NormalTok{)}
-\NormalTok{TSIZE =}\StringTok{ }\DecValTok{26}
 \NormalTok{p_theme <-}\StringTok{ }\KeywordTok{theme}\NormalTok{(}
-  \DataTypeTok{text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size =} \DecValTok{18}\NormalTok{),}
   \DataTypeTok{plot.title =} \KeywordTok{element_text}\NormalTok{( }\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{20}\NormalTok{, }\DataTypeTok{hjust=}\FloatTok{0.5}\NormalTok{),}
   \DataTypeTok{panel.border =} \KeywordTok{element_blank}\NormalTok{(),}
   \DataTypeTok{panel.grid.minor =} \KeywordTok{element_blank}\NormalTok{(),}
-  \DataTypeTok{legend.title=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{12}\NormalTok{),}
-  \DataTypeTok{legend.text=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{12}\NormalTok{),}
+  \DataTypeTok{legend.title=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{18}\NormalTok{, }\DataTypeTok{hjust =} \FloatTok{0.5}\NormalTok{),}
+  \DataTypeTok{legend.text=}\KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{10}\NormalTok{),}
   \DataTypeTok{axis.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{18}\NormalTok{),}
-  \DataTypeTok{axis.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{18}\NormalTok{),}
+  \DataTypeTok{axis.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{size=}\DecValTok{16}\NormalTok{),}
   \DataTypeTok{legend.position=}\StringTok{"bottom"}\NormalTok{,}
+  \DataTypeTok{legend.margin =} \KeywordTok{margin}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{),}
   \DataTypeTok{panel.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill =} \StringTok{"#f1f2f5"}\NormalTok{,}
                                   \DataTypeTok{colour =} \StringTok{"white"}\NormalTok{,}
                                   \DataTypeTok{linewidth =} \FloatTok{0.5}\NormalTok{, }\DataTypeTok{linetype =} \StringTok{"solid"}\NormalTok{)}
@@ -477,7 +476,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -752,7 +752,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-1}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-1}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1057,7 +1058,7 @@ Shading comes from the best and worse coverage across 50 replicates.
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{data =} \KeywordTok{filter}\NormalTok{(lines, gen }\OperatorTok{%%}\StringTok{ }\DecValTok{2000} \OperatorTok{==}\StringTok{ }\DecValTok{0} \OperatorTok{&}\StringTok{ }\NormalTok{gen }\OperatorTok{!=}\StringTok{ }\DecValTok{0}\NormalTok{), }\DataTypeTok{size =} \FloatTok{1.5}\NormalTok{, }\DataTypeTok{stroke =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Coverage"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{),}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\FloatTok{0.1}\NormalTok{, }\DecValTok{2}\NormalTok{),}
     \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
 \NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_continuous}\NormalTok{(}
@@ -1119,7 +1120,7 @@ Satisfactory trait coverage found in the final population at 50,000 generations.
 \end{Shaded}
 
 \begin{verbatim}
-## Warning: Removed 224 rows containing missing values (`geom_point()`).
+## Warning: Removed 234 rows containing missing values (`geom_point()`).
 \end{verbatim}
 
 \includegraphics[width=1\linewidth]{parameter-sweep-mvc_files/figure-latex/tru-con-sat-end-1}
@@ -1165,7 +1166,8 @@ Summary statistics for the generation a satisfactory solution is found.
 \hypertarget{largest-valley-reached-throughout-2}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-2}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1562,7 +1564,8 @@ Kruskal--Wallis test illustrates evidence of \textbf{no statistical differences}
 \hypertarget{largest-valley-reached-throughout-3}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-3}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1855,7 +1858,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-4}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-4}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2158,7 +2162,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-5}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-5}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2502,7 +2507,7 @@ Satisfactory trait coverage found in the final population at 50,000 generations.
 \StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{position =} \KeywordTok{position_jitter}\NormalTok{(}\DataTypeTok{width =} \FloatTok{0.03}\NormalTok{, }\DataTypeTok{height =} \FloatTok{0.02}\NormalTok{), }\DataTypeTok{size =} \FloatTok{2.0}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{1.0}\NormalTok{) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_y_continuous}\NormalTok{(}
     \DataTypeTok{name=}\StringTok{"Coverage"}\NormalTok{,}
-    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{),}
+    \DataTypeTok{limits=}\KeywordTok{c}\NormalTok{(}\OperatorTok{-}\FloatTok{0.1}\NormalTok{, }\DecValTok{2}\NormalTok{),}
     \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
 \NormalTok{  ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}
@@ -2523,10 +2528,6 @@ Satisfactory trait coverage found in the final population at 50,000 generations.
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning: Removed 239 rows containing missing values (`geom_point()`).
-\end{verbatim}
 
 \includegraphics[width=1\linewidth]{parameter-sweep-mvc_files/figure-latex/tor-con-sat-end-1}
 
@@ -2571,7 +2572,8 @@ Summary statistics for the generation a satisfactory solution is found.
 \hypertarget{largest-valley-reached-throughout-6}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-6}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2968,7 +2970,8 @@ Kruskal--Wallis test illustrates evidence of \textbf{no statistical differences}
 \hypertarget{largest-valley-reached-throughout-7}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-7}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3285,7 +3288,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-8}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-8}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3580,7 +3584,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-9}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-9}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4010,7 +4015,8 @@ Summary statistics for the generation a satisfactory solution is found.
 \hypertarget{largest-valley-reached-throughout-10}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-10}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4384,7 +4390,7 @@ Best performance reached throughout 50,000 generations in a population.
 \StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette, ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best performance throughout'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }
+\StringTok{  }\NormalTok{p_theme}
 
 \KeywordTok{plot_grid}\NormalTok{(}
 \NormalTok{  plot }\OperatorTok{+}
@@ -4479,7 +4485,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-11}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-11}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4791,7 +4798,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-12}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-12}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5086,7 +5094,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-13}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-13}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5552,7 +5561,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-14}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-14}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6022,7 +6032,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-15}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-15}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6334,7 +6345,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-16}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-16}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6629,7 +6641,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-17}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-17}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7053,7 +7066,8 @@ Summary statistics for the generation a satisfactory solution is found.
 \hypertarget{largest-valley-reached-throughout-18}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-18}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7428,7 +7442,7 @@ Best performance reached throughout 50,000 generations in a population.
 \StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette, ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best performance throughout'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }
+\StringTok{  }\NormalTok{p_theme}
 
 \KeywordTok{plot_grid}\NormalTok{(}
 \NormalTok{  plot }\OperatorTok{+}
@@ -7523,7 +7537,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-19}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-19}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7834,7 +7849,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-20}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-20}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8125,7 +8141,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-21}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-21}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8560,7 +8577,8 @@ Kruskal--Wallis test illustrates evidence of \textbf{no statistical differences}
 \hypertarget{largest-valley-reached-throughout-22}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-22}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8929,7 +8947,7 @@ Best performance reached throughout 50,000 generations in a population.
 \StringTok{  }\KeywordTok{scale_colour_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette, ) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{scale_fill_manual}\NormalTok{(}\DataTypeTok{values =}\NormalTok{ cb_palette) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{'Best performance throughout'}\NormalTok{)}\OperatorTok{+}
-\StringTok{  }\NormalTok{p_theme }
+\StringTok{  }\NormalTok{p_theme}
 
 \KeywordTok{plot_grid}\NormalTok{(}
 \NormalTok{  plot }\OperatorTok{+}
@@ -9022,7 +9040,8 @@ Results for post-hoc Wilcoxon rank-sum test with a Bonferroni correction.
 \hypertarget{largest-valley-reached-throughout-23}{%
 \subsection{Largest valley reached throughout}\label{largest-valley-reached-throughout-23}}
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 \begin{Shaded}
 \begin{Highlighting}[]
