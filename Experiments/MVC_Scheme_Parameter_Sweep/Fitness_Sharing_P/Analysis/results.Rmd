@@ -139,7 +139,8 @@ pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method
 
 ### Largest valley reached throughout
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 ```{r pfs-exp-val-bst, out.width="100%"}
 plot = filter(best_df, acro == 'exp' & var == 'ele_big_peak') %>%
@@ -320,7 +321,8 @@ pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method
 
 ### Largest valley reached throughout
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 ```{r pfs-ord-val-bst, out.width="100%"}
 plot = filter(best_df, acro == 'ord' & var == 'ele_big_peak') %>%
@@ -611,7 +613,8 @@ pairwise.wilcox.test(x = sat_coverage$pop_uni_obj, g = sat_coverage$Sigma, p.adj
 
 ### Largest valley reached throughout
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 ```{r pfs-con-val-bst, out.width="100%"}
 plot = filter(best_df, acro == 'con' & var == 'ele_big_peak') %>%
@@ -904,7 +907,8 @@ pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method
 
 ### Largest valley reached throughout
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 ```{r pfs-mpe-val-bst, out.width="100%"}
 plot = filter(best_df, acro == 'mpe' & var == 'ele_big_peak') %>%

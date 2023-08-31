@@ -139,7 +139,8 @@ pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method
 
 ### Largest valley reached throughout
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 ```{r nds-exp-val-bst, out.width="100%"}
 plot = filter(best_df, acro == 'exp' & var == 'ele_big_peak') %>%
@@ -320,7 +321,8 @@ pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method
 
 ### Largest valley reached throughout
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 ```{r nds-ord-val-bst, out.width="100%"}
 plot = filter(best_df, acro == 'ord' & var == 'ele_big_peak') %>%
@@ -597,7 +599,8 @@ sat_coverage %>%
 
 ### Largest valley reached throughout
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 ```{r nds-con-val-bst, out.width="100%"}
 plot = filter(best_df, acro == 'con' & var == 'ele_big_peak') %>%
@@ -844,7 +847,7 @@ plot = filter(best_df, acro == 'mpe' &  var == 'pop_fit_max') %>%
   scale_colour_manual(values = cb_palette, ) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Best performance throughout')+
-  p_theme 
+  p_theme
 
 plot_grid(
   plot +
@@ -890,7 +893,8 @@ pairwise.wilcox.test(x = performance$val, g = performance$Sigma, p.adjust.method
 
 ### Largest valley reached throughout
 
-Largest valley reached in a single trait by the best performing solution throughout an entire evolutionary run.
+The largest valley reached in a single trait throughout an entire evolutionary run.
+To collect this value, we look through all the best-performing solutions each generation and find the largest valley reached.
 
 ```{r nds-mpe-val-bst, out.width="100%"}
 plot = filter(best_df, acro == 'mpe' & var == 'ele_big_peak') %>%

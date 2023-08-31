@@ -522,7 +522,7 @@ plot = filter(over_time_df, gen == 50000 & acro == 'mpe') %>%
   geom_point(position = position_jitter(width = 0.03, height = 0.02), size = 2.0, alpha = 1.0) +
   scale_y_continuous(
     name="Coverage",
-    limits=c(0, 6),
+    limits=c(0, 6.1),
     breaks=c(0,2,4,6)
   ) +
   scale_x_discrete(
