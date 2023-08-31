@@ -338,15 +338,12 @@ Shading comes from the best and worse coverage across 50 replicates.</p>
 <a class="sourceLine" id="cb23-19" title="19"><span class="st">  </span><span class="kw">scale_colour_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb23-20" title="20"><span class="st">  </span><span class="kw">scale_fill_manual</span>(<span class="dt">values =</span> cb_palette) <span class="op">+</span></a>
 <a class="sourceLine" id="cb23-21" title="21"><span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&#39;Satisfactory trait coverage over time&#39;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb23-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title=</span><span class="kw">element_blank</span>(),<span class="dt">legend.text=</span><span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">12</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-22" title="22"><span class="st">  </span>p_theme <span class="op">+</span></a>
 <a class="sourceLine" id="cb23-23" title="23"><span class="st">  </span><span class="kw">guides</span>(</a>
-<a class="sourceLine" id="cb23-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb23-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>),</a>
-<a class="sourceLine" id="cb23-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;bottom&quot;</span>)</a>
-<a class="sourceLine" id="cb23-27" title="27">  )</a>
-<a class="sourceLine" id="cb23-28" title="28"></a>
-<a class="sourceLine" id="cb23-29" title="29">over_time_plot</a></code></pre></div>
-<p><img src="contradictory-nondominated-sorting-breakdown_files/figure-html/con-sat-ot-1.png" width="100%" /></p>
+<a class="sourceLine" id="cb23-24" title="24">    <span class="dt">shape=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Selection </span><span class="ch">\n</span><span class="st">Scheme&#39;</span>),</a>
+<a class="sourceLine" id="cb23-25" title="25">    <span class="dt">color=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Selection </span><span class="ch">\n</span><span class="st">Scheme&#39;</span>),</a>
+<a class="sourceLine" id="cb23-26" title="26">    <span class="dt">fill=</span><span class="kw">guide_legend</span>(<span class="dt">ncol=</span><span class="dv">1</span>, <span class="dt">title.position =</span> <span class="st">&quot;left&quot;</span>, <span class="dt">title =</span> <span class="st">&#39;Selection </span><span class="ch">\n</span><span class="st">Scheme&#39;</span>)</a>
+<a class="sourceLine" id="cb23-27" title="27">  )</a></code></pre></div>
 </div>
 <div id="final-satisfactory-trait-coverage" class="section level2 hasAnchor">
 <h2><span class="header-section-number">2.5</span> Final satisfactory trait coverage<a href="nondominated-sorting-breakdown.html#final-satisfactory-trait-coverage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
