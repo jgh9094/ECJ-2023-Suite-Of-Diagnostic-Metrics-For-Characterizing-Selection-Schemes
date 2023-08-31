@@ -45,7 +45,7 @@ sat_ot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme, color =
     limits=c(0, 50000),
     breaks=c(0, 10000, 20000, 30000, 40000, 50000),
     labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
-    
+
   ) +
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette) +
@@ -116,7 +116,7 @@ act_ot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme, color =
     limits=c(0, 50000),
     breaks=c(0, 10000, 20000, 30000, 40000, 50000),
     labels=c("0e+4", "1e+4", "2e+4", "3e+4", "4e+4", "5e+4")
-    
+
   ) +
   scale_shape_manual(values=SHAPE)+
   scale_colour_manual(values = cb_palette) +
@@ -175,7 +175,7 @@ legend <- cowplot::get_legend(
     )
 )
 
-# combine 
+# combine
 
 fig = plot_grid(
   sat_row,

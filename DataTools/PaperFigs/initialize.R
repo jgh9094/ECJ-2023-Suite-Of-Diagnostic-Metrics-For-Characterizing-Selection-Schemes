@@ -1,5 +1,5 @@
 # data diractory for local testing
-DATA_DIR = 'C:/Users/jgh9094/Desktop/Research/Projects/SelectionDiagnostics/ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/'
+DATA_DIR = '~/Desktop/Repositories//ECJ-2023-Suite-Of-Diagnostic-Metrics-For-Characterizing-Selection-Schemes/DATA/'
 
 # graph variables
 SHAPE <- c(5,3,1,2,6,0,4,20,1)
@@ -17,7 +17,7 @@ p_theme <- theme(
   legend.position = "bottom",
   panel.background = element_rect(fill = "#f1f2f5",
                                   colour = "white",
-                                  size = 0.5, linetype = "solid")
+                                  linewidth = 0.5, linetype = "solid")
 )
 
 # default variables
