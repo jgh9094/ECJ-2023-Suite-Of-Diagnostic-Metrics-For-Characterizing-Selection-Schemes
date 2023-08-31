@@ -173,14 +173,12 @@ over_time_plot = ggplot(lines, aes(x=gen, y=mean, group = scheme, fill = scheme,
   scale_colour_manual(values = cb_palette) +
   scale_fill_manual(values = cb_palette) +
   ggtitle('Satisfactory trait coverage over time')+
-  p_theme + theme(legend.title=element_blank(),legend.text=element_text(size=12)) +
+  p_theme +
   guides(
-    shape=guide_legend(ncol=1, title.position = "bottom"),
-    color=guide_legend(ncol=1, title.position = "bottom"),
-    fill=guide_legend(ncol=1, title.position = "bottom")
+    shape=guide_legend(ncol=1, title.position = "left", title = 'Selection \nScheme'),
+    color=guide_legend(ncol=1, title.position = "left", title = 'Selection \nScheme'),
+    fill=guide_legend(ncol=1, title.position = "left", title = 'Selection \nScheme')
   )
-
-over_time_plot
 ```
 
 ## Final satisfactory trait coverage
